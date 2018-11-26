@@ -1,0 +1,158 @@
+---
+title: "Malaria Atlas"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+library(malariaAtlas)
+```
+
+```{r}
+kenya_pr <- tbl_df(malariaAtlas::getPR(ISO = "KEN", species = "BOTH")) %>%
+  filter(!is.na(pr))
+```
+
+```{r}
+kenya_pr %>%
+  group_by(year_start) %>%
+  summarize(examined = sum(examined),
+            positive = sum(positive),
+            studies = n()) %>%
+  mutate(pr = positive / examined) %>%
+  ggplot(aes(year_start, pr)) +
+  geom_line()
+
+kenya_pr %>%
+  mutate(decade = 10 * (year_start %/% 10)) %>%
+  arrange(pr) %>%
+  ggplot(aes(longitude, latitude, color = pr)) +
+  borders("world", regions = "Kenya") +
+  geom_point() +
+  scale_color_gradient2(low = "blue", high = "red", midpoint = .5, labels = scales::percent_format()) +
+  facet_wrap(~ decade) +
+  theme_void() +
+  coord_map() +
+  labs(color = "Prevalence")
+```
+
+### Aggregated across countries
+
+```{r}
+malaria_inc <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-13/malaria_inc.csv")
+
+malaria_inc_processed <- malaria_inc %>%
+  setNames(c("country", "code", "year", "incidence")) %>%
+  mutate(incidence = incidence / 1000)
+```
+
+```{r}
+malaria_inc_processed %>%
+  filter(country %in% sample(unique(country), 6)) %>%
+  ggplot(aes(year, incidence, color = country)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format())
+```
+
+Looking at 2015 levels and the change from 2015 to 2000
+
+```{r}
+malaria_spread <- malaria_inc_processed %>%
+  mutate(year = paste0("Y", year)) %>%
+  spread(year, incidence)
+
+malaria_spread %>%
+  filter(country != "Turkey",
+         !is.na(code)) %>%
+  mutate(current = Y2015,
+         change =  Y2015 - Y2000) %>%
+  ggplot(aes(current, change)) +
+  geom_point() +
+  geom_text(aes(label = code), vjust = 1, hjust = 1)
+```
+
+```{r}
+world <- map_data("world") %>%
+  filter(region != "Antarctica")
+
+malaria_inc_processed %>%
+  filter(incidence < 1) %>%
+  inner_join(maps::iso3166 %>%
+               select(a3, mapname), by = c(code = "a3")) %>%
+  inner_join(world, by = c(mapname = "region")) %>%
+  ggplot(aes(long, lat, group = group, fill = incidence)) +
+  geom_polygon() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = .20, labels = scales::percent_format()) +
+  coord_map() +
+  facet_wrap(~ year) +
+  theme_void() +
+  labs(title = "Malaria incidence over time around the world")
+```
+
+### Malaria deaths over time
+
+
+```{r}
+library(tidyverse)
+
+malaria_deaths <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-13/malaria_deaths.csv")
+
+malaria_deaths_processed <- malaria_deaths %>%
+  setNames(c("country", "code", "year", "deaths"))
+```
+
+```{r}
+malaria_deaths_processed %>%
+  filter(country %in% sample(unique(country), 6)) %>%
+  ggplot(aes(year, deaths, color = country)) +
+  geom_line() +
+  labs(y = "Deaths per 100,000")
+```
+
+```{r}
+library(fuzzyjoin)
+library(stringr)
+
+malaria_country_data <- malaria_deaths_processed %>%
+  inner_join(maps::iso3166 %>%
+               select(a3, mapname), by = c(code = "a3")) %>%
+  mutate(mapname = str_remove(mapname, "\\(.*"))
+
+malaria_map_data <- map_data("world") %>%
+  filter(region != "Antarctica") %>%
+  tbl_df() %>%
+  inner_join(malaria_country_data, by = c(region = "mapname"))
+
+malaria_map_data %>%
+  ggplot(aes(long, lat, group = group, fill = deaths)) +
+  geom_polygon() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = 100) +
+  theme_void() +
+  labs(title = "Malaria deaths over time around the world",
+       fill = "Deaths per 100,000")
+```
+
+```{r}
+library(gganimate)
+library(countrycode)
+
+malaria_map_data %>%
+  mutate(continent = countrycode(code, "iso3c", "continent")) %>%
+  filter(continent == "Africa") %>%
+  ggplot(aes(long, lat, group = group, fill = deaths)) +
+  geom_polygon() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = 100) +
+  theme_void() +
+  labs(title = "Malaria deaths over time in Africa ({ current_frame })",
+       fill = "Deaths per 100,000") +
+  transition_manual(year)
+
+anim_save("malaria_map.gif")
+```
+

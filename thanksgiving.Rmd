@@ -1,0 +1,180 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+thanksgiving_survey <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-20/thanksgiving_meals.csv") %>%
+  mutate(family_income = fct_reorder(family_income, parse_number(family_income)))
+```
+
+```{r}
+thanksgiving_survey %>%
+  count(celebrate)
+```
+
+Almost everyone serves turkey as the main dish
+
+```{r}
+thanksgiving_survey %>%
+  count(main_dish, sort = TRUE)
+```
+
+```{r}
+thanksgiving_survey %>%
+  count(main_dish, main_prep, sort = TRUE)
+```
+
+```{r}
+thanksgiving_survey %>%
+  count(cranberry, sort = TRUE)
+
+thanksgiving_survey %>%
+  count(gravy, sort = TRUE)
+```
+
+### Relationship with income
+
+```{r}
+thanksgiving_survey %>%
+  group_by(family_income) %>%
+  summarize(celebrate = sum(celebrate == "Yes"),
+            total = n(),
+            low = qbeta(0.025, celebrate + .5, total - celebrate + .5),
+            high = qbeta(0.975, celebrate + .5, total - celebrate + .5)) %>%
+  ggplot(aes(family_income, celebrate / total, group = 1)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .2) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "Family income",
+       y = "% celebrating Thanksgiving")
+```
+
+```{r}
+thanksgiving_survey %>%
+  filter(cranberry %in% c("Canned", "Homemade")) %>%
+  group_by(family_income) %>%
+  summarize(homemade = sum(cranberry == "Homemade"),
+            total = n(),
+            low = qbeta(0.025, homemade + .5, total - homemade + .5),
+            high = qbeta(0.975, homemade + .5, total - homemade + .5)) %>%
+  ggplot(aes(family_income, homemade / total, group = 1)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .2) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "Family income",
+       y = "% serving homemade")
+```
+
+```{r}
+food_gathered <- thanksgiving_survey %>%
+  select(id, starts_with("side"),
+         starts_with("pie"),
+         starts_with("dessert")) %>%
+  select(-side15, -pie13, -dessert12) %>%
+  gather(type, value, -id) %>%
+  filter(!is.na(value),
+         !value %in% c("None", "Other (please specify)")) %>%
+  mutate(type = str_remove(type, "\\d+"))
+
+n_respondents <- n_distinct(food_gathered$id)
+```
+
+What are the most common pies, sides, and desserts?
+
+```{r}
+food_gathered %>%
+  count(type, value, sort = TRUE) %>%
+  mutate(value = fct_reorder(value, n)) %>%
+  ggplot(aes(value, n / n_respondents, fill = type)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~ type, scales = "free_y", ncol = 1) +
+  labs(x = "",
+       y = "% of respondents")
+```
+
+How do the servings differ by income?
+
+```{r}
+food_gathered %>%
+  inner_join(thanksgiving_survey, by = "id") %>%
+  mutate(age_number = parse_number(age)) %>%
+  group_by(value) %>%
+  summarize(average_age = mean(age_number, na.rm = TRUE),
+            total = n()) %>%
+  arrange(desc(average_age))
+
+food_by_region <- food_gathered %>%
+  inner_join(thanksgiving_survey, by = "id") %>%
+  group_by(us_region) %>%
+  mutate(respondents = n_distinct(id)) %>%
+  count(us_region, respondents, type, value) %>%
+  ungroup() %>%
+  mutate(percent = n / respondents)
+
+food_by_region %>%
+  filter(value == "Cornbread") %>%
+  arrange(desc(percent))
+```
+
+```{r}
+library(ebbr)
+
+food_gathered %>%
+  inner_join(thanksgiving_survey, by = "id") %>%
+  filter(!is.na(prayer)) %>%
+  group_by(type, value) %>%
+  summarize(prayer = sum(prayer == "Yes"),
+            total = n()) %>%
+  add_ebb_estimate(prayer, total) %>%
+  arrange(desc(.fitted)) %>%
+  View()
+```
+
+### Network of foods
+
+What sides, pies and desserts are eaten together?
+
+```{r}
+library(widyr)
+
+food_cors <- food_gathered %>%
+  pairwise_cor(value, id, sort = TRUE)
+```
+
+```{r}
+library(ggraph)
+library(igraph)
+
+set.seed(2018)
+
+food_types <- food_gathered %>%
+  count(value, type, sort = TRUE)
+
+food_cors %>%
+  head(75) %>%
+  graph_from_data_frame(vertices = food_types) %>%
+  ggraph() +
+  geom_edge_link() +
+  geom_node_point(aes(color = type, size = n / n_respondents)) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1, repel = TRUE) +
+  scale_size_continuous(labels = scales::percent_format()) +
+  theme_void() +
+  labs(title = "What foods get served together at Thanksgiving?",
+       color = "",
+       size = "% of respondents")
+```
+
+
+
