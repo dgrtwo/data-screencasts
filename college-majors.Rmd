@@ -88,8 +88,7 @@ majors_processed %>%
 library(ggrepel)
 
 by_major_category %>%
-  mutate(Major_category = fct_lump(Major_category, 6)) %>%
-  ggplot(aes(ShareWomen, MedianSalary, color = Major_category)) +
+  ggplot(aes(ShareWomen, MedianSalary)) +
   geom_point() +
   geom_smooth(method = "lm") +
   geom_text_repel(aes(label = Major_category), force = .2) +
