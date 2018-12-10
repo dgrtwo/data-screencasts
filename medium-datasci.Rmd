@@ -1,0 +1,161 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+medium_datasci <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-12-04/medium_datasci.csv")
+
+theme_set(theme_light())
+```
+
+```{r}
+medium_processed <- medium_datasci %>%
+  select(-x1) %>%
+  mutate(post_id = row_number())
+```
+
+```{r}
+medium_processed %>%
+  count(author, sort = TRUE)
+
+medium_processed %>%
+  summarize_at(vars(starts_with("tag_")), sum)
+
+medium_gathered <- medium_processed %>%
+  gather(tag, value, starts_with("tag")) %>%
+  mutate(tag = str_remove(tag, "tag_")) %>%
+  filter(value == 1)
+
+medium_gathered %>%
+  count(tag, sort = TRUE)
+
+medium_gathered %>%
+  group_by(tag) %>%
+  summarize(median_claps = median(claps)) %>%
+  arrange(desc(median_claps))
+
+medium_processed %>%
+  ggplot(aes(claps)) +
+  geom_histogram() +
+  scale_x_log10(labels = scales::comma_format())
+
+medium_processed %>%
+  mutate(reading_time = pmin(10, reading_time)) %>%
+  ggplot(aes(reading_time)) +
+  geom_histogram(binwidth = .5) +
+  scale_x_continuous(breaks = seq(2, 10, 2),
+                     labels = c(seq(2, 8, 2), "10+")) +
+  labs(x = "Medium reading time")
+
+medium_gathered %>%
+  group_by(tag) %>%
+  summarize(reading_time = mean(reading_time)) %>%
+  arrange(desc(reading_time))
+```
+
+### Text mining
+
+```{r}
+library(tidytext)
+
+medium_words <- medium_processed %>%
+  filter(!is.na(title)) %>%
+  select(post_id, title, subtitle, year, reading_time, claps) %>%
+  unnest_tokens(word, title) %>%
+  anti_join(stop_words, by = "word") %>%
+  filter(!(word %in% c("de", "en", "la", "para")),
+         str_detect(word, "[a-z]"))
+
+medium_words %>%
+  count(word, sort = TRUE) %>%
+  mutate(word = fct_reorder(word, n)) %>%
+  head(20) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Common words in Medium post titles")
+```
+
+```{r}
+medium_words_filtered <- medium_words %>%
+  add_count(word) %>%
+  filter(n >= 250)
+
+tag_claps <- medium_words_filtered %>%
+  group_by(word) %>%
+  summarize(median_claps = median(claps),
+            geometric_mean_claps = exp(mean(log(claps + 1))) - 1,
+            occurences = n()) %>%
+  arrange(desc(median_claps))
+
+library(widyr)
+library(ggraph)
+library(igraph)
+
+top_word_cors <- medium_words_filtered %>%
+  select(post_id, word) %>%
+  pairwise_cor(word, post_id, sort = TRUE) %>%
+  head(150)
+
+vertices <- tag_claps %>%
+  filter(word %in% top_word_cors$item1 |
+           word %in% top_word_cors$item2)
+
+set.seed(2018)
+
+top_word_cors %>%
+  graph_from_data_frame(vertices = vertices) %>%
+  ggraph() +
+  geom_edge_link() +
+  geom_node_point(aes(size = occurences * 1.1)) +
+  geom_node_point(aes(size = occurences,
+                      color = geometric_mean_claps)) +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  scale_color_gradient2(low = "blue",
+                        high = "red",
+                        midpoint = 10) +
+  theme_void() +
+  labs(title = "What gets claps in Medium article titles?",
+       subtitle = "Color shows the geometric mean of # of claps on articles with this word in the title",
+       size = "# of occurrences",
+       color = "Claps")
+```
+
+### Predicting # of claps based on title + tag
+
+```{r}
+# turn into a sparse matrix
+post_word_matrix <- medium_words_filtered %>%
+  distinct(post_id, word, claps) %>%
+  cast_sparse(post_id, word)
+
+# Fit a LASSO model
+library(glmnet)
+
+claps <- medium_processed$claps[match(rownames(post_word_matrix), medium_processed$post_id)]
+
+lasso_model <- cv.glmnet(post_word_matrix, log(claps + 1))
+```
+
+```{r}
+library(broom)
+
+tidy(lasso_model$glmnet.fit) %>%
+  filter(term %in% c("hadoop", "learning", "gdpr", "deep", "startup", "marketing")) %>%
+  ggplot(aes(lambda, estimate, color = term)) +
+  geom_line() +
+  scale_x_log10()
+
+tidy(lasso_model$glmnet.fit) %>%
+  filter(lambda == lasso_model$lambda.min) %>%
+  arrange(desc(estimate)) %>%
+  View()
+```
+

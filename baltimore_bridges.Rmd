@@ -1,0 +1,188 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+maryland_bridges <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-27/baltimore_bridges.csv") %>%
+  select(-vehicles) %>%
+  mutate(inspection_yr = inspection_yr + 2000,
+         decade = 10 * (yr_built %/% 10),
+         responsibility = fct_lump(responsibility, 4),
+         county = str_to_title(county))
+```
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1900) %>%
+  count(decade = 10 * (yr_built %/% 10), sort = TRUE) %>%
+  ggplot(aes(decade, n)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(y = "# of bridges in Baltimore built this decade")
+```
+
+How does the condition of bridges depend on how old it is?
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1900) %>%
+  group_by(decade) %>%
+  summarize(pct_good = mean(bridge_condition == "Good"),
+            total = n()) %>%
+  ggplot(aes(decade, pct_good)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0)
+```
+
+Most bridges built before 1970 we would not consider in "Good" condition (though it doesn't matter how long before 1970 they were built), while a vast majority of bridges built since 2000 are in Good condition.
+
+```{r}
+maryland_bridges %>%
+  replace_na(list(responsibility = "Other")) %>%
+  count(responsibility = fct_lump(responsibility, 4), sort = TRUE) %>%
+  mutate(responsibility = fct_reorder(responsibility, n)) %>%
+  ggplot(aes(responsibility, n)) +
+  geom_col() +
+  coord_flip()
+```
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1900) %>%
+  group_by(responsibility = fct_lump(responsibility, 4),
+           decade) %>%
+  summarize(pct_good = mean(bridge_condition == "Good"),
+            total = n()) %>%
+  filter(responsibility != "Other") %>%
+  ggplot(aes(decade, pct_good, color = responsibility)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0) +
+  labs(y = "% of bridges rated 'Good'")
+```
+
+The County Highway Agency consistently has the most bridges rated as "Good" from before 1970. State Toll Authority is underperforming in bridges built in the 1990s.
+
+```{r}
+maryland_bridges %>%
+  ggplot(aes(avg_daily_traffic)) +
+  geom_histogram() +
+  scale_x_log10(labels = comma_format())
+```
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1990) %>%
+  group_by(traffic_category = cut(avg_daily_traffic, c(0, 1000, 10000, Inf),
+                                  labels = c("<1000", "1000-10,000", "10,000+"))) %>%
+  summarize(pct_good = mean(bridge_condition == "Good"),
+            total = n())
+```
+
+What does the traffic look like geographically?
+
+```{r}
+maryland_bridges %>%
+  ggplot(aes(long, lat, color = avg_daily_traffic)) +
+  borders("state", regions = "Maryland") +
+  geom_point() +
+  scale_color_gradient2(low = "blue",
+                        high = "red",
+                        midpoint = log10(median(maryland_bridges$avg_daily_traffic)),
+                        trans = "log10",
+                        labels = comma_format()) +
+  coord_map() +
+  theme_void()
+```
+
+```{r}
+maryland_bridges %>%
+  ggplot(aes(long, lat, color = bridge_condition)) +
+  borders("state", regions = "Maryland") +
+  geom_point(size = 1) +
+  coord_map() +
+  theme_void()
+```
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1900) %>%
+  ggplot(aes(long, lat, color = county)) +
+  borders("state", regions = "Maryland") +
+  geom_point(size = 1) +
+  coord_map() +
+  theme_void()
+```
+
+```{r}
+maryland_bridges %>%
+  filter(yr_built >= 1900) %>%
+  group_by(county, decade) %>%
+  summarize(pct_good = mean(bridge_condition == "Good"),
+            total = n()) %>%
+  arrange(county, decade) %>%
+  ggplot(aes(decade, pct_good, color = county)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0) +
+  labs(y = "% of bridges rated 'Good'")
+```
+
+### Effect of county, responsibility, traffic and time on bridge condition
+
+```{r}
+# fit a logistic model
+bridges <- maryland_bridges %>%
+  filter(yr_built >= 1900)
+
+library(broom)
+library(splines)
+
+simple_model <- bridges %>%
+  mutate(good = bridge_condition == "Good") %>%
+  glm(good ~ ns(yr_built, 4), data = ., family = "binomial")
+
+model <- bridges %>%
+  mutate(good = bridge_condition == "Good") %>%
+  glm(good ~ ns(yr_built, 4) + responsibility + county, data = ., family = "binomial")
+
+augment(simple_model, bridges, type.predict = "response") %>%
+  ggplot(aes(yr_built, .fitted)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(y = "Predicted probability a bridge is rated 'Good'")
+
+augment(model, bridges, type.predict = "response") %>%
+  ggplot(aes(yr_built, .fitted, color = responsibility)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  facet_wrap(~ county) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(y = "Predicted probability a bridge is rated 'Good'")
+```
+
+Controlled for the overall trend in change over time, what's the effect of being in a particular county or responsibility?
+
+```{r}
+model %>%
+  tidy(conf.int = TRUE) %>%
+  filter(str_detect(term, "responsibility|county")) %>%
+  mutate(term = reorder(term, estimate)) %>%
+  ggplot(aes(estimate, term)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) +
+  geom_vline(xintercept = 0, color = "red", lty = 2)
+```
+
+We haven't found evidence of an effect of geography or ownership on bridge condition, once we control for time.
