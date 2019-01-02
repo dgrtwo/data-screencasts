@@ -18,7 +18,7 @@ theme_set(theme_light())
 ```
 
 ```{r}
-recent_grads <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-10-16/recent-grads.csv")
+recent_grads <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-10-16/recent-grads.csv")
 
 majors_processed <- recent_grads %>%
   arrange(desc(Median)) %>%
