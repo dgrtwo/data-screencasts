@@ -1,0 +1,201 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+tv_ratings <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
+```
+
+```{r}
+tv_ratings %>%
+  filter(title == "Buffy the Vampire Slayer")
+```
+
+## Do most shows get better or worse over time?
+
+```{r}
+tv_ratings %>%
+  count(seasonNumber) %>%
+  ggplot(aes(seasonNumber, n)) +
+  geom_line()
+
+tv_ratings %>%
+  filter(seasonNumber <= 7) %>%
+  group_by(seasonNumber) %>%
+  summarize(av_rating = mean(av_rating)) %>%
+  ggplot(aes(seasonNumber, av_rating)) +
+  geom_line()
+
+tv_ratings_full_show <- tv_ratings %>%
+  group_by(title) %>%
+  filter(1 %in% seasonNumber,
+         all(seasonNumber == dplyr::row_number()))
+
+tv_ratings_full_show %>%
+  filter(n() >= 5) %>%
+  filter(seasonNumber <= 5) %>%
+  group_by(seasonNumber) %>%
+  ggplot(aes(factor(seasonNumber), av_rating)) +
+  geom_boxplot()
+```
+
+What are the highest rated seasons of TV?
+
+```{r}
+by_show <- tv_ratings %>%
+  group_by(title) %>%
+  summarize(avg_rating = mean(av_rating),
+            sd = sd(av_rating),
+            seasons = n()) %>%
+  arrange(desc(avg_rating))
+
+most_variable_shows <- by_show %>%
+  filter(seasons >= 5) %>%
+  top_n(6, sd)
+
+tv_ratings %>%
+  inner_join(most_variable_shows, by = "title") %>%
+  ggplot(aes(seasonNumber, av_rating, color = title)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = function(lim) seq(floor(lim[1]), ceiling(lim[2]), 2)) +
+  facet_wrap(~ title) +
+  theme(legend.position = "none")
+```
+
+### Has TV been getting better or worse over time?
+
+```{r}
+library(lubridate)
+
+tv_ratings %>%
+  mutate(year = year(date)) %>%
+  ggplot(aes(av_rating)) +
+  geom_histogram() +
+  facet_wrap(~ year)
+
+by_year <- tv_ratings %>%
+  group_by(year = 2 * (year(date) %/% 2)) %>%
+  summarize(mean_rating = mean(av_rating),
+            median_rating = median(av_rating),
+            mean_season_1 = mean(av_rating[seasonNumber == 1]),
+            avg_season = mean(seasonNumber),
+            sd = sd(av_rating),
+            observations = n())
+
+by_year %>%
+  gather(metric, value, -year, -observations, -avg_season, -sd) %>%
+  ggplot(aes(year, value, color = metric)) +
+  geom_line() +
+  geom_point()
+
+tv_ratings %>%
+  group_by(year = 5 * (year(date) %/% 5),
+           seasonNumber = ifelse(seasonNumber >= 4, "4+", seasonNumber)) %>%
+  summarize(mean_rating = mean(av_rating),
+            observations = n()) %>%
+  ggplot(aes(year, mean_rating, color = seasonNumber)) +
+  geom_line() +
+  labs(color = "Season",
+       y = "Average rating in each 5 year period")
+
+tv_ratings %>%
+  ggplot(aes(date, av_rating)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+
+tv_ratings %>%
+  mutate(year = 2 * (year(date) %/% 2)) %>%
+  ggplot(aes(year, av_rating, group = year)) +
+  geom_boxplot()
+
+tv_ratings %>%
+  filter(seasonNumber == 1) %>%
+  mutate(year = 2 * (year(date) %/% 2)) %>%
+  ggplot(aes(year, av_rating, group = year)) +
+  geom_boxplot()
+```
+
+### Show survival
+
+If season 1 is good, what's the probability they get a season 2?
+
+```{r}
+first_three_seasons <- tv_ratings %>%
+  filter(seasonNumber <= 3) %>%
+  group_by(title) %>%
+  mutate(date_first_season = min(date)) %>%
+  ungroup() %>%
+  transmute(titleId,
+            title,
+            date_first_season,
+            seasonNumber = paste0("season", seasonNumber),
+            av_rating) %>%
+  distinct(title, seasonNumber, .keep_all = TRUE) %>%
+  spread(seasonNumber, av_rating) %>%
+  filter(!is.na(season1)) %>%
+  filter(date_first_season <= "2017-01-01")
+
+library(broom)
+
+glm(!is.na(season2) ~ season1, data = first_three_seasons) %>%
+  summary()
+```
+
+```{r}
+first_three_seasons %>%
+  group_by(season1_bin = cut(season1, c(0, 7, 7.5, 8, 8.5, 10)),
+           time_bin = ifelse(date_first_season < "2000-01-01", "Before 2000", "After 2000")) %>%
+  summarize(had_second_season = mean(!is.na(season2)),
+            observations = n()) %>%
+  ggplot(aes(season1_bin,
+             had_second_season,
+             color = time_bin,
+             group = time_bin)) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(labels = scales::percent_format())
+```
+
+```{r}
+library(broom)
+
+new_data <- crossing(
+  year = 1990:2018,
+  season1 = seq(6, 9)
+)
+
+library(splines)
+
+mod <- first_three_seasons %>%
+  mutate(year = year(date_first_season),
+         had_second_season = !is.na(season2)) %>%
+  glm(had_second_season ~ season1 * year, data = ., family = "binomial")
+
+summary(mod)
+
+mod %>%
+  augment(newdata = new_data, type.predict = "response") %>%
+  ggplot(aes(year, .fitted, color = factor(season1))) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Probability of getting season 2 has become more dependent on ratings of season 1",
+       color = "Season 1 rating",
+       x = "Year show premiered",
+       y = "Predicted probability of getting season 2")
+```
+
+
+
+Whether a show gets a second season depends on the ratings of the first season
+
+
+

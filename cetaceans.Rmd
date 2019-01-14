@@ -1,0 +1,170 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+cetaceans_raw <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-12-18/allCetaceanData.csv")
+
+cetaceans <- cetaceans_raw %>%
+  select(-X1) %>%
+  mutate(birthYear = as.integer(birthYear),
+         age = if_else(status == "Died", year(statusDate) - birthYear, NA_real_))
+```
+
+```{r}
+library(lubridate)
+
+cetaceans %>%
+  count(acquisition, sort = TRUE)
+
+cetaceans %>%
+  count(status, sort = TRUE)
+
+cetaceans %>%
+  filter(status == "Died") %>%
+  select(birthYear, statusDate) %>%
+  filter(!is.na(birthYear), !is.na(statusDate)) %>%
+  mutate(age = year(statusDate) - birthYear) %>%
+  ggplot(aes(age)) +
+  geom_histogram()
+
+cetaceans %>%
+  count(species = fct_lump(species, 5), sort = TRUE) %>%
+  mutate(species = fct_reorder(species, n)) %>%
+  ggplot(aes(species, n)) +
+  geom_col() +
+  coord_flip()
+
+cetaceans %>%
+  mutate(species = fct_lump(species, 5), sort = TRUE) %>%
+  filter(!is.na(birthYear), !is.na(statusDate)) %>%
+  mutate(age = year(statusDate) - birthYear) %>%
+  ggplot(aes(species, age)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+```{r}
+cetaceans %>%
+  count(acquisition, originLocation, sort = TRUE) %>%
+  filter(originLocation != "Unknown") %>%
+  View()
+
+cetaceans %>%
+  ggplot(aes(originDate, fill = acquisition)) +
+  geom_histogram()
+
+library(scales)
+
+cetaceans %>%
+  filter(originDate >= "1960-01-01") %>%
+  count(acquisition,
+        decade = 5 * (year(originDate) %/% 5)) %>%
+  complete(acquisition, decade, fill = list(n = 0)) %>%
+  mutate(acquisition = fct_reorder(acquisition, n, sum)) %>%
+  group_by(decade) %>%
+  mutate(percent = n / sum(n)) %>%
+  ggplot(aes(decade, percent, fill = acquisition)) +
+  geom_area() +
+  scale_y_continuous(labels = percent_format()) +
+  theme_minimal() +
+  labs(x = "year",
+       y = "% of dolphins recorded")
+```
+
+```{r}
+library(fuzzyjoin)
+
+regexes <- tribble(
+  ~ regex, ~ category,
+  "Unknown", "Unknown",
+  "Gulf of Mexico", "Gulf of Mexico",
+  "Florida|FL", "Florida",
+  "Texas|TX", "Texas",
+  "SeaWorld", "SeaWorld",
+  "Pacific", "Pacific Ocean",
+  "Atlantic", "Atlantic Ocean"
+)
+
+cetaceans_annotated <- cetaceans %>%
+  mutate(unique_id = row_number()) %>%
+  regex_left_join(regexes, c(originLocation = "regex")) %>%
+  distinct(unique_id, .keep_all = TRUE) %>%
+  mutate(category = coalesce(category, originLocation))
+
+cetaceans_annotated %>%
+  filter(acquisition == "Capture") %>%
+  mutate(category = fct_lump(category, 4),
+         category = fct_reorder(category, category, length)) %>%
+  ggplot(aes(originDate, fill = category)) +
+  geom_histogram()
+
+
+  count(category,
+        decade = 5 * (year(originDate) %/% 5)) %>%
+  complete(category, decade, fill = list(n = 0)) %>%
+  mutate(category = fct_lump(category, 7),
+         category = fct_reorder(category, n, sum)) %>%
+  group_by(decade) %>%
+  mutate(percent = n / sum(n)) %>%
+  ggplot(aes(decade, percent, fill = category)) +
+  geom_area() +
+  scale_y_continuous(labels = percent_format()) +
+  theme_minimal() +
+  labs(x = "year",
+       y = "% of dolphins recorded",
+       title = "Dolphins born in captivity")
+```
+
+### Survival analysis
+
+```{r}
+library(survival)
+
+dolphin_survival <- cetaceans %>%
+  filter(status %in% c("Alive", "Died")) %>%
+  mutate(deathYear = ifelse(status == "Alive", 2017, year(statusDate)),
+         status = ifelse(status == "Alive", 0, 1),
+         age = deathYear - birthYear) %>%
+  filter(!is.na(deathYear)) %>%
+  select(birthYear, deathYear, status, sex, age, acquisition, species) %>%
+  filter(deathYear >= birthYear) %>%
+  filter(sex != "U")
+
+model <- survfit(Surv(age, status) ~ sex, dolphin_survival)
+
+library(broom)
+
+tidy(model) %>%
+  ggplot(aes(time, estimate, color = strata)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(y = "Estimated % survival")
+
+coxph(Surv(age, status) ~ sex, dolphin_survival) %>%
+  tidy()
+```
+
+```{r}
+model <- survfit(Surv(age, status) ~ acquisition, dolphin_survival)
+
+library(broom)
+
+tidy(model) %>%
+  filter(strata != "acquisition=Unknown") %>%
+  ggplot(aes(time, estimate, color = strata)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(y = "Estimated % survival")
+```
+

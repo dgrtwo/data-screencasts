@@ -1,0 +1,54 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Louie walks to and from work every day. In his city, there is a 50 percent chance of rain each morning and an independent 40 percent chance each evening. His habit is to bring (and use) an umbrella if it’s raining when he leaves the house or office, but to leave them all behind if not. Louie owns three umbrellas.
+
+On Sunday night, two are with him at home and one is at his office. Assuming it never starts raining during his walk to his home or office, what is the probability that he makes it through the work week without getting wet?
+
+```{r}
+library(tidyverse)
+
+set.seed(2018)
+
+simulations <- crossing(trial = 1:1e5,
+         weekday = 1:5,
+         commute = c("Morning", "Evening")) %>%
+  arrange(trial, weekday, desc(commute)) %>%
+  mutate(rain = rbinom(n(), 1, ifelse(commute == "Morning", .5, .4)),
+         home_change = case_when(
+           commute == "Morning" & rain ~ -1,
+           commute == "Evening" & rain ~ 1,
+           TRUE ~ 0),
+         office_change = -home_change) %>%
+  group_by(trial) %>%
+  mutate(home = 2 + cumsum(home_change),
+         office = 1 + cumsum(office_change))
+
+simulations %>%
+  summarize(dry = !any(home < 0 | office < 0)) %>%
+  summarize(dry = mean(dry))
+
+days <- c("Mon", "Tue", "Wed", "Thu", "Fri")
+
+simulations %>%
+  ungroup() %>%
+  filter(home < 0 | office < 0) %>%
+  distinct(trial, .keep_all = TRUE) %>%
+  count(weekday, commute, sort = TRUE) %>%
+  mutate(weekday = factor(days[weekday], levels = days),
+         commute = fct_relevel(commute, "Morning")) %>%
+  ggplot(aes(weekday, n / 1e5, fill = commute)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "When does Louie first get wet?",
+       y = "Probability overall")
+```
+
+Answer to the riddle: ~69.3%.
+
