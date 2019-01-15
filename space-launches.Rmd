@@ -1,0 +1,150 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+agencies <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-15/agencies.csv")
+launches <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-15/launches.csv")
+```
+
+```{r}
+launches %>%
+  count(launch_year, agency_type) %>%
+  ggplot(aes(launch_year, n, color = agency_type)) +
+  geom_line() +
+  labs(x = "Time",
+       y = "# of launches this year",
+       color = "Agency type")
+```
+
+```{r}
+library(countrycode)
+
+agencies %>%
+  View()
+
+launches %>%
+  count(agency_type, agency, sort = TRUE)
+
+agencies %>%
+  count(state_code, wt = count, sort = TRUE) %>%
+  View()
+
+launches_processed <- launches %>%
+  filter(launch_date <= Sys.Date()) %>%
+  mutate(state_code_cleaned = fct_collapse(
+    state_code,
+    "RU" = c("SU", "RU"),
+    "FR" = "F",
+    "JP" = "J",
+    "IT" = "I"
+  )) %>%
+  mutate(state_name = countrycode(state_code_cleaned, "iso2c", "country.name"),
+         state_name = fct_lump(state_name, 6)) %>%
+  replace_na(list(state_name = "Other"))
+
+launches_processed %>%
+  count(launch_year, state_name) %>%
+  mutate(state_name = fct_reorder(state_name, -n, sum)) %>%
+  ggplot(aes(launch_year, n, color = state_name)) +
+  geom_line() +
+  labs(x = "Time",
+       y = "Launches per year",
+       color = "Responsible state",
+       title = "Launches per year per country",
+       subtitle = "Combines Soviet Union (pre-1990) with Russia")
+```
+
+### Focus on private + startup launches
+
+```{r}
+agencies %>%
+  filter(agency_type %in% c("private", "startup")) %>%
+  View()
+
+private_startup_launches <- launches_processed %>%
+  filter(agency_type %in% c("private", "startup")) %>%
+  inner_join(agencies %>%
+               select(agency, agency_name = name, short_name, parent), by = "agency") %>%
+  mutate(agency_name_lumped = fct_lump(agency_name, 6),
+         agency_name_lumped = if_else(agency_name_lumped == "Other" & state_name == "United States",
+                                     "Other US", as.character(agency_name_lumped)))
+
+private_startup_launches %>%
+  count(agency_name_lumped, state_name, sort = TRUE) %>%
+  mutate(agency_name_lumped = fct_reorder(agency_name_lumped, n, sum)) %>%
+  ggplot(aes(agency_name_lumped, n, fill = state_name)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "",
+       y = "# of launches overall",
+       title = "What private/startup agencies have had the most launches?",
+       fill = "Country")
+
+private_startup_launches %>%
+  count(agency_name_lumped,
+        decade = 5 * (launch_year %/% 5)) %>%
+  complete(agency_name_lumped, decade, fill = list(n = 0)) %>%
+  mutate(agency_name_lumped = fct_reorder(agency_name_lumped, -n, sum)) %>%
+  ggplot(aes(decade, n, color = agency_name_lumped)) +
+  geom_line() +
+  facet_wrap(~ agency_name_lumped) +
+  theme(legend.position = "none") +
+  labs(x = "Time",
+       y = "# of launches in 5 year period")
+```
+
+```{r}
+vehicles <- launches_processed %>%
+  group_by(type, state_name) %>%
+  summarize(first_launch = min(launch_year),
+            last_launch = max(launch_year),
+            launches = n()) %>%
+  ungroup()
+
+russian_vehicles <- vehicles %>%
+  filter(state_name == "Russia") %>%
+  arrange(desc(launches)) %>%
+  filter(launches >= 30)
+
+launches_processed %>%
+  semi_join(russian_vehicles, by = "type") %>%
+  mutate(type = fct_reorder(type, launch_date, min)) %>%
+  ggplot(aes(launch_date, type)) +
+  geom_jitter(color = "blue", alpha = .25, width = 0, height = .2) +
+  theme(legend.position = "none") +
+  labs(title = "Timeline of Soviet/Russian space vehicles",
+       x = "Launch date",
+       y = "Vehicle type",
+       subtitle = "Only vehicles with at least 30 launches")
+
+launches_processed %>%
+  filter(state_code == "US") %>%
+  add_count(type) %>%
+  filter(n >= 20) %>%
+  mutate(type = fct_reorder(type, launch_date, min),
+         agency_type = str_to_title(agency_type)) %>%
+  ggplot(aes(launch_date, type, color = agency_type)) +
+  geom_jitter(alpha = .25, width = 0, height = .2) +
+  labs(title = "Timeline of US space vehicles",
+       x = "Launch date",
+       y = "Vehicle type",
+       color = "Agency type",
+       subtitle = "Only vehicles with at least 20 launches")
+
+
+by_type %>%
+  arrange(desc(launches)) %>%
+  View()
+  count(type, sort = TRUE)
+```
+
+
