@@ -1,0 +1,130 @@
+---
+title: "US PhDs"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+# Major field of study
+major_fields_raw <- readxl::read_xlsx("~/Downloads/data_tables/sed17-sr-tab012.xlsx",
+                  skip = 3)
+
+major_fields <- major_fields_raw %>%
+  rename(field = `Field of study`) %>%
+  gather(key, value, -field) %>%
+  mutate(year = as.numeric(ifelse(str_detect(key, "X__"), NA, key)),
+         type = ifelse(!str_detect(value, "Number|Percent"), NA, value),
+         value = as.numeric(value)) %>%
+  fill(year, type) %>%
+  select(-key) %>%
+  filter(!is.na(value)) %>%
+  spread(type, value)
+```
+
+```{r}
+fine_fields <- readxl::read_xlsx("~/Downloads/data_tables/sed17-sr-tab013.xlsx",
+                  skip = 3) %>%
+  rename(field = 1) %>%
+  gather(year, number, -field) %>%
+  mutate(year = as.numeric(year),
+         number = as.numeric(number)) %>%
+  filter(!is.na(number))
+
+fine_fields %>%
+  filter(field %in% sample(unique(field), 6)) %>%
+  ggplot(aes(year, number, color = field)) +
+  geom_line()
+```
+
+```{r}
+# get the broad field names and the major field names
+
+sex <- c("All", "Male", "Female", "All doctorate recipientsa", "All fieldsa")
+
+broad_fields <- readxl::read_xlsx("~/Downloads/data_tables/sed17-sr-tab014.xlsx", skip = 4) %>%
+  rename(field = 1) %>%
+  filter(!field %in% sex) %>%
+  mutate(field = fct_recode(field,
+                            "Life sciences" = "Life sciencesb",
+                            "Other" = "Otherc")) %>%
+  pull(field) %>%
+  as.character()
+```
+
+
+```{r}
+recipients_year_field_sex <- readxl::read_xlsx("~/Downloads/data_tables/sed17-sr-tab015.xlsx", skip = 3) %>%
+  rename(field = 1) %>%
+  select(-contains("change")) %>%
+  mutate(field = as.character(fct_recode(field, "All" = "All doctorate recipientsa",
+                                         "Other" = "Otherb")),
+         sex = if_else(field %in% sex, field, NA_character_),
+         broad_field = ifelse(field %in% broad_fields, field, NA)) %>%
+  fill(sex, broad_field) %>%
+  gather(year, number, -sex, -broad_field, -field) %>%
+  mutate(year = as.numeric(year),
+         number = as.numeric(number)) %>%
+  filter(!field %in% sex) %>%
+  filter(!is.na(number))
+
+recipients_year_field_sex %>%
+  filter(sex != "All",
+         broad_field == "Mathematics and computer sciences") %>%
+  ggplot(aes(year, number, color = sex)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  facet_wrap(~ field)
+
+recipients_year_field_sex %>%
+  spread(sex, number) %>%
+  mutate(pct_male = Male / All) %>%
+  filter(broad_field == "Engineering") %>%
+  mutate(field = fct_reorder(field, -pct_male)) %>%
+  ggplot(aes(year, pct_male, color = field)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = "Year",
+       y = "% of PhD recipients reporting as male",
+       color = "Major field",
+       title = "Breakdown by sex over time within Engineering major fields")
+
+recipients_year_field_sex %>%
+  spread(sex, number) %>%
+  mutate(pct_male = Male / All) %>%
+  filter(broad_field == "Humanities and arts") %>%
+  mutate(field = fct_reorder(field, -pct_male)) %>%
+  ggplot(aes(year, pct_male, color = field)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = "Year",
+       y = "% of PhD recipients reporting as male",
+       color = "Major field",
+       title = "Breakdown by sex over time within Humanities & Arts major fields")
+
+recipients_year_field_sex %>%
+  spread(sex, number) %>%
+  mutate(pct_male = Male / All) %>%
+  filter(broad_field == "Education") %>%
+  mutate(field = fct_reorder(field, -pct_male)) %>%
+  ggplot(aes(year, pct_male, color = field)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(x = "Year",
+       y = "% of PhD recipients reporting as male",
+       color = "Major field",
+       title = "Breakdown by sex over time within Education major fields")
+```
+
+Three levels:
+
+* Broad field (Life sciences)
+* Major field (Biological and biomedical sciences)
+* Subfield (Computational biology)
+
+
