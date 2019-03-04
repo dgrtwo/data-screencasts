@@ -1,0 +1,111 @@
+---
+title: "French Trains"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+full_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-26/full_trains.csv") %>%
+  mutate(pct_late_at_departure = num_late_at_departure / total_num_trips,
+         arrival_station = str_to_title(arrival_station),
+         departure_station = str_to_title(departure_station),
+         date = as.Date(sprintf("%d-%02d-01", year, month))) %>%
+  arrange(departure_station, arrival_station, month) %>%
+  fill(service)
+```
+
+```{r}
+november_2018 <- full_trains %>%
+  filter(year == 2018, month == 11)
+
+november_2018 %>%
+  ggplot(aes(pct_late_at_departure)) +
+  geom_histogram(binwidth = .05) +
+  scale_x_continuous(labels = percent_format())
+
+november_2018 %>%
+  mutate(departure_station = fct_lump(departure_station, 3)) %>%
+  ggplot(aes(departure_station, pct_late_at_departure)) +
+  geom_boxplot() +
+  scale_y_continuous(labels = percent_format())
+
+november_2018 %>%
+#  mutate(arrival_station = fct_infreq(fct_lump(arrival_station, prop = .01))) %>%
+#  mutate(departure_station = fct_infreq(fct_lump(departure_station, prop = .01))) %>%
+  mutate(arrival_station = fct_reorder(fct_lump(arrival_station, prop = .01), pct_late_at_departure)) %>%
+  mutate(departure_station = fct_reorder(fct_lump(departure_station, prop = .01), pct_late_at_departure)) %>%
+  group_by(arrival_station, departure_station) %>%
+  summarize(pct_late_at_departure = sum(num_late_at_departure) / sum(total_num_trips)) %>%
+  ggplot(aes(arrival_station, departure_station, fill = pct_late_at_departure)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = .25, labels = percent_format()) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "Arrival station",
+       y = "Departure station",
+       fill = "% late at departure",
+       title = "Which routes have the most delayed trains in November 2018?",
+       subtitle = "Stations with only one arriving/departing route were lumped into 'Other'")
+```
+
+### Over time
+
+```{r}
+full_trains %>%
+  filter(departure_station == "Lyon Part Dieu") %>%
+  ggplot(aes(date, pct_late_at_departure, color = arrival_station)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0)
+
+by_departure_station_month <- full_trains %>%
+  group_by(departure_station = fct_lump(departure_station, prop = .01),
+           date) %>%
+  summarize_at(vars(contains("num")), sum) %>%
+  ungroup() %>%
+  mutate(pct_late_at_departure = num_late_at_departure / total_num_trips)
+
+by_departure_station_month %>%
+  mutate(departure_station = fct_reorder(departure_station, -pct_late_at_departure, last)) %>%
+  ggplot(aes(date, pct_late_at_departure, color = departure_station)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(x = "Month",
+       y = "% late at departure",
+       color = "Departure station")
+```
+
+```{r}
+by_departure_station_month <- full_trains %>%
+  group_by(departure_station = ifelse(service == "International",
+                                      paste0(departure_station, " (International)"),
+                                      departure_station),
+           service,
+           year,
+           month = fct_reorder(month.name[month], month)) %>%
+  summarize_at(vars(contains("num")), sum) %>%
+  ungroup() %>%
+  mutate(pct_late_at_departure = num_late_at_departure / total_num_trips)
+
+by_departure_station_month %>%
+  mutate(departure_station = fct_reorder(departure_station, (service != "International") + pct_late_at_departure, mean)) %>%
+  ggplot(aes(month, departure_station, fill = pct_late_at_departure)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = .25, labels = percent_format()) +
+  facet_wrap(~ year, nrow = 1, scales = "free_x") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank()) +
+  labs(fill = "% late at departure") +
+  labs(x = "Month",
+       y = "Departure station",
+       title = "Which stations had delays in which months?",
+       subtitle = "Ordered by the average delay, with international routes on the bottom")
+```
+
