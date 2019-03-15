@@ -1,0 +1,179 @@
+---
+title: "Board Games"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+board_games_raw <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-12/board_games.csv")
+
+holdout_set <- board_games_raw %>%
+  filter(game_id %% 5 == 0)
+
+board_games <- board_games_raw %>%
+  filter(game_id %% 5 != 0)
+```
+
+### EDA
+
+```{r}
+board_games %>%
+  count(publisher, sort = TRUE)
+
+board_games %>%
+  count(year_published) %>%
+  arrange(desc(year_published))
+  ggplot(aes(year_published, n)) +
+  geom_line()
+  
+board_games %>%
+  ggplot(aes(average_rating)) +
+  geom_histogram()
+
+board_games %>%
+  filter(max_playtime > 5, max_playtime < 1000) %>%
+  ggplot(aes(max_playtime / 60)) +
+  geom_histogram(binwidth = .25) +
+  scale_x_log10(breaks = 2 ^ seq(-2, 4))
+
+board_games %>%
+  count(year_published) %>%
+  ggplot(aes(year_published, n)) +
+  geom_line()
+```
+
+Categorical variables:
+
+```{r}
+categorical_variables <- board_games %>%
+  select(game_id, name, family, category, artist, designer, mechanic) %>%
+  gather(type, value, -game_id, -name) %>%
+  filter(!is.na(value)) %>%
+  separate_rows(value, sep = ",") %>%
+  arrange(game_id)
+
+categorical_counts <- categorical_variables %>%
+  count(type, value, sort = TRUE)
+
+library(drlib)
+
+categorical_counts %>%
+  group_by(type) %>%
+  top_n(10, n) %>%
+  ungroup() %>%
+  mutate(value = reorder_within(value, n, type),
+         type = fct_reorder(type, n, .desc = TRUE)) %>%
+  ggplot(aes(value, n, fill = type)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ type, scales = "free_y") +
+  coord_flip() +
+  scale_x_reordered() +
+  labs(title = "Most common categories")
+```
+
+### Predict average rating
+
+```{r}
+board_games %>%
+  group_by(decade = 10 * (year_published %/% 10)) %>%
+  summarize(average_rating = mean(average_rating)) %>%
+  ggplot(aes(decade, average_rating)) +
+  geom_line()
+```
+
+
+```{r}
+library(broom)
+
+lm(average_rating ~
+     log2(max_players + 1) +
+     log2(max_playtime + 1) +
+     year_published, board_games) %>%
+  tidy()
+```
+
+```{r}
+by_categorical <- board_games %>%
+  inner_join(categorical_variables, by = c("game_id", "name")) %>%
+  select(type, value, average_rating) %>%
+  group_by(type, value) %>%
+  summarize(games = n(),
+            average_rating = mean(average_rating)) %>%
+  arrange(desc(games))
+
+board_games %>%
+  inner_join(categorical_variables, by = c("game_id", "name")) %>%
+  filter(type == "category") %>%
+  mutate(value = fct_lump(value, 15),
+         value = fct_reorder(value, average_rating)) %>%
+  ggplot(aes(value, average_rating)) +
+  geom_boxplot() +
+  coord_flip()
+
+board_games %>%
+  inner_join(categorical_variables, by = c("game_id", "name")) %>%
+  filter(type == "family") %>%
+  mutate(value = fct_lump(value, 15),
+         value = fct_reorder(value, average_rating)) %>%
+  ggplot(aes(value, average_rating)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+Conclusion: categorical variables can be correlated with higher/lower rated games.
+
+```{r}
+non_categorical_features <- board_games %>%
+  transmute(game_id,
+            name,
+            year = year_published - 1950,
+            log2_max_players = log2(max_players + 1),
+            log2_max_playtime = log2(max_playtime + 1)) %>%
+  gather(feature, value, -game_id, -name)
+
+features <- categorical_variables %>%
+  unite(feature, type, value, sep = ": ") %>%
+  add_count(feature) %>%
+  filter(n >= 20) %>%
+  mutate(value = 1) %>%
+  bind_rows(non_categorical_features)
+
+library(glmnet)
+library(tidytext)
+library(Matrix)
+
+# Predictor
+feature_matrix <- features %>%
+  cast_sparse(game_id, feature, value)
+
+# What I'm predicting
+ratings <- board_games$average_rating[match(rownames(feature_matrix), board_games$game_id)]
+
+cv_lasso <- cv.glmnet(feature_matrix, ratings)
+plot(cv_lasso)
+
+cv_lasso$glmnet.fit %>%
+  tidy() %>%
+  filter(lambda == cv_lasso$lambda.1se) %>%
+  arrange(desc(estimate)) %>%
+  filter(term != "(Intercept)") %>%
+  top_n(25, abs(estimate)) %>%
+  mutate(term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(term, estimate)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Largest coefficients in our predictive model",
+       subtitle = "Based on a LASSO regression",
+       x = "",
+       y = "Coefficient")
+```
+
+
+
+
