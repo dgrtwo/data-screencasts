@@ -1,0 +1,106 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+theme_set(theme_light())
+
+seattle_pets <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-26/seattle_pets.csv") %>%
+  mutate(license_issue_date = mdy(license_issue_date)) %>%
+  rename(animal_name = animals_name)
+```
+
+```{r}
+seattle_pets %>%
+  filter(license_issue_date >= "2017-01-01") %>%
+  count(species, primary_breed, sort = TRUE) %>%
+  filter(species %in% c("Cat", "Dog")) %>%
+  mutate(percent = n / sum(n)) %>%
+  group_by(species) %>%
+  top_n(10, percent) %>%
+  ungroup() %>%
+  mutate(primary_breed = fct_reorder(primary_breed, percent)) %>%
+  ggplot(aes(primary_breed, percent, fill = species)) +
+  geom_col(show.legend = FALSE) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  facet_wrap(~ species, scales = "free_y", ncol = 1) +
+  coord_flip() +
+  labs(x = "Primary breed",
+       y = "% of this species",
+       title = "Most common cat and dog breeds",
+       subtitle = "Of licensed pets in Seattle 2017-2018")
+```
+
+```{r}
+dogs <- seattle_pets %>%
+  filter(species == "Dog")
+
+name_counts <- dogs %>%
+  group_by(animal_name) %>%
+  summarize(name_total = n()) %>%
+  filter(name_total >= 100)
+
+breed_counts <- dogs %>%
+  group_by(primary_breed) %>%
+  summarize(breed_total = n()) %>%
+  filter(breed_total >= 200)
+
+total_dogs <- nrow(dogs)
+
+name_breed_counts <- dogs %>%
+  count(primary_breed, animal_name) %>%
+  complete(primary_breed, animal_name, fill = list(n = 0)) %>%
+  inner_join(name_counts, by = "animal_name") %>%
+  inner_join(breed_counts, by = "primary_breed")
+
+# One-sided hypergeometric p-value
+hypergeom_test <- name_breed_counts %>%
+  mutate(percent_of_breed = n / breed_total,
+         percent_overall = name_total / total_dogs) %>%
+  mutate(overrepresented_ratio = percent_of_breed / percent_overall) %>%
+  arrange(desc(overrepresented_ratio)) %>%
+  mutate(hypergeom_p_value = 1 - phyper(n, name_total, total_dogs - name_total, breed_total),
+         holm_p_value = p.adjust(hypergeom_p_value),
+         fdr = p.adjust(hypergeom_p_value, method = "fdr"))
+
+hypergeom_test %>%
+  filter(fdr < .05)
+
+ggplot(hypergeom_test, aes(hypergeom_p_value)) +
+  geom_histogram(binwidth = .1) +
+  labs(x = "One-sided hypergeometric p-values for overrepresented name")
+```
+
+```{r}
+crossing(name_total = c(100, 200, 300),
+         breed_total = seq(200, 1000, 25)) %>%
+  mutate(max_p_value = 1 - phyper(0, name_total, total_dogs - name_total, breed_total)) %>%
+  ggplot(aes(breed_total, max_p_value, color = factor(name_total))) +
+  geom_line() +
+  labs(x = "Total # of dogs in breed",
+       y = "Maximum one-sided p-value",
+       color = "# of dogs with name")
+```
+
+```{r}
+library(scales)
+
+hypergeom_test %>%
+  filter(fdr <= .05) %>%
+  arrange(fdr) %>%
+  transmute(`Breed` = primary_breed,
+            `Name` = animal_name,
+            `# of dogs with name` = n,
+            `% of breed` = percent(percent_of_breed),
+            `% overall` = percent(percent_overall),
+            `FDR-adjusted one-sided p-value` = fdr) %>%
+  knitr::kable()
+```
+
