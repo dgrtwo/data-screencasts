@@ -1,0 +1,187 @@
+---
+title: "Grand Slam Winners"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+theme_set(theme_light())
+
+player_dob <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/player_dob.csv")
+
+# Removing some players in 1977 who were duplicated
+grand_slams <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slams.csv") %>%
+  arrange(year, grand_slam, name, gender) %>%
+  distinct(year, grand_slam, name, .keep_all = TRUE) %>%
+  mutate(grand_slam = str_replace(str_to_title(str_replace(grand_slam, "_", " ")), "Us", "US"))
+
+grand_slam_timeline <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slam_timeline.csv")
+```
+
+```{r}
+grand_slam_timeline %>%
+  count(year, tournament, gender) %>%
+  arrange(year) %>%
+  View()
+
+grand_slam_timeline %>%
+  filter(year == 2018, tournament == "US Open") %>%
+  count(outcome, sort = TRUE)
+```
+
+### Exploration of the winners
+
+```{r}
+grand_slams %>%
+  count(name, grand_slam, sort = TRUE) %>%
+  add_count(name, wt = n) %>%
+  filter(nn >= 8) %>%
+  mutate(name = fct_reorder(name, n, sum)) %>%
+  ggplot(aes(name, n, fill = grand_slam)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "",
+       y = "# of Grand Slam tournaments won",
+       title = "Tennis players with the most Grand Slam tournament wins",
+       subtitle = "1968-Present",
+       fill = "Grand Slam")
+```
+
+```{r}
+grand_slams_age <- player_dob %>%
+  select(name, date_of_birth) %>%
+  inner_join(grand_slams, by = "name") %>%
+  mutate(age = as.numeric(difftime(tournament_date, date_of_birth, unit = "days")) / 365.25)
+
+grand_slams_age %>%
+  ggplot(aes(age)) +
+  geom_histogram()
+```
+
+The median age of a Grand Slam winner (1968-Present) is `r median(grand_slams_age$age)`. Does it differ between men and women?
+
+```{r}
+grand_slams_age %>%
+  ggplot(aes(age, fill = gender)) +
+  geom_histogram(position = "identity", alpha = .75)
+
+grand_slams_age %>%
+  mutate(decade = 10 * (year(tournament_date) %/% 10)) %>%
+  ggplot(aes(decade, age, fill = gender, group = interaction(gender, decade))) +
+  geom_boxplot()
+```
+
+Hard to make a conclusion on the average age of a winner, except it looks like it's increased in the last decade. 
+
+```{r age_over_time}
+by_decade_gender <- grand_slams_age %>%
+  mutate(decade = 10 * (year(tournament_date) %/% 10)) %>%
+  filter(decade >= 1970) %>%
+  group_by(decade, gender, name) %>%
+  summarize(age = mean(age),
+            wins = n()) %>%
+  summarize(age = mean(age),
+            players = n())
+```
+
+```{r}
+by_decade_gender %>%
+  ggplot(aes(decade, age, color = gender)) +
+  geom_line() +
+  labs(title = "Average age of Grand Slam winners over time",
+       subtitle = "Each player was counted only once per decade",
+       x = "Decade",
+       y = "Average age",
+       color = "")
+```
+
+### Predicting the winner of a Grand Slam tournament
+
+```{r}
+dob <- player_dob %>%
+  select(player = name, date_of_birth)
+
+tournaments <- grand_slams %>%
+  select(year, tournament = grand_slam, gender, tournament_date)
+
+timeline_processed <- grand_slam_timeline %>%
+  inner_join(tournaments, by = c("year", "tournament", "gender")) %>%
+  arrange(player, tournament_date) %>%
+  filter(outcome != "Absent",
+         !str_detect(outcome, "Qualif")) %>%
+  group_by(player) %>%
+  mutate(rolling_play_count = row_number() - 1,
+         rolling_won_count = lag(cumsum(outcome == "Won"), default = 0),
+         rolling_finals_count = lag(cumsum(outcome %in% c("Won", "Finalist")), default = 0)) %>%
+  ungroup() %>%
+  filter(!(year == 1977 & tournament == "Australian Open")) %>%
+  mutate(won = outcome == "Won")
+
+timeline_processed %>%
+  filter(outcome %in% c("Finalist", "Won")) %>%
+  arrange(tournament_date) %>%
+  group_by(rolling_won_count = pmin(rolling_won_count, 10)) %>%
+  summarize(pct_won = mean(won),
+            observations = n()) %>%
+  ggplot(aes(rolling_won_count, pct_won)) +
+  geom_line() +
+  expand_limits(y = 0)
+
+timeline_processed %>%
+  filter(outcome %in% c("Finalist", "Won")) %>%
+  select(year, tournament, gender, outcome, rolling_finals_count) %>%
+  spread(outcome, rolling_finals_count) %>%
+  count(result = case_when(
+    Won > Finalist ~ "Won > Finalist",
+    Won == Finalist ~ "Won == Finalist",
+    TRUE ~ "Won < Finalist"
+  )) %>%
+  mutate(n / sum(n))
+```
+
+```{r}
+outcome_rankings <- c("1st Round", "2nd Round", "3rd Round", "4th Round",
+                      "Quarterfinalist", "Semi-finalist", "Finalist", "Won")
+
+tournament_scores <- timeline_processed %>%
+  filter(outcome %in% outcome_rankings) %>%
+  mutate(score_contribution = match(outcome, outcome_rankings)) %>%
+  group_by(player) %>%
+  mutate(previous_average = lag(cummean(score_contribution), default = 1)) %>%
+  ungroup() %>%
+  mutate(previous_performance = outcome_rankings[round(previous_average)],
+         previous_performance = fct_relevel(previous_performance, outcome_rankings))
+
+tournament_scores %>%
+  group_by(previous_performance) %>%
+  summarize(observations = n(),
+            probability_win = mean(won)) %>%
+  ggplot(aes(previous_performance, probability_win, group = 1)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "Player's average previous performance",
+       y = "Probability of winning tournament",
+       title = "Does past performance in Grand Slams predict future success?",
+       subtitle = "Treating rounds as if they can be averaged linearly")
+
+tournament_scores %>%
+  group_by(outcome) %>%
+  summarize(avg_score = mean(running_score)) %>%
+  arrange(avg_score)
+  select(year, tournament, gender, outcome, rolling_finals_count) %>%
+  spread(outcome, rolling_finals_count) %>%
+  count(result = case_when(
+    Won > Finalist ~ "Won > Finalist",
+    Won == Finalist ~ "Won == Finalist",
+    TRUE ~ "Won < Finalist"
+  )) %>%
+  mutate(n / sum(n))
+```
+
+
