@@ -9,6 +9,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This Rmd (unlike others in this repository) isn't a screencast, but rather created in a [live session of the New York Open Statistical Programming Meetup](https://www.meetup.com/nyhackr/events/260545903/).
 
+Tree data here: https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/pi5s-9p35
+Zip code data here: https://data.cityofnewyork.us/widgets/i8iw-xf4u
+
 ```{r}
 library(tidyverse)
 theme_set(theme_light())
