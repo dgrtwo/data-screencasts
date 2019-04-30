@@ -1,0 +1,178 @@
+---
+title: "Trees in NYC"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This Rmd (unlike others in this repository) isn't a screencast, but rather created in a [live session of the New York Open Statistical Programming Meetup](https://www.meetup.com/nyhackr/events/260545903/).
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+tree_dataset_raw <- read_csv("~/Desktop/dataset_ideas/2015_Street_Tree_Census_-_Tree_Data.csv")
+
+trees <- tree_dataset_raw %>%
+  mutate(health = fct_relevel(health, c("Poor", "Fair", "Good"))) %>%
+  mutate(postcode = as.character(postcode)) %>%
+  mutate(maple = str_detect(str_to_lower(spc_common), "maple"))
+```
+
+```{r}
+View(trees)
+
+three_boroughs <- trees %>%
+  filter(postcode %in% c(10023, 10002, 10009))
+
+three_boroughs %>%
+  filter(!is.na(health)) %>%
+  count(postcode, health, sort = TRUE) %>%
+  ggplot(aes(health, n)) +
+  geom_col() +
+  facet_wrap(~ postcode)
+
+summarize_trees <- function(data) {
+  data %>%
+    summarize(average_health = mean(as.numeric(health), na.rm = TRUE),
+              percent_good_health = mean(health == "Good", na.rm = TRUE),
+              percent_maple = mean(maple, na.rm = TRUE),
+              trees = n())
+}
+
+trees_by_zipcode <- trees %>%
+  group_by(postcode, borough) %>%
+  summarize_trees() %>%
+  filter(trees >= 100)
+
+trees_by_zipcode %>%
+  arrange(desc(average_health))
+
+trees %>%
+  group_by(borough) %>%
+  summarize_trees() %>%
+  arrange(average_health)
+```
+
+```{r}
+library(sf)
+
+zip_codes <- read_sf("~/Downloads/ZIP_CODE_040114/")
+
+class(zip_codes)
+
+joined_trees <- zip_codes %>%
+  left_join(trees_by_zipcode, by = c("ZIPCODE" = "postcode")) %>%
+  mutate(population_density = POPULATION / AREA,
+         tree_density = trees / AREA,
+         people_per_tree = POPULATION / trees)
+```
+
+```{r}
+ggplot(joined_trees, aes(fill = percent_good_health)) +
+  geom_sf() +
+  scale_fill_gradient2(low = "brown",
+                       high = "darkgreen",
+                       midpoint = .8,
+                       labels = scales::percent) +
+  theme_void() +
+  coord_sf(datum = NA) +
+  labs(fill = "% trees in good health",
+       title = "Where are the healthiest (and unhealthiest) trees in NYC?",
+       subtitle = "Based on a 2015 survey of 600,000 trees")
+```
+
+### Species
+
+```{r}
+trees %>%
+  filter(!is.na(spc_common)) %>%
+  count(spc_common = fct_lump(spc_common, n = 19),
+        borough,
+        sort = TRUE) %>%
+  mutate(spc_common = fct_reorder(spc_common, n, sum)) %>%
+  ggplot(aes(spc_common, n, fill = borough)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "",
+       y = "# of trees in NYC",
+       fill = "Borough",
+       title = "What species of tree do you find in NYC?")
+```
+
+```{r}
+trees %>%
+  group_by(spc_common, maple) %>%
+  summarize_trees() %>%
+  filter(trees >= 500) %>%
+  arrange(percent_good_health) %>%
+  ggplot(aes(trees, percent_good_health)) +
+  geom_point(aes(color = maple)) +
+  geom_text(aes(label = spc_common), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_x_log10(labels = scales::comma) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "# of trees in NYC",
+       y = "% marked as 'Good' health")
+```
+
+```{r}
+trees %>%
+  filter(!is.na(maple)) %>%
+  group_by(borough, maple) %>%
+  summarize_trees() %>%
+  mutate(maple = ifelse(maple, "Maple", "Other")) %>%
+  select(borough, maple, percent_good_health) %>%
+  spread(maple, percent_good_health) %>%
+  ggplot(aes(Other, Maple)) +
+  geom_point() +
+  geom_text(aes(label = borough)) +
+  geom_abline(color = "red")
+```
+
+
+```{r}
+ggplot(joined_trees, aes(fill = percent_maple)) +
+  geom_sf() +
+  scale_fill_gradient2(low = "brown",
+                       high = "darkgreen",
+                       midpoint = .1,
+                       labels = scales::percent) +
+  theme_void() +
+  coord_sf(datum = NA) +
+  labs(fill = "% trees that are maple",
+       title = "Where are the maple trees in NYC?",
+       subtitle = "Based on a 2015 survey of 600,000 trees")
+```
+
+### Looking at tree and population density
+
+```{r}
+processed_zipcodes <- joined_trees %>%
+  select(ZIPCODE, POPULATION, AREA, trees) %>%
+  rename_all(str_to_lower)
+
+processed_zipcodes %>%
+  ggplot(aes(POPULATION / AREA)) +
+  geom_histogram()
+
+processed_zipcodes %>%
+  filter(population >= 1000) %>%
+  arrange(desc(people_per_tree))
+```
+
+```{r}
+ggplot(joined_trees, aes(fill = tree_density * (5280 ^ 2))) +
+  geom_sf() +
+  scale_fill_gradient2(low = "brown",
+                       high = "darkgreen",
+                       midpoint = log10(3000),
+                       trans = "log10") +
+  theme_void() +
+  coord_sf(datum = NA) +
+  labs(fill = "# of trees per square mile",
+       title = "Where are the densest trees?",
+       subtitle = "Based on a 2015 survey of 600,000 trees")
+```
+
