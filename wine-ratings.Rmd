@@ -1,0 +1,234 @@
+---
+title: "Wine Ratings"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+wine_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-28/winemag-data-130k-v2.csv") %>%
+  select(-X1) %>%
+  extract(title, "year", "(20\\d\\d)", convert = TRUE, remove = FALSE) %>%
+  mutate(year = ifelse(year < 1900, NA, year)) %>%
+  filter(!is.na(price))
+```
+
+```{r}
+wine_ratings %>%
+  count(country, sort = T)
+
+wine_ratings %>%
+  count(designation, sort = T)
+
+wine_ratings %>%
+  count(country, region_1, sort = TRUE)
+
+wine_ratings %>%
+  count(taster_name, sort = TRUE)
+
+wine_ratings %>%
+  filter(!is.na(designation)) %>%
+  count(variety, designation, sort = TRUE)
+
+wine_ratings %>%
+  ggplot(aes(year)) +
+  geom_histogram()
+
+wine_ratings %>%
+  ggplot(aes(points)) +
+  geom_histogram(binwidth = 1)
+
+wine_ratings %>%
+  ggplot(aes(price)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+```{r}
+ggplot(wine_ratings, aes(price, points)) +
+  geom_point(alpha = .1) +
+  geom_smooth(method = "lm") +
+  scale_x_log10()
+
+summary(lm(points ~ log2(price), wine_ratings))
+```
+
+Every time the price doubles, the expected number of points goes up by 2.
+
+```{r}
+library(broom)
+
+model <- wine_ratings %>%
+  replace_na(list(taster_name = "Missing", country = "Missing")) %>%
+  mutate(country = fct_relevel(fct_lump(country, 7), "US"),
+         taster_name = fct_relevel(fct_lump(taster_name, 6), "Missing")) %>%
+  lm(points ~ log2(price) + country + year + taster_name, data = .)
+
+model %>%
+  tidy(conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(term = str_replace(term, "country", "Country: "),
+         term = str_replace(term, "taster_name", "Taster: "),
+         term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(estimate, term)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high))
+```
+
+```{r}
+model %>%
+  augment(data = wine_ratings) %>%
+  ggplot(aes(.fitted, points)) +
+  geom_point(alpha = .1)
+
+tidy(anova(model)) %>%
+  mutate(sumsq / sum(sumsq))
+```
+
+### Lasso regression on words in description
+
+```{r}
+library(tidytext)
+
+wine_rating_words <- wine_ratings %>%
+  mutate(wine_id = row_number()) %>%
+  unnest_tokens(word, description) %>%
+  anti_join(stop_words, by = "word") %>%
+  filter(!word %in% c("wine", "drink"),
+         str_detect(word, "[a-z]"))
+
+wine_rating_words %>%
+  count(word, sort = TRUE) %>%
+  head(20) %>%
+  mutate(word = fct_reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  coord_flip()
+```
+
+```{r}
+library(widyr)
+
+wine_words_filtered <- wine_rating_words %>%
+  distinct(wine_id, word) %>%
+  add_count(word) %>%
+  filter(n >= 100)
+
+wine_words_filtered %>%
+  pairwise_cor(word, wine_id, sort = TRUE)
+```
+
+```{r}
+library(Matrix)
+
+wine_word_matrix <- wine_words_filtered %>%
+  cast_sparse(wine_id, word)
+
+wine_ids <- as.integer(rownames(wine_word_matrix))
+scores <- wine_ratings$points[wine_ids]
+
+library(glmnet)
+
+wine_word_matrix_extra <- cbind(wine_word_matrix, log_price = log2(wine_ratings$price[wine_ids]))
+
+library(doMC)
+registerDoMC(cores = 4)
+
+cv_glmnet_model <- cv.glmnet(wine_word_matrix_extra, scores, parallel = TRUE)
+
+plot(cv_glmnet_model)
+```
+
+```{r}
+lexicon <- cv_glmnet_model$glmnet.fit %>%
+  tidy() %>%
+  filter(lambda == cv_glmnet_model$lambda.1se,
+         term != "(Intercept)",
+         term != "log_price") %>%
+  select(word = term, coefficient = estimate)
+
+lexicon %>%
+  arrange(coefficient) %>%
+  group_by(direction = ifelse(coefficient < 0, "Negative", "Positive")) %>%
+  top_n(16, abs(coefficient)) %>%
+  ungroup() %>%
+  mutate(word = fct_reorder(word, coefficient)) %>%
+  ggplot(aes(word, coefficient, fill = direction)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = "",
+       y = "Estimated effect of the word on the score",
+       title = "What words are predictive of a wine's score?")
+```
+
+```{r}
+wine_ratings %>%
+  mutate(wine_id = row_number()) %>%
+  arrange(points) %>%
+  head(1) %>%
+  select(wine_id, description) %>%
+  pull(description)
+
+wine_rating_words %>%
+  filter(wine_id %in% sample(unique(wine_id), 6)) %>%
+  distinct(word, title, points) %>%
+  mutate(wine = paste0(str_trunc(title, 40), " (", points, ")")) %>%
+  inner_join(lexicon, by = "word") %>%
+  mutate(word = fct_reorder(word, coefficient)) %>%
+  ggplot(aes(word, coefficient, fill = coefficient > 0)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  facet_wrap(~ wine, scales = "free_y") +
+  labs(title = "How a lasso regression would predict each wine's score",
+       subtitle = "Using a lasso regression with an extra term for price",
+       x = "",
+       y = "Effect on score")
+```
+
+
+
+### What is glmnet?
+
+```{r}
+cv_glmnet_model$glmnet.fit %>%
+  tidy() %>%
+  filter(term %in% c("rich", "black", "simple", "complex", "vineyard", "concentrated")) %>%
+  ggplot(aes(lambda, estimate, color = term)) +
+  geom_line() +
+  scale_x_log10() +
+  geom_hline(lty = 2, yintercept = 0)
+
+cv_glmnet_model$glmnet.fit %>%
+  tidy() %>%
+  count(lambda) %>%
+  ggplot(aes(lambda, n)) +
+  geom_line() +
+  scale_x_log10()
+```
+
+
+```{r}
+wine_ratings %>%
+  mutate(country = fct_relevel(fct_lump(country, 7), "US")) %>%
+  mutate(country = fct_reorder(country, points)) %>%
+  ggplot(aes(country, points)) +
+  geom_boxplot() +
+  coord_flip()
+
+wine_ratings %>%
+  group_by(year) %>%
+  summarize(average_points = mean(points), n())
+  
+wine_ratings %>%
+  mutate(reviewer = fct_reorder(fct_lump(taster_name, 10), points)) %>%
+  ggplot(aes(reviewer, points)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+
