@@ -1,0 +1,159 @@
+---
+title: "Plastic Waste"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+coast_vs_waste <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/coastal-population-vs-mismanaged-plastic.csv")
+
+mismanaged_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/per-capita-mismanaged-plastic-waste-vs-gdp-per-capita.csv")
+
+waste_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/per-capita-plastic-waste-vs-gdp-per-capita.csv")
+```
+
+```{r}
+library(janitor)
+
+# Data cleaning
+clean_dataset <- function(tbl) {
+  tbl %>%
+    clean_names() %>%
+    rename(country = entity,
+           country_code = code) %>%
+    filter(year == 2010) %>%
+    select(-year)
+}
+
+plastic_waste <- coast_vs_waste %>%
+  clean_dataset() %>%
+  select(-total_population_gapminder) %>%
+  inner_join(clean_dataset(mismanaged_vs_gdp) %>%
+               select(-total_population_gapminder), by = c("country", "country_code")) %>%
+  inner_join(clean_dataset(waste_vs_gdp), by = c("country", "country_code")) %>%
+  select(country,
+         country_code,
+         mismanaged_waste = mismanaged_plastic_waste_tonnes,
+         coastal_population,
+         total_population = total_population_gapminder,
+         mismanaged_per_capita = per_capita_mismanaged_plastic_waste_kilograms_per_person_per_day,
+         gdp_per_capita = gdp_per_capita_ppp_constant_2011_international_rate) %>%
+  filter(!is.na(mismanaged_waste))
+```
+
+```{r}
+g1 <- plastic_waste %>%
+  arrange(-total_population) %>%
+  mutate(pct_population_coastal = pmin(1, coastal_population / total_population),
+         high_coastal_pop = ifelse(pct_population_coastal >= .8, ">=80%", "<80%")) %>%
+  ggplot(aes(gdp_per_capita, mismanaged_per_capita)) +
+  geom_point(aes(size = total_population)) +
+  geom_text(aes(label = country), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_x_log10(labels = dollar_format()) +
+  scale_y_log10() +
+  scale_size_continuous(guide = FALSE) +
+  labs(x = "GDP per capita",
+       y = "Mismanaged plastic waste (kg per person per day)",
+       color = "Coastal population",
+       title = "How plastic waste mismanagement correlates with country income",
+       subtitle = "Based in Our World in Data 2010 numbers. Size represents total population")
+
+g1
+```
+
+```{r}
+plastic_waste %>%
+  mutate(pct_population_coastal = pmin(1, coastal_population / total_population)) %>%
+  arrange(-total_population) %>%
+  ggplot(aes(pct_population_coastal, mismanaged_per_capita)) +
+  geom_point(aes(size = total_population)) +
+  geom_text(aes(label = country), vjust = 1, hjust = 1, check_overlap = TRUE)
+```
+
+```{r}
+tbl_df(iso3166)
+
+library(fuzzyjoin)
+
+plastic_data <- plastic_waste %>%
+  inner_join(iso3166, by = c("country_code" = "a3"))
+
+map_data("world") %>%
+  tbl_df() %>%
+  filter(region != "Antarctica") %>%
+  regex_left_join(plastic_data, by = c("region" = "mapname")) %>%
+  ggplot(aes(long, lat, group = group, fill = mismanaged_per_capita)) +
+  geom_polygon() +
+  scale_fill_gradient2(trans = "log10",
+                       low = "blue",
+                       high = "red",
+                       mid = "pink",
+                       midpoint = log10(.02)) +
+  coord_fixed(2) +
+  ggthemes::theme_map() +
+  labs(fill = "Mismanaged plastic waste per-cap",
+       title = "Where in the world is waste mismanaged?")
+```
+
+### Comparing to other country stats
+
+```{r}
+library(WDI)
+
+indicators <- c("co2_emissions_per_capita" = "EN.ATM.CO2E.PC",
+                "cpia_transparency" = "IQ.CPA.TRAN.XQ")
+
+other_data <- WDI(indicator = indicators, start = 2010, end = 2010) %>%
+  tbl_df() %>%
+  select(-country)
+
+plastic_with_indicators <- other_data %>%
+  inner_join(plastic_data, by = c(iso2c = "a2")) %>%
+  arrange(desc(total_population))
+
+plastic_with_indicators %>%
+  ggplot(aes(gdp_per_capita, co2_emissions_per_capita)) +
+  geom_point(aes(size = total_population)) +
+  geom_text(aes(label = country), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_size_continuous(guide = FALSE) +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x = "GDP per capita",
+       y = "CO2 emissions (tons per capita)",
+       color = "Coastal population",
+       title = "How plastic waste mismanagement correlates with country income",
+       subtitle = "Based in Our World in Data 2010 numbers. Size represents total population")
+
+library(patchwork)
+
+g2 +
+  labs(title = "CO2 emissions are correlated with country income, but not plastic waste") +
+  g1 +
+  labs(title = "",
+       subtitle = "")
+```
+
+```{r}
+# Looking by CPIA trust rating is a trust
+plastic_with_indicators %>%
+  filter(!is.na(cpia_transparency)) %>%
+  ggplot(aes(cpia_transparency, mismanaged_per_capita, group = cpia_transparency)) +
+  geom_boxplot()
+
+plastic_with_indicators %>%
+  arrange(desc(cpia_transparency)) %>%
+  View()
+```
+
+
+
+
+
+
