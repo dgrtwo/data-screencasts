@@ -1,0 +1,185 @@
+---
+title: "Ramen Ratings"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+ramen_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-04/ramen_ratings.csv")
+```
+
+```{r}
+library(drlib)
+
+ramen_ratings_processed <- ramen_ratings %>%
+  mutate(style = fct_lump(style, 4),
+         country = fct_lump(country, 12),
+         brand = fct_lump(brand, 20)) %>%
+  replace_na(list(style = "Other")) %>%
+  mutate(brand = fct_relevel(brand, "Other"),
+         country = fct_relevel(country, "Other"),
+         style = fct_relevel(style, "Pack"))
+
+ramen_ratings_processed %>%
+  gather(category, value, -review_number, -stars) %>%
+  count(category, value) %>%
+  group_by(category) %>%
+  top_n(20, n) %>%
+  ungroup() %>%
+  mutate(value = reorder_within(value, n, category)) %>%
+  ggplot(aes(value, n)) +
+  geom_col() +
+  facet_wrap(~ category, scales = "free_y") +
+  scale_x_reordered() +
+  coord_flip() +
+  labs(title = "Categorical predictors (after processing)",
+       x = "Predictor",
+       y = "Count")
+```
+
+```{r}
+library(broom)
+
+lm(stars ~ brand + country + style, ramen_ratings_processed) %>%
+  tidy(conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  arrange(desc(estimate)) %>%
+  extract(term, c("category", "term"), "^([a-z]+)([A-Z].*)") %>%
+  mutate(term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(estimate, term, color = category)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) +
+  geom_vline(lty = 2, xintercept = 0) +
+  facet_wrap(~ category, ncol = 1, scales = "free_y") +
+  theme(legend.position = "none") +
+  labs(x = "Estimated effect on ramen rating",
+       y = "",
+       title = "Coefficients that predict ramen ratings",
+       subtitle = "Less common brands and countries were lumped together as the reference level")
+```
+
+```{r}
+library(tidytext)
+
+ramen_ratings_processed %>%
+  filter(!is.na(stars)) %>%
+  unnest_tokens(word, variety) %>%
+  group_by(word) %>%
+  summarize(avg_rating = mean(stars),
+            n = n()) %>%
+  arrange(desc(n))
+```
+
+### Web scraping
+
+```{r}
+library(rvest)
+
+ramen_list <- read_html("https://www.theramenrater.com/resources-2/the-list/")
+
+# How the original data was (probably) created
+ramen_reviews <- ramen_list %>%
+  html_node("#myTable") %>%
+  html_table() %>%
+  tbl_df() %>%
+  janitor::clean_names() %>%
+  select(-t)
+```
+
+```{r}
+review_links <- read_html("https://www.theramenrater.com/resources-2/the-list/") %>%
+  html_nodes("#myTable a")
+
+reviews <- tibble(review_number = parse_number(html_text(review_links)),
+                  link = html_attr(review_links, "href"))
+```
+
+See here for more about possibly and other "dealing with failure" functions: https://r4ds.had.co.nz/iteration.html#dealing-with-failure
+
+```{r}
+page <- read_html("https://www.theramenrater.com/2019/05/23/3180-yum-yum-moo-deng/")
+
+get_review_text <- function(url) {
+  message(url)
+  
+  read_html(url) %>%
+    html_nodes(".entry-content > p") %>%
+    html_text() %>%
+    str_subset(".")
+}
+
+review_text <- reviews %>%
+  head(250) %>%
+  mutate(text = map(link, possibly(get_review_text, character(0), quiet = FALSE)))
+```
+
+More on correlation graphs: https://www.tidytextmining.com/ngrams.html
+
+```{r}
+library(tidytext)
+
+review_paragraphs <- review_text %>% 
+  filter(!map_lgl(text, is.null)) %>%
+  unnest() %>%
+  filter(str_detect(text, "Finished")) %>%
+  mutate(text = str_remove(text, "Finished.*?\\. "))
+
+review_paragraphs_tokenized <- review_paragraphs %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words, by = "word") %>%
+  filter(str_detect(word, "[a-z]")) %>%
+  inner_join(ramen_ratings, by = "review_number")
+
+review_words <- review_paragraphs_tokenized %>%
+  filter(!is.na(stars)) %>%
+  group_by(word) %>%
+  summarize(number = n(),
+            reviews = n_distinct(review_number),
+            avg_rating = mean(stars)) %>%
+  arrange(desc(reviews))
+
+review_words_filtered <- review_words %>%
+  filter(reviews < 200, reviews >= 10)
+
+library(widyr)
+word_cors <- review_paragraphs_tokenized %>%
+  semi_join(review_words_filtered, by = "word") %>%
+  distinct(review_number, word) %>%
+  pairwise_cor(word, review_number, sort = TRUE)
+```
+
+```{r}
+library(igraph)
+library(ggraph)
+
+set.seed(2019)
+
+filtered_cors <- word_cors %>%
+  head(300)
+
+nodes <- review_words_filtered %>%
+  filter(word %in% filtered_cors$item1 | word %in% filtered_cors$item2)
+
+filtered_cors %>%
+  graph_from_data_frame(vertices = nodes) %>%
+  ggraph() +
+  geom_edge_link() +
+  geom_node_point(aes(size = reviews * 1.1)) +
+  geom_node_point(aes(size = reviews, color = avg_rating)) +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  scale_color_gradient2(low = "red", high = "blue", midpoint = 4) +
+  theme_void() +
+  labs(color = "Average rating",
+       size = "# of reviews",
+       title = "Network of words used together in ramen reviews",
+       subtitle = "Based on 250 ramen reviews and their star ratings")
+```
+
