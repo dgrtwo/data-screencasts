@@ -1,0 +1,167 @@
+---
+title: "Pizza"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())\
+```
+
+```{r}
+pizza_jared <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_jared.csv")
+pizza_barstool <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_barstool.csv")
+pizza_datafiniti <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_datafiniti.csv")
+```
+
+```{r}
+answer_orders <- c("Never Again", "Poor", "Average", "Good", "Excellent")
+
+by_place_answer <- pizza_jared %>%
+  mutate(time = as.POSIXct(time, origin = "1970-01-01"),
+         date = as.Date(time),
+         answer = fct_relevel(answer, answer_orders)) %>%
+  group_by(place, answer) %>%
+  summarize(votes = sum(votes)) %>%
+  mutate(total = sum(votes),
+         percent = votes / total,
+         answer_integer = as.integer(answer),
+         average = sum(answer_integer * percent)) %>%
+  ungroup()
+
+by_place <- by_place_answer %>%
+  distinct(place, total, average)
+```
+
+```{r}
+by_place_answer %>%
+  filter(as.integer(fct_reorder(place, total, .desc = TRUE)) <= 16,
+         answer != "Fair") %>%
+  mutate(place = glue::glue("{ place } ({ total })"),
+         place = fct_reorder(place, average)) %>%
+  ggplot(aes(answer, percent)) +
+  geom_col() +
+  facet_wrap(~ place) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "",
+       y = "% of respondents",
+       title = "What is the most popular pizza place in Open Stats meetup?",
+       subtitle = "Only the 16 pizza places with the most respondents. # respondents shown in parentheses.")
+```
+
+```{r}
+library(broom)
+
+# THIS TRICK DOESN'T WORK
+# tidy(lm(c(1, 2, 3, 4, 5) ~ 1, weights = c(100, 300, 100, 200, 150)), conf.int = TRUE)
+
+t_test_repeated <- function(x, frequency) {
+  tidy(t.test(rep(x, frequency)))
+}
+
+by_place_answer %>%
+  filter(total >= 3) %>%
+  group_by(place, total) %>%
+  summarize(t_test_result = list(t_test_repeated(answer_integer, votes))) %>%
+  ungroup() %>%
+  unnest(t_test_result) %>%
+  select(place, total, average = estimate, low = conf.low, high = conf.high) %>%
+  top_n(16, total) %>%
+  mutate(place = fct_reorder(place, average)) %>%
+  ggplot(aes(average, place)) +
+  geom_point(aes(size = total)) +
+  geom_errorbarh(aes(xmin = low, xmax = high)) +
+  labs(x = "Average score (1-5 Likert Scale)",
+       y = "",
+       title = "What is the most popular pizza place in Open Stats meetup?",
+       subtitle = "Only the 16 pizza places with the most respondents.",
+       size = "# of respondents")
+```
+
+```{r}
+# Don't bother comparing them, this is a bad graph
+pizza_barstool %>%
+  select(place = name,
+         barstool_total = review_stats_all_count,
+         barstool_average = review_stats_all_average_score) %>%
+  inner_join(by_place, by = "place") %>%
+  group_by(place) %>%
+  filter(n() == 1) %>%
+  ungroup() %>%
+  filter(barstool_total >= 5,
+         total >= 5) %>%
+  ggplot(aes(average, barstool_average)) +
+  geom_point() +
+  labs(x = "Meetup",
+       y = "Barstool")
+```
+
+```{r}
+pizza_barstool %>%
+  top_n(50, review_stats_all_count) %>%
+  ggplot(aes(price_level, review_stats_all_average_score, group = price_level)) +
+  geom_boxplot()
+
+pizza_barstool %>%
+  filter(review_stats_all_count >= 50) %>%
+  mutate(name = fct_reorder(name, review_stats_all_average_score)) %>%
+  ggplot(aes(review_stats_all_average_score, name, size = review_stats_all_count)) +
+  geom_point() +
+  labs(x = "Average rating",
+       y = "",
+       size = "# of reviews",
+       title = "Barstool Sports ratings of pizza places",
+       subtitle = "Only places with at least 50 reviews")
+```
+
+```{r}
+pizza_barstool %>%
+  filter(review_stats_all_count >= 20) %>%
+  mutate(city = fct_lump(city, 3)) %>%
+  add_count(city) %>%
+  mutate(city = glue::glue("{ city } ({ n })")) %>%
+  ggplot(aes(city, review_stats_all_average_score)) +
+  geom_boxplot() +
+  labs(title = "Do pizza ratings differ across cities?",
+       subtitle = "Only pizza places with at least 20 reviews")
+```
+
+```{r}
+pizza_cleaned <- pizza_barstool %>%
+  select(place = name,
+         price_level,
+         contains("review")) %>%
+  rename_all(~ str_remove(., "review_stats_")) %>%
+  select(-contains("provider"))
+
+pizza_cleaned %>%
+  filter(critic_count > 0) %>%
+  ggplot(aes(critic_average_score, dave_average_score)) +
+  geom_point() +
+  geom_abline(color = "red") +
+  geom_smooth(method = "lm") +
+  labs(title = "Does Barstool Sports' Dave agree with the critics?",
+       x = "Critic average score",
+       y = "Dave score")
+```
+
+```{r}
+pizza_cleaned %>%
+  filter(community_count >= 20) %>%
+  ggplot(aes(community_average_score, dave_average_score)) +
+  geom_point(aes(size = community_count)) +
+  geom_abline(color = "red") +
+  geom_smooth(method = "lm") +
+  labs(size = "# of community reviews",
+       x = "Community score",
+       y = "Dave score")
+```
