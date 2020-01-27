@@ -4,7 +4,7 @@
 
 | Screencast | Date | Notable Topics | Annotated | Link | Data |
 | :--- | --- | --- | :---: | :---: | :---: |
-| College Majors and Income | 2018-10-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
+| [College Majors and Income](#college-majors-and-income) | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
 | Horror Movie Profits | 2018-10-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
 | R Downloads | 2018-10-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
@@ -52,6 +52,44 @@
 
 
 ### Individual Screencasts
+
+
+
+#### College Majors and Income
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| College Majors and Income | [1:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=105s) | Using `read_csv` function to import data directly from Github to R (without cloning the repository) |
+| College Majors and Income | [7:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=440s) | Creating a histogram (`geom_histogram`), then a boxplot (`geom_boxplot`), to explore the distribution of salaries |
+| College Majors and Income | [8:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=535s) | Using `fct_reorder` function to sort boxplot of college majors by salary |
+| College Majors and Income | [9:35](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=575s) | Using `dollar_format` function from `scales` package to convert scientific notation to dollar format (e.g., "4e+04" becomes "$40,000") |
+| College Majors and Income | [14:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=850s) | Creating a dotplot (`geom_point`) of 20 top-earning majors (includes adjusting axis, using the colour aesthetic, and adding error bars) |
+| College Majors and Income | [17:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1065s) | Using `str_to_title` function to convert string from ALL CAPS to Title Case |
+| College Majors and Income | [20:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1245s) | Creating a Bland-Altman graph to explore relationship between sample size and median salary |
+| College Majors and Income | [21:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1305s) | Using `geom_text_repel` function from `ggrepel` package to get text labels on scatter plot points |
+| College Majors and Income | [28:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1710s) | Using `count` function's `wt` argument to specify what should be counted (default is number of rows) |
+| College Majors and Income | [30:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1800s) | Spicing up a dull bar graph by adding a redundant colour aesthetic (trick from Julia Silge) |
+| College Majors and Income | [36:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2180s) | Starting to explore relationship between gender and salary |
+| College Majors and Income | [37:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2230s) | Creating a stacked bar graph (`geom_col`) of gender breakdown within majors |
+| College Majors and Income | [40:15](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2415s) | Using `summarise_at` to aggregate men and women from majors into categories of majors |
+| College Majors and Income | [45:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2730s) | Graphing scatterplot (`geom_point`) of share of women and median salary |
+| College Majors and Income | [47:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2830s) | Using `geom_smooth` function to add a line of best fit to scatterplot above |
+| College Majors and Income | [48:40](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2920s) | Explanation of why not to aggregate first when performing a statistical test (including explanation of Simpson's Paradox) |
+| College Majors and Income | [49:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2995s) | Fixing `geom_smooth` so that we get one overall line while still being able to map to the colour aesthetic |
+| College Majors and Income | [51:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3070s) | Predicting median salary from share of women with weighted linear regression (to take sample sizes into account) |
+| College Majors and Income | [56:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3365s) | Using `nest` function and `tidy` function from the `broom` package to apply a linear model to many categories at once |
+| College Majors and Income | [58:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3485s) | Using `p.adjust` function to adjust p-values to correct for multiple testing (using FDR, False Discovery Rate) |
+| College Majors and Income | [1:04:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3890s) | Showing how to add an appendix to an `Rmarkdown` file with code that doesn't run when compiled |
+| College Majors and Income | [1:09:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4140s) | Using `fct_lump` function to aggregate major categories into the top four and an "Other" category |
+| College Majors and Income | [1:10:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4205s) | Adding sample size to the size aesthetic within the `aes` function |
+| College Majors and Income | [1:10:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4250s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot (tooltips appear when moused over) |
+| College Majors and Income | [1:15:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4555s) | Exploring IQR (Inter-Quartile Range) of salaries by major |
+
+
+
+***
 
 
 
