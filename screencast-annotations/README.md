@@ -12,9 +12,9 @@
 | [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
 | [Maryland Bridges](#maryland-bridges) | 2018-11-27 | Data manipulation, Map visualization | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
 | [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
-| [Riddler: Monte Carlo Simulation](#riddler:-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
+| [Riddler: Monte Carlo Simulation](#riddler-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
 | [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom`, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
-| Riddler: Simulating a Week of Rain | 2018-12-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
+| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain) | 2018-12-12 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
 | [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
 | [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
 | TV Golden Age | 2019-01-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
@@ -328,6 +328,31 @@
 | NYC Restaurant Inspections | [1:01:30](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3690s) | Creating graph of opposing elements of a PCA dimension |
 | NYC Restaurant Inspections | [1:02:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3720s) | Shortening string using `str_sub` function |
 | NYC Restaurant Inspections | [1:04:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3840s) | Reference to [Julia Silge's PCA walkthrough](https://juliasilge.com/blog/stack-overflow-pca/) using StackOverflow data |
+
+
+
+***
+
+
+
+#### Riddler: Simulating a Week of Rain
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Week of Rain | [1:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=80s) | Using `crossing` function to get all combinations of specified variables (100 trials of 5 days) |
+| Riddler: Simulating a Week of Rain | [2:35](https://www.youtube.com/watch?v=TDzd73z8thU&t=155s) | Using `rbinom` function to simulate whether it rains or not |
+| Riddler: Simulating a Week of Rain | [3:15](https://www.youtube.com/watch?v=TDzd73z8thU&t=195s) | Using `ifelse` function to set starting number of umbrellas at beginning of week |
+| Riddler: Simulating a Week of Rain | [4:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=260s) | Explanation of structure of simulation and approach to determining number of umbrellas in each location |
+| Riddler: Simulating a Week of Rain | [5:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=330s) | Changing structure so that we have a row for each day's morning or evening |
+| Riddler: Simulating a Week of Rain | [7:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=430s) | Using `group_by`, `ifelse`, and `row_number` functions to set starting number of umbrellas for each trial |
+| Riddler: Simulating a Week of Rain | [8:45](https://www.youtube.com/watch?v=TDzd73z8thU&t=525s) | Using `case_when` function to returns different values for multiple logical checks (allows for more outputs than ifelse) |
+| Riddler: Simulating a Week of Rain | [10:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=620s) | Using `cumsum` function to create a running tally of number of umbrellas in each location |
+| Riddler: Simulating a Week of Rain | [11:25](https://www.youtube.com/watch?v=TDzd73z8thU&t=685s) | Explanation of output of simulated data |
+| Riddler: Simulating a Week of Rain | [12:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=750s) | Using `any` function to check if any day had a negative "umbrella count" (indicating there wasn't an umbrella available when raining) |
+| Riddler: Simulating a Week of Rain | [15:40](https://www.youtube.com/watch?v=TDzd73z8thU&t=940s) | Asking, "When was the first time Louie got wet?" |
+| Riddler: Simulating a Week of Rain | [17:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=1030s) | Creating a custom vector to convert an integer to a weekday (e.g., 2 = Tue) |
 
 
 
