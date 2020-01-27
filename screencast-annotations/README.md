@@ -29,13 +29,13 @@
 | [Seattle Bike Counts](#seattle-bike-counts) | 2019-04-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02) |
 | [Tennis Tournaments](#tennis-tournaments) | 2019-04-09 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09) |
 | [Bird Collisions](#bird-collisions) | 2019-05-03 | Bootstrapping | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=zjWm__nFLXI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-30) |
-| [Student-Teacher Ratios](#student-teacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
+| [Student-Teacher Ratios](#studentteacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
 | Nobel Prize Winners | 2019-05-24 |  | :x: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
 | [Plastic Waste](#plastic-waste) | 2019-05-27 | Choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BRdLOYtJk9o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21) |
 | [Wine Ratings](#wine-ratings) | 2019-05-31 | Text mining using `tidytext`, Lasso regression using `glmnet` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28) |
 | [Ramen Reviews](#ramen-reviews) | 2019-06-04 | Web scraping using `rvest` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04) |
 | [Media Franchise Revenue](#media-franchise-revenue) | 2019-06-22 | Data manipulation (especially re-ordering factors) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1xsbTs9-a50) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02) |
-| [Women's World Cup](#women's-world-cup) | 2019-07-22 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09) |
+| [Women's World Cup](#womens-world-cup) | 2019-07-22 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09) |
 | [Bob Ross Paintings](#bob-ross-paintings) | 2019-08-12 | Network graphs, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sD993H5FBIY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06) |
 | Simpsons Guest Stars | 2019-08-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27) |
 | [Pizza Ratings](#pizza-ratings) | 2019-10-01 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Mkac8DHScps) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01) |
@@ -61,16 +61,25 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
-| US Wind Turbines | [5:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=300s) | Using latitude and longitude to create a map |
-| US Wind Turbines | [7:30](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=450s) | Adding borders to a map |
+| US Wind Turbines | [3:50](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=230s) | Using `count` function to explore categorical variables |
+| US Wind Turbines | [5:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=300s) | Creating a quick-and-dirty map using `geom_point` function and latitude and longitude data |
+| US Wind Turbines | [6:10](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=370s) | Explaining need for `mapproj` package when plotting maps in `ggplot2` |
+| US Wind Turbines | [7:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=455s) | Using `borders` function to add US state borders to map |
+| US Wind Turbines | [10:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=645s) | Using `fct_lump` function to get the top 6 project categories and put the rest in a lumped "Other" category |
 | US Wind Turbines | [11:30](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=690s) | Changing data so that certain categories' points appear in front of other categories' points on the map |
-| US Wind Turbines | [14:30](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=870s) | Taking the centroid (average longitude and latitude) of points across a geographic area, for plotting purposes |
-| US Wind Turbines | [38:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2280s) | Using `mutate_if` function to find NA values (coded as -9999) and replace them with an actual NA |
+| US Wind Turbines | [14:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=855s) | Taking the centroid (average longitude and latitude) of points across a geographic area as a way to aggregate categories to one point |
+| US Wind Turbines | [19:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1180s) | Using `ifelse` function to clean missing data that is coded as "-9999" |
+| US Wind Turbines | [26:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1560s) | Asking, "How has turbine capacity changed over time?" |
+| US Wind Turbines | [33:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1995s) | Exploring different models of wind turbines |
+| US Wind Turbines | [38:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2280s) | Using `mutate_if` function to find NA values (coded as -9999) in multiple columns and replace them with an actual NA |
+| US Wind Turbines | [45:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2740s) | Reviewing documentation for `gganimate` package |
 | US Wind Turbines | [47:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2820s) | Attempting to set up `gganimate` map |
-| US Wind Turbines | [49:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2940s) | Debugging `gganimate` after first graph fails |
+| US Wind Turbines | [48:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2935s) | Understanding `gganimate` package using a "Hello World" / toy example, then trying to debug turbine animation |
 | US Wind Turbines | [56:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3405s) | Using `is.infinite` function to get rid of troublesome Inf values |
-| US Wind Turbines | [58:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3495s) | Quick hack for getting cumulative data from a table (ends up with duplication, but a good quick-and-dirty trick) |
+| US Wind Turbines | [57:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3475s) | Quick hack for getting cumulative data from a table using `crossing` function (though it does end up with some duplication) |
 | US Wind Turbines | [1:01:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3705s) | Diagnosis of `gganimate` issue (points between integer years are being interpolated) |
+| US Wind Turbines | [1:04:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3875s) | Pseudo-successful `gganimate` map (cumulative points show up, but some points are missing) |
+| US Wind Turbines | [1:05:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3940s) | Summary of screencast |
 
 
 
@@ -579,11 +588,40 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
+| Ramen Reviews | [1:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=105s) | Looking at the website the data came from |
+| Ramen Reviews | [2:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=175s) | Using `gather` function (now `pivot_longer`) to convert wide data to long (tidy) format |
+| Ramen Reviews | [4:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=255s) | Graphing counts of all categorical variables at once, then exploring them |
+| Ramen Reviews | [5:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=335s) | Using `fct_lump` function to lump three categorical variables to the top N categories and "Other" |
 | Ramen Reviews | [7:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=465s) | Using `reorder_within` function to re-order factors that have the same name across multiple facets |
-| Ramen Reviews | [11:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=660s) | Using "Other" as the base reference level for a cateogorical independent variable in a linear model |
-| Ramen Reviews | [13:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=780s) | Separating text using regex |
-| Ramen Reviews | [15:30](https://www.youtube.com/watch?v=tCa2di7aEP4&t=930s) | Adding reference line to graph |
-| Ramen Reviews | [19:30](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1170s) | Web scraping using `rvest` package |
+| Ramen Reviews | [9:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=550s) | Using `lm` function (linear model) to predict star rating |
+| Ramen Reviews | [9:50](https://www.youtube.com/watch?v=tCa2di7aEP4&t=590s) | Visualising effects (and 95% CI) of indendent variables in linear model with a coefficient plot (TIE fighter plot) |
+| Ramen Reviews | [11:30](https://www.youtube.com/watch?v=tCa2di7aEP4&t=690s) | Using `fct_relevel` function to get "Other" as the base reference level for categorical independent variables in a linear model |
+| Ramen Reviews | [13:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=785s) | Using `extract` function and regex to split a camelCase variable into two separate variables |
+| Ramen Reviews | [14:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=885s) | Using `facet_wrap` function to split coefficient / TIE fighter plot into three separate plots, based on type of coefficient |
+| Ramen Reviews | [15:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=940s) | Using `geom_vline` function to add reference line to graph |
+| Ramen Reviews | [17:20](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1040s) | Using `unnest_tokens` function from `tidytext` package to explore the relationship between variety (a sparse categorical variable) and star rating |
+| Ramen Reviews | [18:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1135s) | Explanation of how he would approach variety variable with Lasso regression |
+| Ramen Reviews | [19:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1175s) | Web scraping the using `rvest` package and `SelectorGadget` (Chrome Extension CSS selector) |
+| Ramen Reviews | [21:20](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1280s) | Actually writing code for web scraping, using `read_html`, `html_node`, and `html_table` functions |
+| Ramen Reviews | [22:25](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1345s) | Using `clean_names` function from `janitor` package to clean up names of variables |
+| Ramen Reviews | [23:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1385s) | Explanation of web scraping task: get full review text using the links from the review summary table scraped above |
+| Ramen Reviews | [25:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1540s) | Using `parse_number` function as alternative to `as.integer` function to cleverly drop extra weird text in review number |
+| Ramen Reviews | [26:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1605s) | Using `SelectorGadget` (Chrome Extension CSS selector) to identify part of page that contains review text |
+| Ramen Reviews | [27:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1655s) | Using `html_nodes`, `html_text`, and `str_subset` functions to write custom function to scrape review text identified in step above |
+| Ramen Reviews | [29:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1755s) | Adding `message` function to custom scraping function to display URLs as they are being scraped |
+| Ramen Reviews | [30:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1815s) | Using `unnest_tokens` and `anti_join` functions to split review text into individual words and remove stop words (e.g., "the", "or", "and") |
+| Ramen Reviews | [31:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1865s) | Catching a mistake in the custom function causing it to read the same URL every time |
+| Ramen Reviews | [31:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1915s) | Using `str_detect` function to filter out review paragraphs without a keyword in it |
+| Ramen Reviews | [32:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1960s) | Using `str_remove` function and regex to get rid of string that follows a specific pattern |
+| Ramen Reviews | [34:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2050s) | Explanation of `possibly` and `safely` functions in `purrr` package |
+| Ramen Reviews | [37:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2265s) | Reviewing output of the URL that failed to scrape, including using `character(0)` as a default null value |
+| Ramen Reviews | [48:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2880s) | Using `pairwise_cor` function from `widyr` package to see which words tend to appear in reviews together |
+| Ramen Reviews | [51:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3065s) | Using `igraph` and `ggraph` packages to make network plot of word correlations |
+| Ramen Reviews | [51:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3115s) | Using `geom_node_text` function to add labels to network plot |
+| Ramen Reviews | [52:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3155s) | Including all words (not just those connected to others) as vertices in the network plot |
+| Ramen Reviews | [54:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3280s) | Tweaking and refining network plot aesthetics (vertex size and colour) |
+| Ramen Reviews | [56:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3360s) | Weird hack for getting a dark outline on hard-to-see vertex points |
+| Ramen Reviews | [59:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3555s) | Summary of screencast |
 
 
 
@@ -843,3 +881,6 @@
 | CRAN Package Code | [54:40](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3280s) | Importing even more additional data (available packages) |
 | CRAN Package Code | [57:50](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3470s) | Using `separate_rows` function to separate delimited values |
 | CRAN Package Code | [58:45](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3525s) | Using `extract` function and regex to pull out specific types of characters from a string |
+| CRAN Package Code | [1:05:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3935s) | Summary of screencast |
+
+
