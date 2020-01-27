@@ -10,8 +10,8 @@
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
 | Malaria Incidence | 2018-11-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
 | [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
-| Maryland Bridges | 2018-11-27 |  | :x: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
-| Medium Articles | 2018-12-04 |  | :x: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
+| [Maryland Bridges](#maryland-bridges) | 2018-11-27 | Data manipulation, Map visualization | :x: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
+| [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` | :x: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
 | [Riddler: Monte Carlo Simulation](#riddler:-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
 | [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom`, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
 | Riddler: Simulating a Week of Rain | 2018-12-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
@@ -130,6 +130,86 @@
 ***
 
 
+
+#### Maryland Bridges
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Maryland Bridges | [9:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=555s) | Using `geom_line` to create an exploratory line graph |
+| Maryland Bridges | [10:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=610s) | Using `%/%` operator (truncated division) to bin years into decades (e.g., 1980, 1984, and 1987 would all become "1980") |
+| Maryland Bridges | [12:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=750s) | Converting two-digit year to four-digit year (e.g., "16" becomes "2016") by adding 2000 to each one |
+| Maryland Bridges | [15:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=940s) | Using `percent_format` function from `scales` package to get nice-looking axis labels |
+| Maryland Bridges | [19:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1195s) | Using `geom_col` to create an ordered nice bar/column graph |
+| Maryland Bridges | [21:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1295s) | Using `replace_na` to replace NA values with "Other" |
+| Maryland Bridges | [27:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1635s) | Starting exploration of average daily traffic |
+| Maryland Bridges | [29:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1745s) | Using `comma_format` function from `scales` package to get more readable axis labels (e.g., "1e+05" becomes "100,000") |
+| Maryland Bridges | [31:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1875s) | Using `cut` function to bin continuous variable into customized breaks (also does a `mutate` within a `group_by`!) |
+| Maryland Bridges | [34:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2070s) | Starting to make a map |
+| Maryland Bridges | [37:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2220s) | Encoding a continuous variable to colour, then using `scale_colour_gradient2` function to specify colours and midpoint |
+| Maryland Bridges | [38:20](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2300s) | Specifying the `trans` argument (transformation) of the `scale_colour_gradient2` function to get a logarithmic scale |
+| Maryland Bridges | [45:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2755s) | Using `str_to_title` function to get values to Title Case (first letter of each word capitalized) |
+| Maryland Bridges | [48:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2915s) | Predicting whether bridges are in "Good" condition using logistic regression (remember to specify the family argument! Dave fixes this at 52:54) |
+| Maryland Bridges | [50:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3030s) | Explanation of why we should NOT be using an OLS linear regression |
+| Maryland Bridges | [51:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3070s) | Using the `augment` function from the `broom` package to illustrate why a linear model is not a good fit |
+| Maryland Bridges | [52:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3125s) | Specifying the `type.predict` argument in the `augment` function so that we get the actual predicted probability |
+| Maryland Bridges | [54:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3280s) | Explanation of why the sigmoidal shape of logistic regression can be a drawback |
+| Maryland Bridges | [55:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3305s) | Using a cubic spline model (a type of GAM, Generalized Additive Model) as an alternative to logistic regression |
+| Maryland Bridges | [56:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3360s) | Explanation of the shape that a cubic spline model can take (which logistic regression cannot) |
+| Maryland Bridges | [1:02:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3735s) | Visualizing the model in a different way, using a coefficient plot |
+| Maryland Bridges | [1:04:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3875s) | Using `geom_vline` function to add a red reference line to a graph |
+| Maryland Bridges | [1:04:50](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3890s) | Adding confidence intervals to the coefficient plot by specifying `conf.int` argument of `tidy` function and graphing using the `geom_errorbarh` function |
+| Maryland Bridges | [1:05:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3935s) | Brief explanation of log-odds coefficients |
+| Maryland Bridges | [1:09:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=4150s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Medium Articles
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Medium Articles | [5:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=340s) | Using `summarise_at` and `starts_with` functions to quickly sum up all variables starting with "tag_" |
+| Medium Articles | [6:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=415s) | Using `gather` function (now `pivot_longer`) to convert topic tag variables from wide to tall (tidy) format |
+| Medium Articles | [8:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=490s) | Explanation of how gathering step above will let us find the most/least common tags |
+| Medium Articles | [9:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=540s) | Explanation of using `median` (instead of `mean`) as measure of central tendency for number of claps an article got |
+| Medium Articles | [9:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=590s) | Visualizing log-normal (ish) distribution of number of claps an article gets |
+| Medium Articles | [12:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=725s) | Using `pmin` function to bin reading times of 10 minutes or more to cap out at 10 minutes |
+| Medium Articles | [12:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=755s) | Changing `scale_x_continuous` function's `breaks` argument to get custom labels and tick marks on a histogram |
+| Medium Articles | [14:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=875s) | Discussion of using mean vs. median as measure of central tendency for reading time (he decides on mean) |
+| Medium Articles | [16:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=960s) | Starting text mining analysis |
+| Medium Articles | [16:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=1000s) | Using `unnest_tokens` function from `tidytext` package to split character string into individual words |
+| Medium Articles | [17:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=1070s) | Explanation of stop words and using `anti_join` function to get rid of them |
+| Medium Articles | [20:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=1220s) | Using `str_detect` function to filter out "words" that are just numbers (e.g., "2", "35") |
+| Medium Articles | [22:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=1355s) | Quick analysis of which individual words are associated with more/fewer claps ("What are the hype words?") |
+| Medium Articles | [25:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=1515s) | Using geometric mean as alternative to median to get more distinction between words (note 27:33 where he makes a quick fix) |
+| Medium Articles | [28:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=1690s) | Starting analysis of clusters of related words (e.g., "neural" is linked to "network") |
+| Medium Articles | [30:30](https://www.youtube.com/watch?v=C69QyycHsgE&t=1830s) | Finding correlations pairs of words using `pairwise_cor` function from `widyr` package |
+| Medium Articles | [34:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2040s) | Using `ggraph` and `igraph` packages to make network plot of correlated pairs of words |
+| Medium Articles | [35:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2100s) | Using `geom_node_text` to add labels for points (vertices) in the network plot |
+| Medium Articles | [38:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=2320s) | Filtering original data to only include words appear in the network plot (150 word pairs with most correlation) |
+| Medium Articles | [40:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=2410s) | Adding colour as a dimension to the network plot, representing geometric mean of claps |
+| Medium Articles | [40:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2450s) | Changing default colour scale to one with Blue = Low and High = Red with `scale_colour_gradient2` function |
+| Medium Articles | [43:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=2595s) | Adding dark outlines to points on network plot with a hack |
+| Medium Articles | [44:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2685s) | Starting to predict number of claps based on title tag (Lasso regression) |
+| Medium Articles | [45:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2750s) | Explanation of data format needed to conduct Lasso regression (and using `cast_sparse` function to get sparse matrix) |
+| Medium Articles | [47:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2865s) | Bringing in number of claps to the sparse matrix (un-tidy methods) |
+| Medium Articles | [49:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2940s) | Using `cv.glmnet` function (cv = cross validated) from `glmnet` package to run Lasso regression |
+| Medium Articles | [49:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=2995s) | Finding and fixing mistake in defining Lasso model |
+| Medium Articles | [51:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=3065s) | Explanation of Lasso model |
+| Medium Articles | [52:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3155s) | Using `tidy` function from the `broom` package to tidy up the Lasso model |
+| Medium Articles | [54:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3275s) | Visualizing how specific words affect the prediction of claps as lambda (Lasso's penalty parameter) changes |
+| Medium Articles | [1:00:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=3620s) | Summary of screencast |
+
+
+
+***
 
 #### Riddler: Monte Carlo Simulation
 
