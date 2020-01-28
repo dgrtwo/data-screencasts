@@ -24,7 +24,7 @@
 | [US PhDs](#us-phds) | 2019-02-22 | Tidying very un-tidy data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19) |
 | [French Train Delays](#french-train-delays) | 2019-02-26 | Heat map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26) |
 | Women in the Workplace | 2019-03-05 |  | :x: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
-| Board Game Reviews | 2019-03-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
+| [Board Game Reviews](#board-game-reviews) | 2019-03-15 | Lasso regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
 | Seattle Pet Names | 2019-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
 | [Seattle Bike Counts](#seattle-bike-counts) | 2019-04-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02) |
 | [Tennis Tournaments](#tennis-tournaments) | 2019-04-09 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09) |
@@ -42,7 +42,7 @@
 | [Car Fuel Efficiency](#car-fuel-efficiency) | 2019-10-15 | Natural splines for regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=RpeioixHOHw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-15) |
 | [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext`, Lasso regression using `glmnet` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
 | [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
-| [CRAN Package Code](#cran-package-code) | 2019-12-30 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
+| [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | Riddler: Spelling Bee Honeycomb | 2020-01-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
 
 
@@ -569,6 +569,45 @@
 | French Train Delays | [51:40](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3100s) | Grouping heatmap into International / National chunks with a weird hack |
 | French Train Delays | [52:20](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3140s) | Further separating International / National visually |
 | French Train Delays | [53:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3210s) | Less hacky way of separating International / National (compared to previous two rows) |
+
+
+
+***
+
+
+
+#### Board Game Reviews
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Board Game Reviews | [2:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=170s) | Starting EDA (exploratory data analysis) with counts of categorical variables |
+| Board Game Reviews | [7:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=445s) | Specifying `scale_x_log10` function's `breaks` argument to get sensisble tick marks for time on histogram |
+| Board Game Reviews | [8:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=525s) | Tweaking `geom_histogram` function's `binwidth` argument to get something that makes sense for log scale |
+| Board Game Reviews | [10:10](https://www.youtube.com/watch?v=qirKGdQvy9U&t=610s) | Using `separate_rows` to break down comma-separated values for three different categorical variables |
+| Board Game Reviews | [15:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=955s) | Using `top_n` to get top 20 observations from each of several categories (not quite right, fixed at 17:47) |
+| Board Game Reviews | [16:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=975s) | Troubleshooting various issues with facetted graph (e.g., ordering, values appearing in multiple categories) |
+| Board Game Reviews | [19:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1195s) | Starting prediction of average rating with a linear model |
+| Board Game Reviews | [20:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1250s) | Splitting data into train/test sets (training/holdout) |
+| Board Game Reviews | [22:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1375s) | Investigating relationship between max number of players and average rating (to determine if it should be in linear model) |
+| Board Game Reviews | [25:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1505s) | Exploring average rating over time ("Do newer games tend to be rated higher/lower?") |
+| Board Game Reviews | [27:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1655s) | Discussing necessity of controlling for year a game was published in the linear model |
+| Board Game Reviews | [28:30](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1710s) | Non-model approach to exploring relationship between game features (e.g., card game, made in Germany) on average rating |
+| Board Game Reviews | [30:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1850s) | Using `geom_boxplot` function to create boxplot of average ratings for most common game features |
+| Board Game Reviews | [34:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2045s) | Using `unite` function to combine multiple variables into one |
+| Board Game Reviews | [37:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2245s) | Introducing Lasso regression as good option when you have many features likely to be correlated with one another |
+| Board Game Reviews | [38:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2295s) | Writing code to set up Lasso regression using `glmnet` and `tidytext` packages |
+| Board Game Reviews | [40:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2405s) | Adding average rating to the feature matrix (warning: method is messy) |
+| Board Game Reviews | [41:40](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2500s) | Using `setdiff` function to find games that are in one set, but not in another (while setting up matrix for Lasso regression) |
+| Board Game Reviews | [44:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2655s) | Spotting the error stemming from the step above (calling row names from the wrong data) |
+| Board Game Reviews | [45:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2745s) | Explaining what a Lasso regression does, including the penalty parameter lambda |
+| Board Game Reviews | [48:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2915s) | Using a cross-validated Lasso model to choose the level of the penalty parameter (lambda) |
+| Board Game Reviews | [51:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3095s) | Adding non-categorical variables to the Lasso model to control for them (e.g., max number of players) |
+| Board Game Reviews | [55:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3315s) | Using `unite` function to combine multiple variables into one, separated by a colon |
+| Board Game Reviews | [58:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3525s) | Graphing the top 20 coefficients in the Lasso model that have the biggest effect on predicted average rating |
+| Board Game Reviews | [1:00:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3655s) | Mentioning the yardstick package as a way to evaluate the model's performance |
+| Board Game Reviews | [1:01:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3675s) | Discussing drawbacks of linear models like Lasso (can't do non-linear relationships or interaction effects) |
 
 
 
