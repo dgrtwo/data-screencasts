@@ -5,7 +5,7 @@
 | Screencast | Date | Notable Topics | Annotated | Link | Data |
 | :--- | --- | --- | :---: | :---: | :---: |
 | [College Majors and Income](#college-majors-and-income) | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
-| Horror Movie Profits | 2018-10-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
+| Horror Movie Profits | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :x: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
 | R Downloads | 2018-10-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
 | Malaria Incidence | 2018-11-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
@@ -14,10 +14,10 @@
 | [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
 | [Riddler: Monte Carlo Simulation](#riddler-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
 | [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom`, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
-| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain) | 2018-12-12 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
+| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain) | 2018-12-12 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
 | [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
 | [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
-| TV Golden Age | 2019-01-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
+| [TV Golden Age](#tv-golden-age) | 2019-01-09 | Data manipulation, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
 | Space Launches | 2019-01-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
 | US Incarceration | 2019-01-25 |  | :x: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
 | [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
@@ -435,6 +435,41 @@
 | TidyTuesday Tweets | [1:08:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4125s) | Using `geom_text` function with check_overlap argument to add labels to scatterplot |
 | TidyTuesday Tweets | [1:12:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4340s) | Asking, "Who are the most active #rstats tweeters?" |
 | TidyTuesday Tweets | [1:15:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4500s) | Summary of screncast |
+
+
+
+***
+
+
+
+#### TV Golden Age
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| TV Golden Age | [2:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=145s) | Quick tip on how to start exploring a new dataset |
+| TV Golden Age | [7:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=450s) | Investigating inconsistency of shows having a count of seasons that is different from the number of seasons given in the data |
+| TV Golden Age | [10:10](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=610s) | Using `%in%` operator and `all` function to only get shows that have a first season and don't have skipped seasons in the data |
+| TV Golden Age | [15:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=930s) | Asking, "Which seasons have the most variation in ratings?" |
+| TV Golden Age | [20:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1225s) | Using `facet_wrap` function to separate different shows on a line graph into multiple small graphs |
+| TV Golden Age | [20:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1250s) | Writing custom embedded function to get width of breaks on the x-axis to always be even (e.g., season 2, 4, 6, etc.) |
+| TV Golden Age | [23:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1430s) | Committing, finding, and explaining a common error of using the same variable name when summarizing multiple things |
+| TV Golden Age | [28:20](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1700s) | Using truncated division operator `%/%` to bin data into two-year bins instead of annual (e.g., 1990 and 1991 get binned to 1990) |
+| TV Golden Age | [31:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1890s) | Using subsetting (with square brackets) within the `mutate` function to calculate mean on only a subset of data (without needing to filter) |
+| TV Golden Age | [33:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2030s) | Using `gather` function (now `pivot_longer`) to get metrics as columns into tidy format, in order to graph them all at once with a `facet_wrap` |
+| TV Golden Age | [36:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2190s) | Using `pmin` function to lump all seasons after 4 into one row (it still shows "4", but it represents "4+") |
+| TV Golden Age | [39:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2340s) | Asking, "If season 1 is good, do you get a second season?" (show survival) |
+| TV Golden Age | [40:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2435s) | Using `paste0` and `spread` functions to get season 1-3 ratings into three columns, one for each season |
+| TV Golden Age | [42:05](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2525s) | Using `distinct` function with `.keep_all` argument remove duplicates by only keeping the first one that appears |
+| TV Golden Age | [45:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2750s) | Using logistic regression to answer, "Does season 1 rating affect the probability of getting a second season?" (note he forgets to specify the family argument, fixed at 57:25) |
+| TV Golden Age | [48:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2915s) | Using `ntile` function to divide data into N bins (5 in this case), then eventually using `cut` function instead |
+| TV Golden Age | [57:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3420s) | Adding year as an independent variable to the logistic regression model |
+| TV Golden Age | [58:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3530s) | Adding an interaction term (season 1 interacting with year) to the logistic regression model |
+| TV Golden Age | [59:55](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3595s) | Using `augment` function as a method of visualizing and interpreting coefficients of regression model |
+| TV Golden Age | [1:00:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3630s) | Using `crossing` function to create new data to test the logistic regression model on and interpret model coefficients |
+| TV Golden Age | [1:03:40](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3820s) | Fitting natural splines using the `splines` package, which would capture a non-linear relationship |
+| TV Golden Age | [1:06:15](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3975s) | Summary of screencast |
 
 
 
