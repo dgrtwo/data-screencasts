@@ -23,14 +23,14 @@
 | [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
 | [US PhDs](#us-phds) | 2019-02-22 | Tidying very un-tidy data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19) |
 | [French Train Delays](#french-train-delays) | 2019-02-26 | Heat map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26) |
-| Women in the Workplace | 2019-03-05 |  | :x: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
+| [Women in the Workplace](#women-in-the-workplace) | 2019-03-05 | Interactive scatterplot using `plotly` and `shiny` packages | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
 | [Board Game Reviews](#board-game-reviews) | 2019-03-15 | Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
-| Seattle Pet Names | 2019-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
+| [Seattle Pet Names](#seattle-pet-names) | 2019-03-16 | Hypergeometric hypothesis testing, Adjusting for multiple hypothesis testing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
 | [Seattle Bike Counts](#seattle-bike-counts) | 2019-04-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02) |
 | [Tennis Tournaments](#tennis-tournaments) | 2019-04-09 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09) |
 | [Bird Collisions](#bird-collisions) | 2019-05-03 | Bootstrapping | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=zjWm__nFLXI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-30) |
 | [Student Teacher Ratios](#student-teacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
-| Nobel Prize Winners | 2019-05-24 |  | :x: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
+| [Nobel Prize Winners](#nobel-prize-winners) | 2019-05-24 | Data manipulation, Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
 | [Plastic Waste](#plastic-waste) | 2019-05-27 | Choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BRdLOYtJk9o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21) |
 | [Wine Ratings](#wine-ratings) | 2019-05-31 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28) |
 | [Ramen Reviews](#ramen-reviews) | 2019-06-04 | Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04) |
@@ -734,6 +734,31 @@
 
 
 
+#### Women in the Workplace
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Women in the Workplace | [5:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=350s) | Writing a custom function that summarizes variables based on their names (then abandoning the idea) |
+| Women in the Workplace | [9:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=555s) | Using `complete.cases` function to find observations that have an NA value in any variable |
+| Women in the Workplace | [9:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=590s) | Using subsetting within a `summarise` function to calculate a weighted mean when dealing with 0 or NA values in some observations |
+| Women in the Workplace | [12:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=740s) | Debugging what is causing NA values to appear in the summarise output (finds the error at 13:25) |
+| Women in the Workplace | [17:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1070s) | Hypothesizing about one sector illustrating a variation of Simpson's Paradox |
+| Women in the Workplace | [25:25](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1525s) | Creating a scatterplot with a logarithmic scale and using `scale_colour_gradient2` function to encode data to point colour |
+| Women in the Workplace | [30:00](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1800s) | Creating an interactive plot (tooltips show up on hover) using `ggplotly` function from `plotly` package |
+| Women in the Workplace | [33:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2000s) | Fiddling with `scale_size_continuous` function's `range` argument to specify point size on a scatterplot (which are encoded to total workers) |
+| Women in the Workplace | [34:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2090s) | Explanation of why healthcare sector is a good example of Simpson's Paradox |
+| Women in the Workplace | [43:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2595s) | Starting to create a `shiny` app with "occupation" as only input (many tweaks in subsequent minutes to make it work) |
+| Women in the Workplace | [47:55](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2875s) | Tweaking size (height) of graph in `shiny` app |
+| Women in the Workplace | [54:05](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=3245s) | Summary of screencast |
+
+
+
+***
+
+
+
 #### Board Game Reviews
 
 [Back to summary](#screencast-summary)
@@ -766,6 +791,46 @@
 | Board Game Reviews | [58:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3525s) | Graphing the top 20 coefficients in the Lasso model that have the biggest effect on predicted average rating |
 | Board Game Reviews | [1:00:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3655s) | Mentioning the yardstick package as a way to evaluate the model's performance |
 | Board Game Reviews | [1:01:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3675s) | Discussing drawbacks of linear models like Lasso (can't do non-linear relationships or interaction effects) |
+
+
+
+***
+
+
+
+#### Seattle Pet Names
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Seattle Pet Names | [2:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=160s) | Using `mdy` function from `lubridate` package to convert character-formatted date to date-class |
+| Seattle Pet Names | [4:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=260s) | Exploratory bar graph showing top species of cats, using `geom_col` function |
+| Seattle Pet Names | [6:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=390s) | Specifying `facet_wrap` function's `ncol` argument to get graphs stacked vertically (instead of side-by-side) |
+| Seattle Pet Names | [9:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=595s) | Asking, "Are some animal names associated with particular dog breeds?" |
+| Seattle Pet Names | [11:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=675s) | Explanation of `add_count` function |
+| Seattle Pet Names | [12:35](https://www.youtube.com/watch?v=EF4A4OtQprg&t=755s) | Adding up various metrics (e.g., number of names overall, number of breeds overall), but note a mistake that gets fixed at 17:05 |
+| Seattle Pet Names | [16:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=970s) | Calculating a ratio for names that appear over-represented within a breed, then explaining how small samples can be misleading |
+| Seattle Pet Names | [17:05](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1025s) | Spotting and fixing an aggregation mistake |
+| Seattle Pet Names | [17:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1075s) | Explanation of how to investigate which names might be over-represented within a breed |
+| Seattle Pet Names | [18:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1135s) | Explanation of how to use hypergeometric distribution to test for name over-representation |
+| Seattle Pet Names | [20:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1240s) | Using `phyper` function to calculate p-values for a one-sided hypergeometric test |
+| Seattle Pet Names | [23:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1410s) | Additional explanation of hypergeometric distribution |
+| Seattle Pet Names | [24:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1440s) | First investigation of why and how to interpret a p-value histogram (second at 29:45, third at 37:45, and answer at 39:30) |
+| Seattle Pet Names | [25:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1515s) | Noticing that we are missing zeros (i.e., having a breed/name combination with 0 dogs), which is important for the hypergeometric test |
+| Seattle Pet Names | [27:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1630s) | Using `complete` function to turn implicit zeros (for breed/name combination) into explicit zeros |
+| Seattle Pet Names | [29:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1785s) | Second investigation of p-value histogram (after adding in implicit zeros) |
+| Seattle Pet Names | [31:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1915s) | Explanation of multiple hypothesis testing and correction methods (e.g., Bonferroni, Holm), and applying using `p.adjust` function |
+| Seattle Pet Names | [34:25](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2065s) | Explanation of False Discovery Rate (FDR) control as a method for correcting for multiple hypothesis testing, and applying using `p.adjust` function |
+| Seattle Pet Names | [37:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2265s) | Third investigation of p-value histogram, to hunt for under-represented names |
+| Seattle Pet Names | [39:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2370s) | Answer to why the p-value distribution is not well-behaved |
+| Seattle Pet Names | [42:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2560s) | Using `crossing` function to created a simulated dataset to explore how different values affect the p-value |
+| Seattle Pet Names | [44:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2695s) | Explanation of how total number of names and total number of breeds affects p-value |
+| Seattle Pet Names | [46:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2760s) | More general explanation of what different shapes of p-value histogram might indicate |
+| Seattle Pet Names | [47:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2850s) | Renaming variables within a `transmute` function, using backticks to get names with spaces in them |
+| Seattle Pet Names | [49:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2960s) | Using `kable` function from the `knitr` package to create a nice-looking table |
+| Seattle Pet Names | [50:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3000s) | Explanation of one-side p-value (as opposed to two-sided p-value) |
+| Seattle Pet Names | [53:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3235s) | Summary of screencast |
 
 
 
@@ -884,6 +949,35 @@
 | Student-Teacher Ratios | [1:06:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=4010s) | Reviewing and interpreting the final linear regression model |
 | Student-Teacher Ratios | [1:08:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=4080s) | Using `cor` function (correlation) to get correlation matrix for three variables (and brief explanation of multi-collinearity) |
 | Student-Teacher Ratios | [1:10:10](https://www.youtube.com/watch?v=NoUHdrailxA&t=4210s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Nobel Prize Winners
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Nobel Prize Winners | [2:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=120s) | Creating a stacked bar plot using `geom_col` and the `aes` function's `fill` argument (also bins years into decades with truncated division operator `%/%`) |
+| Nobel Prize Winners | [3:30](https://www.youtube.com/watch?v=yWSpLfmES7w&t=210s) | Using `n_distinct` function to quickly count unique years in a group |
+| Nobel Prize Winners | [9:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=540s) | Using `distinct` function and its `.keep_all` argument to de-duplicate data |
+| Nobel Prize Winners | [10:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=650s) | Using `coalesce` function to replace NAs in a variable (similar to SQL COALESCE verb) |
+| Nobel Prize Winners | [16:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=970s) | Using `year` function from `lubridate` package to calculate (approx.) age of laureates at time of award |
+| Nobel Prize Winners | [16:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1010s) | Using `fct_reorder` function to arrange boxplot graph by the median age of winners |
+| Nobel Prize Winners | [22:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1370s) | Defining a new variable within the `count` function (like doing a `mutate` in the `count` function) |
+| Nobel Prize Winners | [23:40](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1420s) | Creating a small multiples bar plot using `geom_col` and `facet_wrap` functions |
+| Nobel Prize Winners | [26:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1575s) | Importing income data from `WDI` package to explore relationship between high/low income countries and winners |
+| Nobel Prize Winners | [33:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2025s) | Using `fct_relevel` to change the levels of a categorical income variable (e.g., "Upper middle income") so that the ordering makes sense |
+| Nobel Prize Winners | [36:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2185s) | Starting to explore new dataset of nobel laureate publications |
+| Nobel Prize Winners | [44:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2665s) | Taking the mean of a subset of data without needing to fully filter the data beforehand |
+| Nobel Prize Winners | [49:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2955s) | Using `rank` function and its `ties.method` argument to add the ordinal number of a laureate's publication (e.g., 1st paper, 2nd paper) |
+| Nobel Prize Winners | [1:05:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=3910s) | Lots of playing around with exploratory histograms (`geom_histogram`) |
+| Nobel Prize Winners | [1:06:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4005s) | Discussion of right-censoring as an issue (people winning the Nobel prize but still having active careers) |
+| Nobel Prize Winners | [1:10:20](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4220s) | Summary of screencast |
 
 
 
