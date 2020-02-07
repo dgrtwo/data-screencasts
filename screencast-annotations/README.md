@@ -5,8 +5,8 @@
 | Screencast | Date | Notable Topics | Annotated | Link | Data |
 | :--- | --- | --- | :---: | :---: | :---: |
 | [College Majors and Income](#college-majors-and-income) | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
-| Horror Movie Profits | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :x: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
-| R Downloads | 2018-10-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
+| [Horror Movie Profits](#horror-movie-profits) | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
+| [R Downloads](#r-downloads) | 2018-10-30 | Data manipulation (especially time series using `lubridate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
 | Malaria Incidence | 2018-11-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
 | [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
@@ -86,6 +86,67 @@
 | College Majors and Income | [1:10:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4205s) | Adding sample size to the size aesthetic within the `aes` function |
 | College Majors and Income | [1:10:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4250s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot (tooltips appear when moused over) |
 | College Majors and Income | [1:15:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4555s) | Exploring IQR (Inter-Quartile Range) of salaries by major |
+
+
+
+***
+
+
+
+#### Horror Movie Profits
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Horror Movie Profits | 	[2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | 	Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
+| Horror Movie Profits | 	[7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | 	Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category |
+| Horror Movie Profits | 	[8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | 	Investigating strange numbers in the data and discovering duplication |
+| Horror Movie Profits | 	[12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | 	Using problems function to look at parsing errors when importing data |
+| Horror Movie Profits | 	[14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | 	Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations |
+| Horror Movie Profits | 	[16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | 	Using `geom_boxplot` function to create a boxplot of budget by distributor |
+| Horror Movie Profits | 	[19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | 	Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970") |
+| Horror Movie Profits | 	[21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | 	Using `summarise_at` function to apply the same function to multiple variables at the same time |
+| Horror Movie Profits | 	[24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | 	Using `geom_line` to visualize multiple metrics at the same time |
+| Horror Movie Profits | 	[26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | 	Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor |
+| Horror Movie Profits | 	[28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | 	Starting analysis of profit ratio of movies |
+| Horror Movie Profits | 	[32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | 	Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times") |
+| Horror Movie Profits | 	[41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | 	Starting analysis of the most common genres over time |
+| Horror Movie Profits | 	[45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | 	Starting analysis of the most profitable individual horror movies |
+| Horror Movie Profits | 	[51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | 	Using `paste0` function to add release date of movie to labels in a bar graph |
+| Horror Movie Profits | 	[53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | 	Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot |
+| Horror Movie Profits | 	[58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | 	Using `ggplotly` function from `plotly` package to create an interactive scatterplot |
+| Horror Movie Profits | 	[1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | 	Reviewing unexplored areas of investigation |
+
+
+
+***
+
+
+
+#### R Downloads
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| R Downloads | 	[5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | 	Using `geom_line` function to visualize changes over time |
+| R Downloads | 	[7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | 	Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions) |
+| R Downloads | 	[9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | 	Using `floor_date` function from `lubridate` package to round dates down to the week level |
+| R Downloads | 	[10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | 	Using `min` function to drop incomplete/partial week at the start of the dataset |
+| R Downloads | 	[12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | 	Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada") |
+| R Downloads | 	[17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | 	Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other" |
+| R Downloads | 	[20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | 	Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable |
+| R Downloads | 	[22:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1340s) | 	Using `facet_wrap` function to graph small multiples of downloads by country, then changing its `scales` argument to allow different scales on y-axis |
+| R Downloads | 	[31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | 	Starting analysis of downloads by IP address |
+| R Downloads | 	[35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | 	Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable |
+| R Downloads | 	[36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | 	Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function) |
+| R Downloads | 	[38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | 	Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds) |
+| R Downloads | 	[38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | 	Explanation of a bimodal log-normal distribution |
+| R Downloads | 	[39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | 	Handy tricky for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument |
+| R Downloads | 	[47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | 	Starting to explore package downloads |
+| R Downloads | 	[52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | 	Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero |
+| R Downloads | 	[57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | 	Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package |
 
 
 
@@ -702,7 +763,7 @@
 
 
 
-#### Student Teacher Rations
+#### Student Teacher Ratios
 
 [Back to summary](#screencast-summary)
 
