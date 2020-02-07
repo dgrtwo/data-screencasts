@@ -8,7 +8,7 @@
 | [Horror Movie Profits](#horror-movie-profits) | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
 | [R Downloads](#r-downloads) | 2018-10-30 | Data manipulation (especially time series using `lubridate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
-| Malaria Incidence | 2018-11-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
+| [Malaria Incidence](#malaria-incidence) | 2018-11-12 | Map visualization, Animated map using `gganimate` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
 | [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
 | [Maryland Bridges](#maryland-bridges) | 2018-11-27 | Data manipulation, Map visualization | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
 | [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
@@ -18,8 +18,8 @@
 | [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
 | [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
 | [TV Golden Age](#tv-golden-age) | 2019-01-09 | Data manipulation, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
-| Space Launches | 2019-01-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
-| US Incarceration | 2019-01-25 |  | :x: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
+| [Space Launches](#space-launches) | 2019-01-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
+| [US Incarceration](#us-incarceration) | 2019-01-25 | Animated map using `gganimate` package, Dealing with missing data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
 | [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
 | [US PhDs](#us-phds) | 2019-02-22 | Tidying very un-tidy data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19) |
 | [French Train Delays](#french-train-delays) | 2019-02-26 | Heat map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26) |
@@ -99,24 +99,24 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
-| Horror Movie Profits | 	[2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | 	Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
-| Horror Movie Profits | 	[7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | 	Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category |
-| Horror Movie Profits | 	[8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | 	Investigating strange numbers in the data and discovering duplication |
-| Horror Movie Profits | 	[12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | 	Using problems function to look at parsing errors when importing data |
-| Horror Movie Profits | 	[14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | 	Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations |
-| Horror Movie Profits | 	[16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | 	Using `geom_boxplot` function to create a boxplot of budget by distributor |
-| Horror Movie Profits | 	[19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | 	Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970") |
-| Horror Movie Profits | 	[21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | 	Using `summarise_at` function to apply the same function to multiple variables at the same time |
-| Horror Movie Profits | 	[24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | 	Using `geom_line` to visualize multiple metrics at the same time |
-| Horror Movie Profits | 	[26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | 	Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor |
-| Horror Movie Profits | 	[28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | 	Starting analysis of profit ratio of movies |
-| Horror Movie Profits | 	[32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | 	Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times") |
-| Horror Movie Profits | 	[41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | 	Starting analysis of the most common genres over time |
-| Horror Movie Profits | 	[45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | 	Starting analysis of the most profitable individual horror movies |
-| Horror Movie Profits | 	[51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | 	Using `paste0` function to add release date of movie to labels in a bar graph |
-| Horror Movie Profits | 	[53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | 	Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot |
-| Horror Movie Profits | 	[58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | 	Using `ggplotly` function from `plotly` package to create an interactive scatterplot |
-| Horror Movie Profits | 	[1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | 	Reviewing unexplored areas of investigation |
+| Horror Movie Profits | [2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
+| Horror Movie Profits | [7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category |
+| Horror Movie Profits | [8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | Investigating strange numbers in the data and discovering duplication |
+| Horror Movie Profits | [12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | Using problems function to look at parsing errors when importing data |
+| Horror Movie Profits | [14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations |
+| Horror Movie Profits | [16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | Using `geom_boxplot` function to create a boxplot of budget by distributor |
+| Horror Movie Profits | [19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970") |
+| Horror Movie Profits | [21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | Using `summarise_at` function to apply the same function to multiple variables at the same time |
+| Horror Movie Profits | [24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | Using `geom_line` to visualize multiple metrics at the same time |
+| Horror Movie Profits | [26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor |
+| Horror Movie Profits | [28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | Starting analysis of profit ratio of movies |
+| Horror Movie Profits | [32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times") |
+| Horror Movie Profits | [41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | Starting analysis of the most common genres over time |
+| Horror Movie Profits | [45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | Starting analysis of the most profitable individual horror movies |
+| Horror Movie Profits | [51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | Using `paste0` function to add release date of movie to labels in a bar graph |
+| Horror Movie Profits | [53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot |
+| Horror Movie Profits | [58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot |
+| Horror Movie Profits | [1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | Reviewing unexplored areas of investigation |
 
 
 
@@ -130,23 +130,23 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
-| R Downloads | 	[5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | 	Using `geom_line` function to visualize changes over time |
-| R Downloads | 	[7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | 	Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions) |
-| R Downloads | 	[9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | 	Using `floor_date` function from `lubridate` package to round dates down to the week level |
-| R Downloads | 	[10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | 	Using `min` function to drop incomplete/partial week at the start of the dataset |
-| R Downloads | 	[12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | 	Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada") |
-| R Downloads | 	[17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | 	Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other" |
-| R Downloads | 	[20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | 	Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable |
-| R Downloads | 	[22:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1340s) | 	Using `facet_wrap` function to graph small multiples of downloads by country, then changing its `scales` argument to allow different scales on y-axis |
-| R Downloads | 	[31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | 	Starting analysis of downloads by IP address |
-| R Downloads | 	[35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | 	Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable |
-| R Downloads | 	[36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | 	Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function) |
-| R Downloads | 	[38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | 	Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds) |
-| R Downloads | 	[38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | 	Explanation of a bimodal log-normal distribution |
-| R Downloads | 	[39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | 	Handy tricky for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument |
-| R Downloads | 	[47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | 	Starting to explore package downloads |
-| R Downloads | 	[52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | 	Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero |
-| R Downloads | 	[57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | 	Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package |
+| R Downloads | [5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | 	Using `geom_line` function to visualize changes over time |
+| R Downloads | [7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | 	Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions) |
+| R Downloads | [9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | 	Using `floor_date` function from `lubridate` package to round dates down to the week level |
+| R Downloads | [10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | Using `min` function to drop incomplete/partial week at the start of the dataset |
+| R Downloads | [12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada") |
+| R Downloads | [17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other" |
+| R Downloads | [20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable |
+| R Downloads | [22:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1340s) | Using `facet_wrap` function to graph small multiples of downloads by country, then changing its `scales` argument to allow different scales on y-axis |
+| R Downloads | [31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | Starting analysis of downloads by IP address |
+| R Downloads | [35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable |
+| R Downloads | [36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function) |
+| R Downloads | [38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds) |
+| R Downloads | [38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | Explanation of a bimodal log-normal distribution |
+| R Downloads | [39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | Handy trick for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument |
+| R Downloads | [47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | Starting to explore package downloads |
+| R Downloads | [52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero |
+| R Downloads | [57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package |
 
 
 
@@ -179,6 +179,43 @@
 | US Wind Turbines | [1:01:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3705s) | Diagnosis of `gganimate` issue (points between integer years are being interpolated) |
 | US Wind Turbines | [1:04:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3875s) | Pseudo-successful `gganimate` map (cumulative points show up, but some points are missing) |
 | US Wind Turbines | [1:05:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3940s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Malaria Incidence
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Malaria Incidence | [2:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=165s) | Importing data using the `malariaAtlas` package |
+| Malaria Incidence | [14:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=850s) | Using `geom_line` function to visualize malaria prevalence over time |
+| Malaria Incidence | [15:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=910s) | Quick map visualization using longitude and latitude coordinates and the `geom_point` function |
+| Malaria Incidence | [18:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1120s) | Using `borders` function to add Kenyan country borders to map |
+| Malaria Incidence | [19:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1190s) | Using `scale_colour_gradient2` function to change the colour scale of points on the map |
+| Malaria Incidence | [20:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1240s) | Using `arrange` function to ensure that certain points on a map appear in front of/behind other points |
+| Malaria Incidence | [21:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1310s) | Aggregating data into decades using the truncated division operator `%/%` |
+| Malaria Incidence | [24:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1485s) | Starting to look at aggregated malaria data (instead of country-specific data) |
+| Malaria Incidence | [26:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1610s) | Using `sample` and `unique` functions to randomly select a few countries, which are then graphed |
+| Malaria Incidence | [28:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1710s) | Using `last` function to select the most recent observation from a set of arranged data |
+| Malaria Incidence | [32:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1975s) | Creating a Bland-Altman plot to explore relationship between current incidence and change in incidence in past 15 years |
+| Malaria Incidence | [35:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2145s) | Using `anti_join` function to find which countries are not in the malaria dataset |
+| Malaria Incidence | [36:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2200s) | Using the `iso3166` dataset set in the `maps` package to match three-letter country code (i.e., the ISO 3166 code) with country names |
+| Malaria Incidence | [38:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2310s) | Creating a world map using `geom_polygon` function (and eventually `theme_void` and `coord_map` functions) |
+| Malaria Incidence | [39:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2340s) | Getting rid of Antarctica from world map |
+| Malaria Incidence | [42:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2555s) | Using `facet_wrap` function to create small multiples of world map for different time periods |
+| Malaria Incidence | [47:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2850s) | Starting to create an animated map of malaria deaths (actual code writing starts at 57:45) |
+| Malaria Incidence | [51:25](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3085s) | Starting with a single year after working through some bugs |
+| Malaria Incidence | [52:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3130s) | Using `regex_inner_join` function from the `fuzzyjoin` package to join map datasets because one of them has values in regular expressions |
+| Malaria Incidence | [55:15](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3315s) | As alternative to `fuzzyjoin` package in above step, using `str_remove` function to get rid of unwanted regex |
+| Malaria Incidence | [57:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3465s) | Starting to turn static map into an animation using `gganimate` package |
+| Malaria Incidence | [1:02:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3720s) | The actual animated map |
+| Malaria Incidence | [1:02:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3755s) | Using `countrycode` package to filter down to countries in a specific continent (Africa, in this case) |
+| Malaria Incidence | [1:03:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3835s) | Summary of screencast |
 
 
 
@@ -531,6 +568,66 @@
 | TV Golden Age | [1:00:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3630s) | Using `crossing` function to create new data to test the logistic regression model on and interpret model coefficients |
 | TV Golden Age | [1:03:40](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3820s) | Fitting natural splines using the `splines` package, which would capture a non-linear relationship |
 | TV Golden Age | [1:06:15](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3975s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Space Launches
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Space Launches | [4:40](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=280s) | Using `str_detect` function to find missions with "Apollo" in their name |
+| Space Launches | [6:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=380s) | Starting EDA (exploratory data analysis) |
+| Space Launches | [15:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=910s) | Using `fct_collapse` function to recode factors (similar to `case_when` function) |
+| Space Launches | [16:45](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1005s) | Using `countrycode` function from `countrycode` package to get full country names from country codes (e.g. "RU" becomes "Russia") |
+| Space Launches | [18:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1095s) | Using `replace_na` function to convert NA (missing) observations to "Other" |
+| Space Launches | [19:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1150s) | Creating a line graph using `geom_line` function with different colours for different categories |
+| Space Launches | [21:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1265s) | Using `fct_reorder` function to reorder factors in line graph above, in order to make legend more readable |
+| Space Launches | [32:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1920s) | Creating a bar graph, using `geom_col` function, of most active (by number of launches) private or startup agencies |
+| Space Launches | [35:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2105s) | Using truncated division operator `%/%` to bin data into decades |
+| Space Launches | [35:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2135s) | Using `complete` function to turn implicit zeros into explicit zeros (makes for a cleaner line graph) |
+| Space Launches | [37:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2235s) | Using `facet_wrap` function to create small multiples of a line graph, then proceeding to tweak the graph |
+| Space Launches | [42:50](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2570s) | Using `semi_join` function as a filtering step |
+| Space Launches | [43:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2595s) | Using `geom_point` to create a timeline of launches by vehicle type |
+| Space Launches | [47:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2840s) | Explanation of why boxplots over time might not be a good visualization choice |
+| Space Launches | [48:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2880s) | Using `geom_jitter` function to tweak the timeline graph to be more readable |
+| Space Launches | [51:30](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3090s) | Creating a second timeline graph for US vehicles and launches |
+| Space Launches | [56:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3395s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### US Incarceration
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| US Incarceration | [4:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=270s) | Creating a facetted (small multiples) line graph of incarceration rate by urbanicity and race over time |
+| US Incarceration | [7:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=465s) | Discussion of statistical testing of incarceration rates by urbanicity (e.g., rural, suburban) |
+| US Incarceration | [11:25](https://www.youtube.com/watch?v=78kv808ZU6o&t=685s) | Exploring the extent of missing data on prison population |
+| US Incarceration | [14:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=855s) | Using `any` function to filter down to states that have at least one (hence the any function) row of non-missing data |
+| US Incarceration | [18:40](https://www.youtube.com/watch?v=78kv808ZU6o&t=1120s) | Using `cut` function to manually bin data along user-specified intervals |
+| US Incarceration | [24:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=1455s) | Starting to create a choropleth map of incarceration rate by state |
+| US Incarceration | [26:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=1580s) | Using `match` function to match two-letter state abbreviation to full state name, in order to get data needed to create a map |
+| US Incarceration | [28:00](https://www.youtube.com/watch?v=78kv808ZU6o&t=1680s) | Actually typing the code (now that we have the necessary data) to create a choropleth map |
+| US Incarceration | [33:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=1985s) | Using `str_remove` function and regex to chop off the end of county names (e.g., "Allen Parish" becomes "Allen") |
+| US Incarceration | [33:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=2010s) | Making choropleth more specific by drilling down to county-level data |
+| US Incarceration | [41:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=2470s) | Starting to make an animated choropleth map using `gganimate` package |
+| US Incarceration | [42:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=2540s) | Using modulo operator `%%` to choose every 5th year |
+| US Incarceration | [43:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=2625s) | Using `scale_fill_gradient2` function's `limits` argument to exclude unusally high values that were blowing out the scale |
+| US Incarceration | [48:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=2895s) | Using `summarise_at` function to apply the same function to multiple fields at the same time |
+| US Incarceration | [50:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=3010s) | Starting to investigate missing data (how much is missing, where is it missing, etc.) |
+| US Incarceration | [54:50](https://www.youtube.com/watch?v=78kv808ZU6o&t=3290s) | Creating a line graph that excludes counties with missing data |
+| US Incarceration | [57:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=3425s) | Summary of screencast |
 
 
 
