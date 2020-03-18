@@ -1,0 +1,191 @@
+---
+title: "The Office"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(schrute)
+theme_set(theme_light())
+
+office_transcripts <- as_tibble(theoffice) %>%
+  mutate(season = as.integer(season),
+         episode = as.integer(episode)) %>%
+  mutate(character = str_remove_all(character, '"')) %>%
+  mutate(name = str_to_lower(str_remove_all(episode_name, "\\.| \\(Part.*")))
+
+office_ratings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-17/office_ratings.csv') %>%
+  mutate(name = str_to_lower(str_remove_all(title, "\\.| \\(Part.*|\\: Part.*")))
+```
+
+```{r}
+library(ggrepel)
+
+office_ratings %>%
+  group_by(season) %>%
+  summarize(avg_rating = mean(imdb_rating)) %>%
+  ggplot(aes(season, avg_rating)) +
+  geom_line() +
+  scale_x_continuous(breaks = 1:9)
+
+office_ratings %>%
+  mutate(title = fct_inorder(title),
+         episode_number = row_number()) %>%
+  ggplot(aes(episode_number, imdb_rating)) +
+  geom_line() +
+  geom_smooth() +
+  geom_point(aes(color = factor(season), size = total_votes)) +
+  geom_text(aes(label = title), check_overlap = TRUE, hjust = 1) +
+  expand_limits(x = -10) +
+  theme(panel.grid.major.x = element_blank(),
+        legend.position = "none") +
+  labs(x = "Episode number",
+       y = "IMDB Rating",
+       title = "Popularity of The Office episodes over time",
+       subtitle = "Color represents season, size represents # of ratings")
+```
+
+```{r}
+office_ratings %>%
+  arrange(desc(imdb_rating)) %>%
+  mutate(title = paste0(season, ".", episode, " ", title),
+         title = fct_reorder(title, imdb_rating)) %>%
+  head(20) %>%
+  ggplot(aes(title, imdb_rating, color = factor(season), size = total_votes)) +
+  geom_point() +
+  coord_flip() +
+  labs(color = "Season",
+       title = "Most popular episodes of The Office")
+```
+
+### Transcripts
+
+```{r}
+library(tidytext)
+
+blacklist <- c("yeah", "hey", "uh", "gonna")
+blacklist_characters <- c("Everyone", "All", "Both", "Guy", "Girl", "Group")
+
+transcript_words <- office_transcripts %>%
+  group_by(character) %>%
+  filter(n() >= 100,
+         n_distinct(episode_name) > 2) %>%
+  ungroup() %>%
+  select(-text_w_direction) %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words, by = "word") %>%
+  filter(!word %in% blacklist,
+         !character %in% blacklist_characters)
+
+character_tf_idf <- transcript_words %>%
+  add_count(word) %>%
+  filter(n >= 20) %>%
+  count(word, character) %>%
+  bind_tf_idf(word, character, n) %>%
+  arrange(desc(tf_idf))
+```
+
+```{r}
+character_tf_idf %>%
+  filter(character %in% c("Dwight", "Jim", "David Wallace", "Darryl", "Jan", "Holly")) %>%
+  group_by(character) %>%
+  top_n(10, tf_idf) %>%
+  ungroup() %>%
+  mutate(word = reorder_within(word, tf_idf, character)) %>%
+  ggplot(aes(word, tf_idf)) +
+  geom_col() +
+  coord_flip() +
+  scale_x_reordered() +
+  facet_wrap(~ character, scales = "free_y") +
+  labs(x = "",
+       y = "TF-IDF of character-word pairs")
+```
+
+```{r}
+office_transcripts %>%
+  count(character, sort = TRUE) %>%
+  filter(character == "Dwight")
+```
+
+### Machine learning model
+
+What affects popularity of an episode:
+
+* Season/time
+* Director
+* Writer
+* Lines per character
+
+```{r}
+ratings_summarized <- office_ratings %>%
+  group_by(name) %>%
+  summarize(imdb_rating = mean(imdb_rating))
+
+character_lines_ratings <- office_transcripts %>%
+  filter(!character %in% blacklist_characters) %>%
+  count(character, name) %>%
+  group_by(character) %>%
+  filter(sum(n) >= 50,
+         n() >= 5) %>%
+  inner_join(ratings_summarized, by = "name")
+
+character_lines_ratings %>%
+  summarize(avg_rating = mean(imdb_rating),
+            nb_episodes = n()) %>%
+  arrange(desc(avg_rating)) %>%
+  View()
+```
+
+```{r}
+director_writer_features <- office_transcripts %>%
+  distinct(name, director, writer) %>%
+  gather(type, value, director, writer) %>%
+  separate_rows(value, sep = ";") %>%
+  unite(feature, type, value, sep = ": ") %>%
+  group_by(feature) %>%
+  filter(n() >= 3) %>%
+  mutate(value = 1) %>%
+  ungroup()
+
+character_line_features <- character_lines_ratings %>%
+  ungroup() %>%
+  transmute(name, feature = character, value = log2(n))
+
+season_features = office_ratings %>%
+  distinct(name, season) %>%
+  transmute(name, feature = paste("season:", season), value = 1)
+
+features <- bind_rows(director_writer_features,
+                      character_line_features,
+                      season_features) %>%
+  semi_join(office_ratings, by = "name") %>%
+  semi_join(office_transcripts, by = "name")
+```
+
+```{r}
+episode_feature_matrix <- features %>%
+  cast_sparse(name, feature, value)
+
+ratings <- ratings_summarized$imdb_rating[match(rownames(episode_feature_matrix), ratings_summarized$name)]
+
+library(glmnet)
+library(broom)
+
+mod <- cv.glmnet(episode_feature_matrix, ratings)
+
+plot(mod)
+
+tidy(mod$glmnet.fit) %>%
+  filter(lambda == mod$lambda.min,
+         term != "(Intercept)") %>%
+  mutate(term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(term, estimate, fill = estimate > 0)) +
+  geom_col() +
+  coord_flip() +
+  labs(y = "Estimated effect on the rating of an episode") +
+  theme(legend.position = "none")
+```
