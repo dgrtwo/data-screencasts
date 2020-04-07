@@ -4,45 +4,45 @@
 
 | Screencast | Date | Notable Topics | Annotated | Link | Data |
 | :--- | --- | --- | :---: | :---: | :---: |
-| College Majors and Income | 2018-10-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
-| Horror Movie Profits | 2018-10-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
-| R Downloads | 2018-10-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
+| [College Majors and Income](#college-majors-and-income) | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
+| [Horror Movie Profits](#horror-movie-profits) | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
+| [R Downloads](#r-downloads) | 2018-10-30 | Data manipulation (especially time series using `lubridate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
 | [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
-| Malaria Incidence | 2018-11-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
+| [Malaria Incidence](#malaria-incidence) | 2018-11-12 | Map visualization, Animated map using `gganimate` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
 | [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
 | [Maryland Bridges](#maryland-bridges) | 2018-11-27 | Data manipulation, Map visualization | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
-| [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
-| [Riddler: Monte Carlo Simulation](#riddler:-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
-| [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom`, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
-| Riddler: Simulating a Week of Rain | 2018-12-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
-| [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
-| [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
-| TV Golden Age | 2019-01-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
-| Space Launches | 2019-01-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
-| US Incarceration | 2019-01-25 |  | :x: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
-| [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
+| [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
+| [Riddler: Monte Carlo Simulation](#riddler-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
+| [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom` package, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
+| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain) | 2018-12-12 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
+| [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
+| [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
+| [TV Golden Age](#tv-golden-age) | 2019-01-09 | Data manipulation, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
+| [Space Launches](#space-launches) | 2019-01-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
+| [US Incarceration](#us-incarceration) | 2019-01-25 | Animated map using `gganimate` package, Dealing with missing data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
+| [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
 | [US PhDs](#us-phds) | 2019-02-22 | Tidying very un-tidy data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19) |
 | [French Train Delays](#french-train-delays) | 2019-02-26 | Heat map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26) |
-| Women in the Workplace | 2019-03-05 |  | :x: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
-| Board Game Reviews | 2019-03-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
-| Seattle Pet Names | 2019-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
+| [Women in the Workplace](#women-in-the-workplace) | 2019-03-05 | Interactive scatterplot using `plotly` and `shiny` packages | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
+| [Board Game Reviews](#board-game-reviews) | 2019-03-15 | Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
+| [Seattle Pet Names](#seattle-pet-names) | 2019-03-16 | Hypergeometric hypothesis testing, Adjusting for multiple hypothesis testing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
 | [Seattle Bike Counts](#seattle-bike-counts) | 2019-04-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02) |
 | [Tennis Tournaments](#tennis-tournaments) | 2019-04-09 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09) |
 | [Bird Collisions](#bird-collisions) | 2019-05-03 | Bootstrapping | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=zjWm__nFLXI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-30) |
-| [Student-Teacher Ratios](#studentteacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
-| Nobel Prize Winners | 2019-05-24 |  | :x: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
+| [Student Teacher Ratios](#student-teacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
+| [Nobel Prize Winners](#nobel-prize-winners) | 2019-05-24 | Data manipulation, Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
 | [Plastic Waste](#plastic-waste) | 2019-05-27 | Choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BRdLOYtJk9o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21) |
-| [Wine Ratings](#wine-ratings) | 2019-05-31 | Text mining using `tidytext`, Lasso regression using `glmnet` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28) |
-| [Ramen Reviews](#ramen-reviews) | 2019-06-04 | Web scraping using `rvest` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04) |
+| [Wine Ratings](#wine-ratings) | 2019-05-31 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28) |
+| [Ramen Reviews](#ramen-reviews) | 2019-06-04 | Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04) |
 | [Media Franchise Revenue](#media-franchise-revenue) | 2019-06-22 | Data manipulation (especially re-ordering factors) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1xsbTs9-a50) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02) |
 | [Women's World Cup](#womens-world-cup) | 2019-07-22 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09) |
 | [Bob Ross Paintings](#bob-ross-paintings) | 2019-08-12 | Network graphs, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sD993H5FBIY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06) |
 | Simpsons Guest Stars | 2019-08-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27) |
 | [Pizza Ratings](#pizza-ratings) | 2019-10-01 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Mkac8DHScps) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01) |
 | [Car Fuel Efficiency](#car-fuel-efficiency) | 2019-10-15 | Natural splines for regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=RpeioixHOHw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-15) |
-| [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext`, Lasso regression using `glmnet` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
-| [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
-| [CRAN Package Code](#cran-package-code) | 2019-12-30 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
+| [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
+| [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
+| [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | Riddler: Spelling Bee Honeycomb | 2020-01-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
 
 
@@ -52,6 +52,105 @@
 
 
 ### Individual Screencasts
+
+
+
+#### College Majors and Income
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| College Majors and Income | [1:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=105s) | Using `read_csv` function to import data directly from Github to R (without cloning the repository) |
+| College Majors and Income | [7:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=440s) | Creating a histogram (`geom_histogram`), then a boxplot (`geom_boxplot`), to explore the distribution of salaries |
+| College Majors and Income | [8:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=535s) | Using `fct_reorder` function to sort boxplot of college majors by salary |
+| College Majors and Income | [9:35](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=575s) | Using `dollar_format` function from `scales` package to convert scientific notation to dollar format (e.g., "4e+04" becomes "$40,000") |
+| College Majors and Income | [14:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=850s) | Creating a dotplot (`geom_point`) of 20 top-earning majors (includes adjusting axis, using the colour aesthetic, and adding error bars) |
+| College Majors and Income | [17:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1065s) | Using `str_to_title` function to convert string from ALL CAPS to Title Case |
+| College Majors and Income | [20:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1245s) | Creating a Bland-Altman graph to explore relationship between sample size and median salary |
+| College Majors and Income | [21:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1305s) | Using `geom_text_repel` function from `ggrepel` package to get text labels on scatter plot points |
+| College Majors and Income | [28:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1710s) | Using `count` function's `wt` argument to specify what should be counted (default is number of rows) |
+| College Majors and Income | [30:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1800s) | Spicing up a dull bar graph by adding a redundant colour aesthetic (trick from Julia Silge) |
+| College Majors and Income | [36:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2180s) | Starting to explore relationship between gender and salary |
+| College Majors and Income | [37:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2230s) | Creating a stacked bar graph (`geom_col`) of gender breakdown within majors |
+| College Majors and Income | [40:15](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2415s) | Using `summarise_at` to aggregate men and women from majors into categories of majors |
+| College Majors and Income | [45:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2730s) | Graphing scatterplot (`geom_point`) of share of women and median salary |
+| College Majors and Income | [47:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2830s) | Using `geom_smooth` function to add a line of best fit to scatterplot above |
+| College Majors and Income | [48:40](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2920s) | Explanation of why not to aggregate first when performing a statistical test (including explanation of Simpson's Paradox) |
+| College Majors and Income | [49:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2995s) | Fixing `geom_smooth` so that we get one overall line while still being able to map to the colour aesthetic |
+| College Majors and Income | [51:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3070s) | Predicting median salary from share of women with weighted linear regression (to take sample sizes into account) |
+| College Majors and Income | [56:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3365s) | Using `nest` function and `tidy` function from the `broom` package to apply a linear model to many categories at once |
+| College Majors and Income | [58:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3485s) | Using `p.adjust` function to adjust p-values to correct for multiple testing (using FDR, False Discovery Rate) |
+| College Majors and Income | [1:04:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3890s) | Showing how to add an appendix to an `Rmarkdown` file with code that doesn't run when compiled |
+| College Majors and Income | [1:09:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4140s) | Using `fct_lump` function to aggregate major categories into the top four and an "Other" category |
+| College Majors and Income | [1:10:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4205s) | Adding sample size to the size aesthetic within the `aes` function |
+| College Majors and Income | [1:10:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4250s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot (tooltips appear when moused over) |
+| College Majors and Income | [1:15:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4555s) | Exploring IQR (Inter-Quartile Range) of salaries by major |
+
+
+
+***
+
+
+
+#### Horror Movie Profits
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Horror Movie Profits | [2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
+| Horror Movie Profits | [7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category |
+| Horror Movie Profits | [8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | Investigating strange numbers in the data and discovering duplication |
+| Horror Movie Profits | [12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | Using problems function to look at parsing errors when importing data |
+| Horror Movie Profits | [14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations |
+| Horror Movie Profits | [16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | Using `geom_boxplot` function to create a boxplot of budget by distributor |
+| Horror Movie Profits | [19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970") |
+| Horror Movie Profits | [21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | Using `summarise_at` function to apply the same function to multiple variables at the same time |
+| Horror Movie Profits | [24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | Using `geom_line` to visualize multiple metrics at the same time |
+| Horror Movie Profits | [26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor |
+| Horror Movie Profits | [28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | Starting analysis of profit ratio of movies |
+| Horror Movie Profits | [32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times") |
+| Horror Movie Profits | [41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | Starting analysis of the most common genres over time |
+| Horror Movie Profits | [45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | Starting analysis of the most profitable individual horror movies |
+| Horror Movie Profits | [51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | Using `paste0` function to add release date of movie to labels in a bar graph |
+| Horror Movie Profits | [53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot |
+| Horror Movie Profits | [58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot |
+| Horror Movie Profits | [1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | Reviewing unexplored areas of investigation |
+
+
+
+***
+
+
+
+#### R Downloads
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| R Downloads | [5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | 	Using `geom_line` function to visualize changes over time |
+| R Downloads | [7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | 	Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions) |
+| R Downloads | [9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | 	Using `floor_date` function from `lubridate` package to round dates down to the week level |
+| R Downloads | [10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | Using `min` function to drop incomplete/partial week at the start of the dataset |
+| R Downloads | [12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada") |
+| R Downloads | [17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other" |
+| R Downloads | [20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable |
+| R Downloads | [22:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1340s) | Using `facet_wrap` function to graph small multiples of downloads by country, then changing its `scales` argument to allow different scales on y-axis |
+| R Downloads | [31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | Starting analysis of downloads by IP address |
+| R Downloads | [35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable |
+| R Downloads | [36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function) |
+| R Downloads | [38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds) |
+| R Downloads | [38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | Explanation of a bimodal log-normal distribution |
+| R Downloads | [39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | Handy trick for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument |
+| R Downloads | [47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | Starting to explore package downloads |
+| R Downloads | [52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero |
+| R Downloads | [57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package |
+
+
+
+***
 
 
 
@@ -80,6 +179,43 @@
 | US Wind Turbines | [1:01:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3705s) | Diagnosis of `gganimate` issue (points between integer years are being interpolated) |
 | US Wind Turbines | [1:04:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3875s) | Pseudo-successful `gganimate` map (cumulative points show up, but some points are missing) |
 | US Wind Turbines | [1:05:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3940s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Malaria Incidence
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Malaria Incidence | [2:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=165s) | Importing data using the `malariaAtlas` package |
+| Malaria Incidence | [14:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=850s) | Using `geom_line` function to visualize malaria prevalence over time |
+| Malaria Incidence | [15:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=910s) | Quick map visualization using longitude and latitude coordinates and the `geom_point` function |
+| Malaria Incidence | [18:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1120s) | Using `borders` function to add Kenyan country borders to map |
+| Malaria Incidence | [19:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1190s) | Using `scale_colour_gradient2` function to change the colour scale of points on the map |
+| Malaria Incidence | [20:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1240s) | Using `arrange` function to ensure that certain points on a map appear in front of/behind other points |
+| Malaria Incidence | [21:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1310s) | Aggregating data into decades using the truncated division operator `%/%` |
+| Malaria Incidence | [24:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1485s) | Starting to look at aggregated malaria data (instead of country-specific data) |
+| Malaria Incidence | [26:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1610s) | Using `sample` and `unique` functions to randomly select a few countries, which are then graphed |
+| Malaria Incidence | [28:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1710s) | Using `last` function to select the most recent observation from a set of arranged data |
+| Malaria Incidence | [32:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1975s) | Creating a Bland-Altman plot to explore relationship between current incidence and change in incidence in past 15 years |
+| Malaria Incidence | [35:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2145s) | Using `anti_join` function to find which countries are not in the malaria dataset |
+| Malaria Incidence | [36:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2200s) | Using the `iso3166` dataset set in the `maps` package to match three-letter country code (i.e., the ISO 3166 code) with country names |
+| Malaria Incidence | [38:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2310s) | Creating a world map using `geom_polygon` function (and eventually `theme_void` and `coord_map` functions) |
+| Malaria Incidence | [39:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2340s) | Getting rid of Antarctica from world map |
+| Malaria Incidence | [42:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2555s) | Using `facet_wrap` function to create small multiples of world map for different time periods |
+| Malaria Incidence | [47:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2850s) | Starting to create an animated map of malaria deaths (actual code writing starts at 57:45) |
+| Malaria Incidence | [51:25](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3085s) | Starting with a single year after working through some bugs |
+| Malaria Incidence | [52:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3130s) | Using `regex_inner_join` function from the `fuzzyjoin` package to join map datasets because one of them has values in regular expressions |
+| Malaria Incidence | [55:15](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3315s) | As alternative to `fuzzyjoin` package in above step, using `str_remove` function to get rid of unwanted regex |
+| Malaria Incidence | [57:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3465s) | Starting to turn static map into an animation using `gganimate` package |
+| Malaria Incidence | [1:02:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3720s) | The actual animated map |
+| Malaria Incidence | [1:02:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3755s) | Using `countrycode` package to filter down to countries in a specific continent (Africa, in this case) |
+| Malaria Incidence | [1:03:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3835s) | Summary of screencast |
 
 
 
@@ -297,6 +433,31 @@
 
 
 
+#### Riddler: Simulating a Week of Rain
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Week of Rain | [1:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=80s) | Using `crossing` function to get all combinations of specified variables (100 trials of 5 days) |
+| Riddler: Simulating a Week of Rain | [2:35](https://www.youtube.com/watch?v=TDzd73z8thU&t=155s) | Using `rbinom` function to simulate whether it rains or not |
+| Riddler: Simulating a Week of Rain | [3:15](https://www.youtube.com/watch?v=TDzd73z8thU&t=195s) | Using `ifelse` function to set starting number of umbrellas at beginning of week |
+| Riddler: Simulating a Week of Rain | [4:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=260s) | Explanation of structure of simulation and approach to determining number of umbrellas in each location |
+| Riddler: Simulating a Week of Rain | [5:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=330s) | Changing structure so that we have a row for each day's morning or evening |
+| Riddler: Simulating a Week of Rain | [7:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=430s) | Using `group_by`, `ifelse`, and `row_number` functions to set starting number of umbrellas for each trial |
+| Riddler: Simulating a Week of Rain | [8:45](https://www.youtube.com/watch?v=TDzd73z8thU&t=525s) | Using `case_when` function to returns different values for multiple logical checks (allows for more outputs than ifelse) |
+| Riddler: Simulating a Week of Rain | [10:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=620s) | Using `cumsum` function to create a running tally of number of umbrellas in each location |
+| Riddler: Simulating a Week of Rain | [11:25](https://www.youtube.com/watch?v=TDzd73z8thU&t=685s) | Explanation of output of simulated data |
+| Riddler: Simulating a Week of Rain | [12:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=750s) | Using `any` function to check if any day had a negative "umbrella count" (indicating there wasn't an umbrella available when raining) |
+| Riddler: Simulating a Week of Rain | [15:40](https://www.youtube.com/watch?v=TDzd73z8thU&t=940s) | Asking, "When was the first time Louie got wet?" |
+| Riddler: Simulating a Week of Rain | [17:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=1030s) | Creating a custom vector to convert an integer to a weekday (e.g., 2 = Tue) |
+
+
+
+***
+
+
+
 #### Dolphins
 
 [Back to summary](#screencast-summary)
@@ -372,6 +533,101 @@
 | TidyTuesday Tweets | [1:08:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4125s) | Using `geom_text` function with check_overlap argument to add labels to scatterplot |
 | TidyTuesday Tweets | [1:12:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4340s) | Asking, "Who are the most active #rstats tweeters?" |
 | TidyTuesday Tweets | [1:15:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4500s) | Summary of screncast |
+
+
+
+***
+
+
+
+#### TV Golden Age
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| TV Golden Age | [2:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=145s) | Quick tip on how to start exploring a new dataset |
+| TV Golden Age | [7:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=450s) | Investigating inconsistency of shows having a count of seasons that is different from the number of seasons given in the data |
+| TV Golden Age | [10:10](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=610s) | Using `%in%` operator and `all` function to only get shows that have a first season and don't have skipped seasons in the data |
+| TV Golden Age | [15:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=930s) | Asking, "Which seasons have the most variation in ratings?" |
+| TV Golden Age | [20:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1225s) | Using `facet_wrap` function to separate different shows on a line graph into multiple small graphs |
+| TV Golden Age | [20:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1250s) | Writing custom embedded function to get width of breaks on the x-axis to always be even (e.g., season 2, 4, 6, etc.) |
+| TV Golden Age | [23:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1430s) | Committing, finding, and explaining a common error of using the same variable name when summarizing multiple things |
+| TV Golden Age | [28:20](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1700s) | Using truncated division operator `%/%` to bin data into two-year bins instead of annual (e.g., 1990 and 1991 get binned to 1990) |
+| TV Golden Age | [31:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1890s) | Using subsetting (with square brackets) within the `mutate` function to calculate mean on only a subset of data (without needing to filter) |
+| TV Golden Age | [33:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2030s) | Using `gather` function (now `pivot_longer`) to get metrics as columns into tidy format, in order to graph them all at once with a `facet_wrap` |
+| TV Golden Age | [36:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2190s) | Using `pmin` function to lump all seasons after 4 into one row (it still shows "4", but it represents "4+") |
+| TV Golden Age | [39:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2340s) | Asking, "If season 1 is good, do you get a second season?" (show survival) |
+| TV Golden Age | [40:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2435s) | Using `paste0` and `spread` functions to get season 1-3 ratings into three columns, one for each season |
+| TV Golden Age | [42:05](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2525s) | Using `distinct` function with `.keep_all` argument remove duplicates by only keeping the first one that appears |
+| TV Golden Age | [45:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2750s) | Using logistic regression to answer, "Does season 1 rating affect the probability of getting a second season?" (note he forgets to specify the family argument, fixed at 57:25) |
+| TV Golden Age | [48:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2915s) | Using `ntile` function to divide data into N bins (5 in this case), then eventually using `cut` function instead |
+| TV Golden Age | [57:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3420s) | Adding year as an independent variable to the logistic regression model |
+| TV Golden Age | [58:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3530s) | Adding an interaction term (season 1 interacting with year) to the logistic regression model |
+| TV Golden Age | [59:55](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3595s) | Using `augment` function as a method of visualizing and interpreting coefficients of regression model |
+| TV Golden Age | [1:00:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3630s) | Using `crossing` function to create new data to test the logistic regression model on and interpret model coefficients |
+| TV Golden Age | [1:03:40](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3820s) | Fitting natural splines using the `splines` package, which would capture a non-linear relationship |
+| TV Golden Age | [1:06:15](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3975s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Space Launches
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Space Launches | [4:40](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=280s) | Using `str_detect` function to find missions with "Apollo" in their name |
+| Space Launches | [6:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=380s) | Starting EDA (exploratory data analysis) |
+| Space Launches | [15:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=910s) | Using `fct_collapse` function to recode factors (similar to `case_when` function) |
+| Space Launches | [16:45](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1005s) | Using `countrycode` function from `countrycode` package to get full country names from country codes (e.g. "RU" becomes "Russia") |
+| Space Launches | [18:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1095s) | Using `replace_na` function to convert NA (missing) observations to "Other" |
+| Space Launches | [19:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1150s) | Creating a line graph using `geom_line` function with different colours for different categories |
+| Space Launches | [21:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1265s) | Using `fct_reorder` function to reorder factors in line graph above, in order to make legend more readable |
+| Space Launches | [32:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1920s) | Creating a bar graph, using `geom_col` function, of most active (by number of launches) private or startup agencies |
+| Space Launches | [35:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2105s) | Using truncated division operator `%/%` to bin data into decades |
+| Space Launches | [35:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2135s) | Using `complete` function to turn implicit zeros into explicit zeros (makes for a cleaner line graph) |
+| Space Launches | [37:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2235s) | Using `facet_wrap` function to create small multiples of a line graph, then proceeding to tweak the graph |
+| Space Launches | [42:50](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2570s) | Using `semi_join` function as a filtering step |
+| Space Launches | [43:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2595s) | Using `geom_point` to create a timeline of launches by vehicle type |
+| Space Launches | [47:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2840s) | Explanation of why boxplots over time might not be a good visualization choice |
+| Space Launches | [48:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2880s) | Using `geom_jitter` function to tweak the timeline graph to be more readable |
+| Space Launches | [51:30](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3090s) | Creating a second timeline graph for US vehicles and launches |
+| Space Launches | [56:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3395s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### US Incarceration
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| US Incarceration | [4:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=270s) | Creating a facetted (small multiples) line graph of incarceration rate by urbanicity and race over time |
+| US Incarceration | [7:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=465s) | Discussion of statistical testing of incarceration rates by urbanicity (e.g., rural, suburban) |
+| US Incarceration | [11:25](https://www.youtube.com/watch?v=78kv808ZU6o&t=685s) | Exploring the extent of missing data on prison population |
+| US Incarceration | [14:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=855s) | Using `any` function to filter down to states that have at least one (hence the any function) row of non-missing data |
+| US Incarceration | [18:40](https://www.youtube.com/watch?v=78kv808ZU6o&t=1120s) | Using `cut` function to manually bin data along user-specified intervals |
+| US Incarceration | [24:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=1455s) | Starting to create a choropleth map of incarceration rate by state |
+| US Incarceration | [26:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=1580s) | Using `match` function to match two-letter state abbreviation to full state name, in order to get data needed to create a map |
+| US Incarceration | [28:00](https://www.youtube.com/watch?v=78kv808ZU6o&t=1680s) | Actually typing the code (now that we have the necessary data) to create a choropleth map |
+| US Incarceration | [33:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=1985s) | Using `str_remove` function and regex to chop off the end of county names (e.g., "Allen Parish" becomes "Allen") |
+| US Incarceration | [33:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=2010s) | Making choropleth more specific by drilling down to county-level data |
+| US Incarceration | [41:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=2470s) | Starting to make an animated choropleth map using `gganimate` package |
+| US Incarceration | [42:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=2540s) | Using modulo operator `%%` to choose every 5th year |
+| US Incarceration | [43:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=2625s) | Using `scale_fill_gradient2` function's `limits` argument to exclude unusally high values that were blowing out the scale |
+| US Incarceration | [48:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=2895s) | Using `summarise_at` function to apply the same function to multiple fields at the same time |
+| US Incarceration | [50:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=3010s) | Starting to investigate missing data (how much is missing, where is it missing, etc.) |
+| US Incarceration | [54:50](https://www.youtube.com/watch?v=78kv808ZU6o&t=3290s) | Creating a line graph that excludes counties with missing data |
+| US Incarceration | [57:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=3425s) | Summary of screencast |
 
 
 
@@ -478,6 +734,110 @@
 
 
 
+#### Women in the Workplace
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Women in the Workplace | [5:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=350s) | Writing a custom function that summarizes variables based on their names (then abandoning the idea) |
+| Women in the Workplace | [9:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=555s) | Using `complete.cases` function to find observations that have an NA value in any variable |
+| Women in the Workplace | [9:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=590s) | Using subsetting within a `summarise` function to calculate a weighted mean when dealing with 0 or NA values in some observations |
+| Women in the Workplace | [12:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=740s) | Debugging what is causing NA values to appear in the summarise output (finds the error at 13:25) |
+| Women in the Workplace | [17:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1070s) | Hypothesizing about one sector illustrating a variation of Simpson's Paradox |
+| Women in the Workplace | [25:25](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1525s) | Creating a scatterplot with a logarithmic scale and using `scale_colour_gradient2` function to encode data to point colour |
+| Women in the Workplace | [30:00](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1800s) | Creating an interactive plot (tooltips show up on hover) using `ggplotly` function from `plotly` package |
+| Women in the Workplace | [33:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2000s) | Fiddling with `scale_size_continuous` function's `range` argument to specify point size on a scatterplot (which are encoded to total workers) |
+| Women in the Workplace | [34:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2090s) | Explanation of why healthcare sector is a good example of Simpson's Paradox |
+| Women in the Workplace | [43:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2595s) | Starting to create a `shiny` app with "occupation" as only input (many tweaks in subsequent minutes to make it work) |
+| Women in the Workplace | [47:55](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2875s) | Tweaking size (height) of graph in `shiny` app |
+| Women in the Workplace | [54:05](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=3245s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Board Game Reviews
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Board Game Reviews | [2:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=170s) | Starting EDA (exploratory data analysis) with counts of categorical variables |
+| Board Game Reviews | [7:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=445s) | Specifying `scale_x_log10` function's `breaks` argument to get sensisble tick marks for time on histogram |
+| Board Game Reviews | [8:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=525s) | Tweaking `geom_histogram` function's `binwidth` argument to get something that makes sense for log scale |
+| Board Game Reviews | [10:10](https://www.youtube.com/watch?v=qirKGdQvy9U&t=610s) | Using `separate_rows` to break down comma-separated values for three different categorical variables |
+| Board Game Reviews | [15:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=955s) | Using `top_n` to get top 20 observations from each of several categories (not quite right, fixed at 17:47) |
+| Board Game Reviews | [16:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=975s) | Troubleshooting various issues with facetted graph (e.g., ordering, values appearing in multiple categories) |
+| Board Game Reviews | [19:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1195s) | Starting prediction of average rating with a linear model |
+| Board Game Reviews | [20:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1250s) | Splitting data into train/test sets (training/holdout) |
+| Board Game Reviews | [22:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1375s) | Investigating relationship between max number of players and average rating (to determine if it should be in linear model) |
+| Board Game Reviews | [25:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1505s) | Exploring average rating over time ("Do newer games tend to be rated higher/lower?") |
+| Board Game Reviews | [27:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1655s) | Discussing necessity of controlling for year a game was published in the linear model |
+| Board Game Reviews | [28:30](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1710s) | Non-model approach to exploring relationship between game features (e.g., card game, made in Germany) on average rating |
+| Board Game Reviews | [30:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1850s) | Using `geom_boxplot` function to create boxplot of average ratings for most common game features |
+| Board Game Reviews | [34:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2045s) | Using `unite` function to combine multiple variables into one |
+| Board Game Reviews | [37:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2245s) | Introducing Lasso regression as good option when you have many features likely to be correlated with one another |
+| Board Game Reviews | [38:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2295s) | Writing code to set up Lasso regression using `glmnet` and `tidytext` packages |
+| Board Game Reviews | [40:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2405s) | Adding average rating to the feature matrix (warning: method is messy) |
+| Board Game Reviews | [41:40](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2500s) | Using `setdiff` function to find games that are in one set, but not in another (while setting up matrix for Lasso regression) |
+| Board Game Reviews | [44:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2655s) | Spotting the error stemming from the step above (calling row names from the wrong data) |
+| Board Game Reviews | [45:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2745s) | Explaining what a Lasso regression does, including the penalty parameter lambda |
+| Board Game Reviews | [48:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2915s) | Using a cross-validated Lasso model to choose the level of the penalty parameter (lambda) |
+| Board Game Reviews | [51:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3095s) | Adding non-categorical variables to the Lasso model to control for them (e.g., max number of players) |
+| Board Game Reviews | [55:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3315s) | Using `unite` function to combine multiple variables into one, separated by a colon |
+| Board Game Reviews | [58:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3525s) | Graphing the top 20 coefficients in the Lasso model that have the biggest effect on predicted average rating |
+| Board Game Reviews | [1:00:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3655s) | Mentioning the yardstick package as a way to evaluate the model's performance |
+| Board Game Reviews | [1:01:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3675s) | Discussing drawbacks of linear models like Lasso (can't do non-linear relationships or interaction effects) |
+
+
+
+***
+
+
+
+#### Seattle Pet Names
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Seattle Pet Names | [2:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=160s) | Using `mdy` function from `lubridate` package to convert character-formatted date to date-class |
+| Seattle Pet Names | [4:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=260s) | Exploratory bar graph showing top species of cats, using `geom_col` function |
+| Seattle Pet Names | [6:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=390s) | Specifying `facet_wrap` function's `ncol` argument to get graphs stacked vertically (instead of side-by-side) |
+| Seattle Pet Names | [9:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=595s) | Asking, "Are some animal names associated with particular dog breeds?" |
+| Seattle Pet Names | [11:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=675s) | Explanation of `add_count` function |
+| Seattle Pet Names | [12:35](https://www.youtube.com/watch?v=EF4A4OtQprg&t=755s) | Adding up various metrics (e.g., number of names overall, number of breeds overall), but note a mistake that gets fixed at 17:05 |
+| Seattle Pet Names | [16:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=970s) | Calculating a ratio for names that appear over-represented within a breed, then explaining how small samples can be misleading |
+| Seattle Pet Names | [17:05](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1025s) | Spotting and fixing an aggregation mistake |
+| Seattle Pet Names | [17:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1075s) | Explanation of how to investigate which names might be over-represented within a breed |
+| Seattle Pet Names | [18:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1135s) | Explanation of how to use hypergeometric distribution to test for name over-representation |
+| Seattle Pet Names | [20:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1240s) | Using `phyper` function to calculate p-values for a one-sided hypergeometric test |
+| Seattle Pet Names | [23:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1410s) | Additional explanation of hypergeometric distribution |
+| Seattle Pet Names | [24:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1440s) | First investigation of why and how to interpret a p-value histogram (second at 29:45, third at 37:45, and answer at 39:30) |
+| Seattle Pet Names | [25:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1515s) | Noticing that we are missing zeros (i.e., having a breed/name combination with 0 dogs), which is important for the hypergeometric test |
+| Seattle Pet Names | [27:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1630s) | Using `complete` function to turn implicit zeros (for breed/name combination) into explicit zeros |
+| Seattle Pet Names | [29:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1785s) | Second investigation of p-value histogram (after adding in implicit zeros) |
+| Seattle Pet Names | [31:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1915s) | Explanation of multiple hypothesis testing and correction methods (e.g., Bonferroni, Holm), and applying using `p.adjust` function |
+| Seattle Pet Names | [34:25](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2065s) | Explanation of False Discovery Rate (FDR) control as a method for correcting for multiple hypothesis testing, and applying using `p.adjust` function |
+| Seattle Pet Names | [37:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2265s) | Third investigation of p-value histogram, to hunt for under-represented names |
+| Seattle Pet Names | [39:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2370s) | Answer to why the p-value distribution is not well-behaved |
+| Seattle Pet Names | [42:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2560s) | Using `crossing` function to created a simulated dataset to explore how different values affect the p-value |
+| Seattle Pet Names | [44:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2695s) | Explanation of how total number of names and total number of breeds affects p-value |
+| Seattle Pet Names | [46:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2760s) | More general explanation of what different shapes of p-value histogram might indicate |
+| Seattle Pet Names | [47:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2850s) | Renaming variables within a `transmute` function, using backticks to get names with spaces in them |
+| Seattle Pet Names | [49:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2960s) | Using `kable` function from the `knitr` package to create a nice-looking table |
+| Seattle Pet Names | [50:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3000s) | Explanation of one-side p-value (as opposed to two-sided p-value) |
+| Seattle Pet Names | [53:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3235s) | Summary of screencast |
+
+
+
+***
+
+
+
 #### Seattle Bike Counts
 
 [Back to summary](#screencast-summary)
@@ -565,7 +925,7 @@
 
 
 
-#### Student-Teacher Rations
+#### Student Teacher Ratios
 
 [Back to summary](#screencast-summary)
 
@@ -589,6 +949,35 @@
 | Student-Teacher Ratios | [1:06:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=4010s) | Reviewing and interpreting the final linear regression model |
 | Student-Teacher Ratios | [1:08:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=4080s) | Using `cor` function (correlation) to get correlation matrix for three variables (and brief explanation of multi-collinearity) |
 | Student-Teacher Ratios | [1:10:10](https://www.youtube.com/watch?v=NoUHdrailxA&t=4210s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Nobel Prize Winners
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Nobel Prize Winners | [2:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=120s) | Creating a stacked bar plot using `geom_col` and the `aes` function's `fill` argument (also bins years into decades with truncated division operator `%/%`) |
+| Nobel Prize Winners | [3:30](https://www.youtube.com/watch?v=yWSpLfmES7w&t=210s) | Using `n_distinct` function to quickly count unique years in a group |
+| Nobel Prize Winners | [9:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=540s) | Using `distinct` function and its `.keep_all` argument to de-duplicate data |
+| Nobel Prize Winners | [10:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=650s) | Using `coalesce` function to replace NAs in a variable (similar to SQL COALESCE verb) |
+| Nobel Prize Winners | [16:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=970s) | Using `year` function from `lubridate` package to calculate (approx.) age of laureates at time of award |
+| Nobel Prize Winners | [16:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1010s) | Using `fct_reorder` function to arrange boxplot graph by the median age of winners |
+| Nobel Prize Winners | [22:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1370s) | Defining a new variable within the `count` function (like doing a `mutate` in the `count` function) |
+| Nobel Prize Winners | [23:40](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1420s) | Creating a small multiples bar plot using `geom_col` and `facet_wrap` functions |
+| Nobel Prize Winners | [26:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1575s) | Importing income data from `WDI` package to explore relationship between high/low income countries and winners |
+| Nobel Prize Winners | [33:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2025s) | Using `fct_relevel` to change the levels of a categorical income variable (e.g., "Upper middle income") so that the ordering makes sense |
+| Nobel Prize Winners | [36:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2185s) | Starting to explore new dataset of nobel laureate publications |
+| Nobel Prize Winners | [44:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2665s) | Taking the mean of a subset of data without needing to fully filter the data beforehand |
+| Nobel Prize Winners | [49:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2955s) | Using `rank` function and its `ties.method` argument to add the ordinal number of a laureate's publication (e.g., 1st paper, 2nd paper) |
+| Nobel Prize Winners | [1:05:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=3910s) | Lots of playing around with exploratory histograms (`geom_histogram`) |
+| Nobel Prize Winners | [1:06:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4005s) | Discussion of right-censoring as an issue (people winning the Nobel prize but still having active careers) |
+| Nobel Prize Winners | [1:10:20](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4220s) | Summary of screencast |
 
 
 
