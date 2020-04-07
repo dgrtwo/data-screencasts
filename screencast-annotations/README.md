@@ -44,6 +44,13 @@
 | [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
 | [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | Riddler: Spelling Bee Honeycomb | 2020-01-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
+| The Office ratings | 2020-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
+| COVID-19 Open Research Dataset (CORD-19) | 2020-03-18 |  | :x: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
+| CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
+| R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
+| Riddler: Simulating Replacing Die Sides | 2020-03-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
+| Beer Production | 2020-04-01 |  | :x: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
+| Riddler: Simulating a Non-increasing Sequence | 2020-04-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 
 
 
