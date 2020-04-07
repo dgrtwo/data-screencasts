@@ -1,0 +1,27 @@
+---
+title: "The accumulate function"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(purrr)
+
+letters
+
+accumulate(letters, paste)
+
+accumulate(1:5, ~ . ^ 2, .init = 2)
+```
+
+Pascal's Triangle
+
+```{r}
+accumulate(1:6, ~ c(0, .) + c(., 0), .init = 1)
+```
+
+In this short screencast I share a #tidyverse trick of the day: Use accumulate() from the purrr package to calculate Pascal's Triangle in one line of code.
+

@@ -1,0 +1,197 @@
+---
+title: "Beer Production"
+output: html_document
+name: metrics_beer_production
+owner: drob
+metrics:
+  nb_pounds:
+    title: "# of Pounds Produced"
+    description: "Number of pounds used in beer production in the US"
+dimensions:
+  material_type:
+    title: Type
+    description: Grain / non-grain
+  material:
+    title: Material
+    description: Wheat, hops, corn, etc
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+theme_set(theme_light())
+
+brewing_materials <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/brewing_materials.csv') %>%
+  mutate(date = ymd(paste(year, month, 1))) %>%
+  filter(year < 2016)
+
+beer_taxed <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/beer_taxed.csv')
+brewer_size <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/brewer_size.csv')
+beer_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/beer_states.csv')
+```
+
+What ingredients are used in US beer production?
+
+```{r}
+brewing_materials %>%
+  filter(date == max(date)) %>%
+  filter(!str_detect(material_type, "Total")) %>%
+  mutate(type = fct_reorder(type, month_current)) %>%
+  ggplot(aes(type, month_current, fill = material_type)) +
+  geom_col() +
+  coord_flip()
+
+library(lubridate)
+
+brewing_materials %>%
+  filter(!str_detect(material_type, "Total")) %>%
+  mutate(type = fct_reorder(type, month_current, sum)) %>%
+  ggplot(aes(date, month_current, fill = type)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Time",
+       y = "Pounds used in beer production",
+       fill = "Material")
+
+brewing_materials %>%
+  filter(str_detect(material_type, "Total.*products")) %>%
+  mutate(type = fct_reorder(type, month_current, sum)) %>%
+  ggplot(aes(date, month_current, fill = type)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Time",
+       y = "Pounds used in beer production",
+       fill = "Material")
+```
+
+Tidymetrics
+
+```{r}
+# devtools::install_github("ramnathv/tidymetrics")
+library(tidymetrics)
+
+brewing_summarized <- brewing_materials %>%
+  rename(material = type) %>%
+  filter(!str_detect(material_type, "Total")) %>%
+  cross_by_dimensions(material, material_type) %>%
+  cross_by_periods(c("month", "quarter", "year")) %>%
+  summarize(nb_pounds = sum(month_current)) %>%
+  ungroup()
+
+brewing_summarized %>%
+  filter(material_type == "All", material != "All", period == "quarter") %>%
+  ggplot(aes(date, nb_pounds, fill = material)) +
+  geom_col()
+```
+
+```{r}
+brewing_metrics <- create_metrics(brewing_summarized)
+
+library(shinymetrics)
+
+preview_metric(brewing_metrics$beer_production_nb_pounds)
+```
+
+### Brewer size distribution
+
+```{r}
+brewer_size %>%
+  filter(brewer_size != "Total", !is.na(total_barrels)) %>%
+  mutate(brewer_size = fct_lump(brewer_size, 5, w = total_barrels),
+         barrel_number = coalesce(parse_number(as.character(brewer_size)), 1),
+         brewer_size = fct_reorder(brewer_size, barrel_number)) %>%
+  ggplot(aes(year, total_barrels, fill = brewer_size)) +
+  geom_col()
+```
+
+```{r}
+brewing_materials %>%
+  filter(material_type == "Total Used") %>%
+  ggplot(aes(month, month_current, color = factor(year))) +
+  geom_line() +
+  expand_limits(y = 0)
+```
+
+Where is beer produced?
+
+```{r}
+beer_states %>%
+  count(type, sort = TRUE, wt = barrels)
+
+beer_states %>%
+  group_by(year) %>%
+  summarize(barrels = sum(barrels, na.rm = TRUE))
+
+# Who consumes beer on premises
+state_percents_2019 <- beer_states %>%
+  filter(year == max(year), state != "total") %>%
+  group_by(state, year) %>%
+  mutate(percent = barrels / sum(barrels)) %>%
+  ungroup()
+
+state_percents_2019 %>%
+  filter(type == "On Premises") %>%
+  arrange(desc(percent))
+```
+
+```{r}
+library(maps)
+library(sf)
+
+states <- st_as_sf(map("state", plot = FALSE, fill = TRUE))
+
+states_joined <- state_percents_2019 %>%
+  mutate(ID = str_to_lower(state.name[match(state, state.abb)])) %>%
+  inner_join(states, by = "ID")
+
+states_joined %>%
+  filter(type == "On Premises") %>%
+  ggplot(aes(geometry = geom, fill = percent)) +
+  geom_sf() +
+  scale_fill_gradient2(low = "blue", high = "orange", midpoint = .5,
+                       labels = scales::percent) +
+  ggthemes::theme_map() +
+  labs(title = "In which states is a lot of beer produced consumed on premises?",
+       fill = "% consumed on prem.")
+
+states_joined %>%
+  ggplot(aes(geometry = geom, fill = percent)) +
+  geom_sf() +
+  facet_wrap(~ type, nrow = 2) +
+  scale_fill_gradient2(low = "blue", high = "orange", midpoint = .5,
+                       labels = scales::percent) +
+  ggthemes::theme_map() +
+  theme(legend.position = "right") +
+  labs(title = "How is beer consumed within each state?",
+       fill = "% consumed")
+```
+
+```{r}
+library(gganimate)
+
+beer_states %>%
+  filter(state != "total") %>%
+  group_by(state, year) %>%
+  mutate(percent = barrels / sum(barrels)) %>%
+  ungroup() %>%
+  filter(type == "On Premises") %>%
+  mutate(ID = str_to_lower(state.name[match(state, state.abb)])) %>%
+  inner_join(states, by = "ID") %>%
+  ggplot(aes(geometry = geom, fill = percent)) +
+  geom_sf() +
+  transition_time(year) +
+  facet_wrap(~ type, nrow = 2) +
+  scale_fill_gradient2(low = "blue", high = "orange", midpoint = .5,
+                       labels = scales::percent) +
+  ggthemes::theme_map() +
+  theme(legend.position = "right") +
+  labs(title = "How is beer consumed within each state? ({ as.integer(frame_time) })",
+       fill = "% consumed")
+```
+
+
+

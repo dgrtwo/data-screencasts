@@ -1,0 +1,136 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+words <- tibble(word = read_lines("https://norvig.com/ngrams/enable1.txt")) %>%
+  mutate(word_length = str_length(word)) %>%
+  filter(word_length >= 4,
+         !str_detect(word, "s")) %>%
+  mutate(letters = str_split(word, ""),
+         letters = map(letters, unique),
+         unique_letters = lengths(letters)) %>%
+  mutate(points = ifelse(word_length == 4, 1, word_length) +
+           15 * (unique_letters == 7)) %>%
+  filter(unique_letters <= 7) %>%
+  arrange(desc(points))
+
+center_letter <- "g"
+other_letters <- c("a", "p", "x", "m", "e", "l")
+
+get_words <- function(center_letter, other_letters) {
+  words %>%
+    filter(str_detect(word, center_letter)) %>%
+    mutate(invalid_letters = map(letters, setdiff, c(center_letter, other_letters))) %>%
+    filter(lengths(invalid_letters) == 0) %>%
+    arrange(desc(points))
+}
+
+library(tidytext)
+
+letters_unnested <- words %>%
+  select(word, points) %>%
+  unnest_tokens(letter, word, token = "characters", drop = FALSE) %>%
+  distinct(word, letter, .keep_all = TRUE)
+
+letters_summarized <- letters_unnested %>%
+  group_by(letter) %>%
+  summarize(n_words = n(),
+            n_points = sum(points)) %>%
+  arrange(desc(n_points))
+```
+
+```{r}
+word_matrix <- letters_unnested %>%
+  reshape2::acast(word ~ letter, fun.aggregate = length)
+
+# Points per word (lines up with rows of word matrix)
+points_per_word <- words$points
+names(points_per_word) <- words$word
+points_per_word <- points_per_word[rownames(word_matrix)]
+
+get_score <- function(honeycomb_letters) {
+  center_letter <- honeycomb_letters[1]
+
+  permitted_letters <- colnames(word_matrix) %in% honeycomb_letters
+  
+  num_forbidden <- word_matrix %*% (1L - permitted_letters)
+  word_permitted <- num_forbidden == 0L & word_matrix[, center_letter] == 1L
+  
+  sum(points_per_word[word_permitted])
+}
+
+get_score(c("e", "i", "a", "r", "n", "t", "l"))
+
+get_words("e", c("i", "a", "r", "n", "t", "l"))
+```
+
+```{r}
+center_letter <- "e"
+
+find_best_combination <- function(center_letter, possible_letters) {
+  good_letter_combinations <- combn(possible_letters, 6)
+  
+  # Every column is one of the possible honeycombs
+  forbidden_matrix <- 1L - apply(good_letter_combinations,
+                                 2,
+                                 function(.) colnames(word_matrix) %in% c(center_letter, .))
+  
+  filtered_word_matrix <- word_matrix[word_matrix[, center_letter] == 1, ]
+  word_allowed_matrix <- filtered_word_matrix %*% forbidden_matrix == 0
+  scores <- t(word_allowed_matrix) %*% points_per_word[rownames(word_allowed_matrix)]
+  
+  list(center_letter = center_letter,
+       other_letters = good_letter_combinations[, which.max(scores)],
+       score = max(scores))
+}
+
+pool <- head(letters_summarized$letter, 16)
+
+find_best_combination("e", setdiff(pool, "e"))
+find_best_combination("i", setdiff(pool, "i"))
+find_best_combination("a", setdiff(pool, "a"))
+find_best_combination("r", setdiff(pool, "r"))
+find_best_combination("n", setdiff(pool, "n"))
+find_best_combination("t", setdiff(pool, "t"))
+find_best_combination("g", setdiff(pool, "g"))
+
+get_score(c("r", "e", "i", "a", "n", "t", "g"))
+```
+
+```{r}
+permitted_letters <- colnames(word_matrix) %in% honeycomb_letters
+
+num_forbidden <- word_matrix %*% (1L - permitted_letters)
+word_permitted <- num_forbidden == 0L & word_matrix[, center_letter] == 1L
+
+sum(points_per_word[word_permitted])
+```
+
+
+```{r}
+words %>%
+  unnest(letters) %>%
+  group_by(letters) %>%
+  summarize(total_points = sum(points),
+            )
+```
+
+```{r}
+words
+```
+
+
+
+```{r}
+
+```
+
+

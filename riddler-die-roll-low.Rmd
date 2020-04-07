@@ -1,0 +1,34 @@
+---
+title: "Riddler: How Low Can You Roll: Cumulative window functions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+set.seed(2020)
+
+sim <- tibble(roll = sample(0:9, 1e7, replace = TRUE)) %>%
+  group_by(group = lag(cumsum(roll == 0), default = 0)) %>%
+  filter(roll <= cummin(roll)) %>%
+  mutate(decimal = roll * 10 ^ -row_number()) %>%
+  summarize(score = sum(decimal))
+```
+
+```{r}
+scores %>%
+  summarize(mean(score))
+
+scores %>%
+  ggplot(aes(score)) +
+  geom_histogram(binwidth = .001) +
+  scale_x_continuous(breaks = seq(0, 1, .1))
+
+mean(scores$score)
+```
+
+

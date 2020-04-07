@@ -1,0 +1,67 @@
+---
+title: "The Riddler: Rerolling a die"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+start <- 1:6
+
+next_rolls <- sample(start, replace = TRUE)
+
+simulate_roll <- function(num_sides = 6) {
+  rolls <- accumulate(1:1000, function(x, ...) {
+    result <- sample(x, replace = TRUE)
+    
+    if (length(unique(result)) == 1) {
+      done(result)
+    } else {
+      result
+    }
+  }, .init = 1:num_sides)
+  
+  length(rolls) - 1
+}
+
+simulations4 <- replicate(1e6, simulate_roll(4))
+
+mean(simulations)
+
+tibble(simulations) %>%
+  count(simulations, sort = TRUE)
+```
+
+On average, it takes 9.666 rolls to get the same number on all sides.
+
+```{r simulations_crossed}
+simulations_crossed <- crossing(trial = 1:20000,
+                                num_sides = 2:10) %>%
+  mutate(simulation = map_dbl(num_sides, simulate_roll))
+```
+
+```{r}
+summarized <- simulations_crossed %>%
+  group_by(num_sides) %>%
+  summarize(average_roll = mean(simulation),
+            variance_roll = var(simulation),
+            sd_roll = sd(simulation),
+            cov = sd_roll / average_roll)
+
+summarized %>%
+  ggplot(aes(num_sides, average_roll)) +
+  geom_point() +
+  geom_line() +
+  expand_limits(y = 0)
+
+lm(average_roll ~ num_sides, summarized)
+
+simulations_crossed %>%
+  ggplot(aes(simulation)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~ num_sides, scales = "free_y")
+```
