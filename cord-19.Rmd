@@ -13,43 +13,83 @@ Screencast: https://www.youtube.com/watch?v=-5HYdBq_PTM
 library(tidyverse)
 library(tidytext)
 library(jsonlite)
+library(janitor)
 
-metadata <- read_csv("~/Downloads/2020-03-13/all_sources_metadata_2020-03-13.csv")
+# This is where I'm storing mine
+infolder <- "~/Downloads/2020-03-13"
+
+metadata <- read_csv(paste0(infolder, "/all_sources_metadata_2020-03-13.csv")) %>%
+  clean_names() %>%
+  rename(paper_id = sha,
+         source = source_x)
 ```
 
-Extracting text from all the full papers
-
 ```{r}
-json_objects <- dir("~/Downloads/2020-03-13/comm_use_subset/comm_use_subset/", full.names = TRUE) %>%
+# Read in all the JSON objects as well
+# dir() with recursive = TRUE allows us to get a full vector of filenames
+json_objects <- dir(infolder,
+                    pattern = "*.json",
+                    full.names = TRUE,
+                    recursive = TRUE) %>%
   map(read_json)
+```
 
-json_tbl <- tibble(json = json_objects)
+We then use the `hoist()` function from tidyr to turn the nested data into a rectangle.
 
-article_data <- json_tbl %>%
+```{r articles_hoisted}
+articles_hoisted <- tibble(json = json_objects) %>%
   hoist(json,
         paper_id = "paper_id",
-        title = c("metadata", "title"),
-        authors = c("metadata", "authors"),
-        abstract = c("abstract", function(.) str_c(map_chr(., "text"), collapse = "\n")),
-        body_text = c("body_text", function(.) str_c(map_chr(., "text"), collapse = "\n")),
+        section = c("body_text", function(.) map_chr(., "section")),
+        text = c("body_text", function(.) map_chr(., "text")),
+        citations = c("body_text", function(.) map(., "cite_spans")),
         bib_entries = "bib_entries") %>%
-  select(-json) %>%
-  filter(!is.na(abstract))
+  select(-json)
+```
+
+```{r}
+paragraphs <- articles_hoisted %>%
+  select(-bib_entries) %>%
+  unnest(cols = c(text, section, citations)) %>%
+  group_by(paper_id) %>%
+  mutate(paragraph = row_number()) %>%
+  ungroup() %>%
+  select(paper_id, paragraph, everything())
+
+# Could use unnest_wider, but hoist seems to be faster
+paragraph_citations <- paragraphs %>%
+  select(paper_id, paragraph, citations) %>%
+  unnest(citations) %>%
+  hoist(citations, start = "start", end = "end", text = "text", ref_id = "ref_id")
+```
+
+```{r}
+articles_full <- articles_hoisted %>%
+  select(paper_id)
+  inner_join(metadata, by = c(paper_id = "sha")) %>%
+  mutate(abstract = coalesce(abstract, abstract_json)) %>%
+  select(-json, -has_full_text, -abstract_json) %>%
+  filter(!is.na(title), !is.na(abstract))
 ```
 
 Pulling out the details from the article references
 
 ```{r}
-# article_references <- article_data %>%
-#   select(paper_id, bib_entries) %>%
-#   unnest(bib_entries) %>%
-#   unnest_wider(bib_entries)
-
-article_references <- article_data %>%
+article_references <- articles_hoisted %>%
   select(paper_id, bib_entries) %>%
   unnest(bib_entries) %>%
-  hoist(bib_entries, title = "title", venue = "venue", year = "year")
+  hoist(bib_entries,
+        ref_id = "ref_id",
+        title = "title",
+        venue = "venue",
+        volume = "volume",
+        issn = "issn",
+        pages = "pages",
+        year = "year",
+        doi = list("other_ids", "DOI", 1)) %>%
+  select(-bib_entries)
 ```
+
 
 
 ### Exploratory Data Analysis
@@ -195,9 +235,3 @@ by_word_year %>%
 article_references %>%
   count(venue, sort = TRUE)
 ```
-
-
-
-
-
-
