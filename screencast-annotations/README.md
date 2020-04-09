@@ -1197,7 +1197,7 @@
 
 
 
-#### Simspons Guest Stars
+#### Simpsons Guest Stars
 
 [Back to summary](#screencast-summary)
 
