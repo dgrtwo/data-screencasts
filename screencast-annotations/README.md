@@ -1203,20 +1203,20 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
-| Simpsons Guest Stars | [4:15](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=255s) | Using str_detect function to find guests that played themselves |
-| Simpsons Guest Stars | [7:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=475s) | Using separate_rows function and regex to get delimited values onto different rows (e.g., "Edna Krabappel; Ms. Melon" gets split into two rows) |
-| Simpsons Guest Stars | [9:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=595s) | Using parse_number function to convert a numeric variable coded as character to a proper numeric variable |
+| Simpsons Guest Stars | [4:15](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=255s) | Using `str_detect` function to find guests that played themselves |
+| Simpsons Guest Stars | [7:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=475s) | Using `separate_rows` function and regex to get delimited values onto different rows (e.g., "Edna Krabappel; Ms. Melon" gets split into two rows) |
+| Simpsons Guest Stars | [9:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=595s) | Using `parse_number` function to convert a numeric variable coded as character to a proper numeric variable |
 | Simpsons Guest Stars | [14:45](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=885s) | Downloading and importing supplementary dataset of dialogue |
-| Simpsons Guest Stars | [16:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=970s) | Using semi_join function to filter dataframe based on values that appear in another dataframe |
-| Simpsons Guest Stars | [18:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1085s) | Using anti_join function to check which values in a dataframe do not appear in another dataframe |
-| Simpsons Guest Stars | [20:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1250s) | Using ifelse function to recode a single value with another (i.e., "Edna Krapabbel" becomes "Edna Krabappel-Flanders") |
+| Simpsons Guest Stars | [16:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=970s) | Using `semi_join` function to filter dataframe based on values that appear in another dataframe |
+| Simpsons Guest Stars | [18:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1085s) | Using `anti_join` function to check which values in a dataframe do not appear in another dataframe |
+| Simpsons Guest Stars | [20:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1250s) | Using `ifelse` function to recode a single value with another (i.e., "Edna Krapabbel" becomes "Edna Krabappel-Flanders") |
 | Simpsons Guest Stars | [26:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1580s) | Explaining the goal of all the data cleaning steps |
-| Simpsons Guest Stars | [31:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1885s) | Using sample function to get an example line for each character |
-| Simpsons Guest Stars | [33:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2000s) | Setting geom_histogram function's binwidth and center arguments to get specific bin sizes |
-| Simpsons Guest Stars | [37:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2245s) | Using unnest_tokens and anti_join functions from tidytext package to split dialogue into individual words and remove stop words (e.g., "the", "or", "and") |
-| Simpsons Guest Stars | [38:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2335s) | Using bind_tf_idf function from tidytext package to get the TF-IDF (term frequency-inverse document frequency) of individual words |
-| Simpsons Guest Stars | [42:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2570s) | Using top_n function to get the top 1 TF-IDF value for each role |
-| Simpsons Guest Stars | [44:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2645s) | Using paste0 function to combine two character variables (e.g., "Groundskeeper Willie" and "ach" (separate variables) become "Groundskeeper Willie: ach") |
+| Simpsons Guest Stars | [31:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1885s) | Using `sample` function to get an example line for each character |
+| Simpsons Guest Stars | [33:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2000s) | Setting `geom_histogram` function's `binwidth` and `center` arguments to get specific bin sizes |
+| Simpsons Guest Stars | [37:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2245s) | Using `unnest_tokens` and `anti_join` functions from `tidytext` package to split dialogue into individual words and remove stop words (e.g., "the", "or", "and") |
+| Simpsons Guest Stars | [38:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2335s) | Using `bind_tf_idf` function from `tidytext` package to get the TF-IDF (term frequency-inverse document frequency) of individual words |
+| Simpsons Guest Stars | [42:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2570s) | Using `top_n` function to get the top 1 TF-IDF value for each role |
+| Simpsons Guest Stars | [44:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2645s) | Using `paste0` function to combine two character variables (e.g., "Groundskeeper Willie" and "ach" (separate variables) become "Groundskeeper Willie: ach") |
 | Simpsons Guest Stars | [48:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2890s) | Explanation of what TF-IDF (text frequency-inverse document frequency) tells us and how it is a "catchphrase detector" |
 | Simpsons Guest Stars | [56:40](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=3400s) | Summary of screencast |
 
