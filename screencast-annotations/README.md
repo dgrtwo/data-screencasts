@@ -37,14 +37,14 @@
 | [Media Franchise Revenue](#media-franchise-revenue) | 2019-06-22 | Data manipulation (especially re-ordering factors) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1xsbTs9-a50) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02) |
 | [Women's World Cup](#womens-world-cup) | 2019-07-22 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09) |
 | [Bob Ross Paintings](#bob-ross-paintings) | 2019-08-12 | Network graphs, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sD993H5FBIY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06) |
-| Simpsons Guest Stars | 2019-08-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27) |
+| [Simpsons Guest Stars](#simpsons-guest-stars) | 2019-08-30 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27) |
 | [Pizza Ratings](#pizza-ratings) | 2019-10-01 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Mkac8DHScps) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01) |
 | [Car Fuel Efficiency](#car-fuel-efficiency) | 2019-10-15 | Natural splines for regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=RpeioixHOHw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-15) |
 | [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
 | [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
 | [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | Riddler: Spelling Bee Honeycomb | 2020-01-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
-| The Office ratings | 2020-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
+| The Office | 2020-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
 | COVID-19 Open Research Dataset (CORD-19) | 2020-03-18 |  | :x: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
@@ -1190,6 +1190,35 @@
 | Bob Ross Paintings | [48:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=2880s) | Exploring different matrix names in PCA (u, v, d) |
 | Bob Ross Paintings | [56:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=3410s) | Looking at top 6 principal components of painting elements |
 | Bob Ross Paintings | [57:45](https://www.youtube.com/watch?v=sD993H5FBIY&t=3465s) | Showing percentage of variation that each principal component is responsible for |
+
+
+
+***
+
+
+
+#### Simspons Guest Stars
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Simpsons Guest Stars | [4:15](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=255s) | Using str_detect function to find guests that played themselves |
+| Simpsons Guest Stars | [7:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=475s) | Using separate_rows function and regex to get delimited values onto different rows (e.g., "Edna Krabappel; Ms. Melon" gets split into two rows) |
+| Simpsons Guest Stars | [9:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=595s) | Using parse_number function to convert a numeric variable coded as character to a proper numeric variable |
+| Simpsons Guest Stars | [14:45](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=885s) | Downloading and importing supplementary dataset of dialogue |
+| Simpsons Guest Stars | [16:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=970s) | Using semi_join function to filter dataframe based on values that appear in another dataframe |
+| Simpsons Guest Stars | [18:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1085s) | Using anti_join function to check which values in a dataframe do not appear in another dataframe |
+| Simpsons Guest Stars | [20:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1250s) | Using ifelse function to recode a single value with another (i.e., "Edna Krapabbel" becomes "Edna Krabappel-Flanders") |
+| Simpsons Guest Stars | [26:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1580s) | Explaining the goal of all the data cleaning steps |
+| Simpsons Guest Stars | [31:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1885s) | Using sample function to get an example line for each character |
+| Simpsons Guest Stars | [33:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2000s) | Setting geom_histogram function's binwidth and center arguments to get specific bin sizes |
+| Simpsons Guest Stars | [37:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2245s) | Using unnest_tokens and anti_join functions from tidytext package to split dialogue into individual words and remove stop words (e.g., "the", "or", "and") |
+| Simpsons Guest Stars | [38:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2335s) | Using bind_tf_idf function from tidytext package to get the TF-IDF (term frequency-inverse document frequency) of individual words |
+| Simpsons Guest Stars | [42:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2570s) | Using top_n function to get the top 1 TF-IDF value for each role |
+| Simpsons Guest Stars | [44:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2645s) | Using paste0 function to combine two character variables (e.g., "Groundskeeper Willie" and "ach" (separate variables) become "Groundskeeper Willie: ach") |
+| Simpsons Guest Stars | [48:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2890s) | Explanation of what TF-IDF (text frequency-inverse document frequency) tells us and how it is a "catchphrase detector" |
+| Simpsons Guest Stars | [56:40](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=3400s) | Summary of screencast |
 
 
 
