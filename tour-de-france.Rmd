@@ -1,0 +1,171 @@
+---
+title: "Tour de France"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# devtools::install_github("thebioengineer/tidytuesdayR")
+
+library(tidytuesdayR)
+library(tidyverse)
+theme_set(theme_light())
+```
+
+```{r}
+library(lubridate)
+
+tuesdata <- tidytuesdayR::tt_load('2020-04-07')
+
+tdf_winners <- tuesdata$tdf_winners %>%
+  mutate(year = year(start_date),
+         speed = distance / time_overall)
+
+stage_data <- tuesdata$stage_data
+tdf_stages <- tuesdata$tdf_stages %>%
+  janitor::clean_names() %>%
+  mutate(year = year(date))
+```
+
+```{r}
+View(tuesdata$tdf_winners)
+```
+
+```{r}
+tdf_winners %>%
+  count(birth_country, sort = TRUE) %>%
+  mutate(birth_country = fct_reorder(birth_country, n)) %>%
+  ggplot(aes(n, birth_country)) +
+  geom_col() +
+  labs(y = "",
+       title = "What countries were the most Tour de France winners born in?")
+
+tdf_winners %>%
+  count(winner_name, birth_country, sort = TRUE)
+```
+
+```{r}
+by_decade <- tdf_winners %>%
+  group_by(decade = 10 * (year %/% 10)) %>%
+  summarize(winner_age = mean(age),
+            winner_height = mean(height, na.rm = TRUE),
+            winner_weight = mean(weight, na.rm = TRUE),
+            winner_margin = mean(time_margin, na.rm = TRUE),
+            winner_speed = mean(speed, na.rm = TRUE))
+
+by_decade %>%
+  filter(decade >= 1910) %>%
+  ggplot(aes(decade, winner_margin * 60)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(x = "Decade",
+       y = "Average margin of winner (minutes)",
+       title = "Tour de France races have been getting closer")
+
+by_decade %>%
+  ggplot(aes(decade, winner_speed)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(x = "Decade",
+       y = "Average speed of winner (km/h)",
+       title = "Tour de France winners have been getting faster")
+```
+
+Life expectancy of 
+
+```{r}
+library(survival)
+library(broom)
+
+surv_model <- tdf_winners %>%
+  distinct(winner_name, .keep_all = TRUE) %>%
+  transmute(winner_name,
+            birth_year = year(born),
+            death_year = year(died),
+            dead = as.integer(!is.na(death_year))) %>%
+  mutate(age_at_death = coalesce(death_year, 2020) - birth_year) %>%
+  survfit(Surv(age_at_death, dead) ~ 1, data = .)
+
+glance(surv_model)
+```
+
+Median life expectancy of a Tour de France winner is 77.
+
+```{r}
+stages_joined <- stage_data %>%
+  extract(stage_results_id, "stage", "stage-(.*)") %>%
+  inner_join(tdf_stages, by = c("year", "stage")) %>%
+  mutate(rank = as.integer(rank)) %>%
+  group_by(year, stage) %>%
+  mutate(finishers = sum(!is.na(rank))) %>%
+  ungroup() %>%
+  mutate(percentile = 1 - rank / finishers)
+
+total_points <- stages_joined %>%
+  group_by(year, rider) %>%
+  summarize(total_points = sum(points, na.rm = TRUE)) %>%
+  mutate(points_rank = percent_rank(total_points)) %>%
+  ungroup()
+
+stages_joined %>%
+  filter(stage == "1") %>%
+  group_by(winner_country) %>%
+  summarize(stages = n(),
+            median_percentile = median(percentile, na.rm = TRUE)) %>%
+  arrange(desc(stages))
+```
+
+Does the winner of the first stage predict their final point ranking?
+
+```{r}
+stages_joined %>%
+  filter(stage == "1") %>%
+  inner_join(total_points, by = c("year", "rider")) %>%
+  select(year, rider,
+         percentile_first_stage = percentile,
+         points_rank) %>%
+  mutate(first_stage_bin = cut(percentile_first_stage, seq(0, 1, .1),
+                               include.lowest = TRUE)) %>%
+  filter(!is.na(first_stage_bin)) %>%
+  ggplot(aes(first_stage_bin, points_rank)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Decile performance in the first stage",
+       y = "Overall points percentile")
+```
+
+```{r}
+library(gganimate)
+library(tidytext)
+
+top_10_2017 <- total_points %>%
+  filter(year == max(year)) %>%
+  top_n(10, total_points)
+
+stages_joined %>%
+  filter(year == max(year)) %>%
+  semi_join(top_10_2017, by = "rider") %>%
+  mutate(stage = as.integer(stage),
+         points = coalesce(points, 0)) %>%
+  arrange(stage) %>%
+  group_by(rider) %>%
+  mutate(cumulative_points = cumsum(points)) %>%
+  ungroup() %>%
+  # mutate(rider = reorder_within(rider, cumulative_points, stage)) %>%
+  ggplot(aes(cumulative_points, rider, fill = cumulative_points)) +
+  geom_col() +
+  transition_time(stage) +
+  theme(legend.position = "none") +
+  labs(title = "The 2017 Tour de France. Stage: { frame_time }",
+       x = "Cumulative points at this stage",
+       y = "")
+```
+
+
+
+
+
