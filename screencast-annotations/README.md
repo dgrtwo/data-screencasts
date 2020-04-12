@@ -43,7 +43,7 @@
 | [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
 | [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
 | [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
-| Riddler: Spelling Bee Honeycomb | 2020-01-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
+| [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb) | 2020-01-06 | Simulation with matrixes | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
 | The Office | 2020-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
 | COVID-19 Open Research Dataset (CORD-19) | 2020-03-18 |  | :x: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
@@ -1390,3 +1390,30 @@
 | CRAN Package Code | [1:05:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3935s) | Summary of screencast |
 
 
+
+***
+
+
+
+#### Riddler: Spelling Bee Honeycomb
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Spelling Bee Honeycomb | [2:00](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=120s) | Using `read_lines` function to import a plain text file (.txt) |
+| Riddler: Spelling Bee Honeycomb | [2:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=155s) | Using `str_detect` function to filter out words that do not contain the letter "g" |
+| Riddler: Spelling Bee Honeycomb | [3:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=205s) | Using `str_split` function to get a list of a word's individual letters |
+| Riddler: Spelling Bee Honeycomb | [3:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=235s) | Using `setdiff` function to find words with invalid letters (letters that are not in the puzzle honeycomb) -- also needs `map` function (at 4:35) |
+| Riddler: Spelling Bee Honeycomb | [10:45](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=645s) | Changing existing code to make a function that will calculate scores for letter combinations |
+| Riddler: Spelling Bee Honeycomb | [14:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=850s) | Noticing the rule about bonus points for pangrams and using `n_distinct` function to determine if a word gets those points |
+| Riddler: Spelling Bee Honeycomb | [17:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1045s) | Using `map` function to eliminate duplicate letters from each word's list of component letters |
+| Riddler: Spelling Bee Honeycomb | [25:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1555s) | Using `acast` function from `reshape2` package to create a matrix of words by letters |
+| Riddler: Spelling Bee Honeycomb | [27:50](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1670s) | Using the words/letters matrix to find valid words for a given letter combination |
+| Riddler: Spelling Bee Honeycomb | [29:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1795s) | Using the matrix multiplication operator `%*%` to find the number of "forbidden" letters for each word |
+| Riddler: Spelling Bee Honeycomb | [42:05](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2525s) | Using `microbenchmark` function from `microbenchmark` package to test how long it takes to run a function |
+| Riddler: Spelling Bee Honeycomb | [43:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2615s) | Using combn function to get the actual combinations of 6 letters (not just the count) |
+| Riddler: Spelling Bee Honeycomb | [45:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2715s) | Using `map` function to get scores for different combinations of letters created above |
+| Riddler: Spelling Bee Honeycomb | [47:30](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2850s) | Using `which.max` function to find the position of the max value in a vector |
+| Riddler: Spelling Bee Honeycomb | [1:05:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=3910s) | Using `t` function to transpose a matrix |
+| Riddler: Spelling Bee Honeycomb | [1:19:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=4755s) | Summary of screencast |
