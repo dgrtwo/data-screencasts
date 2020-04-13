@@ -1,0 +1,84 @@
+---
+title: "Riddler: Spam Comments"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+sim <- replicate(1e6, which(cumsum(rexp(250, 1:250)) > 3)[1] - 1)
+
+mean(sim, na.rm = TRUE)
+```
+
+```{r}
+comment_counts <- tibble(n_comments = sim) %>%
+  count(n_comments) %>%
+  mutate(density = n / sum(n))
+
+library(broom)
+
+augmented_exp <- nls(density ~ lambda * exp(-lambda * n_comments),
+                     data = comment_counts,
+                     start = list(lambda = 1)) %>%
+  augment(comment_counts)
+
+augmented_geometric <- nls(density ~ (1 - p) ^ n_comments * p,
+                           data = comment_counts,
+                           start = list(p = .05)) %>%
+  augment(comment_counts)
+
+augmented_geometric %>%
+  ggplot(aes(n_comments, density)) +
+  geom_line() +
+  geom_line(aes(y = .fitted), color = "red")
+```
+
+The number of comments after 3 days is described by a geometric distribution.
+
+What determines the parameter $p$ (and therefore the expected value) of the geometric distribution?
+
+
+```{r}
+tidy_sim <- crossing(trial = 1:5e4,
+         step = 1:250) %>%
+  mutate(waiting = rexp(n(), step)) %>%
+  group_by(trial) %>%
+  mutate(cumulative = cumsum(waiting)) %>%
+  ungroup()
+
+ncomments <- tidy_sim %>%
+  mutate(within_3 = cumulative < 3) %>%
+  group_by(trial) %>%
+  summarize(n_comments = sum(within_3))
+```
+
+```{r}
+comments_by_threshold <- tidy_sim %>%
+  crossing(threshold = seq(.25, 3, .25)) %>%
+  mutate(within = cumulative < threshold) %>%
+  group_by(threshold, trial) %>%
+  summarize(n_comments = sum(within))
+
+comments_by_threshold %>%
+  summarize(expected_value = mean(n_comments)) %>%
+  ggplot(aes(threshold, expected_value)) +
+  geom_line() +
+  geom_line(aes(y = exp(threshold) - 1), color = "red") +
+  labs(x = "# of days",
+       y = "Expected number of comments",
+       title = "How many comments cumulatively over time?",
+       subtitle = "Red line shows exp(x) - 1")
+
+comment_counts %>%
+  filter(!is.na(n_comments)) %>%
+  ggplot(aes(n_comments, density)) +
+  geom_line() +
+  geom_line(aes(y = (1 - 1 / exp(3)) ^ n_comments / exp(3)), color = "red")
+```
+
+The number of comments after n days is described by a geometric distribution with expected value $e^{n}-1$ (that is, with success probability $exp(-n)$).
