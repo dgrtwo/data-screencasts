@@ -52,6 +52,7 @@
 | Beer Production | 2020-04-01 |  | :x: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
 | Riddler: Simulating a Non-increasing Sequence | 2020-04-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 | Tour de France | 2020-04-07 |  | :x: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
+| Riddler: Simulating a Branching Process | 2020-04-13 |  | :x: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 
 
 
