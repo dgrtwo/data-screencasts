@@ -44,7 +44,7 @@
 | [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
 | [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb) | 2020-01-06 | Simulation with matrixes | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
-| The Office | 2020-03-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
+| [The Office](#the-office) | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
 | COVID-19 Open Research Dataset (CORD-19) | 2020-03-18 |  | :x: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
@@ -1418,3 +1418,46 @@
 | Riddler: Spelling Bee Honeycomb | [47:30](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2850s) | Using `which.max` function to find the position of the max value in a vector |
 | Riddler: Spelling Bee Honeycomb | [1:05:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=3910s) | Using `t` function to transpose a matrix |
 | Riddler: Spelling Bee Honeycomb | [1:19:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=4755s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### The Office
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=105s) | Overview of transcripts data |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=145s) | Overview of ratintgs data |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=250s) | Using `fct_inorder` function to create a factor with levels based on when they appear in the dataframe |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=290s) | Using `theme` and `element_text` functions to turn axis labels 90 degrees |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=355s) | Creating a line graph with points at each observation (using `geom_line` and `geom_point`) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=430s) | Adding text labels to very high and very low-rated episodes |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=530s) | Using `theme` function's `panel.grid.major` argument to get rid of some extraneous gridlines, using `element_blank` function |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=615s) | Using `geom_text_repel` from `ggrepel` package to experiment with different labelling (before abandoning this approach) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=765s) | Using `row_number` function to add episode_number field to make graphing easier |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=845s) | Explanation of why number of ratings (votes) is relevant to interpreting the graph |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1150s) | Using `unnest_tokens` function from `tidytext` package to split full-sentence text field to individual words |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1210s) | Using `anti_join` function to filter out stop words (e.g., and, or, the) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1345s) | Using `str_remove_all` function to get rid of quotation marks from character names (quirks that might pop up when parsing) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1540s) | Asking, "Are there words that are specific to certain characters?" (using `bind_tf_idf` function) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1945s) | Using `reorder_within` function to re-order factors within a grouping (when a term appears in multiple groups) and `scale_x_reordered` function to graph |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2225s) | Asking, "What effects the popularity of an episode?" |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2275s) | Dealing with inconsistent episode names between datasets |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2485s) | Using `str_remove` function and some regex to remove "(Parts 1&2)" from some episode names |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2565s) | Using `str_to_lower` function to further align episode names (addresses inconsistent capitalization) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3140s) | Setting up dataframe of features for a LASSO regression, with director and writer each being a feature with its own line |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3175s) | Using `separate_rows` function to separate episodes with multiple writers so that each has their own row |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3505s) | Using `log2` function to transform number of lines fields to something more useable (since it is log-normally distributed) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3620s) | Using `cast_sparse` function from `tidytext` package to create a sparse matrix of features by episode |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3715s) | Using `semi_join` function as a "filtering join" |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3750s) | Setting up dataframes (after we have our features) to run LASSO regression |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3830s) | Using `cv.glmnet` function from `glmnet` package to run a cross-validated LASSO regression |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3935s) | Explanation of how to pick a lambda penalty parameter |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3955s) | Explanation of output of LASSO model |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=4165s) | Outline of why David likes regularized linear models (which is what LASSO is) |
+| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=4255s) | Summary of screencast |
