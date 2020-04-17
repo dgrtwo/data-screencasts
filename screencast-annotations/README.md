@@ -45,7 +45,7 @@
 | [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
 | [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb) | 2020-01-06 | Simulation with matrixes | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
 | [The Office](#the-office) | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
-| COVID-19 Open Research Dataset (CORD-19) | 2020-03-18 |  | :x: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
+| [COVID-19 Open Research Dataset (CORD-19)](#covid19-open-research-dataset-cord19) | 2020-03-18 | JSON formatted data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
 | Riddler: Simulating Replacing Die Sides | 2020-03-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
@@ -1431,33 +1431,70 @@
 
 | Screencast | Time | Description |
 | :--- | ---: | :--- |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=105s) | Overview of transcripts data |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=145s) | Overview of ratintgs data |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=250s) | Using `fct_inorder` function to create a factor with levels based on when they appear in the dataframe |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=290s) | Using `theme` and `element_text` functions to turn axis labels 90 degrees |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=355s) | Creating a line graph with points at each observation (using `geom_line` and `geom_point`) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=430s) | Adding text labels to very high and very low-rated episodes |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=530s) | Using `theme` function's `panel.grid.major` argument to get rid of some extraneous gridlines, using `element_blank` function |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=615s) | Using `geom_text_repel` from `ggrepel` package to experiment with different labelling (before abandoning this approach) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=765s) | Using `row_number` function to add episode_number field to make graphing easier |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=845s) | Explanation of why number of ratings (votes) is relevant to interpreting the graph |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1150s) | Using `unnest_tokens` function from `tidytext` package to split full-sentence text field to individual words |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1210s) | Using `anti_join` function to filter out stop words (e.g., and, or, the) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1345s) | Using `str_remove_all` function to get rid of quotation marks from character names (quirks that might pop up when parsing) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1540s) | Asking, "Are there words that are specific to certain characters?" (using `bind_tf_idf` function) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=1945s) | Using `reorder_within` function to re-order factors within a grouping (when a term appears in multiple groups) and `scale_x_reordered` function to graph |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2225s) | Asking, "What effects the popularity of an episode?" |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2275s) | Dealing with inconsistent episode names between datasets |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2485s) | Using `str_remove` function and some regex to remove "(Parts 1&2)" from some episode names |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=2565s) | Using `str_to_lower` function to further align episode names (addresses inconsistent capitalization) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3140s) | Setting up dataframe of features for a LASSO regression, with director and writer each being a feature with its own line |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3175s) | Using `separate_rows` function to separate episodes with multiple writers so that each has their own row |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3505s) | Using `log2` function to transform number of lines fields to something more useable (since it is log-normally distributed) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3620s) | Using `cast_sparse` function from `tidytext` package to create a sparse matrix of features by episode |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3715s) | Using `semi_join` function as a "filtering join" |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3750s) | Setting up dataframes (after we have our features) to run LASSO regression |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3830s) | Using `cv.glmnet` function from `glmnet` package to run a cross-validated LASSO regression |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3935s) | Explanation of how to pick a lambda penalty parameter |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=3955s) | Explanation of output of LASSO model |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=4165s) | Outline of why David likes regularized linear models (which is what LASSO is) |
-| The Office | [2020-03-16](https://www.youtube.com/watch?v=_IvAubTDQME&t=4255s) | Summary of screencast |
+| The Office | [1:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=105s) | Overview of transcripts data |
+| The Office | [2:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=145s) | Overview of ratintgs data |
+| The Office | [4:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=250s) | Using `fct_inorder` function to create a factor with levels based on when they appear in the dataframe |
+| The Office | [4:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=290s) | Using `theme` and `element_text` functions to turn axis labels 90 degrees |
+| The Office | [5:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=355s) | Creating a line graph with points at each observation (using `geom_line` and `geom_point`) |
+| The Office | [7:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=430s) | Adding text labels to very high and very low-rated episodes |
+| The Office | [8:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=530s) | Using `theme` function's `panel.grid.major` argument to get rid of some extraneous gridlines, using `element_blank` function |
+| The Office | [10:15](https://www.youtube.com/watch?v=_IvAubTDQME&t=615s) | Using `geom_text_repel` from `ggrepel` package to experiment with different labelling (before abandoning this approach) |
+| The Office | [12:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=765s) | Using `row_number` function to add episode_number field to make graphing easier |
+| The Office | [14:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=845s) | Explanation of why number of ratings (votes) is relevant to interpreting the graph |
+| The Office | [19:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1150s) | Using `unnest_tokens` function from `tidytext` package to split full-sentence text field to individual words |
+| The Office | [20:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1210s) | Using `anti_join` function to filter out stop words (e.g., and, or, the) |
+| The Office | [22:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1345s) | Using `str_remove_all` function to get rid of quotation marks from character names (quirks that might pop up when parsing) |
+| The Office | [25:40](https://www.youtube.com/watch?v=_IvAubTDQME&t=1540s) | Asking, "Are there words that are specific to certain characters?" (using `bind_tf_idf` function) |
+| The Office | [32:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1945s) | Using `reorder_within` function to re-order factors within a grouping (when a term appears in multiple groups) and `scale_x_reordered` function to graph |
+| The Office | [37:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=2225s) | Asking, "What effects the popularity of an episode?" |
+| The Office | [37:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=2275s) | Dealing with inconsistent episode names between datasets |
+| The Office | [41:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=2485s) | Using `str_remove` function and some regex to remove "(Parts 1&2)" from some episode names |
+| The Office | [42:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=2565s) | Using `str_to_lower` function to further align episode names (addresses inconsistent capitalization) |
+| The Office | [52:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3140s) | Setting up dataframe of features for a LASSO regression, with director and writer each being a feature with its own line |
+| The Office | [52:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3175s) | Using `separate_rows` function to separate episodes with multiple writers so that each has their own row |
+| The Office | [58:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=3505s) | Using `log2` function to transform number of lines fields to something more useable (since it is log-normally distributed) |
+| The Office | [1:00:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3620s) | Using `cast_sparse` function from `tidytext` package to create a sparse matrix of features by episode |
+| The Office | [1:01:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3715s) | Using `semi_join` function as a "filtering join" |
+| The Office | [1:02:30](https://www.youtube.com/watch?v=_IvAubTDQME&t=3750s) | Setting up dataframes (after we have our features) to run LASSO regression |
+| The Office | [1:03:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=3830s) | Using `cv.glmnet` function from `glmnet` package to run a cross-validated LASSO regression |
+| The Office | [1:05:35](https://www.youtube.com/watch?v=_IvAubTDQME&t=3935s) | Explanation of how to pick a lambda penalty parameter |
+| The Office | [1:05:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3955s) | Explanation of output of LASSO model |
+| The Office | [1:09:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=4165s) | Outline of why David likes regularized linear models (which is what LASSO is) |
+| The Office | [1:10:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=4255s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### COVID-19 Open Research Dataset (CORD-19)
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| COVID-19 Open Research Dataset (CORD-19) | [0:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=55s) | Disclaimer that David's not an epidemiologist |
+| COVID-19 Open Research Dataset (CORD-19) | [2:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=175s) | Overview of dataset |
+| COVID-19 Open Research Dataset (CORD-19) | [7:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=470s) | Using `dir` function with its `full.names` argument to get file paths for all files in a folder |
+| COVID-19 Open Research Dataset (CORD-19) | [9:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=585s) | Inspecting JSON-formatted data |
+| COVID-19 Open Research Dataset (CORD-19) | [10:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=640s) | Introducing `hoist` function as a way to deal with nested lists (typical for JSON data) |
+| COVID-19 Open Research Dataset (CORD-19) | [11:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=700s) | Continuing to use the `hoist` function |
+| COVID-19 Open Research Dataset (CORD-19) | [13:10](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=790s) | Brief explanation of `pluck` specification |
+| COVID-19 Open Research Dataset (CORD-19) | [16:35](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=995s) | Using `object.size` function to check size of JSON data |
+| COVID-19 Open Research Dataset (CORD-19) | [17:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1060s) | Using `map_chr` and `str_c` functions together to combine paragraphs of text in a list into a single character string |
+| COVID-19 Open Research Dataset (CORD-19) | [20:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1200s) | Using `unnest_tokens` function from `tidytext` package to split full paragraphs into individual words |
+| COVID-19 Open Research Dataset (CORD-19) | [22:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1370s) | Overview of `scispaCy` package for Python, which has named entity recognition features |
+| COVID-19 Open Research Dataset (CORD-19) | [24:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1480s) | Introducting `spacyr` package, which is a R wrapper around the Python `scispaCy` package |
+| COVID-19 Open Research Dataset (CORD-19) | [28:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1730s) | Showing how `tidytext` can use a custom tokenization function (David uses `spacyr` package's named entity recognition) |
+| COVID-19 Open Research Dataset (CORD-19) | [32:20](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1940s) | Demonstrating the `tokenize_words` function from the `tokenizers` package |
+| COVID-19 Open Research Dataset (CORD-19) | [37:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2220s) | Actually using a custom tokenizer in `unnest_tokens` function |
+| COVID-19 Open Research Dataset (CORD-19) | [39:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2385s) | Using `sample_n` function to get a random sample of n rows |
+| COVID-19 Open Research Dataset (CORD-19) | [43:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2605s) | Asking, "What are groups of words that tend to occur together?" |
+| COVID-19 Open Research Dataset (CORD-19) | [44:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2670s) | Using `pairwise_cor` from `widyr` package to find correlation between named entities |
+| COVID-19 Open Research Dataset (CORD-19) | [45:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2740s) | Using `ggraph` and `igraph` packages to create a network plot |
+| COVID-19 Open Research Dataset (CORD-19) | [52:05](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3125s) | Starting to look at papers' references |
+| COVID-19 Open Research Dataset (CORD-19) | [53:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3210s) | Using `unnest_longer` then `unnest_wider` function to convert lists into a tibble |
+| COVID-19 Open Research Dataset (CORD-19) | [59:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3570s) | Using `str_trunc` function to truncate long character strings to a certain number of characters |
+| COVID-19 Open Research Dataset (CORD-19) | [1:06:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3985s) | Using `glue` function for easy combination of strings and R code |
+| COVID-19 Open Research Dataset (CORD-19) | [1:19:15](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=4755s) | Summary of screencast |
