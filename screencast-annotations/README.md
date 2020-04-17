@@ -46,7 +46,7 @@
 | [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb) | 2020-01-06 | Simulation with matrixes | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
 | [The Office](#the-office) | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
 | [COVID-19 Open Research Dataset (CORD-19)](#covid-19-open-research-dataset-cord-19) | 2020-03-18 | JSON formatted data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
-| CORD-19 Data Package | 2020-03-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
+| [CORD-19 Data Package](#cord-19-data-package) | 2020-03-19 | R package development and documentation-writing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
 | Riddler: Simulating Replacing Die Sides | 2020-03-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
 | Beer Production | 2020-04-01 |  | :x: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
@@ -1498,3 +1498,42 @@
 | COVID-19 Open Research Dataset (CORD-19) | [59:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3570s) | Using `str_trunc` function to truncate long character strings to a certain number of characters |
 | COVID-19 Open Research Dataset (CORD-19) | [1:06:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3985s) | Using `glue` function for easy combination of strings and R code |
 | COVID-19 Open Research Dataset (CORD-19) | [1:19:15](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=4755s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### CORD-19 Data Package
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| CORD-19 Data Package | [1:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=70s) | Overview of JSON files with the data David will make a package of |
+| CORD-19 Data Package | [3:05](https://www.youtube.com/watch?v=F4oUJp76KUY&t=185s) | Starting to create a new package with "New Project" in RStudio |
+| CORD-19 Data Package | [5:40](https://www.youtube.com/watch?v=F4oUJp76KUY&t=340s) | Creating a file to reference the license for the dataset |
+| CORD-19 Data Package | [7:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=445s) | Using `use_data_raw` function from `usethis` package to set up a folder structure and preliminary function for raw data |
+| CORD-19 Data Package | [8:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=510s) | Explanation that we want to limit the number of packages we load when building a package (e.g., no `library(tidyverse)` ) |
+| CORD-19 Data Package | [9:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=540s) | Using `use_package` function from `usethis` package to add "Suggested packages" |
+| CORD-19 Data Package | [10:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=615s) | Reviewing import and cleaning code already completed |
+| CORD-19 Data Package | [14:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=895s) | Using `roxygen2` package to write documentation |
+| CORD-19 Data Package | [19:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1175s) | More documentation writing |
+| CORD-19 Data Package | [24:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1490s) | Using `use_data` function from `usethis` package to create a folder structure and datafile for (finished/cleaned) data |
+| CORD-19 Data Package | [26:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1570s) | Making a mistake clicking "Install and Restart" button on the "Build" tab (because of huge objects in the environment) (see 26:50 for alternative) |
+| CORD-19 Data Package | [26:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1610s) | Using `load_all` function from `devtrools` package as an alternative to "Install and Restart" from above step |
+| CORD-19 Data Package | [27:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1655s) | Using `document` function from `devtools` package to process written documentation |
+| CORD-19 Data Package | [32:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1940s) | De-duplicating paper data in a way the keeps records that have fewer missing values than other records for the same paper |
+| CORD-19 Data Package | [39:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2390s) | Using `use_data` function with its overwrite argument to overwrite existing data |
+| CORD-19 Data Package | [47:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2850s) | Writing documentation for paragraphs data |
+| CORD-19 Data Package | [57:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3475s) | Testing an install of the package |
+| CORD-19 Data Package | [59:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3570s) | Adding link to code in documentation |
+| CORD-19 Data Package | [1:03:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3780s) | Writing examples of how to use the package (in documentation) |
+| CORD-19 Data Package | [1:08:45](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4125s) | Discussion of outstanding items that David hasn't done yet (e.g., readme, vignettes, tests) |
+| CORD-19 Data Package | [1:09:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4160s) | Creating a simple readme, including examples, with `use_readme_rmd` function from `usethis` package |
+| CORD-19 Data Package | [1:16:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4570s) | Using `knit` function from the `knitr` package to knit the readme into a markdown file |
+| CORD-19 Data Package | [1:17:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4630s) | Creating a GitHub repository to host the package (includes how to commit to a GitHub repo using RStudio's GUI) |
+| CORD-19 Data Package | [1:18:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4695s) | Explanation that version 0.0.0.9000 means that the package is in early development |
+| CORD-19 Data Package | [1:20:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4830s) | Actually creating the GitHub repository |
+| CORD-19 Data Package | [1:22:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4945s) | Overview of remaining tasks |
