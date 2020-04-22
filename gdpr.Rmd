@@ -1,0 +1,165 @@
+---
+name: metrics_gdpr_violations
+owner: admiral.david@gmail.com
+metrics:
+  nb_violations:
+    title: Number of GDPR Violations
+    description: Number of GDPR Violations in this time period.
+  nb_total_fine:
+    title: Total Fine (Euros)
+    description: Total fine across violations in Euros. (TODO)
+dimensions:
+  country:
+    title: Country
+    description: France/Germany/etc
+  article_title:
+    title: Article
+    description: GDPR Article
+  type:
+    title: Type
+    description: Type of violation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(scales)
+theme_set(theme_light())
+
+
+tuesdata <- tidytuesdayR::tt_load('2020-04-21')
+
+gdpr_violations <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-21/gdpr_violations.tsv') %>%
+  mutate(date = na_if(mdy(date), "1970-01-01")) %>%
+  rename(country = name)
+```
+
+```{r}
+gdpr_violations %>%
+  summarize(total = sum(price))
+
+gdpr_violations %>%
+  count(country = fct_lump(country, 8, w = price),
+        sort = TRUE, wt = price, name = "total_price") %>%
+  mutate(country = fct_reorder(country, total_price)) %>%
+  ggplot(aes(total_price, country)) +
+  geom_col() +
+  scale_x_continuous(labels = dollar_format())
+```
+
+```{r}
+gdpr_violations %>%
+  count(month = floor_date(date, "month"),
+        country = fct_lump(country, 6, w = price),
+        sort = TRUE, wt = price, name = "total_price") %>%
+  mutate(country = fct_reorder(country, -total_price, sum)) %>%
+  ggplot(aes(month, total_price, fill = country)) +
+  geom_col() +
+  scale_y_continuous(labels = dollar_format()) +
+  labs(x = "Time",
+       y = "Total fines",
+       fill = "Country")
+```
+
+```{r}
+gdpr_violations %>%
+  count(source, country, sort = TRUE)
+
+gdpr_violations %>%
+  select(controller, date, article_violated, type, summary, price) %>%
+  mutate(summary = str_trunc(summary, 140)) %>%
+  arrange(desc(price)) %>%
+  mutate(price = dollar(price)) %>%
+  head(10)
+```
+
+```{r}
+gdpr_violations %>%
+  mutate(type = fct_lump(type, 8, w = price),
+         type = fct_reorder(type, price),
+         country = fct_lump(country, 5)) %>%
+  ggplot(aes(price, type)) +
+  geom_boxplot() +
+  geom_jitter(aes(color = country), width = 0, height = .25) +
+  scale_x_log10(labels = dollar_format())
+```
+
+### Which article was violated?
+
+```{r}
+article_titles <- gdpr_text %>%
+  distinct(article, article_title)
+
+separated_articles <- gdpr_violations %>%
+  separate_rows(article_violated, sep = "\\|") %>%
+  extract(article_violated, "article", "Art\\. ?(\\d+)", convert = TRUE, remove = FALSE) %>%
+  left_join(article_titles, by = "article") %>%
+  mutate(article_title = paste0(article, ". ", str_trunc(article_title, 50)),
+         article_title = ifelse(is.na(article), "Unknown", article_title)) %>%
+  add_count(id) %>%
+  mutate(price_per_article = price / n)
+
+separated_articles %>%
+  group_by(article = fct_lump(article_title, 8, w = price)) %>%
+  summarize(total_fine = sum(price_per_article),
+            violations = n()) %>%
+  arrange(desc(total_fine)) %>%
+  mutate(article = fct_reorder(article, total_fine)) %>%
+  ggplot(aes(total_fine, article)) +
+  geom_col() +
+  scale_x_continuous(labels = dollar_format()) +
+  labs(title = "What articles got the most fines?",
+       y = "",
+       x = "Total fine")
+```
+
+```{r}
+gdpr_text <- tuesdata$gdpr_text
+```
+
+```{r}
+gdpr_violations %>%
+  filter(str_detect(controller, "Vodafone")) %>%
+  group_by(date, country) %>%
+  summarize(violations = n(),
+            total_fine = sum(price)) %>%
+  ggplot(aes(date, total_fine, size = violations, color = country)) +
+  geom_point() +
+  scale_y_continuous(labels = dollar_format()) +
+  scale_size_continuous(guide = FALSE) +
+  labs(title = "Vodafone's GDPR violations",
+       color = "",
+       x = "Time",
+       y = "Total fine on this day")
+```
+
+```{r}
+library(tidymetrics)
+
+summarized <- separated_articles %>%
+  filter(!is.na(date)) %>%
+  mutate(country = fct_lump(country, 6, w = price_per_article),
+         article_title = fct_lump(article_title, 6, w = price_per_article),
+         type = fct_lump(type, 6, w = price_per_article)) %>%
+  cross_by_dimensions(country, article_title, type) %>%
+  cross_by_periods(c("month", "quarter")) %>%
+  summarize(nb_violations = n_distinct(id),
+            nb_total_fine = sum(price_per_article)) %>%
+  ungroup()
+
+gdpr_metrics <- create_metrics(summarized)
+```
+
+```{r}
+library(shinymetrics)
+
+preview_metric(gdpr_metrics$gdpr_violations_nb_violations)
+```
+
+
+
+
