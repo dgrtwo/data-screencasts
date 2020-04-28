@@ -1,0 +1,98 @@
+---
+title: "Broadway shows"
+name: metrics_broadway_revenue
+owner: admiral.david@gmail.com
+metrics:
+  usd_gross:
+    title: Total Gross (USD)
+    description: Not adjusted for inflation.
+  avg_ticket_price:
+    title: Average Ticket Price
+    description: Not adjusted for inflation.
+  pct_capacity:
+    title: Percent capacity
+    description: Averaged across weeks in the time period.
+dimensions:
+  show:
+    title: Show
+    description: Show's title
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+tuesdata <- tidytuesdayR::tt_load('2020-04-28')
+```
+
+```{r}
+grosses <- tuesdata$grosses
+
+grosses %>%
+  filter(show %in% c("Hamilton", "The Lion King")) %>%
+  ggplot(aes(week_ending, weekly_gross, color = show)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::dollar) +
+  expand_limits(y = 0)
+```
+
+Tidymetric `cross_by_periods()` and `cross_by_dimensions()`
+
+```{r}
+# devtools::install_github("ramnathv/tidymetrics")
+library(tidymetrics)
+
+shows_summarized <- grosses %>%
+  filter(show %in% c("Hamilton", "The Lion King",
+                     "Les Miserables", "Rent",
+                     "The Phantom of the Opera", "Wicked",
+                     "Harry Potter and the Cursed Child, Parts One and Two",
+                     "The Book of Mormon")) %>%
+  mutate(show = str_remove(show, "\\, Parts.*")) %>%
+  rename(date = week_ending) %>%
+  cross_by_dimensions(show) %>%
+  cross_by_periods(c("month", "quarter", "year"),
+                   windows = 28) %>%
+  summarize(usd_gross = sum(weekly_gross),
+            avg_ticket_price = mean(avg_ticket_price),
+            pct_capacity = mean(pct_capacity)) %>%
+  ungroup()
+
+show_metrics <- create_metrics(shows_summarized)
+```
+
+The shinymetrics package:
+
+```{r}
+# devtools::install_github("ramnathv/shinymetrics")
+library(shinymetrics)
+saveRDS(show_metrics, "broadway-shinybones/show_metrics.rds")
+
+preview_metric(show_metrics$broadway_revenue_usd_gross)
+preview_metric(show_metrics$broadway_revenue_avg_ticket_price)
+preview_metric(show_metrics$broadway_revenue_pct_capacity)
+```
+
+```{r}
+shows_summarized %>%
+  filter(period == "quarter",
+         show != "All") %>%
+  ggplot(aes(date, usd_gross, fill = show)) +
+  geom_col()
+
+shows_summarized %>%
+  filter(period == "quarter",
+         show != "All") %>%
+  ggplot(aes(date, avg_ticket_price, col = show)) +
+  geom_line() +
+  expand_limits(y = 0)
+```
+
+
+
+
