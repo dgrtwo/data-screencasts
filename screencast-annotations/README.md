@@ -47,11 +47,11 @@
 | [The Office](#the-office) | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
 | [COVID-19 Open Research Dataset (CORD-19)](#covid-19-open-research-dataset-cord-19) | 2020-03-18 | JSON formatted data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
 | [CORD-19 Data Package](#cord-19-data-package) | 2020-03-19 | R package development and documentation-writing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
-| R trick: Creating Pascal's Triangle with `accumulate()` | 2020-03-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
-| Riddler: Simulating Replacing Die Sides | 2020-03-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
-| Beer Production | 2020-04-01 |  | :x: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
-| Riddler: Simulating a Non-increasing Sequence | 2020-04-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
-| Tour de France | 2020-04-07 |  | :x: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
+| [R trick: Creating Pascal's Triangle with `accumulate()`](#r-trick-creating-pascals-triangle-with-accumulate) | 2020-03-29 | `accumulate()` for recursive formulas | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
+| [Riddler: Simulating Replacing Die Sides](#riddler-simulating-replacing-die-sides) | 2020-03-30 | `accumulate()` for simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
+| [Beer Production](#beer-production) | 2020-04-01 | `tidymetrics` package demonstrated, Animated map (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
+| [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
+| [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
 | Riddler: Simulating a Branching Process | 2020-04-13 |  | :x: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 | GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
@@ -1540,3 +1540,143 @@
 | CORD-19 Data Package | [1:18:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4695s) | Explanation that version 0.0.0.9000 means that the package is in early development |
 | CORD-19 Data Package | [1:20:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4830s) | Actually creating the GitHub repository |
 | CORD-19 Data Package | [1:22:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4945s) | Overview of remaining tasks |
+
+
+
+***
+
+
+
+#### R Trick: Creating Pascal's Triangle with `accumulate()`
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| R trick: Creating Pascal's Triangle with accumulate() | [1:10](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=70s) | Simple explanation of `accumulate` function |
+| R trick: Creating Pascal's Triangle with accumulate() | [1:30](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=90s) | Example using letters |
+| R trick: Creating Pascal's Triangle with accumulate() | [2:55](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=175s) | Using tilde `~` to create an anonymous function |
+| R trick: Creating Pascal's Triangle with accumulate() | [4:35](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=275s) | Introducing Pascal's Triangle |
+| R trick: Creating Pascal's Triangle with accumulate() | [6:25](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=385s) | Starting to create Pascal's triangle in R |
+| R trick: Creating Pascal's Triangle with accumulate() | [8:05](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=485s) | Concerting the conceptual solution into an `accumulate` function |
+
+
+
+***
+
+
+
+#### Riddler: Simulating Replacing Die Sides
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating Replacing Die Sides | [0:45](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=45s) | Explaining why the recursive nature of this problem is well-suited to simulation |
+| Riddler: Simulating Replacing Die Sides | [2:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=125s) | Introducing the `accumulate` function as a tool for simulation |
+| Riddler: Simulating Replacing Die Sides | [3:50](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=230s) | Creating a condition to call the `done` function |
+| Riddler: Simulating Replacing Die Sides | [7:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=420s) | After creating a function to simulate one round of the problem, using `replicate` function to run simulation many times |
+| Riddler: Simulating Replacing Die Sides | [7:15](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=435s) | Using `qplot` function to quickly create a histogram of simulations |
+| Riddler: Simulating Replacing Die Sides | [7:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=460s) | Making observations on the distribution of simulations (looks kind of like a gamma distribution) |
+| Riddler: Simulating Replacing Die Sides | [10:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=605s) | Observing that the distribution is kind of log-normal (but that doesn't really apply because we're using integers) |
+| Riddler: Simulating Replacing Die Sides | [10:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=635s) | Using `table` and `sort` functions to find the most common number of rolls |
+| Riddler: Simulating Replacing Die Sides | [11:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=680s) | Starting the Extra Credit portion of the problem (N-sided die) |
+| Riddler: Simulating Replacing Die Sides | [11:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=700s) | Using the `crossing` function to set up a tibble to run simulations |
+| Riddler: Simulating Replacing Die Sides | [12:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=755s) | Using `map_dbl` function to apply a set of simulations to each possibility of N sides |
+| Riddler: Simulating Replacing Die Sides | [13:30](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=810s) | Spotting an error in the formula for simulating one round (6-sided die was hard-coded) |
+| Riddler: Simulating Replacing Die Sides | [16:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1000s) | Using simple linear regression with the `lm` function to find the relationship between number of sides and average number of rolls |
+| Riddler: Simulating Replacing Die Sides | [17:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1040s) | Reviewing distributions for different N-sided dice |
+| Riddler: Simulating Replacing Die Sides | [18:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1080s) | Calculating variance, standard deviation, and coefficient of variation to get hints on the distribution (and ruling out Poisson) |
+
+
+
+***
+
+
+
+#### Beer Production
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Beer Production | [4:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=265s) | Asking, "What ingredients are used in beer?" |
+| Beer Production | [4:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=280s) | Using `filter` and `max` functions to look at the most recent period of time |
+| Beer Production | [7:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=445s) | Using `paste` and `ymd` functions (`ymd` is from `lubridate` package) to convert year-month field into an date-formatted field |
+| Beer Production | [9:20](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=560s) | Spotting potential missing or mis-parsed data |
+| Beer Production | [13:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=830s) | Introducing the `tidymetrics` framework |
+| Beer Production | [14:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=885s) | Using `install_github` function to install `tidymetrics` from GitHub |
+| Beer Production | [15:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=925s) | Using `cross_by_dimensions` function from `tidymetrics` package to get aggregations at different levels of multiple dimensions |
+| Beer Production | [18:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1090s) | Using `cross_by_periods` function from `tidymetrics` package to also get aggregations for different intervals (e.g, month, quarter, year) |
+| Beer Production | [22:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1320s) | Using `use_metrics_scaffold` function from `tidymetrics` package to create framework for documenting dimensions in RMarkdown YAML header |
+| Beer Production | [24:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1440s) | Using `create_metrics` function from `tidymetrics` package to save data as a tibble with useful metadata (good for visualizing interactively) |
+| Beer Production | [25:15](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1515s) | Using `preview_metric` function from `shinymetrics` package (still under development as of 2020-04-24) to demonstrate `shinymetrics` |
+| Beer Production | [27:35](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1655s) | Succesfuly getting `shinymetrics` to work |
+| Beer Production | [28:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1705s) | Explanation of the `shinymetrics` bug David ran into |
+| Beer Production | [34:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2050s) | Changing order of ordinal variable (e.g., "1,000 to 10,000" and "10,000 to 20,000") using the `parse_number`, `fct_lump`, and `coalesce` functions |
+| Beer Production | [41:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2485s) | Asking, "Where is beer produced?" |
+| Beer Production | [46:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2805s) | Looking up `sf` package documentation to refresh memory on how to draw state borders for a map |
+| Beer Production | [48:55](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2935s) | Using `match` function and `state.abb` vector (state abbreviations) from `sf` package to perform a lookup of state names |
+| Beer Production | [51:05](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3065s) | Using `geom_sf` function (and working through some hiccoughs) to create a choropleth map |
+| Beer Production | [52:30](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3150s) | Using `theme_map` function from `ggthemes` package to get more appropriate styling for maps |
+| Beer Production | [55:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3340s) | Experimenting with how to get the legend to display in the bottom right corner |
+| Beer Production | [58:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3505s) | Starting to build an animation of consumption patterns over time using `gganimate` package |
+| Beer Production | [1:03:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3820s) | Getting the year being animated to show up in the title of a `gganimate` map |
+| Beer Production | [1:05:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3940s) | Summary of screencast |
+| Beer Production | [1:06:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4010s) | Spotting a mistake in a `group_by` call causing the percentages not to add up properly |
+| Beer Production | [1:09:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4150s) | Brief extra overview of `tidymetrics` code |
+
+
+
+***
+
+
+
+#### Header
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Non-increasing Sequence | [2:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=140s) | Introducing `accumulate` functon as a possible solution (but not used here) |
+| Riddler: Simulating a Non-increasing Sequence | [3:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=200s) | Using `sample` function to simulate 1000 rolls of a 10-sided die |
+| Riddler: Simulating a Non-increasing Sequence | [3:40](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=220s) | Explanation of dividing sample rolls into streaks (instead of using logic similar to a while loop) |
+| Riddler: Simulating a Non-increasing Sequence | [4:55](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=295s) | Using `cumsum` function to separate 1000 rolls into individual sequences (which end when a 0 is rolled) |
+| Riddler: Simulating a Non-increasing Sequence | [5:50](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=350s) | Using `lag` function to "shift" sequence numbering down by one row |
+| Riddler: Simulating a Non-increasing Sequence | [7:35](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=455s) | Using `cummax` and `lag` functions to check whether a roll is less than the highest value rolled previously in the sequence |
+| Riddler: Simulating a Non-increasing Sequence | [9:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=570s) | Fixing previous step with `cummin` function (instead of `cummax`) and dropping the `lag` function |
+| Riddler: Simulating a Non-increasing Sequence | [13:05](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=785s) | Finished simulation code and starting to calculate scores |
+| Riddler: Simulating a Non-increasing Sequence | [13:10](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=790s) | Using -`row_number` function (note the minus sign!) to calculate decimal position of number in the score |
+| Riddler: Simulating a Non-increasing Sequence | [15:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=930s) | Investigating the distribution of scores |
+| Riddler: Simulating a Non-increasing Sequence | [16:25](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=985s) | Using `seq` function in the `breaks` argument of `scale_x_continuous` to set custom, evenly-spaced axis ticks and labels |
+
+
+
+***
+
+
+
+#### Tour de France
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Tour de France | [3:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=235s) | Getting an overview of the data |
+| Tour de France | [8:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=535s) | Aggregating data into decades using the truncated division operator `%/%` |
+| Tour de France | [21:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1310s) | Noting that death data is right-censored (i.e., some winners are still alive) |
+| Tour de France | [24:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1445s) | Using `transmute` function, which combines functionality of `mutate` (to create new variables) and `select` (to choose variables to keep) |
+| Tour de France | [25:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1530s) | Using `survfit` function from `survival` package to conduct survival analysis |
+| Tour de France | [27:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1650s) | Using `glance` function from `broom` package to get a one-row model summary of the survival model |
+| Tour de France | [31:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1860s) | Using `extract` function to pull out a string matching a regular expression from a variable (stage number in this case) |
+| Tour de France | [34:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2070s) | Theorizing that there is a parsing issue with the original data's time field |
+| Tour de France | [41:15](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2475s) | Using `group_by` function's built-in "peeling" feature, where a `summarise` call will "peel away" one group but left other groupings intact |
+| Tour de France | [42:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2525s) | Using `rank` function, then upgrading to `percent_rank` function to give percentile rankings (between 0 and 1) |
+| Tour de France | [47:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2870s) | Using `geom_smooth` function with `method` argument as "lm" to plot a linear regression |
+| Tour de France | [48:10](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2890s) | Using `cut` function to bin numbers (percentiles in this case) into categories |
+| Tour de France | [50:25](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3025s) | Reviewing boxplots exploring relationship between first-stage performance and overall Tour performance |
+| Tour de France | [51:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3090s) | Starting to create an animation using `gganimate` package |
+| Tour de France | [56:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3360s) | Actually writing the code to create the animation |
+| Tour de France | [58:20](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3500s) | Using `reorder_within` function from `tidytext` package to re-order factors that have the same name across multiple groups |
+| Tour de France | [1:02:40](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3760s) | Summary of screencast |
+
