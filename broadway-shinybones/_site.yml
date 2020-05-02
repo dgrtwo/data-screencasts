@@ -1,0 +1,17 @@
+name: Broadway Shows
+sidebar:
+  - text: Revenue
+    icon: dollar-sign
+    module:
+        metric_panel:
+            metric: !expr DATA$broadway_revenue_usd_gross
+  - text: Price
+    icon: ticket-alt
+    module:
+        metric_panel:
+            metric: !expr DATA$broadway_revenue_avg_ticket_price
+  - text: Capacity
+    icon: users
+    module:
+        metric_panel:
+            metric: !expr DATA$broadway_revenue_pct_capacity
