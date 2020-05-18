@@ -45,7 +45,7 @@ kenya_pr %>%
 ### Aggregated across countries
 
 ```{r}
-malaria_inc <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-13/malaria_inc.csv")
+malaria_inc <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_inc.csv")
 
 malaria_inc_processed <- malaria_inc %>%
   setNames(c("country", "code", "year", "incidence")) %>%
@@ -101,7 +101,7 @@ malaria_inc_processed %>%
 ```{r}
 library(tidyverse)
 
-malaria_deaths <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-11-13/malaria_deaths.csv")
+malaria_deaths <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv")
 
 malaria_deaths_processed <- malaria_deaths %>%
   setNames(c("country", "code", "year", "deaths"))
