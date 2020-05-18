@@ -141,11 +141,12 @@ malaria_map_data %>%
 ```{r}
 library(gganimate)
 library(countrycode)
+library(gifski)
 
 malaria_map_data %>%
   mutate(continent = countrycode(code, "iso3c", "continent")) %>%
   filter(continent == "Africa") %>%
-  ggplot(aes(long, lat, group = group, fill = deaths)) +
+  ggplot(aes(long, lat, group = group, fill = deaths), renderer = gifski_renderer()) +
   geom_polygon() +
   scale_fill_gradient2(low = "blue", high = "red", midpoint = 100) +
   theme_void() +
