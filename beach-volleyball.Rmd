@@ -1,0 +1,183 @@
+---
+title: "Beach Volleyball"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+
+tuesdata <- tidytuesdayR::tt_load('2020-05-19')
+
+vb_matches <- tuesdata$vb_matches %>%
+  mutate(match_id = row_number())
+```
+
+```{r}
+vb_matches %>%
+  count(circuit, tournament, date, sort = TRUE)
+
+vb_matches %>%
+  count(gender, sort = TRUE)
+
+vb_matches %>%
+  count(year) %>%
+  
+```
+
+```{r}
+vb_long <- vb_matches %>%
+  rename(w_p1_name = w_player1, w_p2_name = w_player2,
+         l_p1_name = l_player1, l_p2_name = l_player2,
+         w_team_rank = w_rank, l_team_rank = l_rank) %>%
+  mutate_at(vars(starts_with("w_"), starts_with("l_")), as.character) %>%
+  pivot_longer(cols = c(starts_with("w_"), starts_with("l_"))) %>%
+  separate(name, c("winner_loser", "player", "name"),
+           sep = "_",
+           extra = "merge",
+           fill = "right") %>%
+  mutate(winner_loser = str_to_upper(winner_loser))
+
+vb_player_matches <- vb_long %>%
+  filter(name != "rank") %>%
+  spread(name, value) %>%
+  type_convert()
+```
+
+```{r}
+vb_sets <- vb_matches %>%
+  select(match_id, circuit:match_num, score) %>%
+  separate_rows(score, sep = ", ") %>%
+  mutate(score = str_remove(score, " retired")) %>%
+  mutate(score = na_if(score, "Forfeit or other")) %>%
+  separate(score, c("w_score", "l_score"), convert = TRUE)
+```
+
+## Look at players
+
+```{r}
+by_player <- vb_player_matches %>%
+  group_by(name, gender) %>%
+  summarize(n_matches = n(),
+            pct_winner = mean(winner_loser == "W"),
+            first_game = min(date),
+            last_game = max(date)) %>%
+  arrange(desc(n_matches)) %>%
+  ungroup()
+
+by_player %>%
+  filter(n_matches >= 200) %>%
+  ggplot(aes(n_matches, pct_winner, color = gender)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_continuous(labels = percent) +
+  labs(x = "# of matches since 2000 (log scale)",
+       y = "% of matches won")
+
+by_player %>%
+  filter(n_matches >= 200) %>%
+  arrange(desc(pct_winner))
+```
+
+```{r}
+vb_player_matches %>%
+  summarize_all(~ mean(!is.na(.))) %>%
+  gather() %>%
+  View()
+```
+
+```{r}
+vb_player_matches %>%
+  group_by(tournament) %>%
+  summarize(pct_has_attacks = mean(!is.na(tot_attacks)),
+            n = n()) %>%
+  arrange(desc(n))
+```
+
+### How would we predict if a player will win in 2019?
+
+```{r}
+summarize_players <- . %>%
+  summarize(n_matches = n(),
+            pct_winner = mean(winner_loser == "W"),
+            avg_attacks = mean(tot_attacks, na.rm = TRUE),
+            avg_errors = mean(tot_errors, na.rm = TRUE),
+            avg_serve_errors = mean(tot_serve_errors, na.rm = TRUE),
+            avg_kills = mean(tot_kills, na.rm = TRUE),
+            avg_aces = mean(tot_aces, na.rm = TRUE),
+            n_with_data = sum(!is.na(tot_attacks))) %>%
+  ungroup() %>%
+  arrange(desc(n_matches))
+
+players_before_2019 <- vb_player_matches %>%
+  filter(year < 2019) %>%
+  group_by(name, gender, hgt, birthdate, country) %>%
+  summarize_players() %>%
+  filter(!is.na(avg_attacks))
+
+players_2019 <- vb_player_matches %>%
+  filter(year == 2019) %>%
+  group_by(name, gender, hgt, birthdate, country, year,
+           age = year - year(birthdate)) %>%
+  summarize_players()
+```
+
+```{r}
+performance_joined <- players_before_2019 %>%
+  inner_join(players_2019 %>%
+               select(name, n_matches, pct_winner),
+             by = "name",
+             suffix = c("", "_2019"))
+
+performance_joined %>%
+  filter(n_matches >= 10,
+         n_matches_2019 >= 5) %>%
+  ggplot(aes(pct_winner, pct_winner_2019)) +
+  geom_point() +
+  geom_abline(color = "red") +
+  geom_smooth(method = "lm")
+
+performance_joined %>%
+  mutate(n_wins_2019 = n_matches_2019 * pct_winner_2019,
+         country = fct_lump(country, 3)) %>%
+  glm(cbind(n_wins_2019, n_matches_2019 - n_wins_2019) ~
+        pct_winner + avg_errors + avg_serve_errors,
+      data = .,
+      family = "binomial") %>%
+  summary()
+```
+
+
+```{r}
+players_before_2019 %>%
+  filter(n_with_data >= 20) %>%
+  ggplot(aes(avg_serve_errors, avg_aces, size = n_with_data)) +
+  geom_point() +
+  labs(size = "Matches",
+       title = "DON'T TRUST THIS")
+```
+
+```{r}
+
+```
+
+
+
+```{r}
+
+```
+
+
+```{r}
+player_first_year_summarized %>%
+  filter(!is.nan(avg_attacks))
+```
+
+
+
