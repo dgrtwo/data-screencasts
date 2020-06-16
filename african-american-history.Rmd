@@ -1,0 +1,206 @@
+---
+title: "African-American History"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+theme_set(theme_light())
+
+tuesdata <- tt_load('2020-06-16')
+```
+
+```{r}
+slave_routes <- tuesdata$slave_routes
+
+slave_routes %>%
+  summarize(sum(n_slaves_arrived, na.rm = TRUE))
+
+slave_routes %>%
+  count(ship_name, sort = TRUE)
+
+slave_routes %>%
+  ggplot(aes(n_slaves_arrived)) +
+  geom_histogram()
+```
+
+```{r}
+slave_routes %>%
+  filter(!is.na(ship_name), !is.na(n_slaves_arrived)) %>%
+  filter(fct_lump(ship_name, 12) != "Other") %>%
+  mutate(ship_name = fct_reorder(ship_name, n_slaves_arrived)) %>%
+  ggplot(aes(n_slaves_arrived, ship_name)) +
+  geom_boxplot()
+```
+
+```{r}
+slave_routes %>%
+  count(port_arrival, sort = TRUE)
+
+slave_routes %>%
+  count(port_origin, sort = TRUE)
+
+
+slave_routes %>%
+  ggplot(aes(year_arrival)) +
+  geom_histogram() +
+  geom_vline(xintercept = c(1776, 1865), lty = 2) +
+  labs(title = "# of slave ships over time")
+```
+
+```{r}
+slave_routes %>%
+  filter(!is.na(port_origin)) %>%
+  mutate(port_origin = str_trunc(port_origin, 25),
+         port_origin = fct_lump(port_origin, 24),
+         port_origin = fct_reorder(port_origin, year_arrival)) %>%
+  count(port_origin,
+        decade = 10 * (year_arrival %/% 10)) %>%
+  ggplot(aes(decade, n)) +
+  geom_line() +
+  facet_wrap(~ port_origin) +
+  geom_vline(xintercept = c(1807), lty = 2) +
+  theme(strip.text = element_text(size = 6))
+
+slave_routes %>%
+  filter(port_origin == "New York") %>%
+  arrange(desc(year_arrival)) %>%
+  View()
+```
+
+```{r}
+slave_routes %>%
+  filter(fct_lump(ship_name, 12) != "Other") %>%
+  count(ship_name, port_origin, port_arrival, sort = TRUE) %>%
+  group_by(ship_name) %>%
+  mutate(percent = n / sum(n)) %>%
+  top_n(1, percent) %>%
+  arrange(desc(percent))
+```
+
+```{r}
+library(grid)
+library(ggraph)
+
+set.seed(2020)
+
+slave_routes %>%
+  count(port_origin, port_arrival, sort = TRUE) %>%
+  filter(port_origin != port_arrival) %>%
+  head(40) %>%
+  ggraph(layout = "fr") +
+  geom_edge_link(aes(width = n),
+                 arrow = arrow(type = "closed",
+                               length = unit(.1, "inch"))) +
+  geom_node_point() +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  scale_edge_width_continuous(range = c(.5, 4)) +
+  labs(title = "Common slave routes",
+       edge_width = "# of ships")
+```
+
+```{r}
+slave_routes %>%
+  group_by(port_origin) %>%
+  summarize(n_ships = n(),
+            total_recorded = sum(n_slaves_arrived, na.rm = TRUE),
+            pct_missing = mean(is.na(n_slaves_arrived)),
+            estimated_total = mean(n_slaves_arrived, na.rm = TRUE) * n()) %>%
+  arrange(desc(n_ships))
+```
+
+```{r}
+census <- tuesdata$census
+
+census_gathered <- census %>%
+  mutate(other = total - white - black) %>%
+  arrange(year) %>%
+  gather(racial_category, population, white, black_free, black_slaves, other)
+
+census_gathered %>%
+  filter(region == "USA Total") %>%
+  ggplot(aes(year, population, fill = racial_category)) +
+  geom_col() +
+  scale_y_continuous(labels = comma) +
+  labs(x = "Year",
+       y = "Census Population",
+       fill = "Racial category",
+       title = "Census racial makeup of US, 1790-1870",
+       subtitle = "No 'other' category existed before 1860")
+```
+
+```{r}
+census_gathered %>%
+  filter(region != "USA Total", !is.na(division)) %>%
+  mutate(division = fct_reorder(division, -population, sum)) %>%
+  ggplot(aes(year, population, fill = racial_category)) +
+  geom_col() +
+  scale_y_continuous(labels = comma) +
+  facet_wrap(~ division) +
+  labs(x = "Year",
+       y = "Census Population",
+       fill = "Racial category",
+       title = "Census racial makeup of US, 1790-1870",
+       subtitle = "No 'other' category existed before 1860")
+```
+
+```{r}
+census_gathered %>%
+  filter(region != "USA Total", !is.na(division)) %>%
+  mutate(division = fct_reorder(division, -population, sum)) %>%
+  group_by(division, year) %>%
+  mutate(percent = population / sum(population)) %>%
+  ggplot(aes(year, percent, fill = racial_category)) +
+  geom_col() +
+  scale_y_continuous(labels = percent) +
+  facet_wrap(~ division) +
+  labs(x = "Year",
+       y = "% of Census Population",
+       fill = "Racial category",
+       title = "Census racial makeup of US, 1790-1870",
+       subtitle = "No 'other' category existed before 1860")
+```
+
+```{r}
+library(ggwordcloud)
+
+name_counts <- tuesdata$african_names %>%
+  count(name, gender, sort = TRUE)
+
+wordcloud(name_counts$name, name_counts$n)
+
+name_counts %>%
+  head(100) %>%
+  ggplot(aes(label = name, size = n, color = gender)) +
+  geom_text_wordcloud()
+```
+
+```{r}
+library(tidytext)
+
+tuesdata$african_names %>%
+  filter(!is.na(gender)) %>%
+  mutate(gender = fct_recode(gender, Man = "Boy", Woman = "Girl")) %>%
+  count(name, gender, sort = TRUE) %>%
+  group_by(gender) %>%
+  top_n(20, n) %>%
+  ungroup() %>%
+  mutate(name = reorder_within(name, n, gender)) %>%
+  ggplot(aes(n, name)) +
+  geom_col() +
+  scale_y_reordered() +
+  facet_wrap(~ gender, scales = "free")
+```
+
+```{r}
+tuesdata$african_names %>%
+  count(country_origin, sort = TRUE)
+```
+
+

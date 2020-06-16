@@ -1,0 +1,131 @@
+---
+title: "African-American Achievements"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+tuesdata <- tidytuesdayR::tt_load('2020-06-09')
+
+science <- tuesdata$science
+```
+
+```{r}
+tuesdata$firsts %>%
+  View()
+
+tuesdata$science %>%
+  View()
+```
+
+```{r}
+firsts <- tuesdata$firsts
+
+tuesdata$firsts %>%
+  ggplot(aes(year)) +
+  geom_histogram()
+
+tuesdata$firsts %>%
+  count(category, sort = TRUE) %>%
+  mutate(category = fct_reorder(category, n)) %>%
+  ggplot(aes(n, category)) +
+  geom_col()
+```
+
+```{r}
+firsts <- tuesdata$firsts %>%
+  mutate(person = str_remove(person, "[\\[\\(].*"),
+         person = str_trim(person))
+```
+
+```{r}
+library(plotly)
+library(glue)
+
+g <- firsts %>%
+  ggplot(aes(year,
+             category,
+             color = category,
+             text = glue("{ year }: { accomplishment }\n{ person }"))) +
+  geom_point() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        legend.position = "none") +
+  labs(title = "Timeline of some notable African-American achievements",
+       subtitle = "Source: https://en.wikipedia.org/wiki/List_of_African-American_firsts",
+       y = "Category",
+       x = "Year")
+
+ggplotly(g, tooltip = "text")
+```
+
+### Science
+
+```{r}
+tuesdata$science %>%
+  ggplot(aes(birth)) +
+  geom_histogram()
+
+tuesdata$science %>%
+  separate_rows(occupation_s, sep = "; ") %>%
+  mutate(occupation = str_to_title(occupation_s)) %>%
+  count(occupation, sort = TRUE)
+
+science %>%
+  filter(str_detect(occupation_s, regex("istician", ignore_case = TRUE))) %>%
+  pull(name)
+
+science %>%
+  filter(str_detect(occupation_s, "statistician")) %>%
+  View()
+```
+
+```{r}
+library(rvest)
+
+science_html <- science %>%
+  mutate(html = map(links, possibly(read_html, NULL, quiet = FALSE)))
+```
+
+```{r}
+extract_infobox <- . %>%
+  html_node(".vcard") %>%
+  html_table(header = FALSE) %>%
+  as_tibble()
+
+infoboxes <- science_html %>%
+  filter(!map_lgl(html, is.null)) %>%
+  mutate(infobox = map(html, possibly(extract_infobox, NULL))) %>%
+  select(link = links, infobox) %>%
+  unnest(infobox) %>%
+  filter(X1 != "" | X2 != "", X1 != "Scientific career") %>%
+  rename(key = X1, value = X2)
+
+science_infoboxes <- infoboxes %>%
+  group_by(link) %>%
+  mutate(name = first(key)) %>%
+  group_by(key) %>%
+  filter(n() >= 10) %>%
+  ungroup() %>%
+  distinct(name, key, .keep_all = TRUE) %>%
+  spread(key, value) %>%
+  janitor::clean_names()
+```
+
+```{r}
+science_infoboxes %>%
+  count(nationality, sort = TRUE)
+```
+
+
+
+
+
