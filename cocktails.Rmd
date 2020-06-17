@@ -1,0 +1,218 @@
+---
+title: "Cocktails"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+```
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2020-05-26')
+tuesdata
+```
+
+```{r}
+mr_boston <- tuesdata$boston_cocktails
+
+mr_boston %>%
+  count(name, sort = TRUE)
+
+mr_boston %>%
+  count(ingredient, sort = TRUE) %>%
+  head(20) %>%
+  mutate(ingredient = fct_reorder(ingredient, n)) %>%
+  ggplot(aes(n, ingredient)) +
+  geom_col() +
+  labs(title = "Most common ingredients in Mr. Boston recipes")
+
+n_recipes <- n_distinct(mr_boston$name)
+
+mr_boston %>%
+  count(category, ingredient, sort = TRUE) %>%
+  mutate(category = fct_lump(category, 4),
+         ingredient = fct_lump(ingredient, 20)) %>%
+  filter(ingredient != "Other") %>%
+  mutate(ingredient = fct_reorder(ingredient, n, sum)) %>%
+  ggplot(aes(n / n_recipes, ingredient, fill = category)) +
+  geom_col() +
+  scale_x_continuous(labels = percent_format()) +
+  labs(title = "Most common ingredients in Mr. Boston recipes",
+       x = "% of all recipes",
+       y = "Ingredient",
+       fill = "Category")
+```
+
+### Primary vs Secondary Ingredients
+
+```{r}
+mr_boston %>%
+  count(measure, sort = TRUE)
+
+# Data cleaning to turn this into a number
+mr_boston_parsed <- mr_boston %>%
+  extract(measure, "amount", regex = "(.*) oz", remove = FALSE) %>%
+  extract(amount, "ones", regex = "(^\\d+$|^\\d+ )", convert = TRUE, remove = FALSE) %>%
+  extract(amount, c("numerator", "denominator"),
+          regex = "(\\d+)\\/(\\d+)", convert = TRUE, remove = FALSE) %>%
+  replace_na(list(ones = 0, numerator = 0, denominator = 1)) %>%
+  mutate(oz = ones + numerator / denominator,
+         oz = na_if(oz, 0))
+
+ingredients_summarized <- mr_boston_parsed %>%
+  group_by(name) %>%
+  mutate(percentile = row_number() / n()) %>%
+  group_by(ingredient) %>%
+  summarize(n = n(),
+            n_with_oz = sum(!is.na(oz)),
+            avg_position = mean(percentile),
+            avg_serving = mean(oz, na.rm = TRUE)) %>%
+  arrange(desc(n))
+```
+
+```{r}
+library(ggrepel)
+
+ingredients_summarized %>%
+  head(30) %>%
+  ggplot(aes(avg_position, avg_serving)) +
+  geom_point(aes(size = n / n_recipes)) +
+  geom_text_repel(aes(label = ingredient)) +
+  scale_x_continuous(labels = percent_format()) +
+  scale_size_continuous(labels = percent_format()) +
+  labs(y = "Average serving size",
+       x = "Average position within drink",
+       size = "% of recipes")
+```
+
+```{r}
+ingredients_summarized %>%
+  filter(n >= 10) %>%
+  ggplot(aes(n, avg_serving)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_text(aes(label = ingredient), check_overlap = TRUE,
+            vjust = 1, hjust = 1) +
+  expand_limits(y = 0)
+
+ingredients_summarized %>%
+  filter(n_with_oz >= 10) %>%
+  arrange(desc(avg_serving)) %>%
+  head(12) %>%
+  mutate(ingredient = fct_reorder(ingredient, avg_serving)) %>%
+  ggplot(aes(avg_serving, ingredient)) +
+  geom_col() +
+  labs(title = "What ingredients have the largest serving size?",
+       subtitle = "Only ones that appear in at least 10 recipes",
+       x = "Average serving (oz)",
+       y = "Ingredient")
+```
+
+The largest pours are of juices and whiskeys.
+
+
+### Clustering
+
+What ingredients tend to appear together?
+
+```{r}
+library(widyr)
+library(tidytext)
+
+ingredient_pairs <- mr_boston %>%
+  add_count(ingredient) %>%
+  filter(n >= 10) %>%
+  pairwise_cor(ingredient, name, sort = TRUE)
+
+ingredient_pairs %>%
+  filter(item1 %in% c("Gin", "Tequila", "Absinthe",
+                      "Mezcal", "Bourbon whiskey",
+                      "Vodka")) %>%
+  group_by(item1) %>%
+  top_n(10, correlation) %>%
+  mutate(item2 = reorder_within(item2, correlation, item1)) %>%
+  ggplot(aes(correlation, item2)) +
+  geom_col() +
+  facet_wrap(~ item1, scales = "free_y") +
+  scale_y_reordered() +
+  labs(title = "What ingredients are most correlated with particular ingredients?")
+```
+
+```{r}
+library(ggraph)
+library(igraph)
+
+top_cors <- ingredient_pairs %>%
+  head(150)
+
+ingredient_info <- ingredients_summarized %>%
+  filter(ingredient %in% top_cors$item1)
+
+top_cors %>%
+  graph_from_data_frame(vertices = ingredient_info) %>%
+  ggraph(layout = "fr") +
+  geom_edge_link() +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  geom_node_point(aes(size = 1.1 * n)) +
+  geom_node_point(aes(size = n, color = avg_position)) +
+  scale_color_gradient2(low = "red", high = "blue", midpoint = .5,
+                        labels = scales::percent_format()) +
+  labs(size = "# of recipes",
+       color = "Avg position in drink",
+       title = "The constellations of cocktail ingredients",
+       subtitle = "Connected ingredients tend to appear in the same recipes. Red ingredients are early in the recipe, blue tend to be later")
+```
+
+### PCA
+
+```{r}
+ingredient_svd <- mr_boston %>%
+  distinct(ingredient, name) %>%
+  mutate(value = 1) %>%
+  widely_svd(ingredient, name, value)
+
+ingredient_svd %>%
+  filter(dimension > 1, dimension <= 5) %>%
+  mutate(dimension = paste0("PC", dimension)) %>%
+  group_by(dimension) %>%
+  top_n(16, abs(value)) %>%
+  mutate(ingredient = reorder_within(ingredient, value, dimension)) %>%
+  ggplot(aes(value, ingredient, fill = value > 0)) +
+  geom_col(show.legend = FALSE) +
+  scale_y_reordered() +
+  facet_wrap(~ dimension, scales = "free_y") +
+  labs(x = "Principal component value",
+       y = "Ingredient",
+       title = "What are the sources of variation in ingredients?")
+```
+
+```{r}
+recipe_svd <- mr_boston %>%
+  distinct(name, ingredient) %>%
+  mutate(value = 1) %>%
+  widely_svd(name, ingredient, value)
+
+recipe_svd %>%
+  filter(dimension > 1, dimension <= 5) %>%
+  mutate(dimension = paste0("PC", dimension)) %>%
+  group_by(dimension) %>%
+  top_n(16, abs(value)) %>%
+  mutate(recipe = reorder_within(name, value, dimension)) %>%
+  ggplot(aes(value, recipe, fill = value > 0)) +
+  geom_col(show.legend = FALSE) +
+  scale_y_reordered() +
+  facet_wrap(~ dimension, scales = "free_y") +
+  labs(x = "Principal component value",
+       y = "Ingredient",
+       title = "What are the sources of variation in recipes?")
+```
+
+
+

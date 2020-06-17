@@ -1,0 +1,180 @@
+---
+title: "Animal Crossing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+critic <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/critic.tsv')
+user_reviews <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/user_reviews.tsv')
+items <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/items.csv')
+villagers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/villagers.csv')
+```
+
+```{r}
+villagers
+items %>%
+  View()
+```
+
+### Text Analysis
+
+```{r}
+critic %>%
+  ggplot(aes(grade)) +
+  geom_histogram()
+
+user_reviews %>%
+  ggplot(aes(grade)) +
+  geom_histogram()
+
+head(user_reviews$text)
+```
+
+```{r}
+library(tidytext)
+library(lubridate)
+
+user_review_words <- user_reviews %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words, by = "word") %>%
+  count(user_name, date, grade, word)
+```
+
+```{r}
+by_week <- user_reviews %>%
+  group_by(week = floor_date(date, "week", week_start = 1)) %>%
+  summarize(nb_reviews = n(),
+            avg_grade = mean(grade),
+            pct_zero = mean(grade == 0),
+            pct_ten = mean(grade == 10))
+
+by_week %>%
+  ggplot(aes(week, avg_grade)) +
+  geom_line() +
+  geom_point(aes(size = nb_reviews)) +
+  expand_limits(y = 0) +
+  labs(x = "Time",
+       y = "Average grade",
+       size = "# of reviews")
+
+user_reviews %>%
+  ggplot(aes(grade)) +
+  geom_histogram() +
+  labs(title = "Most reviews were very low or very high")
+
+by_week %>%
+  gather(type, value, contains("pct")) %>%
+  mutate(type = ifelse(type == "pct_zero", "% rated 0", "% rated 10")) %>%
+  ggplot(aes(week, value, color = type)) +
+  geom_line() +
+  geom_point(aes(size = nb_reviews)) +
+  scale_y_continuous(labels = scales::percent) +
+  expand_limits(y = 0) +
+  labs(x = "Time",
+       y = "% of reviews",
+       size = "Total reviews in week",
+       title = "Reviews got more polarizing in middle of game")
+```
+
+
+```{r}
+# user_reviews %>%
+#   mutate(start_text = str_sub(text, 1, pmin(30, str_length(text))),
+#          regex = paste0(".", start_text, ".*")) %>%
+#   mutate(new_text = map2_chr(text, regex, str_remove)) %>%
+#   filter(str_length(new_text) != str_length(text))
+
+by_word <- user_review_words %>%
+  group_by(word) %>%
+  summarize(avg_grade = mean(grade),
+            nb_reviews = n()) %>%
+  arrange(desc(nb_reviews)) %>%
+  filter(nb_reviews >= 25) %>%
+  arrange(desc(avg_grade))
+  
+by_word %>%
+  filter(nb_reviews >= 75) %>%
+  ggplot(aes(nb_reviews, avg_grade)) +
+  geom_point() +
+  geom_text(aes(label = word), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_x_log10()
+```
+
+```{r}
+by_word %>%
+  top_n(20, -avg_grade) %>%
+  ggplot(aes(nb_reviews, avg_grade)) +
+  geom_point() +
+  geom_text(aes(label = word), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_x_log10() +
+  labs(title = "What words were associated with low-grade reviews?",
+       subtitle = "20 most negative words; only words in at least 25 reviews")
+```
+
+```{r}
+library(widyr)
+library(stm)
+
+review_matrix <- user_review_words %>%
+  group_by(word) %>%
+  filter(n() >= 25) %>%
+  cast_sparse(user_name, word, n)
+
+topic_model_6 <- stm(review_matrix,
+                     K = 6,
+                     verbose = TRUE,
+                     init.type = "Spectral",
+                     emtol = 5e-5)
+```
+
+```{r}
+tidy(topic_model_6) %>%
+  group_by(topic) %>%
+  top_n(12, beta) %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  scale_y_reordered() +
+  facet_wrap(~ topic, scales = "free_y")
+
+tidy(topic_model_6) %>%
+  filter(term == "progress")
+
+topic_model_gamma <- tidy(topic_model_6, matrix = "gamma") %>%
+  mutate(user_name = rownames(review_matrix)[document]) %>%
+  inner_join(user_reviews, by = "user_name")
+
+topic_model_gamma %>%
+  group_by(topic) %>%
+  top_n(1, gamma)
+
+topic_model_gamma %>%
+  group_by(topic) %>%
+  summarize(correlation = cor(gamma, grade),
+            spearman_correlation = cor(gamma, grade, method = "spearman"))
+
+topic_model_gamma %>%
+  group_by(week = floor_date(date, "week", week_start = 1),
+           topic) %>%
+  summarize(avg_gamma = mean(gamma)) %>%
+  ggplot(aes(week, avg_gamma, color = factor(topic))) +
+  geom_line() +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Time",
+       y = "Average gamma (document-topic association)")
+```
+
+
+
+
+
+
+

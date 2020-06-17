@@ -1,0 +1,95 @@
+---
+title: "Riddler: Flip your way to freedom"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+sim <- crossing(trial = 1:50000,
+         probability = seq(.01, 1, .01)) %>%
+  mutate(num_flips = rbinom(n(), 4, probability),
+         num_tails = rbinom(n(), num_flips, .5),
+         set_free = num_flips != 0 & num_tails == 0)
+
+probability_exact <- function(p, n = 4) {
+  sum(dbinom(0:n, n, p) * c(0, dbinom(1:n, 1:n, .5)))
+}
+
+probabilities <- sim %>%
+  group_by(probability) %>%
+  summarize(pct_free = mean(set_free)) %>%
+  mutate(exact = map_dbl(probability, probability_exact))
+
+probabilities %>%
+  ggplot(aes(probability, pct_free)) +
+  geom_line() +
+  geom_line(aes(y = exact), color = "red", lty = 2)
+
+opt <- optimise(probability_exact, c(0, 1), maximum = TRUE)
+```
+
+The highest chance of escape is `r percent(opt$objective)` when the prisoners use the random number generator to have a `r percent(optim$maximum)` chance of flipping the coin.
+
+### Extra credit
+
+```{r}
+sim_n <- crossing(trial = 1:100000,
+                  probability = seq(.02, 1, .02),
+                  n = 2:8) %>%
+  mutate(num_flips = rbinom(n(), n, probability),
+         num_tails = rbinom(n(), num_flips, .5),
+         set_free = num_flips != 0 & num_tails == 0)
+
+probabilities_n <- sim_n %>%
+  group_by(probability, n) %>%
+  summarize(simulated = mean(set_free)) %>%
+  ungroup() %>%
+  mutate(exact = map2_dbl(probability, n, probability_exact))
+
+probabilities_n %>%
+  ggplot(aes(probability, exact, color = factor(n))) +
+  geom_line() +
+  geom_point(aes(y = simulated), size = .4) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Probability of flipping the coin",
+       y = "Probability of escape",
+       color = "# of prisoners",
+       title = "What's the chance of escaping with n prisoners?",
+       subtitle = "Points show simulations of 100,000 prisoners each")
+```
+
+```{r}
+optimize_for_n <- function(n) {
+  optimise(function(p) probability_exact(p, n), c(0, 1), maximum = TRUE)
+}
+
+optimal_n <- tibble(n = 2:60) %>%
+  mutate(optimal = map(n, optimize_for_n)) %>%
+  unnest_wider(optimal)
+
+optimal_n %>%
+  gather(metric, value, -n) %>%
+  mutate(metric = ifelse(metric == "maximum", "Optimal probability to flip", "Probability of escape")) %>%
+  ggplot(aes(n, value, color = metric)) +
+  geom_line() +
+  scale_y_continuous(labels = percent) +
+  expand_limits(y = 0) +
+  labs(x = "# of prisoners",
+       y = "Probability",
+       color = "")
+
+optimal_n %>%
+  arrange(desc(n)) %>%
+  mutate(expected_coins_flipped = n * maximum) %>%
+  ggplot(aes(n, expected_coins_flipped)) +
+  geom_line()
+```
+

@@ -1,0 +1,144 @@
+---
+title: "Volcanoes"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+tuesdata <- tidytuesdayR::tt_load('2020-05-12')
+```
+
+```{r}
+volcano <- tuesdata$volcano %>%
+  mutate(last_eruption_year = as.numeric(last_eruption_year))
+
+eruptions <- tuesdata$eruptions
+```
+
+```{r}
+volcano %>%
+  count(evidence_category, sort = TRUE)
+
+volcano %>%
+  mutate(years_ago = 2020 - last_eruption_year) %>%
+  ggplot(aes(years_ago + 1, fill = evidence_category)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+```{r}
+volcano %>%
+  count(region, sort = TRUE)
+
+volcano %>%
+  count(primary_volcano_type, sort = TRUE)
+```
+
+```{r}
+library(ggthemes)
+
+volcano %>%
+  mutate(primary_volcano_type = str_remove(primary_volcano_type, "\\(.*\\)"),
+         primary_volcano_type = fct_lump(primary_volcano_type, 6)) %>%
+  ggplot(aes(longitude, latitude)) +
+  borders() +
+  geom_point(aes(color = primary_volcano_type), size = .5) +
+  theme_map() +
+  labs(title = "Volcanoes of the World",
+       color = "Type")
+```
+
+```{r}
+library(leaflet)
+library(glue)
+library(htmlwidgets)
+library(DT)
+
+template <- "<>{ volcano_name }</p><p>{ primary_volcano_type }</p>"
+
+volcano %>%
+  mutate(transformed_pop = log2(population_within_5_km + 1),
+         pop_color = colorNumeric(c("blue", "red"), transformed_pop)(transformed_pop)) %>%
+  gather(key, value,
+         volcano_name, primary_volcano_type, last_eruption_year,
+         country,
+         tectonic_settings,
+         population_within_5_km) %>%
+  mutate(key = str_to_title(str_replace_all(key, "_", " ")),
+         key = paste0("<b>", key, "</b>")) %>%
+  replace_na(list(value = "Unknown")) %>%
+  nest(data = c(key, value)) %>%
+  mutate(html = map(data,
+                    knitr::kable,
+                    format = "html",
+                    escape = FALSE,
+                    col.names = c("", ""))) %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(lat = ~ latitude,
+                   lng = ~ longitude,
+                   color = ~ pop_color,
+                   popup = ~ html,
+                   radius = 1) %>%
+  addMeasure()
+```
+
+```{r}
+volcano %>%
+  ggplot(aes(population_within_5_km)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+```{r}
+library(gganimate)
+
+eruptions %>%
+  ggplot(aes(2020 - start_year)) +
+  geom_histogram() +
+  scale_x_log10()
+
+eruptions %>%
+  filter(start_year >= 1900,
+         eruption_category != "Discredited Eruption")
+  ggplot(aes(2020 - start_year)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+```{r}
+library(gganimate)
+
+anim_graph <- eruptions %>%
+  filter(start_year >= 1900) %>%
+  mutate(volume = .00001 * 10 ^ vei) %>%
+  ggplot(aes(longitude, latitude)) +
+  borders() +
+  geom_point(aes(size = volume,
+                 color = volume)) +
+  theme_map() +
+  scale_color_gradient2(low = "blue", high = "red",
+                        midpoint = log10(.01),
+                        trans = "log10",
+                        guide = FALSE) +
+  scale_size_continuous(range = c(1, 6)) +
+  # transition_reveal(start_year) +
+  transition_time(start_year) +
+  labs(title = "Eruptions: Year { round(frame_time) }") +
+  theme(legend.position = "none")
+
+animate(anim_graph, 150, fps = 4)
+
+anim_save("eruptions.gif")
+```
+
+
+
+
+
+```{r}
+eruptions
+```
+
