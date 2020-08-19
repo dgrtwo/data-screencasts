@@ -1,0 +1,207 @@
+---
+title: "TidyTemplate"
+date: 2020-08-18
+output: html_output
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(tidytext)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2020-08-18")
+
+```
+
+
+# Readme
+
+Take a look at the readme for the weekly data to get insight on the dataset.
+This includes a data dictionary, source, and a link to an article on the data.
+
+```{r Readme, eval = interactive()}
+
+tt
+
+plants <- tt$plants %>%
+  mutate(year_last_seen = fct_relevel(year_last_seen, "Before 1900")) %>%
+  separate(binomial_name, c("genus", "species"), sep = " ", remove = FALSE)
+
+threats <- tt$threats %>%
+  filter(threatened == 1) %>%
+  select(-threatened) %>%
+  mutate(year_last_seen = fct_relevel(year_last_seen, "Before 1900")) %>%
+  separate(binomial_name, c("genus", "species"), sep = " ", remove = FALSE)
+
+actions <- tt$actions %>%
+  filter(action_taken == 1) %>%
+  select(-action_taken) %>%
+  mutate(year_last_seen = fct_relevel(year_last_seen, "Before 1900")) %>%
+  separate(binomial_name, c("genus", "species"), sep = " ", remove = FALSE) %>%
+  filter(action_type != "Unknown")
+```
+
+```{r}
+plants %>%
+  View()
+
+plants %>%
+  count(country = fct_lump(country, 10), sort = TRUE) %>%
+  mutate(country = fct_reorder(country, n)) %>%
+  ggplot(aes(n, country)) +
+  geom_col()
+
+plants %>%
+  count(continent, sort = TRUE) %>%
+  mutate(continent = fct_reorder(continent, n)) %>%
+  ggplot(aes(n, continent)) +
+  geom_col()
+
+plants %>%
+  count(red_list_category)
+
+plants %>%
+  count(group, sort = TRUE)
+
+plants %>%
+  filter(!is.na(year_last_seen)) %>%
+  count(year_last_seen, continent) %>%
+  ggplot(aes(year_last_seen, n, fill = continent)) +
+  geom_col()
+
+plants
+
+by_continent_threat <- threats %>%
+  count(threat_type, continent, sort = TRUE) %>%
+  mutate(threat_type = fct_reorder(threat_type, n, sum))
+
+by_continent_threat %>%
+  ggplot(aes(n, threat_type, fill = continent)) +
+  geom_col() +
+  labs(x = "# of plants facing this threat",
+       y = "",
+       fill = "Continent",
+       title = "What are the most common threats to plants?")
+
+by_continent_threat %>%
+  mutate(threat_type = reorder_within(threat_type, n, continent)) %>%
+  ggplot(aes(n, threat_type)) +
+  geom_col() +
+  scale_y_reordered() +
+  facet_wrap(~ continent, scales = "free") +
+  labs(x = "# of plants facing this threat",
+       y = "",
+       fill = "Continent",
+       title = "What are the most common threats to plants by continent?")
+
+threats %>%
+  filter(!is.na(year_last_seen)) %>%
+  count(year_last_seen, threat_type, continent) %>%
+  # filter(fct_lump(threat_type, 9, w = n) != "Other") %>%
+  mutate(threat_type = fct_reorder(threat_type, -n, sum)) %>%
+  ggplot(aes(year_last_seen, n, fill = continent)) +
+  geom_col() +
+  facet_wrap(~ threat_type) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "Last seen",
+       y = "# of plants extinct with this threat")
+```
+
+Species
+
+```{r}
+plants %>%
+  select(binomial_name) %>%
+  separate(binomial_name, c("genus", "species"), sep = " ") %>%
+  count(genus, sort = TRUE)
+
+plants %>%
+  count(genus = fct_lump(genus, 9), year_last_seen) %>%
+  filter(genus != "Other") %>%
+  ggplot(aes(year_last_seen, n, fill = genus)) +
+  geom_col() +
+  facet_wrap(~ genus)
+```
+
+Interesting things I learned: Brugmansia is fully extinct in the wild.
+
+```{r}
+plants %>%
+  filter(red_list_category == "Extinct in the Wild") %>%
+  count(genus, sort = TRUE)
+
+plants %>%
+  group_by(genus) %>%
+  summarize(extinct_in_the_wild = mean(red_list_category == "Extinct in the Wild"),
+            n = n()) %>%
+  arrange(desc(n))
+```
+
+```{r}
+actions %>%
+  filter(action_type != "Unknown") %>%
+  count(action_type, sort = TRUE)
+
+actions %>%
+  count(binomial_name, sort = TRUE) %>%
+  View()
+
+plants %>%
+  count(continent, group, sort = TRUE) %>%
+  ggplot(aes(continent, n)) +
+  geom_col() +
+  facet_wrap(~ group, scales = "free_y") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+actions %>%
+  distinct(binomial_name, genus) %>%
+  count(genus, sort = TRUE)
+```
+
+```{r}
+library(rvest)
+
+links <- read_html("http://www.orchidspecies.com/indexbulb.htm") %>%
+  html_nodes("li a")
+
+link_text <- html_text(links)
+
+bulbophyllum_links <- tibble(text = html_text(links),
+       link = paste0("http://www.orchidspecies.com/", html_attr(links, "href"))) %>%
+  mutate(link_text = str_trim(link_text)) %>%
+  separate(link_text, c("genus", "species", "citation"), sep = " ", extra = "merge") %>%
+  filter(!is.na(citation))
+
+plants %>%
+  inner_join(bulbophyllum_links, by = c("genus", "species")) %>%
+  select(binomial_name, country, continent, link) %>%
+  mutate(html = map(link, read_html)) %>%
+  mutate(image = map_chr(html, ~ html_attr(html_node(., "a img"), "src"))) %>%
+  transmute(binomial_name, image = paste0("http://www.orchidspecies.com/", image))
+```
+
+
+
+
+Threat classification scheme: https://www.iucnredlist.org/resources/threat-classification-scheme
