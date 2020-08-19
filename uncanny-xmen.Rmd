@@ -1,0 +1,182 @@
+---
+title: "Uncanny X-Men: Claremont Run"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+theme_set(theme_light())
+
+xmen <- tidytuesdayR::tt_load('2020-06-30')
+characters <- tt_load(2018, week = 9)$week9_comic_characters
+```
+
+```{r}
+character_visualization <- xmen$character_visualization %>%
+  separate(character, c("superhero", "secret_identity"), sep = " = ", fill = "right")
+```
+
+```{r}
+character_visualization %>%
+  group_by(superhero)
+```
+
+```{r}
+by_character %>%
+  left_join(characters, by = c(superhero = "name")) %>%
+  View()
+
+characters %>%
+  filter(str_detect(name, "Angel")) %>%
+  distinct(name)
+```
+
+
+```{r}
+library(ggrepel)
+
+by_character <- character_visualization %>%
+  group_by(superhero) %>%
+  summarize(across(speech:depicted,
+                   list(total = sum,
+                        issues = ~ sum(. > 0),
+                        avg = ~ mean(.[depicted > 0]))))
+
+by_character %>%
+  arrange(desc(speech_issues)) %>%
+  filter(speech_issues > 0) %>%
+  mutate(superhero = fct_reorder(superhero, speech_issues)) %>%
+  ggplot(aes(speech_issues, superhero)) +
+  geom_col() +
+  labs(title = "Which X-Men speak in the most issues?",
+       x = "# of issues",
+       y = "")
+
+by_character %>%
+  ggplot(aes(depicted_issues, speech_avg)) +
+  geom_point() +
+  geom_text_repel(aes(label = superhero)) +
+  labs(x = "# of issues in which character appears",
+       y = "Average lines per issue depicted") +
+  expand_limits(y = 0)
+
+by_character %>%
+  ggplot(aes(depicted_issues, thought_avg)) +
+  geom_point() +
+  geom_text_repel(aes(label = superhero)) +
+  scale_x_log10() +
+  labs(x = "# of issues in which character appears",
+       y = "Average thoughts per issue") +
+  expand_limits(y = 0)
+
+by_character %>%
+  ggplot(aes(depicted_issues, speech_avg / thought_avg)) +
+  geom_point() +
+  geom_text_repel(aes(label = superhero)) +
+  expand_limits(y = 1) +
+  scale_y_log10(breaks = c(1, 3, 10, 30),
+                labels = c("Same", "3X", "10X", "30X")) +
+  labs(x = "# of issues depicted",
+       y = "Speech to thought ratio (log scale)",
+       title = "Which X-Men think, and which speak?")
+```
+
+```{r}
+by_character_costume <- character_visualization %>%
+  group_by(superhero, costume) %>%
+  summarize(across(speech:depicted,
+                   list(total = sum,
+                        issues = ~ sum(. > 0),
+                        avg = ~ mean(.[depicted > 0])))) %>%
+  ungroup() %>%
+  mutate(speech_thought_ratio = speech_avg / thought_avg)
+
+by_character_costume %>%
+  mutate(superhero = fct_reorder(superhero, speech_total)) %>%
+  filter(speech_avg > 0) %>%
+  ggplot(aes(speech_total,
+             superhero,
+             color = costume,
+             size = depicted_issues)) +
+  geom_point() +
+  labs(x = "# of lines (in/out of costume)")
+
+costume_ratios <- by_character_costume %>%
+  filter(speech_avg > 0) %>%
+  group_by(superhero) %>%
+  summarize(costume_ratio = speech_total[1] / speech_total[2]) %>%
+  inner_join(by_character, by = "superhero")
+
+costume_ratios %>%
+  ggplot(aes(speech_total,
+             costume_ratio)) +
+  geom_point() +
+  geom_text_repel(aes(label = superhero)) +
+  scale_y_log10() +
+  labs(x = "Total # of lines",
+       y = "Lines in costume / lines out of costume")
+
+costume_ratios %>%
+  mutate(superhero = fct_reorder(superhero, costume_ratio)) %>%
+  ggplot(aes(costume_ratio, y = superhero)) +
+  geom_errorbarh(aes(xmin = 1, xmax = costume_ratio), height = 0) +
+  geom_point(aes(size = speech_total, color = costume_ratio > 1)) +
+  scale_x_log10() +
+  scale_color_discrete(guide = FALSE) +
+  labs(size ="# of lines",
+       x = "Lines in costume / lines out of costume",
+       y = "",
+       title = "Which X-Men tend to speak in costume/out of costume?")
+```
+
+```{r}
+xmen$locations %>%
+  group_by(location) %>%
+  summarize(total = n(),
+            issues = n_distinct(issue)) %>%
+  arrange(desc(issues))
+```
+
+```{r}
+xmen$comic_bechdel %>%
+  bind_rows(xmen$xmen_bechdel %>% mutate(writer = "Chris Claremont")) %>%
+  filter(!is.na(pass_bechdel),
+         !is.na(writer)) %>%
+  group_by(writer = fct_lump(writer, 5)) %>%
+  summarize(n_issues = n(),
+            pct_bechdel = mean(pass_bechdel == "yes")) %>%
+  arrange(desc(n_issues))
+```
+
+```{r}
+xmen$xmen_bechdel %>%
+  filter(!is.na(pass_bechdel)) %>%
+  group_by(issue_group = 20 * (issue %/% 20)) %>%
+  summarize(pct_bechdel = mean(pass_bechdel == "yes"),
+            n = n()) %>%
+  ggplot(aes(issue_group, pct_bechdel)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::percent)
+```
+
+```{r}
+by_issue_character <- character_visualization %>%
+  group_by(issue_group = 20 * (issue %/% 20), superhero) %>%
+  summarize(across(speech:depicted, sum)) %>%
+  ungroup()
+
+by_issue_character %>%
+  filter(fct_lump(superhero, 9, w = speech) != "Other") %>%
+  mutate(superhero = fct_reorder(superhero, -speech, sum)) %>%
+  ggplot(aes(issue_group, speech)) +
+  geom_col() +
+  facet_wrap(~ superhero)
+```
+
+
+

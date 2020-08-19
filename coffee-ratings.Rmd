@@ -1,0 +1,164 @@
+---
+title: "Coffee Ratings"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+theme_set(theme_light())
+
+coffee <- tt_load("2020-07-07")
+
+coffee_ratings <- coffee$coffee_ratings %>%
+  mutate(coffee_id = row_number()) %>%
+  filter(total_cup_points > 0)
+```
+
+```{r}
+View(coffee_ratings)
+
+coffee_ratings %>%
+  count(species, sort = TRUE)
+
+coffee_lumped <- coffee_ratings %>%
+  filter(!is.na(variety)) %>%
+  mutate(variety = fct_lump(variety, 12), sort = TRUE)
+
+coffee_lumped %>%
+  mutate(variety = fct_reorder(variety, total_cup_points)) %>%
+  ggplot(aes(total_cup_points, variety)) +
+  geom_boxplot()
+
+coffee_lumped %>%
+  ggplot(aes(total_cup_points, fill = variety)) +
+  geom_histogram(binwidth = 2) +
+  facet_wrap(~ variety, scale = "free_y") +
+  theme(legend.position = "none")
+```
+
+```{r}
+coffee_ratings %>%
+  summarize(across(everything(), ~ mean(!is.na(.)))) %>%
+  gather() %>%
+  View()
+
+coffee_ratings %>%
+  count(producer, sort = TRUE)
+
+coffee_ratings %>%
+  count(company, sort = TRUE)
+
+coffee_ratings %>%
+  count(color, sort = TRUE)
+
+coffee_ratings %>%
+  count(country = fct_lump(country_of_origin, 12), sort = TRUE) %>%
+  filter(!is.na(country)) %>%
+  mutate(country = fct_reorder(country, n)) %>%
+  ggplot(aes(n, country)) +
+  geom_col()
+
+coffee_ratings %>%
+  filter(!is.na(country_of_origin)) %>%
+  mutate(country = fct_lump(country_of_origin, 12),
+         country = fct_reorder(country, total_cup_points)) %>%
+  ggplot(aes(total_cup_points, country)) +
+  geom_boxplot()
+```
+
+Interesting dimensions:
+
+* Country
+* Variety
+* Company??
+
+```{r}
+library(ggridges)
+
+coffee_metrics <- coffee_ratings %>%
+  select(coffee_id, total_cup_points, variety, company,
+         country_of_origin,
+         altitude_mean_meters,
+         aroma:moisture) %>%
+  pivot_longer(aroma:cupper_points, names_to = "metric", values_to = "value")
+
+coffee_metrics %>%
+  mutate(metric = fct_reorder(metric, value)) %>%
+  ggplot(aes(value, metric)) +
+  geom_density_ridges()
+
+coffee_metrics %>%
+  group_by(metric) %>%
+  summarize(average = mean(value),
+            sd = sd(value)) %>%
+  arrange(desc(average))
+```
+
+```{r}
+library(widyr)
+library(ggraph)
+library(igraph)
+library(tidytext)
+
+correlations <- coffee_metrics %>%
+  pairwise_cor(metric, coffee_id, value, sort = TRUE)
+
+correlations %>%
+  head(50) %>%
+  graph_from_data_frame() %>%
+  ggraph() +
+  geom_edge_link(aes(edge_alpha = correlation)) +
+  geom_node_point() +
+  geom_node_text(aes(label = name), repel = TRUE)
+
+coffee_metrics %>%
+  filter(!metric %in% c("sweetness", "clean_cup", "uniformity")) %>%
+  group_by(metric) %>%
+  mutate(centered = value - mean(value)) %>%
+  ungroup() %>%
+  widely_svd(metric, coffee_id, value) %>%
+  filter(between(dimension, 2, 5)) %>%
+  mutate(metric = reorder_within(metric, value, dimension)) %>%
+  ggplot(aes(value, metric)) +
+  geom_col() +
+  scale_y_reordered() +
+  facet_wrap(~ dimension, scales = "free_y")
+```
+
+```{r}
+
+coffee_ratings %>%
+  filter(altitude_mean_meters < 10000,
+         altitude != 1) %>%
+  mutate(altitude_mean_meters = pmin(altitude_mean_meters, 3000)) %>%
+  ggplot(aes(altitude_mean_meters, total_cup_points)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+coffee_metrics %>%
+  filter(altitude_mean_meters < 10000) %>%
+  mutate(altitude_mean_meters = pmin(altitude_mean_meters, 3000)) %>%
+  mutate(km = altitude_mean_meters / 1000) %>%
+  group_by(metric) %>%
+  summarize(correlation = cor(altitude_mean_meters, value),
+            model = list(lm(value ~ km))) %>%
+  mutate(tidied = map(model, broom::tidy, conf.int = TRUE)) %>%
+  unnest(tidied) %>%
+  filter(term == "km") %>%
+  ungroup() %>%
+  mutate(metric = fct_reorder(metric, estimate)) %>%
+  ggplot(aes(estimate, metric, color = p.value < .05)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = .1) +
+  labs(y = "Evaluation of coffee",
+       x = "Each kilometer of altitude contributes this much to score (95% confidence interval)")
+```
+
+
+
+
