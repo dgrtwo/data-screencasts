@@ -56,7 +56,7 @@
 | GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
-| Animal Crossing | 2020-05-05 |  | :x: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
+| [Animal Crossing](#animal-crossing) | 2020-05-05 |  | :x: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
 | Volcano Eruptions | 2020-05-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
 | Beach Volleyball | 2020-05-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
 | Cocktails | 2020-05-26 |  | :x: | [:link:](https://www.youtube.com/watch?v=EC0SVkFB2OU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md) |
@@ -1691,4 +1691,38 @@
 | Tour de France | [56:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3360s) | Actually writing the code to create the animation |
 | Tour de France | [58:20](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3500s) | Using `reorder_within` function from `tidytext` package to re-order factors that have the same name across multiple groups |
 | Tour de France | [1:02:40](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3760s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Animal Crossing
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Animal Crossing | [5:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=305s) | Starting text analysis of critic reviews of Animal Crossing |
+| Animal Crossing | [7:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=470s) | Using `floor_date` function from `lubridate` package to round dates down to nearest month (then week) |
+| Animal Crossing | [9:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=540s) | Using `unnest_tokens` function and `anti_join` functions from `tidytext` package to break reviews into individual words and remove stop words |
+| Animal Crossing | [10:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=635s) | Taking the average rating associated with individual words (simple approach to gauge sentiment) |
+| Animal Crossing | [12:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=750s) | Using `geom_line` and `geom_point` to graph ratings over time |
+| Animal Crossing | [14:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=880s) | Using `mean` function and logical statement to calculate percentages that meet a certain condition |
+| Animal Crossing | [22:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1350s) | Using `geom_text` to visualize what words are associated with positive/negative reviews |
+| Animal Crossing | [27:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1620s) | Disclaimer that this exploration is not text regression -- wine ratings screencast is a good resource for that |
+| Animal Crossing | [28:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1710s) | Starting to do topic modelling |
+| Animal Crossing | [30:45](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1845s) | Explanation of `stm` function from `stm` package |
+| Animal Crossing | [34:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2070s) | Explanation of `stm` function's output (topic modelling output) |
+| Animal Crossing | [36:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2215s) | Changing the number of topics from 4 to 6 |
+| Animal Crossing | [37:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2260s) | Explanation of how topic modelling works conceptually |
+| Animal Crossing | [40:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2455s) | Using `tidy` function from `broom` package to find which "documents" (reviews) were the "strongest" representation of each topic |
+| Animal Crossing | [44:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2690s) | Noting that there might be a scraping issue resulting in review text being repeated |
+| Animal Crossing | [46:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2765s) | (Unsuccessfully) Using `str_sub` function to help fix repeated review text by locating where in the review text starts being repeated |
+| Animal Crossing | [48:20](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2900s) | (Unsuccessfully) Using `str_replace` and `map2_chr` functions, as well as regex cpaturing groups to fix repeated text |
+| Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
+| Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
+| Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
 
