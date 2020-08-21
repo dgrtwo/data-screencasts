@@ -68,6 +68,7 @@
 | Australian Animal Outcomes | 2020-07-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
 | Palmer Penguins | 2020-07-08 |  | :x: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
 | European Energy | 2020-08-04 |  | :x: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
+| [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
 
 
 
@@ -1724,5 +1725,32 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Plants in Danger
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Plants in Danger | [2:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=120s) | Getting an overview of categorical data |
+| Plants in Danger | [5:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=300s) | Using `fct_relevel` to reorder the "Before 1900" level to the first location leaving the other levels in their existing order |
+| Plants in Danger | [8:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=485s) | Using `n` and `sum` in `fct_reorder` to reorder factor levels when there are multiple categories in `count` |
+| Plants in Danger | [12:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=720s) | Using `reorder_within` and `scale_y_reordered` such that the values are ordered within each facet |
+| Plants in Danger | [14:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=895s) | Using `axis.text.x` to rotate overlapping labels |
+| Plants in Danger | [19:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1145s) | Using `filter` and `fct_lump` to lump all levels except for the 8 most frequest facet panels |
+| Plants in Danger | [26:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1615s) | Using `separate` to separate the character column `binomial_name` into multiple columns (genus and species) |
+| Plants in Danger | [28:20](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1700s) | Using `fct_lump` within `count` to lump all levels except for the 8 most frequent genus |
+| Plants in Danger | [45:30](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2730s) | Using `rvest` and `SelectorGadget` to web scrape list of species |
+| Plants in Danger | [49:35](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2975s) | Using `str_trim` to remove whitespace from character string |
+| Plants in Danger | [50:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3000s) | Using `separate` to separate character string into genus, species, and rest/citation columns and using `extra = "merge"` to merge extra pieces into the rest/citation column |
+| Plants in Danger | [51:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3060s) | Using `rvest` and `SelectorGadget` to web scrape image links |
+| Plants in Danger | [57:50](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3470s) | Summary of screencast |
+
 
 
