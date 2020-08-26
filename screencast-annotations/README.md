@@ -66,8 +66,8 @@
 | X-Men Comics | 2020-06-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
 | Coffee Ratings | 2020-07-07 |  | :x: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
 | Australian Animal Outcomes | 2020-07-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
-| Palmer Penguins | 2020-07-08 |  | :x: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
-| European Energy | 2020-08-04 |  | :x: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
+| [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
+| [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
 
 
@@ -1725,6 +1725,61 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Palmer Penguins
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Palmer Penguins | [11:17](https://www.youtube.com/watch?v=ImpXawPNCfM&t=677s) | Create a pivoted histogram plot to visualize the distribution of penguin metrics using `pivot_longer`, `geom_histogram`, and `facet_wrap` |
+| Palmer Penguins | [14:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=880s) | Create a pivoted density plot to visualize the distribution of penguin metrics using `geom_density` and `facet_wrap` |
+| Palmer Penguins | [15:21](https://www.youtube.com/watch?v=ImpXawPNCfM&t=921s) | Create a pivoted boxplot plot to visualize the distribution of penguin metrics using `geom_boxplot` and `facet_wrap` |
+| Palmer Penguins | [17:50](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1070s) | Create a bar plot to show penguin species changed over time |
+| Palmer Penguins | [18:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1105s) | Create a bar plot to show specie counts per island |
+| Palmer Penguins | [20:00](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1200s) | Create a logistic regression model to predict if a penguin is Adelie or not using bill length with cross validaiton of metrics |
+| Palmer Penguins | [39:35](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2375s) | Create second logistic regression model using 4 predictive metrics (bill length, bill depth, flipper length, body mass) and then compare the accuracy of both models |
+| Palmer Penguins | [43:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2605s) | Create a k-nearest neighbor model and then compare accuracy against logistic regression models to see which has the highest cross validated accuracy |
+| Palmer Penguins | [53:05](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3185s) | What is the accuracy of the testing holdout data on the k-nearest neighbor model? |
+| Palmer Penguins | [1:05:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3940s) | Create a decision tree and then compare accuracy against the previous models to see which has the highest cross validated accuracy + how to extract a decision tree |
+| Palmer Penguins | [1:10:45](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4245s) | Perform multi class regression using `multinom_reg` |
+| Palmer Penguins | [1:19:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4780s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### European Energy
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| European Energy | [01:50](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=110s) | Using `count` to get an overview of scategorical data |
+| European Energy | [07:25](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=445s) | Using `pivot_longer` and `gather` to pivot date variables from wide to long |
+| European Energy | [09:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=540s) | Using `as.integer` to change `year` variable from `character` to `integer` class |
+| European Energy | [10:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=610s) | Using `fct_reorder` to reorder stacked barplot |
+| European Energy | [10:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=630s) | Using `scale_y_continuous` with `labels = comma` from `scales` package to insert a comma every three digits on the y-axis |
+| European Energy | [16:35](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=995s) | Using `replace_na` and `list` to replace `NA` values in `country_name` column with United Kingdom |
+| European Energy | [18:05](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1085s) | Using `fct_lump` to lump factor levels together except for the 10 most frequent for each facet panel |
+| European Energy | [20:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1210s) | Using `reorder_within` with `fun = sum` and `scale_y_reordered` to reorder the categories within each facet panel |
+| European Energy | [24:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1470s) | Using `ggflags` package to add country flags | Debugging strategies include 1) minimal reproducible example and 2) binary search |
+| European Energy | [29:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1760s) | (Unsuccessfully) Using `fct_recode` to rename the ISO two-digit identifier for the United Kingdom from the UK to GB |
+| European Energy | [33:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2000s) | Using `ifelse` to replace the ISO two-digit identifier for the United Kingdom from UK to GB & from EL to GR fro Greece | Debugging included |
+| European Energy | [40:45](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2445s) | Using `str_to_lower` to convert observations in `country` column to lower case |
+| European Energy | [45:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2700s) | Creating a `slope graph` to show differences in Nuclear production (2106 versus 2018) | Using `scale_y_log10` to increase distance between points | Using `ggflags` for country flags |
+| European Energy | [47:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2820s) | Using `scale_x_continuous` with `breaks = c(2016, 2018)` to show only 2016 and 2018 on x-axis |
+| European Energy | [48:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2900s) | Extend x-axis limits using `scale_x_continuous` with `limits = c(2015, 2019)` and `geom_text` with an `ifelse` within `hjust` to alternate labels for the right and left side of `slope graph` |
+| European Energy | [52:40](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3160s) | Creating a slopegraph function |
+| European Energy | [1:00:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3600s) | Summary of screencast |
 
 
 
