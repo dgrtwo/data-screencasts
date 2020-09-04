@@ -64,11 +64,12 @@
 | African-American History | 2020-06-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
 | Caribou Locations | 2020-06-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=7G7SVODhVo4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-23/readme.md) |
 | X-Men Comics | 2020-06-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
-| Coffee Ratings | 2020-07-07 |  | :x: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
-| Australian Animal Outcomes | 2020-07-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
+| [Coffee Ratings](#coffee-ratings) | 2020-07-07 | Ridgeline plot, Pairwise correlation, Network plot, Singular value decomposition (SVD), Linear model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
+| [Australian Animal Outcomes](#australian-animal-outcomes) | 2020-07-21 | Data manipulation, Web scraping (`rvest` package) and `SelectorGadget`, Animated choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
 | [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
 | [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
+| [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
 
 
 
@@ -1732,6 +1733,72 @@
 
 
 
+#### Coffee Ratings
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Coffee Ratings | [08:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=495s) | Using `fct_lump` within `count` and then `mutate` to lump the variety of coffee together except for the most frequent |
+| Coffee Ratings | [08:50](https://www.youtube.com/watch?v=-1x8Kpyndss&t=530s) | Create a `geom_boxplot` to visualize the variety and the distribution of `total_cup_points` |
+| Coffee Ratings | [09:55](https://www.youtube.com/watch?v=-1x8Kpyndss&t=595s) | Create a `geom_histogram` to visualize the variety and the distribution of `total_cup_points` |
+| Coffee Ratings | [11:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=700s) | Using `fct_reorder` to reorder `variety` by sorting it along `total_cup_points` in ascending order |
+| Coffee Ratings | [12:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=755s) | Using `summarize` with `across` to calculate the percent of missing data (NA) for each rating variable |
+| Coffee Ratings | [15:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=920s) | Create a bar chart using `geom_col` with `fct_lump` to visualize the frequency of top countries |
+| Coffee Ratings | [20:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1235s) | Using `pivot_longer` to pivot the rating metrics for wide format to long format |
+| Coffee Ratings | [21:30](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1290s) | Create a `geom_line` chart to see if the `sum` of the rating categories equal to the `total_cup_points` column |
+| Coffee Ratings | [23:10](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1390s) | Create a `geom_density_ridges` chart to show the distribution of ratings across each rating metric |
+| Coffee Ratings | [24:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1475s) | Using `summarize` with `mean` and `sd` to show the average rating per metric with its standard deviation |
+| Coffee Ratings | [26:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1575s) | Using `pairwise_cor` to find correlations amongst the rating metrics |
+| Coffee Ratings | [27:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1640s) | Create a `network plot` to show the clustering of the rating metrics |
+| Coffee Ratings | [29:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1775s) | Using `widely_svd` to visualize the biggest source of variation with the rating metrics (Singular value decomposition) |
+| Coffee Ratings | [37:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2260s) | Create a `geom_histogram` to visualize the distribution of altitude |
+| Coffee Ratings | [40:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2420s) | Using `pmin` to set a maximum numeric altitude value of 3000 |
+| Coffee Ratings | [41:05](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2465s) | Create a `geom-point` chart to visualize the correlation between altitude and quality (`total_cup_points`) |
+| Coffee Ratings | [42:00](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2520s) | Using `summarize` with `cor` to show the correlation between altitude and each rating metric |
+| Coffee Ratings | [44:25](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2665s) | Create a linear model `lm` for each rating metric then visualize the results using a `geom_line` chart to show how each kilometer of altitude contributes to the score |
+| Coffee Ratings | [50:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=3035s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Australian Animal Outcomes
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Australian Animal Outcomes | [1:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=80s) | Using `use_tidytemplate` to open the project dataset with the package's tidytemplate Rmd |
+| Australian Animal Outcomes | [4:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=270s) | Using `rename` to rename `Total` column to `total` |
+| Australian Animal Outcomes | [6:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=380s) | Using `fct_reorder` to reorder stacked barplot with `weight = sum` |
+| Australian Animal Outcomes | [7:00](https://www.youtube.com/watch?v=E2amEz_upzU&t=420s) | Using `fct_lump` with `w = n` to lump together `outcome` factor levels displaying the most frequenct with rest lumped into `other` |
+| Australian Animal Outcomes | [9:15](https://www.youtube.com/watch?v=E2amEz_upzU&t=555s) | Using `fct_recode` to combine the factor level `In Stock` with `Currently In Care` |
+| Australian Animal Outcomes | [12:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=730s) | Using `fct_reorder` to reorder `facet_wrap` panels |
+| Australian Animal Outcomes | [13:03](https://www.youtube.com/watch?v=E2amEz_upzU&t=783s) | Using `scale_y_continuous` with `labels = comma` to separate digits with comma |
+| Australian Animal Outcomes | [14:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=850s) | Using `complete` to complete account for missing combinations of data where the value is 0 in the `released` column |
+| Australian Animal Outcomes | [16:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=970s) | Using `max (year)` within `filter` to subset the data displaying only the most recent year |
+| Australian Animal Outcomes | [19:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=1170s) | Using `pivot_longer` to pivot location variables from wide to long |
+| Australian Animal Outcomes | [21:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1305s) | Web Scaraping table from Wikipedia with `SelectorGadget` and `Rvest` |
+| Australian Animal Outcomes | [25:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1545s) | Using `str_to_upper` to upper case the values in the `shorthand` column |
+| Australian Animal Outcomes | [27:13](https://www.youtube.com/watch?v=E2amEz_upzU&t=1633s) | Using `parse_number` to remove commas from `population` and `area` columns |
+| Australian Animal Outcomes | [28:55](https://www.youtube.com/watch?v=E2amEz_upzU&t=1735s) | Using `bind_rows` to bind the two web scraped tables from Wikipedia together by row and column |
+| Australian Animal Outcomes | [29:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=1775s) | Using `inner_join` to combine the Wikipedia table with the original data set |
+| Australian Animal Outcomes | [29:47](https://www.youtube.com/watch?v=E2amEz_upzU&t=1787s) | Using `mutate` to create new `per_capita_million` column to show `outcome` on a per million people basis |
+| Australian Animal Outcomes | [37:25](https://www.youtube.com/watch?v=E2amEz_upzU&t=2245s) | Using `summarize` to create new column `pct_euthanized` showing percent of cats and dogs euthanized over time. Formula accounts for 0 values thus avoiding a resulting empty vector. |
+| Australian Animal Outcomes | [39:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=2350s) | Using `scale_y_continuous` with `labels = percent` to add percentage sign to y-axis values |
+| Australian Animal Outcomes | [42:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=2565s) | Create a choropleth map of Australia using an Australian States `Shapefile` using the `sf` and `ggplot2` packages | Troubleshooting begins at 44:25 (downsizing / downsampling with `sf_simplify`) |
+| Australian Animal Outcomes | [55:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=3345s) | Add animation to the map of Australia showing the percent of cats euthanized by region using `gganimate` |
+| Australian Animal Outcomes | [1:01:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=3695s) | Summary of screencast |
+
+
+
+***
+
+
+
 #### Palmer Penguins
 
 [Back to summary](#screencast-summary)
@@ -1809,3 +1876,26 @@
 
 
 
+***
+
+
+
+#### Global Crop Yields
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Global Crop Yields | [03:35](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=215s) | Using `rename` to shorten column name |
+| Global Crop Yields | [06:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=400s) | Using `rename_all` with `str_remove` and regex to remove characters in column name |
+| Global Crop Yields | [07:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=460s) | Using `pivot_longer` to change data from wide to long |
+| Global Crop Yields | [08:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=505s) | Create a faceted `geom_line` chart |
+| Global Crop Yields | [09:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=580s) | Using `fct_reorder` to reorder facet panels in ascending order |
+| Global Crop Yields | [11:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=710s) | Create an interactive `Shiny` dashboard |
+| Global Crop Yields | [33:20](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2000s) | Create a faceted `geom_line` chart with `add_count` and `filter(n = max(x))` to subset the data for crops that have observations in every year |
+| Global Crop Yields | [36:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2210s) | Create a faceted `geom_point` chart showing the crop yields at start and end over a 50 year period (1968 start date and 2018 end date) |
+| Global Crop Yields | [45:00](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2700s) | Create a `geom_boxplot` to visualize the distribution of yield ratios for the different crops to see how efficiency has increased across countries |
+| Global Crop Yields | [46:00](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2760s) | Create a `geom_col` chart to visualize the median yield ratio for each crop |
+| Global Crop Yields | [47:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2870s) | Create a `geom_point` chart to visualize efficiency imporvement for each country for a specific crop (yield start / yield ratio) |
+| Global Crop Yields | [50:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3025s) | Using the `countrycode` package to color `geom_point` chart by continent names |
+| Global Crop Yields | [56:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3410s) | Summary of screencast |
