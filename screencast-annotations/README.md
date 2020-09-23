@@ -63,7 +63,7 @@
 | African-American Achievements | 2020-06-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md) |
 | African-American History | 2020-06-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
 | Caribou Locations | 2020-06-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=7G7SVODhVo4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-23/readme.md) |
-| X-Men Comics | 2020-06-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
+| [X-Men Comics](#x-men-comics) | 2020-06-30 | Data manipulation, Lollipop graph, `floor` function | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
 | [Coffee Ratings](#coffee-ratings) | 2020-07-07 | Ridgeline plot, Pairwise correlation, Network plot, Singular value decomposition (SVD), Linear model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
 | [Australian Animal Outcomes](#australian-animal-outcomes) | 2020-07-21 | Data manipulation, Web scraping (`rvest` package) and `SelectorGadget`, Animated choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
 | [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
@@ -1726,6 +1726,34 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### X-Men Comics
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| X-Men Comics | [07:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=445s) | Using `separate` to separate the name from secrete identity in the `character` column |
+| X-Men Comics | [09:55](https://www.youtube.com/watch?v=NY0-IFet5AM&t=595s) | Using `summarize` and `across` to find the frequency of the action variables and find out how many issues each action was used for each character |
+| X-Men Comics | [13:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=805s) | Create a `geom_col` chart to visualize which character speaks in the most issues |
+| X-Men Comics | [18:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1115s) | Create a `geom_point` chart to visualize each character’s average lines per issue in which the character is depicted |
+| X-Men Comics | [22:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1325s) | Create a `geom_point` chart to visualize each character’s average thoughts per issue in which the character is depicted |
+| X-Men Comics | [23:10](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1390s) | Create a `geom_point` chart to visualize character’s speech versus thought ratio per issue in which the character is depicted |
+| X-Men Comics | [30:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1805s) | Create a `geom_point` to visualize character’s number of lines while in costume versus not in costume |
+| X-Men Comics | [34:30](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2070s) | Create a `geom_point` chart to visualize the lines in costume versus lines out of costume ratio |
+| X-Men Comics | [39:20](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2360s) | Create a `lollipop graph` using `geom_point` and `geom_errorbarh` to visualize the lines in costume versus lines out of costume ratio and their distance from 1.0 (1 to 1) |
+| X-Men Comics | [45:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2700s) | Use `summarize` to find the frequency of each location and the total number of unique issues where the location is used |
+| X-Men Comics | [46:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2760s) | Use `summarize` and `fct_lump` to count how many issues each author has written while lumping together all authors except the most frequent |
+| X-Men Comics | [47:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2845s) | Use `summarize` and `fct_lump` to see if the authors rates of passing the Bechdel test differ from one another |
+| X-Men Comics | [52:45](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3165s) | Create a `geom_line` chart to visualize if the rates of passing the Bechdel test changed over time and `floor division` `%/%` to generate 20 observations per group |
+| X-Men Comics | [54:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3275s) | Create a `geom_col` to visualize the amount of lines each character has per issue over time giving context to Bechdel test passing rates |
+| X-Men Comics | [1:00:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3600s) | Summary of screencast |
 
 
 
