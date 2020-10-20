@@ -1,0 +1,222 @@
+---
+title: "Great American Beer Festival"
+date: 2020-10-20
+output: html_output
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(glue)
+theme_set(theme_light())
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+tt <- tt_load("2020-10-20")
+
+beer_awards <- tt$beer_awards %>%
+  mutate(state = str_to_upper(state),
+         medal = fct_relevel(medal, c("Bronze", "Silver")))
+
+beer_awards %>%
+  count(year) %>%
+  ggplot(aes(year, n)) +
+  geom_col()
+
+beer_awards %>%
+  count(city, state, sort = TRUE)
+
+beer_awards %>%
+  count(category, sort = TRUE)
+
+beer_awards %>%
+  count(state, sort = TRUE)
+
+beer_awards %>%
+  count(brewery, city, state, sort = TRUE)
+
+
+beer_awards %>%
+  count(category, sort = TRUE) %>%
+  View()
+
+beer_awards %>%
+  filter(category == "Bock")
+```
+
+What are the most-awarded beers?
+
+```{r}
+beer_counts <- beer_awards %>%
+  count(beer_name, brewery, medal, city, state)
+
+beer_counts %>%
+  mutate(beer_name = glue("{ beer_name } ({ brewery })")) %>%
+  filter(fct_lump(beer_name, 16, w = n) != "Other") %>%
+  mutate(beer_name = fct_reorder(beer_name, n, sum)) %>%
+  ggplot(aes(n, beer_name, fill = medal)) +
+  geom_col() +
+  labs(title = "Which beers have won the most awards?",
+       x = "# of awards",
+       y = "",
+       fill = "")
+
+beer_counts %>%
+  pivot_wider(names_from = medal, values_from = n,
+              values_fill = list(n = 0)) %>%
+  mutate(total = Bronze + Silver + Gold) %>%
+  arrange(desc(total))
+```
+
+Give 1 point for Bronze, 2 for Silver, 3 for Gold
+
+```{r}
+by_brewery <- beer_awards %>%
+  group_by(brewery) %>%
+  summarize(n_medals = n(),
+            n_beers = n_distinct(beer_name),
+            n_gold = sum(medal == "Gold"),
+            weighted_medals = sum(as.integer(medal))) %>%
+  arrange(desc(n_medals))
+
+beer_awards %>%
+  count(brewery, medal) %>%
+  filter(fct_lump(brewery, 16, w = n) != "Other") %>%
+  mutate(brewery = fct_reorder(brewery, n, sum)) %>%
+  ggplot(aes(n, brewery, fill = medal)) +
+  geom_col() +
+  labs(title = "Which breweries have won the most awards?",
+       x = "# of awards",
+       y = "",
+       fill = "")
+
+beer_awards %>%
+  count(state, medal) %>%
+  filter(fct_lump(state, 16, w = n) != "Other") %>%
+  mutate(state = fct_reorder(state, n, sum)) %>%
+  ggplot(aes(n, state, fill = medal)) +
+  geom_col() +
+  labs(title = "Which states have won the most awards?",
+       x = "# of awards",
+       y = "",
+       fill = "")
+```
+
+```{r}
+library(tidylo)
+library(tidytext)
+
+beer_awards %>%
+  filter(fct_lump(state, 12) != "Other",
+         fct_lump(category, 10) != "Other") %>%
+  count(state, category) %>%
+  complete(state, category, fill = list(n = 0)) %>%
+  bind_log_odds(state, category, n) %>%
+  mutate(state = fct_reorder(state, -n, sum)) %>%
+  mutate(category = reorder_within(category, log_odds_weighted, state)) %>%
+  ggplot(aes(log_odds_weighted, category, fill = log_odds_weighted > 0)) +
+  geom_col() +
+  scale_y_reordered() +
+  facet_wrap(~ state, scales = "free_y") +
+  theme(legend.position = "none") +
+  labs(x = "Weighted log-odds",
+       y = "Category",
+       title = "What types of beer are over- or under-represented in awards each state?",
+       subtitle = "For the 12 states and the 10 categories with the most awards")
+```
+
+States
+
+```{r}
+by_year_state <- beer_awards %>%
+  add_count(year, name = "year_total") %>%
+  mutate(state = fct_lump(state, 9)) %>%
+  count(year, state, year_total, sort = TRUE) %>%
+  mutate(pct_year = n / year_total)
+
+by_year_state %>%
+  filter(state != "Other") %>%
+  ggplot(aes(year, pct_year, color = state)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = percent) +
+  facet_wrap(~ state)
+
+by_year_state %>%
+  filter(state == "WI") %>%
+  glm(cbind(n, year_total - n) ~ year,
+      data = .,
+      family = "binomial") %>%
+  summary()
+
+library(broom)
+
+by_year_state %>%
+  filter(state != "Other") %>%
+  mutate(state = state.name[match(state, state.abb)]) %>%
+  group_by(state) %>%
+  summarize(model = list(glm(cbind(n, year_total - n) ~ year, family = "binomial"))) %>%
+  mutate(tidied = map(model, tidy, conf.int = TRUE)) %>%
+  unnest(tidied) %>%
+  filter(term == "year") %>%
+  mutate(p.value = format.pval(p.value),
+         state = fct_reorder(state, estimate)) %>%
+  ggplot(aes(estimate, state)) +
+  geom_point() +
+  geom_vline(xintercept = 0, lty = 2) +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = .1) +
+  labs(x = "Estimated slope",
+       title = "Which states become more or less frequent medal winners?",
+       y = "")
+```
+
+
+```{r}
+library(ggthemes)
+map_data("state")
+
+beer_awards %>%
+  mutate(state = str_to_lower(state.name[match(state, state.abb)])) %>%
+  count(state) %>%
+  right_join(map_data("state"), by = c(state = "region")) %>%
+  ggplot(aes(long, lat, fill = n, group = group)) +
+  geom_polygon() +
+  theme_map() +
+  coord_map() +
+  labs(fill = "# of award-winning beers")
+```
+
+Dead end: bringing in Kaggle data
+
+```{r}
+beer_awards
+
+breweries <- read_csv("~/Downloads/archive/breweries.csv") %>%
+  rename(brewery_id = X1,
+         brewery = name)
+
+beers <- read_csv("~/Downloads/archive/beers.csv") %>%
+  rename(beer_name = name) %>%
+  inner_join(breweries, by = "brewery_id")
+
+beers
+
+beer_awards %>%
+  distinct(beer_name, brewery) %>%
+  semi_join(beers, by = c("beer_name"))
+
+# DEAD END!
+```
+
+Things I didn't work on:
+
+* Put dots for cities + breweries that win many awards
+* Per-capita award winning beers
