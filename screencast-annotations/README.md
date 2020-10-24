@@ -70,6 +70,12 @@
 | [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
 | [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
+| Friends | 2020-09-08 |  | :x: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
+| Government Spending on Kids | 2020-09-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
+| Himalayan Climbers | 2020-09-22 |  | :x: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
+| Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
+| NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
+| Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
 
 
 
