@@ -1,0 +1,174 @@
+---
+title: "TidyTemplate"
+date: 2020-09-01
+output: html_output
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(janitor)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+tt <- tt_load("2020-09-01")
+```
+
+```{r}
+tt$key_crop_yields %>%
+  View()
+
+yields <- tt$key_crop_yields %>%
+  clean_names() %>%
+  rename_all(str_remove, "_tonnes.*")
+
+arable_land <- tt$arable_land_pin %>%
+  clean_names() %>%
+  rename(arable_land_needed = 4)
+
+arable_land %>%
+  filter(entity == "Afghanistan") %>%
+  ggplot(aes(year, arable_land_needed)) +
+  geom_line()
+
+fertilizer <- tt$cereal_crop_yield_vs_fertilizer_application %>%
+  janitor::clean_names() %>%
+  rename(yield = 4,
+         fertilizer_use = 5)
+```
+
+```{r}
+yields_tidy <- yields %>%
+  pivot_longer(wheat:bananas, names_to = "crop", values_to = "yield") %>%
+  filter(!is.na(yield)) %>%
+  mutate(crop = str_replace_all(crop, "_", " "),
+         crop = str_to_title(crop))
+
+yields_tidy %>%
+  write_rds("crop-yields-shiny/yields_tidy.rds")
+```
+
+```{r}
+yields_tidy %>%
+  filter(code == "USA") %>%
+  mutate(crop = fct_reorder(crop, -yield)) %>%
+  ggplot(aes(year, yield)) +
+  geom_line() +
+  facet_wrap(~ crop)
+
+yields_tidy %>%
+  filter(code == "USA") %>%
+  mutate(crop = fct_reorder(crop, -yield)) %>%
+  ggplot(aes(year, yield, color = crop)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Yield (tonnes per hectare)",
+       title = "Crop yields in the US over time",
+       color = "Crop")
+
+yields_tidy %>%
+  filter(entity == "India") %>%
+  mutate(crop = fct_reorder(crop, -yield)) %>%
+  ggplot(aes(year, yield, color = crop)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Yield (tonnes per hectare)",
+       title = "Crop yields in the US over time",
+       color = "Crop")
+```
+
+```{r}
+yields_tidy %>%
+  filter(crop == "Wheat") %>%
+  add_count(entity) %>%
+  filter(n == max(n)) %>%
+  filter(entity %in% sample(unique(entity), 25)) %>%
+  ggplot(aes(year, yield)) +
+  geom_line() +
+  facet_wrap(~ entity)
+
+crop_yields_50_years <- yields_tidy %>%
+  arrange(entity, year) %>%
+  filter(year >= 1968) %>%
+  group_by(entity, code, crop) %>%
+  summarize(year_start = min(year),
+            year_end = max(year),
+            yield_start = first(yield),
+            yield_end = last(yield)) %>%
+  ungroup() %>%
+  filter(year_start == 1968) %>%
+  mutate(yield_ratio = yield_end / yield_start)
+
+crop_yields_50_years %>%
+  filter(!is.na(code)) %>%
+  ggplot(aes(yield_start, yield_end)) +
+  geom_abline(color = "red") +
+  geom_point() +
+  facet_wrap(~ crop, scales = "free")
+
+crop_yields_50_years %>%
+  mutate(crop = fct_reorder(crop, yield_ratio)) %>%
+  ggplot(aes(yield_ratio, crop)) +
+  geom_boxplot() +
+  scale_x_log10()
+
+crop_yields_50_years %>%
+  group_by(crop) %>%
+  summarize(median_yield_ratio = median(yield_ratio)) %>%
+  mutate(crop = fct_reorder(crop, median_yield_ratio)) %>%
+  ggplot(aes(median_yield_ratio, crop)) +
+  geom_col() +
+  labs(title = "How much has the average country improved at producing this crop?",
+       x = "(2018 yield) / (1968 yield)",
+       y = "")
+
+crop_yields_50_years %>%
+  filter(is.na(code)) %>%
+  filter(entity %in% c("Africa", "Asia", "Northern America", "South America", "Oceania")) %>%
+  ggplot(aes(yield_start, yield_end, color = entity)) +
+  geom_abline(color = "red") +
+  geom_point() +
+  expand_limits(y = 0, x = 0) +
+  facet_wrap(~ crop, scales = "free") +
+  labs(x = "Tonnes per hectare in 1968",
+       y = "Tonnes per hectare in 2018",
+       color = "Continent")
+```
+
+```{r}
+library(ggrepel)
+library(countrycode)
+
+crop_yields_50_years %>%
+  filter(crop == "Wheat",
+         !is.na(code)) %>%
+  mutate(continent = countrycode(code, "iso3c", "continent")) %>%
+  filter(!is.na(continent)) %>%
+  ggplot(aes(yield_start, yield_ratio)) +
+  geom_point(aes(color = continent)) +
+  scale_x_log10() +
+  scale_y_log10(breaks = c(.25, .5, 1, 2, 4),
+                labels = c("1/4X", "1/2X", "Same", "2X", "4X")) +
+  geom_hline(yintercept = 1, linetype = "dotted") +
+  geom_text_repel(aes(label = entity), force = .1,
+                  size = 2.5) +
+  labs(x = "1968 yield (tonnes per hectare), log scale",
+       y = "(2018 yield) / (1968 yield), log scale",
+       color = "Continent",
+       title = "How has wheat efficiency changed across countries?")
+
+countrycode("USA", "iso3c", "continent")
+```
+
+
+

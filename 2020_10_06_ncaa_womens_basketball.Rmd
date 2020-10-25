@@ -1,0 +1,189 @@
+---
+title: "NCAA Women's Basketball"
+date: 2020-10-06
+output: html_output
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+theme_set(theme_light())
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+tt <- tt_load("2020-10-06")
+
+# Tournament finish - The round of the final game for each team. OR=opening-round loss (1983 only); 1st=first-round loss; 2nd=second-round loss; RSF=loss in the Sweet 16; RF=loss in the Elite Eight; NSF=loss in the national semifinals; N2nd=national runner-up; Champ=national champions
+finish_levels <- c("1st", "2nd", "RSF", "RF", "NSF", "N2nd", "Champ")
+tournament <- tt$tournament %>%
+  filter(year >= 1994) %>%
+  mutate(tourney_finish = fct_relevel(tourney_finish, finish_levels),
+         n_rounds = as.integer(tourney_finish) - 1)
+```
+
+```{r}
+tournament %>%
+  count(year) %>% 
+  ggplot(aes(year, n)) +
+  geom_col()
+```
+
+```{r}
+tournament %>%
+  ggplot(aes(full_w, tourney_w + reg_w)) +
+  geom_point(alpha = .1)
+
+tournament %>%
+  filter(conf_l > reg_l)
+```
+
+* Regular wins are before the tournament
+* Conf wins are a subset of regular wins
+* Tournament wins are in this bracket of 64
+
+There've been 64 teams since 1994.
+
+```{r}
+by_seed <- tournament %>%
+  group_by(seed) %>%
+  summarize(n = n(),
+            pct_win = mean(tourney_finish == "Champ"),
+            pct_final_four = mean(tourney_finish %in% c("Champ", "N2nd", "NSF")),
+            avg_round = mean(as.integer(tourney_finish)))
+
+by_seed %>%
+  ggplot(aes(seed, avg_round)) +
+  geom_line() +
+  labs(x = "Starting seed",
+       y = "On average, eliminated in round...")
+
+by_seed %>%
+  ggplot(aes(seed, pct_final_four)) +
+  geom_line() +
+  labs(x = "Starting seed",
+       y = "% of times making the Final Four")
+```
+
+```{r}
+tournament %>%
+  count(seed, tourney_finish) %>%
+  group_by(seed) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(tourney_finish, seed, fill = pct)) +
+  geom_tile() +
+  geom_text(aes(label = percent(pct))) +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_reverse(breaks = seq(1, 16), expand = c(0, 0)) +
+  scale_fill_gradient2(high = "blue", labels = percent) +
+  theme(panel.grid = element_blank(),
+        axis.ticks = element_blank()) +
+  labs(x = "Tournament finish (worst to best)",
+       y = "Starting seed",
+       fill = "% of seed",
+       title = "When a team starts in a seed, how do they end up?")
+```
+
+Has the correlation of seededness to # of rounds changed over time?
+
+```{r}
+tournament %>%
+  ggplot(aes(seed, n_rounds)) +
+  geom_point(alpha = .1)
+
+tournament %>%
+  group_by(year) %>%
+  summarize(correlation = cor(seed, n_rounds)) %>%
+  ggplot(aes(year, correlation)) +
+  geom_line()
+```
+
+No, the predictiveness of a seed hasn't changed in 25 years
+
+Predicting seed + outcome from regular season / conference
+
+```{r}
+tournament %>%
+  ggplot(aes(seed, reg_percent)) +
+  geom_boxplot(aes(group = seed)) +
+  geom_smooth(method = "loess")
+
+tournament %>%
+  mutate(conference = fct_lump(conference, 8)) %>%
+  ggplot(aes(seed, reg_percent)) +
+  geom_jitter(width = .05) +
+  # geom_boxplot(aes(group = seed)) +
+  geom_smooth(method = "loess") +
+  facet_wrap(~ conference)
+```
+
+```{r}
+tournament %>%
+  ggplot(aes(reg_percent, n_rounds)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~ seed)
+
+tournament %>%
+  group_by(seed) %>%
+  summarize(correlation = cor(reg_percent, n_rounds))
+```
+
+### Conferences
+
+What conferences and schools dominate the NCAA championship?
+
+```{r}
+summarize_entries <- . %>%
+  summarize(n_entries = n(),
+            avg_seed = mean(seed),
+            pct_win = mean(tourney_finish == "Champ"),
+            pct_final_four = mean(tourney_finish %in% c("Champ", "N2nd", "NSF")),
+            avg_round = mean(n_rounds)) %>%
+  arrange(desc(n_entries))
+
+by_conference <- tournament %>%
+  group_by(conference) %>%
+  summarize_entries()
+
+by_conference %>%
+  filter(n_entries >= 25) %>%
+  ggplot(aes(n_entries, avg_round)) +
+  geom_point() +
+  geom_text(aes(label = conference), vjust = 1, hjust = 1,
+            check_overlap = TRUE) +
+  expand_limits(x = 0)
+```
+
+```{r}
+library(glue)
+
+by_school <- tournament %>%
+  group_by(school) %>%
+  summarize_entries()
+
+by_school %>%
+  filter(n_entries >= 15) %>%
+  mutate(school = glue("{ school } ({ n_entries})"),
+         school = fct_reorder(school, avg_round)) %>%
+  ggplot(aes(avg_round, school)) +
+  geom_col() +
+  labs(title = "Of schools that frequently play, which perform best?",
+       subtitle = "Parentheses show the # of years out of the last 25 they played",
+       x = "Average # of rounds won",
+       y = "")
+```
