@@ -71,7 +71,7 @@
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
 | [Chopped](#chopped) | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md) |
 | [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
-| Friends | 2020-09-08 |  | :x: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
+| [Friends](#friends) | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
 | Government Spending on Kids | 2020-09-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
 | Himalayan Climbers | 2020-09-22 |  | :x: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
 | Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
@@ -1999,3 +1999,28 @@
 | Global Crop Yields | [47:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2870s) | Create a `geom_point` chart to visualize efficiency imporvement for each country for a specific crop (yield start / yield ratio) |
 | Global Crop Yields | [50:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3025s) | Using the `countrycode` package to color `geom_point` chart by continent names |
 | Global Crop Yields | [56:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3410s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Friends
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Friends | [7:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=450s) | Use `dplyr` package's `count` function to count the unique values of multiple variables. |
+| Friends | [9:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=575s) | Use `geom_col` to show how many lines of dialogue there is for each character. Use `fct_reorder` to reorder the `speaker` factor levels by sorting along `n`. |
+| Friends | [12:07](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=727s) | Use `semi_join` to join `friends` dataset with `main_cast` with `by = ""speaker` returning all rows from `friends` with a match in `main_cast`. |
+| Friends | [12:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=750s) | Use `unite` to create the `episode_number` variable which pastes together `season` and `episode` with `sep = "."`. Then, use `inner_join` to combine above dataset with `friends_info` with `by = c("season", "episode")`. Then, use `mutate` and the `glue` package instead to combine `{ season }.{ episode } { title }`. Then use `fct_reorder(episode_title, season + .001 * episode)` to order it by `season` first then `episode`. |
+| Friends | [15:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=945s) | Use `geom_point` to visualize `episode_title` and `us_views_millions`. Use `as.integer` to change `episode_title` to integer class. Add labels to `geom_point` using `geom_text` with `check_overlap = TRUE` so text that overlaps previous text in the same layer will not be plotted. |
+| Friends | [19:95](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1235s) | Run the above plot again using `imdb_rating` instead of `us_views_millions` |
+| Friends | [21:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1295s) | Ahead of modeling: Use `geom_boxplot` to visualize the distribution of speaking for main characters. Use the `complete` function with `fill = list(n = 0)` to replace existing explicit missing values in the data set. Demonstration of how to account for missing `imdb_rating` values using the `fill` function with `.direction = "downup"` to keep the imdb rating across the same title. |
+| Friends | [26:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1605s) | Ahead of modeling: Use `summarize` with `cor(log2(n), imdb_rating)` to find the correlation between speaker and imdb rating -- the fact that the correlation is positive for all speakers gives David a suspicion that some episodes are longer than others because they're in 2 parts with higher ratings due to important moments. David addresses this `confounding factor` by including `percentage of lines` instead of `number of lines`. Visualize results with `geom_boxplot`, `geom_point` with `geom_smooth`. |
+| Friends | [34:05](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2045s) | Use a `linear model` to predict imdb rating based on various variables. |
+| Friends | [42:00](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2520s) | Use the `tidytext` and `tidylo` packages to see what words are most common amongst characters, and whether they are said more times than would be expected by chance. Use `geom_col` to visualize the most overrepresented words per character according to `log_odds_weighted`. |
+| Friends | [54:15](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3255s) | Use the `widyr` package and `pairwise correlation` to determine which characters tend to appear in the same scences together? Use `geom_col` to visualize the correlation between characters. |
+| Friends | [1:00:25](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3625s) | Summary of screencast |
