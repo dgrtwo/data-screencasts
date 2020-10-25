@@ -1970,7 +1970,9 @@
 | Chopped | [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact. |
 | Chopped | [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature. |
 | Chopped | [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes. |
-| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. |
+"| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. 
+
+ |"
 | Chopped | [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons. |
 | Chopped | [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons. |
 | Chopped | [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
