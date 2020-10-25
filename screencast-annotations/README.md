@@ -69,6 +69,7 @@
 | [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
 | [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
+| [Chopped](#chopped) | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md) |
 | [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
 | Friends | 2020-09-08 |  | :x: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
 | Government Spending on Kids | 2020-09-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
@@ -1939,6 +1940,41 @@
 | Plants in Danger | [50:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3000s) | Using `separate` to separate character string into genus, species, and rest/citation columns and using `extra = "merge"` to merge extra pieces into the rest/citation column |
 | Plants in Danger | [51:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3060s) | Using `rvest` and `SelectorGadget` to web scrape image links |
 | Plants in Danger | [57:50](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3470s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Chopped
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Chopped | [5:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=320s) | Use `geom_histogram` to visualize the distribution of episode ratings. |
+| Chopped | [6:30](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=390s) | Use `geom_point` and `geom_line` with `color = factor(season)` to visualize the episode rating for every episode. |
+| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `group_by` and `summarize` to show the average rating for each season and the number of episodes in each season. |
+| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `geom_line` and `geom_point` with `size = n_episodes` to visualize the average rating for each season with point size indicating the total number of episodes (larger = more episodes, smaller = fewer episodes). |
+"| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable.
+
+ |"
+| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `geom_point` to visualize the top episodes by rating. Use the 'glue' package to place `season number` and `episode number` before episode name on the `y axis`. |
+| Chopped | [15:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=920s) | Use `pivot_longer` to combine ingredients into one single column. Use `separate_rows` with `sep = ", "` to separate out the ingredients with each ingredient getting its own row. |
+| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `fct_lump` to lump ingredients together except for the 10 most frequent. Use `fct_reorder` to reorder `ingredient` factor levels by sorting against `n`. |
+| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `geom_col` to create a stacked bar plot to visualize the most common ingredients by course. |
+| Chopped | [19:45](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1185s) | Use `fct_relevel` to reorder `course` factor levels to appetizer, entree, dessert. |
+| Chopped | [21:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1260s) | Use `fct_rev` and `scale_fill_discrete` with `guide = guide_legend(reverse = TRUE)` to reorder the segments within the stacked bar plot. |
+| Chopped | [23:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1400s) | Use the `widyr` package and `pairwise_cor` to find out what ingredients appear together.  Mentioned: [David Robinson - The `widyr` Package YouTube Talk at 2020 R Conference](https://www.youtube.com/watch?v=mApnx5NJwQA) |
+| Chopped | [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact. |
+| Chopped | [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature. |
+| Chopped | [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes. |
+| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. |
+| Chopped | [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons. |
+| Chopped | [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons. |
+| Chopped | [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
+| Chopped | [1:17:25](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=4645s) | Summary of screencast |
 
 
 
