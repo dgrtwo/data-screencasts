@@ -1957,9 +1957,7 @@
 | Chopped | [6:30](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=390s) | Use `geom_point` and `geom_line` with `color = factor(season)` to visualize the episode rating for every episode. |
 | Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `group_by` and `summarize` to show the average rating for each season and the number of episodes in each season. |
 | Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `geom_line` and `geom_point` with `size = n_episodes` to visualize the average rating for each season with point size indicating the total number of episodes (larger = more episodes, smaller = fewer episodes). |
-"| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable.
-
- |"
+| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable. |
 | Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `geom_point` to visualize the top episodes by rating. Use the 'glue' package to place `season number` and `episode number` before episode name on the `y axis`. |
 | Chopped | [15:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=920s) | Use `pivot_longer` to combine ingredients into one single column. Use `separate_rows` with `sep = ", "` to separate out the ingredients with each ingredient getting its own row. |
 | Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `fct_lump` to lump ingredients together except for the 10 most frequent. Use `fct_reorder` to reorder `ingredient` factor levels by sorting against `n`. |
@@ -1970,9 +1968,7 @@
 | Chopped | [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact. |
 | Chopped | [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature. |
 | Chopped | [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes. |
-"| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. 
-
- |"
+| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. |
 | Chopped | [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons. |
 | Chopped | [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons. |
 | Chopped | [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
