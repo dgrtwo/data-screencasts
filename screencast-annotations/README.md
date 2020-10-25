@@ -52,7 +52,7 @@
 | [Beer Production](#beer-production) | 2020-04-01 | `tidymetrics` package demonstrated, Animated map (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
 | [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 | [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
-| Riddler: Simulating a Branching Process | 2020-04-13 |  | :x: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
+| [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 | GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
@@ -1699,6 +1699,38 @@
 | Tour de France | [56:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3360s) | Actually writing the code to create the animation |
 | Tour de France | [58:20](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3500s) | Using `reorder_within` function from `tidytext` package to re-order factors that have the same name across multiple groups |
 | Tour de France | [1:02:40](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3760s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Riddler: Simulating a Branching Process
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Branching Process | [0:35](https://www.youtube.com/watch?v=QtThluGted0&t=35s) | Explanation of a Poisson process |
+| Riddler: Simulating a Branching Process | [2:40](https://www.youtube.com/watch?v=QtThluGted0&t=160s) | Asking "How long do you have to wait for X to happen?", which the Exponential distribution can answer |
+| Riddler: Simulating a Branching Process | [4:20](https://www.youtube.com/watch?v=QtThluGted0&t=260s) | Using `rexp` function to generate numbers from the Exponential distribution |
+| Riddler: Simulating a Branching Process | [5:25](https://www.youtube.com/watch?v=QtThluGted0&t=325s) | Using a vector of rates inside the `rexp` function (to explore consecutive waiting times) |
+| Riddler: Simulating a Branching Process | [7:05](https://www.youtube.com/watch?v=QtThluGted0&t=425s) | Using `cumsum` function to calculate total waiting time until hitting a specific number in the Poisson process |
+| Riddler: Simulating a Branching Process | [7:35](https://www.youtube.com/watch?v=QtThluGted0&t=455s) | Using `which` function to determine the first instance > 3 in a vector |
+| Riddler: Simulating a Branching Process | [9:20](https://www.youtube.com/watch?v=QtThluGted0&t=560s) | Using `replicate` function to do a quick simulation of the function just written |
+| Riddler: Simulating a Branching Process | [10:55](https://www.youtube.com/watch?v=QtThluGted0&t=655s) | Discussing methods of making the simulation function faster |
+| Riddler: Simulating a Branching Process | [12:00](https://www.youtube.com/watch?v=QtThluGted0&t=720s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating a Branching Process | [13:15](https://www.youtube.com/watch?v=QtThluGted0&t=795s) | Noting how the consecutive waiting times seems to follow the Harmonic series |
+| Riddler: Simulating a Branching Process | [17:10](https://www.youtube.com/watch?v=QtThluGted0&t=1030s) | Noticing that we are missing trials with 0 comments and fixing |
+| Riddler: Simulating a Branching Process | [20:25](https://www.youtube.com/watch?v=QtThluGted0&t=1225s) | Using `nls` function (non-linear least squares) to test how well the data fits with an exponential curve |
+| Riddler: Simulating a Branching Process | [23:05](https://www.youtube.com/watch?v=QtThluGted0&t=1385s) | Visualizing fit between data and the exponential curve calculated with `nls` in previous step |
+| Riddler: Simulating a Branching Process | [23:50](https://www.youtube.com/watch?v=QtThluGted0&t=1430s) | Using `augment` function to added fitted values of the `nls` function |
+| Riddler: Simulating a Branching Process | [26:00](https://www.youtube.com/watch?v=QtThluGted0&t=1560s) | Exploring whether the data actually follows a Geometric distribution |
+| Riddler: Simulating a Branching Process | [30:55](https://www.youtube.com/watch?v=QtThluGted0&t=1855s) | Explanation of the Geometric distribution as it applies to this question |
+| Riddler: Simulating a Branching Process | [34:05](https://www.youtube.com/watch?v=QtThluGted0&t=2045s) | Generalizing the question to ask how long it takes to get to multiple comments (not just 3) |
+| Riddler: Simulating a Branching Process | [38:45](https://www.youtube.com/watch?v=QtThluGted0&t=2325s) | Explanation of why we subtract 1 when fitting an exponential curve |
+| Riddler: Simulating a Branching Process | [46:00](https://www.youtube.com/watch?v=QtThluGted0&t=2760s) | Summary of screencast |
 
 
 
