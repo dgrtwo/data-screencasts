@@ -72,7 +72,7 @@
 | [Chopped](#chopped) | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md) |
 | [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
 | [Friends](#friends) | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
-| Government Spending on Kids | 2020-09-15 |  | :x: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
+| [Government Spending on Kids](#government-spending-on-kids) | 2020-09-15 | Data Manipulation, Functions, Embracing, Reading in Many .csv Files, Pairwise Correlation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
 | Himalayan Climbers | 2020-09-22 |  | :x: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
 | Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
 | NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
@@ -2024,3 +2024,26 @@
 | Friends | [42:00](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2520s) | Use the `tidytext` and `tidylo` packages to see what words are most common amongst characters, and whether they are said more times than would be expected by chance. Use `geom_col` to visualize the most overrepresented words per character according to `log_odds_weighted`. |
 | Friends | [54:15](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3255s) | Use the `widyr` package and `pairwise correlation` to determine which characters tend to appear in the same scences together? Use `geom_col` to visualize the correlation between characters. |
 | Friends | [1:00:25](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3625s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Government Spending on Kids
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Government Spending on Kids | [6:15](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=375s) | Using `geom_line` and `summarize` to visualize education spending over time. First for all states. Then individual states. Then small groups of states using `%in%`. Then in random groups of size n using `%in%` and `sample` with `unique`. `fct_reorder` is used to reorder `state` factor levels by sorting along the `inf_adj` variable. `geom_vline` used to add reference to the 2009 financial crisis. |
+"| Government Spending on Kids | [16:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=960s) | Take the previous chart setting the `inf_adj_perchild` for the first year `1997` to `100%` in order to show a measure of increase from `100%` as opposed to absolute value for change over time for each state relative to `1997`. `geom_hline` used to add reference for the `100%` starting point. David ends up changing the starting point from `100%` to `0%`. `fct_reorder` with `max` used to reorder the plots in descending order based on highest peak values. David briefly mentions the [small multiples](https://www.sharpsightlabs.com/blog/small-multiples-ggplot/#:~:text=The%20small%20multiples%20technique%20is,groups%20or%20comparing%20over%20time.&text=In%20contrast%2C%20R's%20GGPlot2%20package,multiples%20extraordinarily%20easy%20to%20create.) approach to analyzing data. |
+| Government Spending on Kids | [23:35](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1415s) | Create a `function` named `plot_changed_faceted` to make it easier to visualize the many other variables included in the dataset. |
+| Government Spending on Kids | [27:25](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1645s) | Create a `function` named `plot_faceted` with a `{{ y_axis }}` [embracing](https://dplyr.tidyverse.org/articles/programming.html) argument. Adding this function creates two stages: one for data transformation and another for plotting. |
+| Government Spending on Kids | [37:05](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=2225s) | Use the `dir` function with `pattern` and `purrr` package's `map_df` function to read in many different `.csv` files with GDP values for each state. Troubleshooting `Can't combine <character> and <double> columns` error using `function` and `mutate` with `across` and `as.numeric`. Extract state name from filename using `extract` from `tidyr` and `regular expression`. |
+| Government Spending on Kids | [50:50](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3050s) | Unsuccessful attempt at importing state population data via a not user friendly dataset from `census.gov` by skipping the first 3 rows of the Excel file. |
+| Government Spending on Kids | [54:22](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3262s) | Use `geom_col` to see which states spend the most for each child for a single variable and multiple variables using `%in%`. Use `scale_fill_discrete` with `guide_legend(reverse = TRUE)` to change the ordering of the legend. |
+| Government Spending on Kids | [57:40](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3460s) | Use `geom_col` and 'pairwise_corr` to visualize the correlation between variables across states in 2016 using `pairwise correlation`. |
+| Government Spending on Kids | [1:02:02](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3722s) | Use ` geom_point` to plot `inf_adjust_perchild_PK12ed` versus `inf_adj_perchild_highered`. `geom_text` used to apply state names to each point. |
+| Government Spending on Kids | [1:05:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3900s) | Summary of screencast |
