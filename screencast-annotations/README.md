@@ -52,7 +52,7 @@
 | [Beer Production](#beer-production) | 2020-04-01 | `tidymetrics` package demonstrated, Animated map (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
 | [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 | [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
-| Riddler: Simulating a Branching Process | 2020-04-13 |  | :x: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
+| [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 | GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
@@ -63,13 +63,20 @@
 | African-American Achievements | 2020-06-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md) |
 | African-American History | 2020-06-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
 | Caribou Locations | 2020-06-23 |  | :x: | [:link:](https://www.youtube.com/watch?v=7G7SVODhVo4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-23/readme.md) |
-| X-Men Comics | 2020-06-30 |  | :x: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
+| [X-Men Comics](#x-men-comics) | 2020-06-30 | Data manipulation, Lollipop graph, `floor` function | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
 | [Coffee Ratings](#coffee-ratings) | 2020-07-07 | Ridgeline plot, Pairwise correlation, Network plot, Singular value decomposition (SVD), Linear model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
 | [Australian Animal Outcomes](#australian-animal-outcomes) | 2020-07-21 | Data manipulation, Web scraping (`rvest` package) and `SelectorGadget`, Animated choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
 | [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
 | [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
 | [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
+| [Chopped](#chopped) | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md) |
 | [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
+| [Friends](#friends) | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
+| [Government Spending on Kids](#government-spending-on-kids) | 2020-09-15 | Data Manipulation, Functions, Embracing, Reading in Many .csv Files, Pairwise Correlation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
+| [Himalayan Climbers](#himalayan-climbers) | 2020-09-22 | Data Manipulation, Empirical Bayes, Logistic Regression Model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
+| Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
+| NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
+| Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
 
 
 
@@ -1700,6 +1707,38 @@
 
 
 
+#### Riddler: Simulating a Branching Process
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Branching Process | [0:35](https://www.youtube.com/watch?v=QtThluGted0&t=35s) | Explanation of a Poisson process |
+| Riddler: Simulating a Branching Process | [2:40](https://www.youtube.com/watch?v=QtThluGted0&t=160s) | Asking "How long do you have to wait for X to happen?", which the Exponential distribution can answer |
+| Riddler: Simulating a Branching Process | [4:20](https://www.youtube.com/watch?v=QtThluGted0&t=260s) | Using `rexp` function to generate numbers from the Exponential distribution |
+| Riddler: Simulating a Branching Process | [5:25](https://www.youtube.com/watch?v=QtThluGted0&t=325s) | Using a vector of rates inside the `rexp` function (to explore consecutive waiting times) |
+| Riddler: Simulating a Branching Process | [7:05](https://www.youtube.com/watch?v=QtThluGted0&t=425s) | Using `cumsum` function to calculate total waiting time until hitting a specific number in the Poisson process |
+| Riddler: Simulating a Branching Process | [7:35](https://www.youtube.com/watch?v=QtThluGted0&t=455s) | Using `which` function to determine the first instance > 3 in a vector |
+| Riddler: Simulating a Branching Process | [9:20](https://www.youtube.com/watch?v=QtThluGted0&t=560s) | Using `replicate` function to do a quick simulation of the function just written |
+| Riddler: Simulating a Branching Process | [10:55](https://www.youtube.com/watch?v=QtThluGted0&t=655s) | Discussing methods of making the simulation function faster |
+| Riddler: Simulating a Branching Process | [12:00](https://www.youtube.com/watch?v=QtThluGted0&t=720s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating a Branching Process | [13:15](https://www.youtube.com/watch?v=QtThluGted0&t=795s) | Noting how the consecutive waiting times seems to follow the Harmonic series |
+| Riddler: Simulating a Branching Process | [17:10](https://www.youtube.com/watch?v=QtThluGted0&t=1030s) | Noticing that we are missing trials with 0 comments and fixing |
+| Riddler: Simulating a Branching Process | [20:25](https://www.youtube.com/watch?v=QtThluGted0&t=1225s) | Using `nls` function (non-linear least squares) to test how well the data fits with an exponential curve |
+| Riddler: Simulating a Branching Process | [23:05](https://www.youtube.com/watch?v=QtThluGted0&t=1385s) | Visualizing fit between data and the exponential curve calculated with `nls` in previous step |
+| Riddler: Simulating a Branching Process | [23:50](https://www.youtube.com/watch?v=QtThluGted0&t=1430s) | Using `augment` function to added fitted values of the `nls` function |
+| Riddler: Simulating a Branching Process | [26:00](https://www.youtube.com/watch?v=QtThluGted0&t=1560s) | Exploring whether the data actually follows a Geometric distribution |
+| Riddler: Simulating a Branching Process | [30:55](https://www.youtube.com/watch?v=QtThluGted0&t=1855s) | Explanation of the Geometric distribution as it applies to this question |
+| Riddler: Simulating a Branching Process | [34:05](https://www.youtube.com/watch?v=QtThluGted0&t=2045s) | Generalizing the question to ask how long it takes to get to multiple comments (not just 3) |
+| Riddler: Simulating a Branching Process | [38:45](https://www.youtube.com/watch?v=QtThluGted0&t=2325s) | Explanation of why we subtract 1 when fitting an exponential curve |
+| Riddler: Simulating a Branching Process | [46:00](https://www.youtube.com/watch?v=QtThluGted0&t=2760s) | Summary of screencast |
+
+
+
+***
+
+
+
 #### Animal Crossing
 
 [Back to summary](#screencast-summary)
@@ -1726,6 +1765,34 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### X-Men Comics
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| X-Men Comics | [07:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=445s) | Using `separate` to separate the name from secrete identity in the `character` column |
+| X-Men Comics | [09:55](https://www.youtube.com/watch?v=NY0-IFet5AM&t=595s) | Using `summarize` and `across` to find the frequency of the action variables and find out how many issues each action was used for each character |
+| X-Men Comics | [13:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=805s) | Create a `geom_col` chart to visualize which character speaks in the most issues |
+| X-Men Comics | [18:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1115s) | Create a `geom_point` chart to visualize each character’s average lines per issue in which the character is depicted |
+| X-Men Comics | [22:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1325s) | Create a `geom_point` chart to visualize each character’s average thoughts per issue in which the character is depicted |
+| X-Men Comics | [23:10](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1390s) | Create a `geom_point` chart to visualize character’s speech versus thought ratio per issue in which the character is depicted |
+| X-Men Comics | [30:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1805s) | Create a `geom_point` to visualize character’s number of lines while in costume versus not in costume |
+| X-Men Comics | [34:30](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2070s) | Create a `geom_point` chart to visualize the lines in costume versus lines out of costume ratio |
+| X-Men Comics | [39:20](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2360s) | Create a `lollipop graph` using `geom_point` and `geom_errorbarh` to visualize the lines in costume versus lines out of costume ratio and their distance from 1.0 (1 to 1) |
+| X-Men Comics | [45:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2700s) | Use `summarize` to find the frequency of each location and the total number of unique issues where the location is used |
+| X-Men Comics | [46:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2760s) | Use `summarize` and `fct_lump` to count how many issues each author has written while lumping together all authors except the most frequent |
+| X-Men Comics | [47:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2845s) | Use `summarize` and `fct_lump` to see if the authors rates of passing the Bechdel test differ from one another |
+| X-Men Comics | [52:45](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3165s) | Create a `geom_line` chart to visualize if the rates of passing the Bechdel test changed over time and `floor division` `%/%` to generate 20 observations per group |
+| X-Men Comics | [54:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3275s) | Create a `geom_col` to visualize the amount of lines each character has per issue over time giving context to Bechdel test passing rates |
+| X-Men Comics | [1:00:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3600s) | Summary of screencast |
 
 
 
@@ -1880,6 +1947,39 @@
 
 
 
+#### Chopped
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Chopped | [5:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=320s) | Use `geom_histogram` to visualize the distribution of episode ratings. |
+| Chopped | [6:30](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=390s) | Use `geom_point` and `geom_line` with `color = factor(season)` to visualize the episode rating for every episode. |
+| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `group_by` and `summarize` to show the average rating for each season and the number of episodes in each season. |
+| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `geom_line` and `geom_point` with `size = n_episodes` to visualize the average rating for each season with point size indicating the total number of episodes (larger = more episodes, smaller = fewer episodes). |
+| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable. |
+| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `geom_point` to visualize the top episodes by rating. Use the 'glue' package to place `season number` and `episode number` before episode name on the `y axis`. |
+| Chopped | [15:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=920s) | Use `pivot_longer` to combine ingredients into one single column. Use `separate_rows` with `sep = ", "` to separate out the ingredients with each ingredient getting its own row. |
+| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `fct_lump` to lump ingredients together except for the 10 most frequent. Use `fct_reorder` to reorder `ingredient` factor levels by sorting against `n`. |
+| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `geom_col` to create a stacked bar plot to visualize the most common ingredients by course. |
+| Chopped | [19:45](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1185s) | Use `fct_relevel` to reorder `course` factor levels to appetizer, entree, dessert. |
+| Chopped | [21:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1260s) | Use `fct_rev` and `scale_fill_discrete` with `guide = guide_legend(reverse = TRUE)` to reorder the segments within the stacked bar plot. |
+| Chopped | [23:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1400s) | Use the `widyr` package and `pairwise_cor` to find out what ingredients appear together.  Mentioned: [David Robinson - The `widyr` Package YouTube Talk at 2020 R Conference](https://www.youtube.com/watch?v=mApnx5NJwQA) |
+| Chopped | [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact. |
+| Chopped | [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature. |
+| Chopped | [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes. |
+| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. |
+| Chopped | [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons. |
+| Chopped | [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons. |
+| Chopped | [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
+| Chopped | [1:17:25](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=4645s) | Summary of screencast |
+
+
+
+***
+
+
+
 #### Global Crop Yields
 
 [Back to summary](#screencast-summary)
@@ -1899,3 +1999,82 @@
 | Global Crop Yields | [47:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2870s) | Create a `geom_point` chart to visualize efficiency imporvement for each country for a specific crop (yield start / yield ratio) |
 | Global Crop Yields | [50:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3025s) | Using the `countrycode` package to color `geom_point` chart by continent names |
 | Global Crop Yields | [56:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3410s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Friends
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Friends | [7:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=450s) | Use `dplyr` package's `count` function to count the unique values of multiple variables. |
+| Friends | [9:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=575s) | Use `geom_col` to show how many lines of dialogue there is for each character. Use `fct_reorder` to reorder the `speaker` factor levels by sorting along `n`. |
+| Friends | [12:07](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=727s) | Use `semi_join` to join `friends` dataset with `main_cast` with `by = ""speaker` returning all rows from `friends` with a match in `main_cast`. |
+| Friends | [12:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=750s) | Use `unite` to create the `episode_number` variable which pastes together `season` and `episode` with `sep = "."`. Then, use `inner_join` to combine above dataset with `friends_info` with `by = c("season", "episode")`. Then, use `mutate` and the `glue` package instead to combine `{ season }.{ episode } { title }`. Then use `fct_reorder(episode_title, season + .001 * episode)` to order it by `season` first then `episode`. |
+| Friends | [15:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=945s) | Use `geom_point` to visualize `episode_title` and `us_views_millions`. Use `as.integer` to change `episode_title` to integer class. Add labels to `geom_point` using `geom_text` with `check_overlap = TRUE` so text that overlaps previous text in the same layer will not be plotted. |
+| Friends | [19:95](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1235s) | Run the above plot again using `imdb_rating` instead of `us_views_millions` |
+| Friends | [21:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1295s) | Ahead of modeling: Use `geom_boxplot` to visualize the distribution of speaking for main characters. Use the `complete` function with `fill = list(n = 0)` to replace existing explicit missing values in the data set. Demonstration of how to account for missing `imdb_rating` values using the `fill` function with `.direction = "downup"` to keep the imdb rating across the same title. |
+| Friends | [26:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1605s) | Ahead of modeling: Use `summarize` with `cor(log2(n), imdb_rating)` to find the correlation between speaker and imdb rating -- the fact that the correlation is positive for all speakers gives David a suspicion that some episodes are longer than others because they're in 2 parts with higher ratings due to important moments. David addresses this `confounding factor` by including `percentage of lines` instead of `number of lines`. Visualize results with `geom_boxplot`, `geom_point` with `geom_smooth`. |
+| Friends | [34:05](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2045s) | Use a `linear model` to predict imdb rating based on various variables. |
+| Friends | [42:00](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2520s) | Use the `tidytext` and `tidylo` packages to see what words are most common amongst characters, and whether they are said more times than would be expected by chance. Use `geom_col` to visualize the most overrepresented words per character according to `log_odds_weighted`. |
+| Friends | [54:15](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3255s) | Use the `widyr` package and `pairwise correlation` to determine which characters tend to appear in the same scences together? Use `geom_col` to visualize the correlation between characters. |
+| Friends | [1:00:25](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3625s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Government Spending on Kids
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Government Spending on Kids | [6:15](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=375s) | Using `geom_line` and `summarize` to visualize education spending over time. First for all states. Then individual states. Then small groups of states using `%in%`. Then in random groups of size n using `%in%` and `sample` with `unique`. `fct_reorder` is used to reorder `state` factor levels by sorting along the `inf_adj` variable. `geom_vline` used to add reference to the 2009 financial crisis. |
+"| Government Spending on Kids | [16:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=960s) | Take the previous chart setting the `inf_adj_perchild` for the first year `1997` to `100%` in order to show a measure of increase from `100%` as opposed to absolute value for change over time for each state relative to `1997`. `geom_hline` used to add reference for the `100%` starting point. David ends up changing the starting point from `100%` to `0%`. `fct_reorder` with `max` used to reorder the plots in descending order based on highest peak values. David briefly mentions the [small multiples](https://www.sharpsightlabs.com/blog/small-multiples-ggplot/#:~:text=The%20small%20multiples%20technique%20is,groups%20or%20comparing%20over%20time.&text=In%20contrast%2C%20R's%20GGPlot2%20package,multiples%20extraordinarily%20easy%20to%20create.) approach to analyzing data. |
+| Government Spending on Kids | [23:35](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1415s) | Create a `function` named `plot_changed_faceted` to make it easier to visualize the many other variables included in the dataset. |
+| Government Spending on Kids | [27:25](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1645s) | Create a `function` named `plot_faceted` with a `{{ y_axis }}` [embracing](https://dplyr.tidyverse.org/articles/programming.html) argument. Adding this function creates two stages: one for data transformation and another for plotting. |
+| Government Spending on Kids | [37:05](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=2225s) | Use the `dir` function with `pattern` and `purrr` package's `map_df` function to read in many different `.csv` files with GDP values for each state. Troubleshooting `Can't combine <character> and <double> columns` error using `function` and `mutate` with `across` and `as.numeric`. Extract state name from filename using `extract` from `tidyr` and `regular expression`. |
+| Government Spending on Kids | [50:50](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3050s) | Unsuccessful attempt at importing state population data via a not user friendly dataset from `census.gov` by skipping the first 3 rows of the Excel file. |
+| Government Spending on Kids | [54:22](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3262s) | Use `geom_col` to see which states spend the most for each child for a single variable and multiple variables using `%in%`. Use `scale_fill_discrete` with `guide_legend(reverse = TRUE)` to change the ordering of the legend. |
+| Government Spending on Kids | [57:40](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3460s) | Use `geom_col` and `pairwise_corr` to visualize the correlation between variables across states in 2016 using `pairwise correlation`. |
+| Government Spending on Kids | [1:02:02](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3722s) | Use `geom_point` to plot `inf_adjust_perchild_PK12ed` versus `inf_adj_perchild_highered`. `geom_text` used to apply state names to each point. |
+| Government Spending on Kids | [1:05:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3900s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Himalayan Climbers
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Himalayan Climbers | [3:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=180s) | Create a `geom_col` chart to visualize the top 50 tallest mountains. Use `fct_reorder` to reorder the `peak_name` factor levels by sorting along the `height_metres` variable. |
+| Himalayan Climbers | [8:50](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=530s) | Use `summarize` with `across` to get the total number of climbs, climbers, deaths, and first year climbed. Use `mutate` to calculate the percent death rate for members and hired staff. Use `inner_join` and `select` to join with `peaks` dataset by `peak_id`. |
+| Himalayan Climbers | [11:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=680s) | Touching on statistical `noise` and how it impacts the death rate for mountains with fewer number of climbs, and how to account for it using various statistical methods including `Beta Binomial Regression` & `Empirical Bayes`. |
+| Himalayan Climbers | [14:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=870s) | Further description of `Empirical Bayes` and how to account for not overestimating death rate for mountains with fewer climbers. Recommended reading: [Introduction to Empirical Bayes: Examples from Baseball Statistics](http://varianceexplained.org/r/empirical-bayes-book/) by David Robinson. |
+| Himalayan Climbers | [17:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1020s) | Use the `ebbr` package (Empirical Bayes for Binomial in R) to create an Empirical Bayes Estimate for each mountain by fitting prior distribution across data and adjusting the death rates down or up based on the prior distributions. Use a `geom_point` chart to visualize the difference between the raw death rate and new `ebbr` fitted death rate. |
+| Himalayan Climbers | [21:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1280s) | Use `geom_point` to visualize how deadly each mountain is with `geom_errorbarh` representing the 95% credible interval between minimum and maximum values. |
+| Himalayan Climbers | [26:35](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1595s) | Use `geom_point` to visualize the relationship between `death rate` and `height` of mountain. There is not a clear relationship, but David does briefly mention how one could use `Beta Binomial Regression` to further inspect for possible relationships / trends. |
+| Himalayan Climbers | [28:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1680s) | Use `geom_histogram` and `geom_boxplot` to visualize the distribution of time it took climbers to go from basecamp to the mountain’s high point for successful climbs only. Use `mutate` to calculate the number of days it took climbers to get from basecamp to the highpoint. Add column to data using `case_when` and `str_detect` to identify strings in `termination_reason` that contain the word `Success` and rename them to `Success` & how to use a `vector` and `%in%` to change multiple values in `termination_reason` to `NA` and rest to `Failed`. Use `fct_lump` to show the top 10 mountains while lumping the other factor levels (mountains) into `other`. |
+| Himalayan Climbers | [35:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2130s) | For just Mount Everest, use `geom_histogram` and `geom_density` with `fill = success` to visualize the days from basecamp to highpoint for climbs that ended in `success`, `failure` or `other`. |
+| Himalayan Climbers | [38:40](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2320s) | For just Mount Everest, use `geom_histogram` to see the distribution of climbs per year. |
+| Himalayan Climbers | [39:55](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2395s) | For just Mount Everest, use ‘geom_line` and `geom_point` to visualize `pct_death` over time by decade. Use `mutate` with `pmax` and `integer division` to create a decade variable that lumps together the data for 1970 and before. |
+| Himalayan Climbers | [41:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2490s) | Write a function for summary statistics such as `n_climbs`, `pct_success`, `first_climb`, `pct_death`, ‘pct_hired_staff_death`. |
+| Himalayan Climbers | [46:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2780s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_success` over time by decade. |
+| Himalayan Climbers | [47:10](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2830s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_hired_staff_deaths ` over time by decade. David decides to visualize the `pct_hired_staff_deaths` and `pct_death` charts together on the same plot. |
+| Himalayan Climbers | [50:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3045s) | For just Mount Everest, fit a logistic regression model to predict the probability of death with `format.pval` to calculate the `p.value`. Use `fct_lump` to lump together all `expedition_role` factors except for the n most frequent. |
+| Himalayan Climbers | [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades. |
+| Himalayan Climbers | [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals. |
+| Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast |
