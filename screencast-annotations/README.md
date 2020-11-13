@@ -77,6 +77,8 @@
 | Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
 | NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
 | Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
+| IKEA Furniture | 2020-11-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
+| Historical Phones | 2020-11-10 |  | :x: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
 
 
 
