@@ -53,7 +53,7 @@
 | [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 | [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
 | [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
-| GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
+| [GDPR Violations](#gdpr-violations) | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
 | [Animal Crossing](#animal-crossing) | 2020-05-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
@@ -1734,6 +1734,38 @@
 | Riddler: Simulating a Branching Process | [34:05](https://www.youtube.com/watch?v=QtThluGted0&t=2045s) | Generalizing the question to ask how long it takes to get to multiple comments (not just 3) |
 | Riddler: Simulating a Branching Process | [38:45](https://www.youtube.com/watch?v=QtThluGted0&t=2325s) | Explanation of why we subtract 1 when fitting an exponential curve |
 | Riddler: Simulating a Branching Process | [46:00](https://www.youtube.com/watch?v=QtThluGted0&t=2760s) | Summary of screencast |
+
+
+
+***
+
+
+#### GDPR Violations
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| GDPR Violations | [4:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=245s) | Use the `mdy` function from the `lubridate` package to change the date variable from `character` class to `date` class. |
+| GDPR Violations | [5:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=335s) | Use the `rename` function from the `dplyr` package to rename variable in the dataset. |
+| GDPR Violations | [6:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=375s) | Use the `fct_reorder` function from the `forcats` package to sort the `geom_col` in descending order. |
+| GDPR Violations | [6:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=390s) | Use the `fct_lump` function from the `forcats` package within `count` to lump together country names except for the 6 most frequent. |
+| GDPR Violations | [7:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=425s) | Use the `scale_x_continuous` function from `ggplot2` with the `scales` package to change the x-axis values to dollar format. |
+| GDPR Violations | [8:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=495s) | Use the `month` and `floor_date` function from the `lubridate` package to get the month component from the `date` variable to count the total fines per month. |
+| GDPR Violations | [8:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=535s) | Use the `na_if` function from the `dplyr` package to convert specific date value to `NA`. |
+| GDPR Violations | [11:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=665s) | Use the `fct_reorder` function from the `forcats` package to sort the stacked `geom_col` and legend labels in descending order. |
+| GDPR Violations | [15:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=915s) | Use the `dollar` function from the `scales` package to convert the `price` variable into dollar format. |
+| GDPR Violations | [15:40](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=940s) | Use the `str_trunc` to shorten the `summary` string values to 140 characters. |
+| GDPR Violations | [17:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1055s) | Use the `separate_rows` function from the `tidyr` package with a `regular expression` to separate the values in the `article_violated` variable with each matching group placed in its own row. |
+| GDPR Violations | [19:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1170s) | Use the `extract` function from the `tidyr` package with a `regular expression` to turn each matching group into a new column. |
+| GDPR Violations | [27:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1650s) | Use the `geom_jitter` function from the `ggplot2` package to add points to the horizontal box plot. |
+| GDPR Violations | [31:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1915s) | Use the `inner_join` function from the `dplyr` package to join together `article_titles` and `separated_articles` tables. |
+| GDPR Violations | [32:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1975s) | Use the `paste0` function from `base R` to concatenate `article` and `article_title`. |
+| GDPR Violations | [38:48](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2328s) | Use the `str_detect` function from the `stringr` package to detect the presence of a pattern in a string. |
+| GDPR Violations | [40:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2425s) | Use the `group_by` and `summarize` functions from the `dplyr` package to aggregate fines that were issued to the same country on the same day allowing for size to be used in `geom_point` plot. |
+| GDPR Violations | [41:14](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2474s) | Use the `scale_size_continuous` function from the `ggplot2` package to remove the size legend. |
+| GDPR Violations | [42:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2575s) | Create an interactive dashboard using the `shinymetrics` and `tidymetrics` which is [a tidy approach to business intelligence](https://github.com/datacamp/tidymetrics). |
+| GDPR Violations | [47:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2845s) | Use the `cross_by_dimensions` and `cross_by_periods` functions from the `tidyr` package which stacks an extra copy of the table for each dimension specified as an argument (`country`, `article_title`, `type`), replaces the value of the column with the word `All` and `periods`, and groups by all the columns. It acts as an extended group_by that allows complete summaries across each individual dimension and possible combinations. |
 
 
 
