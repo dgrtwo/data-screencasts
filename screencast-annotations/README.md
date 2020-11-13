@@ -58,7 +58,7 @@
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
 | [Animal Crossing](#animal-crossing) | 2020-05-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
 | Volcano Eruptions | 2020-05-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
-| Beach Volleyball | 2020-05-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
+| [Beach Volleyball](#beach-volleyball) | 2020-05-19 | Data cleaning, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
 | Cocktails | 2020-05-26 |  | :x: | [:link:](https://www.youtube.com/watch?v=EC0SVkFB2OU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md) |
 | African-American Achievements | 2020-06-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md) |
 | African-American History | 2020-06-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
@@ -1817,6 +1817,40 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Beach Volleyball
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Beach Volleyball | [5:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=330s) | Use `pivot_longer` from the `dplyr` package to pivot the data set from `wide` to `long`. |
+| Beach Volleyball | [7:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=440s) | Use `mutate_at` from the `dplyr` package with `starts_with` to change the class to `character` for all columns that start with `w_` and `l_`. |
+| Beach Volleyball | [8:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=480s) | Use `separate` from the `tidyr` package to separate the `name` variable into three columns with `extra = merge` and `fill = right`. |
+| Beach Volleyball | [10:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=635s) | Use `rename` from the `dplyr` package to rename `w_player1`, `w_player2`, `l_player1`, and `l_player2`. |
+| Beach Volleyball | [12:50](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=770s) | Use `pivot_wider` from the `dplyr` package to pivot the `name` variable from `long` to `wide`. |
+| Beach Volleyball | [15:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=915s) | Use `str_to_upper` to convert the `winner_loser` `w` and `l` values to uppercase. |
+| Beach Volleyball | [20:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1225s) | Add unique row numbers for each match using `mutate` with `row_number` from the `dplyr` package. |
+| Beach Volleyball | [21:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1280s) | Separate the `score` values into multiple rows using `separate_rows` from the `tidyr` package. |
+| Beach Volleyball | [22:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1365s) | Use `separate` from the `tidyr` package to actual scores into two columns, one for the winners score `w_score` and another for the losers score `l_score`. |
+| Beach Volleyball | [23:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1425s) | Use `na_if` from the `dplyr` package to change the `Forfeit or other` value from the `score` variable to `NA`. |
+| Beach Volleyball | [24:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1475s) | Use `str_remove` from the `stringr` package to remove scores that include `retired`. |
+| Beach Volleyball | [25:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1525s) | Determine how many times the winners score `w_score` is greter than the losers score `l_score` at least 1/3 of the time. |
+| Beach Volleyball | [28:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1710s) | Use `summarize` from the `dplyr` package to create the summary statistics including the `number of matches`, `winning percentage`, `date of first match`, `date of most recent match`. |
+| Beach Volleyball | [34:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2055s) | Use `type_convert` from the `readr` package to convert `character` class variables to `numeric`. |
+| Beach Volleyball | [35:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2100s) | Use `summarize_all` from the `dplyr` package to calculate the calculate which fraction of the data is not `NA`. |
+"| Beach Volleyball | [42:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2520s) | Use `summarize` from the `dplyr` package to determine players `number of matches`, `winning percentage`, `average attacks`, `average errors`, `average kills`, `average aces`, `average serve errors`, and `total rows with data` for years prior to 2019. 
+
+The summary statistics are then used to answer how would we could predict if a player will win in 2019 using `geom_point` and `logistic regression`. Initially, David wanted to predict performance based on players first year performance. (NOTE - David mistakingly grouped by `year` and `age`. He cathces this around 1:02:00.) |"
+| Beach Volleyball | [49:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2965s) | Use `year` from the `lubridate` package within a `group_by` to determine the `age` for each play given their `birthdate`. |
+| Beach Volleyball | [54:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3270s) | Turn the summary statistics at timestamp `42:00` into a `.` DOT `%>%` PIPE function. |
+| Beach Volleyball | [1:04:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3870s) | Summary of screencast |
 
 
 
