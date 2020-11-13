@@ -53,12 +53,12 @@
 | [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
 | [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
 | [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
-| GDPR Violations | 2020-04-21 |  | :x: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
-| Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
+| [GDPR Violations](#gdpr-violations) | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
+| [Broadway Musicals](#broadway-musicals) | 2020-04-28 | Creating an interactive dashboard with `shinymetrics` and `tidymetrics`, moving windows, period aggregation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
 | [Animal Crossing](#animal-crossing) | 2020-05-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
 | Volcano Eruptions | 2020-05-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
-| Beach Volleyball | 2020-05-19 |  | :x: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
+| [Beach Volleyball](#beach-volleyball) | 2020-05-19 | Data cleaning, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
 | Cocktails | 2020-05-26 |  | :x: | [:link:](https://www.youtube.com/watch?v=EC0SVkFB2OU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md) |
 | African-American Achievements | 2020-06-09 |  | :x: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md) |
 | African-American History | 2020-06-16 |  | :x: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
@@ -77,6 +77,8 @@
 | Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
 | NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
 | Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
+| IKEA Furniture | 2020-11-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
+| [Historical Phones](#historical-phones) | 2020-11-10 | Joining tables, Animated world choropleth, Adding IQR to geom_line, World development indicators package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
 
 
 
@@ -1738,6 +1740,56 @@
 ***
 
 
+#### GDPR Violations
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| GDPR Violations | [4:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=245s) | Use the `mdy` function from the `lubridate` package to change the date variable from `character` class to `date` class. |
+| GDPR Violations | [5:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=335s) | Use the `rename` function from the `dplyr` package to rename variable in the dataset. |
+| GDPR Violations | [6:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=375s) | Use the `fct_reorder` function from the `forcats` package to sort the `geom_col` in descending order. |
+| GDPR Violations | [6:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=390s) | Use the `fct_lump` function from the `forcats` package within `count` to lump together country names except for the 6 most frequent. |
+| GDPR Violations | [7:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=425s) | Use the `scale_x_continuous` function from `ggplot2` with the `scales` package to change the x-axis values to dollar format. |
+| GDPR Violations | [8:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=495s) | Use the `month` and `floor_date` function from the `lubridate` package to get the month component from the `date` variable to count the total fines per month. |
+| GDPR Violations | [8:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=535s) | Use the `na_if` function from the `dplyr` package to convert specific date value to `NA`. |
+| GDPR Violations | [11:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=665s) | Use the `fct_reorder` function from the `forcats` package to sort the stacked `geom_col` and legend labels in descending order. |
+| GDPR Violations | [15:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=915s) | Use the `dollar` function from the `scales` package to convert the `price` variable into dollar format. |
+| GDPR Violations | [15:40](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=940s) | Use the `str_trunc` to shorten the `summary` string values to 140 characters. |
+| GDPR Violations | [17:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1055s) | Use the `separate_rows` function from the `tidyr` package with a `regular expression` to separate the values in the `article_violated` variable with each matching group placed in its own row. |
+| GDPR Violations | [19:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1170s) | Use the `extract` function from the `tidyr` package with a `regular expression` to turn each matching group into a new column. |
+| GDPR Violations | [27:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1650s) | Use the `geom_jitter` function from the `ggplot2` package to add points to the horizontal box plot. |
+| GDPR Violations | [31:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1915s) | Use the `inner_join` function from the `dplyr` package to join together `article_titles` and `separated_articles` tables. |
+| GDPR Violations | [32:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1975s) | Use the `paste0` function from `base R` to concatenate `article` and `article_title`. |
+| GDPR Violations | [38:48](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2328s) | Use the `str_detect` function from the `stringr` package to detect the presence of a pattern in a string. |
+| GDPR Violations | [40:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2425s) | Use the `group_by` and `summarize` functions from the `dplyr` package to aggregate fines that were issued to the same country on the same day allowing for size to be used in `geom_point` plot. |
+| GDPR Violations | [41:14](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2474s) | Use the `scale_size_continuous` function from the `ggplot2` package to remove the size legend. |
+| GDPR Violations | [42:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2575s) | Create an interactive dashboard using the `shinymetrics` and `tidymetrics` which is [a tidy approach to business intelligence](https://github.com/datacamp/tidymetrics). |
+| GDPR Violations | [47:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2845s) | Use the `cross_by_dimensions` and `cross_by_periods` functions from the `tidyr` package which stacks an extra copy of the table for each dimension specified as an argument (`country`, `article_title`, `type`), replaces the value of the column with the word `All` and `periods`, and groups by all the columns. It acts as an extended group_by that allows complete summaries across each individual dimension and possible combinations. |
+
+
+
+***
+
+
+#### Broadway Musicals
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Broadway Musicals | [8:15](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=495s) | Use the `cross_by_periods ` function from the `tidymetrics` package to aggregate data over time (`month`, `quarter`, and `year`) then visualize with `geom_line`. |
+| Broadway Musicals | [14:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=840s) | Use the `cross_by_periods ` function from the `tidymetrics` package with `windows = c(28))` to create a 4-week rolling average across `month`, `quarter`, and `year`. |
+| Broadway Musicals | [21:50](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1310s) | Create and `interactive dashboard` using the `shinymetrics` and `tidymetrics` packages. |
+| Broadway Musicals | [25:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1500s) | Use the `str_remove` function from the `stringr` package to remove matched pattern in a string. |
+| Broadway Musicals | [25:20](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1520s) | Use the `cross_by_dimensions` function from the `tidymetrics` package which acts as an extended `group_by` that allows complete summaries across each individual dimension and possible combinations. |
+| Broadway Musicals | [41:25](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=2485s) | Use the `shinybones` package to create an interactive dashboard to visualize all 3 metrics at the same time. |
+
+
+
+***
+
+
 
 #### Animal Crossing
 
@@ -1765,6 +1817,38 @@
 | Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
 | Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
 | Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Beach Volleyball
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Beach Volleyball | [5:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=330s) | Use `pivot_longer` from the `dplyr` package to pivot the data set from `wide` to `long`. |
+| Beach Volleyball | [7:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=440s) | Use `mutate_at` from the `dplyr` package with `starts_with` to change the class to `character` for all columns that start with `w_` and `l_`. |
+| Beach Volleyball | [8:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=480s) | Use `separate` from the `tidyr` package to separate the `name` variable into three columns with `extra = merge` and `fill = right`. |
+| Beach Volleyball | [10:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=635s) | Use `rename` from the `dplyr` package to rename `w_player1`, `w_player2`, `l_player1`, and `l_player2`. |
+| Beach Volleyball | [12:50](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=770s) | Use `pivot_wider` from the `dplyr` package to pivot the `name` variable from `long` to `wide`. |
+| Beach Volleyball | [15:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=915s) | Use `str_to_upper` to convert the `winner_loser` `w` and `l` values to uppercase. |
+| Beach Volleyball | [20:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1225s) | Add unique row numbers for each match using `mutate` with `row_number` from the `dplyr` package. |
+| Beach Volleyball | [21:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1280s) | Separate the `score` values into multiple rows using `separate_rows` from the `tidyr` package. |
+| Beach Volleyball | [22:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1365s) | Use `separate` from the `tidyr` package to actual scores into two columns, one for the winners score `w_score` and another for the losers score `l_score`. |
+| Beach Volleyball | [23:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1425s) | Use `na_if` from the `dplyr` package to change the `Forfeit or other` value from the `score` variable to `NA`. |
+| Beach Volleyball | [24:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1475s) | Use `str_remove` from the `stringr` package to remove scores that include `retired`. |
+| Beach Volleyball | [25:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1525s) | Determine how many times the winners score `w_score` is greter than the losers score `l_score` at least 1/3 of the time. |
+| Beach Volleyball | [28:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1710s) | Use `summarize` from the `dplyr` package to create the summary statistics including the `number of matches`, `winning percentage`, `date of first match`, `date of most recent match`. |
+| Beach Volleyball | [34:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2055s) | Use `type_convert` from the `readr` package to convert `character` class variables to `numeric`. |
+| Beach Volleyball | [35:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2100s) | Use `summarize_all` from the `dplyr` package to calculate the calculate which fraction of the data is not `NA`. |
+| Beach Volleyball | [42:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2520s) | Use `summarize` from the `dplyr` package to determine players `number of matches`, `winning percentage`, `average attacks`, `average errors`, `average kills`, `average aces`, `average serve errors`, and `total rows with data` for years prior to 2019. The summary statistics are then used to answer how would we could predict if a player will win in 2019 using `geom_point` and `logistic regression`. Initially, David wanted to predict performance based on players first year performance. (NOTE - David mistakingly grouped by `year` and `age`. He cathces this around 1:02:00.) |
+| Beach Volleyball | [49:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2965s) | Use `year` from the `lubridate` package within a `group_by` to determine the `age` for each play given their `birthdate`. |
+| Beach Volleyball | [54:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3270s) | Turn the summary statistics at timestamp `42:00` into a `.` DOT `%>%` PIPE function. |
+| Beach Volleyball | [1:04:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3870s) | Summary of screencast |
 
 
 
@@ -2078,3 +2162,36 @@
 | Himalayan Climbers | [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades. |
 | Himalayan Climbers | [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals. |
 | Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Historical Phones
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Historical Phones | [2:15](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=135s) | Use `bind_rows` from the `dplyr` package to combine the two data sets. |
+| Historical Phones | [7:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=450s) | Use `group = interaction(type, country)` within `ggplot` `aes()` to set the interaction `type` with every single `country` on one plot. |
+| Historical Phones | [9:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=570s) | Use `semi_join` from the `dplyr` package to join rows from `phones` with a match in `country_sizes`. |
+| Historical Phones | [14:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=840s) | Use `quantile` from the `stats` package within `summarize` to show the 25th, and 75th quantiles (interquartile range) on the plot. |
+| Historical Phones | [17:50](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1070s) | Import the `wdi` package (World Development Indicators from the World Bank) with `extra = TRUE` in order to get the `iso3c` code and `income` level for each country. |
+| Historical Phones | [19:45](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1185s) | Use `inner_join` from the `dplyr` package to join the `WDI` data with the `phones` data. |
+| Historical Phones | [20:35](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1235s) | Use `fct_relevel` from the `forcats` package to reorder `income` factor levels in ascending order. |
+| Historical Phones | [21:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1265s) | Create an `anonymous function` using `.` (dot). |
+| Historical Phones | [29:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1770s) | Use `inner_join` from the `dplyr` package to join the `mobile` data and `landline` data together with a `geom_abline` to see how different the total populations are between the two datasets. |
+| Historical Phones | [31:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1860s) | Use `geom_hline` to add a refrence line to the plot shwoing when each country crossed the 50 per 100 subscription mark. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `min(year([Mobile >= 50]))` to find the year in which each country crossed the 50 per 100 subscription mark. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `max(Mobile)` to find the peak number of mobile subscriptions per country. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `na_if` from the `dplyr` package within `summarize` to change `Inf` to `NA`. |
+| Historical Phones | [38:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2300s) | Using the `WDIsearch` function to search the `WDI` package for proper GDP per capita indicator. Ended up using the `NY.GDP.PCAP.PP.KD` indicator. |
+| Historical Phones | [39:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2345s) | Adding the `GDP` data from the `WDI` package to the `country_incomes` table. |
+| Historical Phones | [39:52](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2392s) | Using the `inner_join` function from the `dplyr` package to join the `phones` table with the `country_incomes` table pulling in the `gdp_per_capita` variable. |
+| Historical Phones | [42:25](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2545s) | Using the `WDIsearch` function to search the `WDI` package for proper population indicator. Ended up using the `SP.POP.TOTL` indicator. |
+| Historical Phones | [50:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3000s) | Create an animated choropleth world map with `fill = subscriptions`. |
+| Historical Phones | [1:00:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3600s) | Summary of screencast |
+
