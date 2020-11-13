@@ -54,7 +54,7 @@
 | [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
 | [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 | [GDPR Violations](#gdpr-violations) | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
-| Broadway Musicals | 2020-04-28 |  | :x: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
+| [Broadway Musicals](#broadway-musicals) | 2020-04-28 | Creating an interactive dashboard with `shinymetrics` and `tidymetrics`, moving windows, period aggregation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
 | Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
 | [Animal Crossing](#animal-crossing) | 2020-05-05 |  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
 | Volcano Eruptions | 2020-05-12 |  | :x: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
@@ -1766,6 +1766,24 @@
 | GDPR Violations | [41:14](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2474s) | Use the `scale_size_continuous` function from the `ggplot2` package to remove the size legend. |
 | GDPR Violations | [42:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2575s) | Create an interactive dashboard using the `shinymetrics` and `tidymetrics` which is [a tidy approach to business intelligence](https://github.com/datacamp/tidymetrics). |
 | GDPR Violations | [47:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2845s) | Use the `cross_by_dimensions` and `cross_by_periods` functions from the `tidyr` package which stacks an extra copy of the table for each dimension specified as an argument (`country`, `article_title`, `type`), replaces the value of the column with the word `All` and `periods`, and groups by all the columns. It acts as an extended group_by that allows complete summaries across each individual dimension and possible combinations. |
+
+
+
+***
+
+
+#### Broadway Musicals
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Broadway Musicals | [8:15](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=495s) | Use the `cross_by_periods ` function from the `tidymetrics` package to aggregate data over time (`month`, `quarter`, and `year`) then visualize with `geom_line`. |
+| Broadway Musicals | [14:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=840s) | Use the `cross_by_periods ` function from the `tidymetrics` package with `windows = c(28))` to create a 4-week rolling average across `month`, `quarter`, and `year`. |
+| Broadway Musicals | [21:50](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1310s) | Create and `interactive dashboard` using the `shinymetrics` and `tidymetrics` packages. |
+| Broadway Musicals | [25:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1500s) | Use the `str_remove` function from the `stringr` package to remove matched pattern in a string. |
+| Broadway Musicals | [25:20](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1520s) | Use the `cross_by_dimensions` function from the `tidymetrics` package which acts as an extended `group_by` that allows complete summaries across each individual dimension and possible combinations. |
+| Broadway Musicals | [41:25](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=2485s) | Use the `shinybones` package to create an interactive dashboard to visualize all 3 metrics at the same time. |
 
 
 
