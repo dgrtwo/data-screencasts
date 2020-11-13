@@ -78,7 +78,7 @@
 | NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
 | Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
 | IKEA Furniture | 2020-11-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
-| Historical Phones | 2020-11-10 |  | :x: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
+| [Historical Phones](#historical-phones) | 2020-11-10 | Joining tables, Animated world choropleth, Adding IQR to geom_line, World development indicators package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
 
 
 
@@ -2162,3 +2162,36 @@
 | Himalayan Climbers | [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades. |
 | Himalayan Climbers | [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals. |
 | Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Historical Phones
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Historical Phones | [2:15](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=135s) | Use `bind_rows` from the `dplyr` package to combine the two data sets. |
+| Historical Phones | [7:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=450s) | Use `group = interaction(type, country)` within `ggplot` `aes()` to set the interaction `type` with every single `country` on one plot. |
+| Historical Phones | [9:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=570s) | Use `semi_join` from the `dplyr` package to join rows from `phones` with a match in `country_sizes`. |
+| Historical Phones | [14:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=840s) | Use `quantile` from the `stats` package within `summarize` to show the 25th, and 75th quantiles (interquartile range) on the plot. |
+| Historical Phones | [17:50](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1070s) | Import the `wdi` package (World Development Indicators from the World Bank) with `extra = TRUE` in order to get the `iso3c` code and `income` level for each country. |
+| Historical Phones | [19:45](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1185s) | Use `inner_join` from the `dplyr` package to join the `WDI` data with the `phones` data. |
+| Historical Phones | [20:35](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1235s) | Use `fct_relevel` from the `forcats` package to reorder `income` factor levels in ascending order. |
+| Historical Phones | [21:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1265s) | Create an `anonymous function` using `.` (dot). |
+| Historical Phones | [29:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1770s) | Use `inner_join` from the `dplyr` package to join the `mobile` data and `landline` data together with a `geom_abline` to see how different the total populations are between the two datasets. |
+| Historical Phones | [31:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1860s) | Use `geom_hline` to add a refrence line to the plot shwoing when each country crossed the 50 per 100 subscription mark. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `min(year([Mobile >= 50]))` to find the year in which each country crossed the 50 per 100 subscription mark. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `max(Mobile)` to find the peak number of mobile subscriptions per country. |
+| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `na_if` from the `dplyr` package within `summarize` to change `Inf` to `NA`. |
+| Historical Phones | [38:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2300s) | Using the `WDIsearch` function to search the `WDI` package for proper GDP per capita indicator. Ended up using the `NY.GDP.PCAP.PP.KD` indicator. |
+| Historical Phones | [39:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2345s) | Adding the `GDP` data from the `WDI` package to the `country_incomes` table. |
+| Historical Phones | [39:52](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2392s) | Using the `inner_join` function from the `dplyr` package to join the `phones` table with the `country_incomes` table pulling in the `gdp_per_capita` variable. |
+| Historical Phones | [42:25](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2545s) | Using the `WDIsearch` function to search the `WDI` package for proper population indicator. Ended up using the `SP.POP.TOTL` indicator. |
+| Historical Phones | [50:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3000s) | Create an animated choropleth world map with `fill = subscriptions`. |
+| Historical Phones | [1:00:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3600s) | Summary of screencast |
+
