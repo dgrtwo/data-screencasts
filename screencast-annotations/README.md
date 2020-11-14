@@ -74,7 +74,7 @@
 | [Friends](#friends) | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
 | [Government Spending on Kids](#government-spending-on-kids) | 2020-09-15 | Data Manipulation, Functions, Embracing, Reading in Many .csv Files, Pairwise Correlation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
 | [Himalayan Climbers](#himalayan-climbers) | 2020-09-22 | Data Manipulation, Empirical Bayes, Logistic Regression Model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
-| Beyonce and Taylor Swift Lyrics | 2020-09-29 |  | :x: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
+| [Beyoncé and Taylor Swift Lyrics](#beyoncé-and-taylor-swift-lyrics) | 2020-09-29 | Text analysis, `tf_idf`, Log odds ratio, Diverging bar graph, Lollipop graph | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
 | NCAA Women's Basketball | 2020-10-06 |  | :x: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
 | Great American Beer Festival | 2020-10-20 |  | :x: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
 | IKEA Furniture | 2020-11-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
@@ -2162,6 +2162,39 @@
 | Himalayan Climbers | [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades. |
 | Himalayan Climbers | [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals. |
 | Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Beyoncé and Taylor Swift Lyrics
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Beyonce and Taylor Swift Lyrics | [7:50](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=470s) | Use `fct_reorder` from the `forcats` package to reorder `title` factor levels by sorting along the `sales` variable in `geom_col` plot. |
+| Beyonce and Taylor Swift Lyrics | [8:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=490s) | Use `labels = dollar` from the `scales` package to format the `geom_col` x-axis values as currency. |
+| Beyonce and Taylor Swift Lyrics | [11:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=675s) | Use `rename_all(str_to_lower)` to convert variable names to lowercase. |
+| Beyonce and Taylor Swift Lyrics | [12:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=765s) | Use `unnest_tokens` from the `tidytext` package to split the lyrics into one-lyric-per-row. |
+| Beyonce and Taylor Swift Lyrics | [13:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=780s) | Use `anti_join` from the `tidytext` package to find the most common words int he lyrics without `stop_words`. |
+| Beyonce and Taylor Swift Lyrics | [15:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=915s) | Use `bind_tf_idf` from the `tidytext` package to determine `tf` - the proportion each word has in each album and `idf` - how specific each word is to each particular album. |
+| Beyonce and Taylor Swift Lyrics | [17:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1065s) | Use `reorder_within` with `scale_y_reordered` in order to reorder the bars within each `facet panel`. David replaces `top_n` with `slice_max` from the `dplyr` package in order to show the top 10 words with `ties = FALSE`. |
+| Beyonce and Taylor Swift Lyrics | [20:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1245s) | Use `bind_log_odds` from the `tidylo` package to calculate the `log odds ratio` of album and words, that is how much more common is the word in a specific album than across all the other albums. |
+| Beyonce and Taylor Swift Lyrics | [23:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1390s) | Use `filter(str_length(word) <= 3)` to come up with a list in order to remove common filler words like `ah`, `uh`, `ha`, `ey`, `eeh`, and `huh`. |
+| Beyonce and Taylor Swift Lyrics | [27:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1620s) | Use `mdy` from the `lubridate` package and `str_remove(released, " \\(.*)"))` from the `stringr` package to parse the dates in the `released` variable. |
+| Beyonce and Taylor Swift Lyrics | [28:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1695s) | Use `inner_join` from the `dplyr` package to join `taylor_swift_words` with `release_dates`. David ends up having to use `fct_recode` since the albums `reputation` and `folklore` were nor `lowercase` in a previous table thus excluding them from the `inner_join`. |
+| Beyonce and Taylor Swift Lyrics | [28:30](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1710s) | Use `fct_reorder` from the `forcats` package to reorder `album` factor levels by sorting along the `released` variable to be used in the `faceted` `geom_col`. |
+| Beyonce and Taylor Swift Lyrics | [34:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2080s) | Use `bind_rows` from hte `dplyr` package to bind `ts` with `beyonce` with `unnest_tokens` from the `tidytext` package to get one lyric per row per artist. |
+| Beyonce and Taylor Swift Lyrics | [38:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2320s) | Use `bind_log_odds` to figure out which words are more likely to come from a Taylor Swift or Beyonce song? |
+| Beyonce and Taylor Swift Lyrics | [41:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2470s) | Use `slice_max` from the `dplyr` package to select the top 100 words by `num_words_total` and then the top 25 by `log_odds_weighted`. Results are used to create a diverging bar chart showing which words are most common between Beyonce and Taylor Swift songs. |
+| Beyonce and Taylor Swift Lyrics | [44:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2680s) | Use `scale_x_continuous` to make the `log_odds_weighted` scale more interpretable. |
+| Beyonce and Taylor Swift Lyrics | [50:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3045s) | Take the previous plot and turn it into a `lollipop graph` with `geom_point(aes(size = num_words_total, color = direction))` |
+| Beyonce and Taylor Swift Lyrics | [53:05](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3185s) | Use `ifelse` to change the `1x` value on the x-axis to `same`. |
+| Beyonce and Taylor Swift Lyrics | [54:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3255s) | Create a `geom_point` with `geom_abline` to show the most popular words they use in common. |
+| Beyonce and Taylor Swift Lyrics | [1:01:55](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3715s) | Summary of screencast |
 
 
 
