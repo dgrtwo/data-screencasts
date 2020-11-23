@@ -55,7 +55,7 @@
 | [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
 | [GDPR Violations](#gdpr-violations) | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
 | [Broadway Musicals](#broadway-musicals) | 2020-04-28 | Creating an interactive dashboard with `shinymetrics` and `tidymetrics`, moving windows, period aggregation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
-| Riddler: Simulating and Optimizing Coin Flipping | 2020-05-03 |  | :x: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
+| [Riddler: Simulating and Optimizing Coin Flipping](#riddler-simulating-and-optimizing-coin-flipping) | 2020-05-03 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
 | [Animal Crossing](#animal-crossing) | 2020-05-05 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
 | [Volcano Eruptions](#volcano-eruptions) | 2020-05-12 | Static map with `ggplot2`, Interactive map with `leaflet`, Animated map with `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
 | [Beach Volleyball](#beach-volleyball) | 2020-05-19 | Data cleaning, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
@@ -1791,6 +1791,34 @@
 
 
 
+#### Riddler: Simulating and Optimizing Coin Flipping
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating and Optimizing Coin Flipping | [2:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=135s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating and Optimizing Coin Flipping | [3:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=180s) | Using `rbinom` function to simulate the number of prisoners who choose to flip, then using `rbinom` again to simulate number of tails |
+| Riddler: Simulating and Optimizing Coin Flipping | [7:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=440s) | Using `dbinom` function (probability mass function) to see probabilities of any given number of prisoners choosing to flip |
+| Riddler: Simulating and Optimizing Coin Flipping | [10:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=615s) | Using `map_dbl` function to iterate a function, making sure to return a `dbl`-class object |
+| Riddler: Simulating and Optimizing Coin Flipping | [11:25](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=685s) | Using `seq_len(n)` instead of `1:n` to be slightly more efficient |
+| Riddler: Simulating and Optimizing Coin Flipping | [12:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=740s) | Using `optimise` function to conduct single-dimension optimisation (for analytical solution to this question) |
+| Riddler: Simulating and Optimizing Coin Flipping | [14:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=855s) | Using backticks (`like this`) for inline R functions in RMarkdown |
+| Riddler: Simulating and Optimizing Coin Flipping | [15:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=915s) | Starting the Extra Credit portion of the problem (N prisoners instead of 4) |
+| Riddler: Simulating and Optimizing Coin Flipping | [16:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=990s) | Using `map2_dbl` function to iterate a function that requires two inputs (and make sure it returns a `dbl`-class object) |
+| Riddler: Simulating and Optimizing Coin Flipping | [20:05](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1205s) | Reviewing visualisation of probabilties with a varying numbers of prisoners |
+| Riddler: Simulating and Optimizing Coin Flipping | [21:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1290s) | Tweaking graph to look nicer |
+| Riddler: Simulating and Optimizing Coin Flipping | [22:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1320s) | Get the exact optimal probability value for each number of prisoners |
+| Riddler: Simulating and Optimizing Coin Flipping | [22:45](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1365s) | Troubleshooting `optimise` function to work when iterated over different numbers of prisoners |
+| Riddler: Simulating and Optimizing Coin Flipping | [23:45](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1425s) | Using `unnest_wider` function to disaggregate a list, but put different elements on separate columns (not separate rows, which `unnest` does |
+| Riddler: Simulating and Optimizing Coin Flipping | [25:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1530s) | Explanation of what happens to probabilities as number of prisoners increases |
+
+
+
+***
+
+
+
 #### Animal Crossing
 
 [Back to summary](#screencast-summary)
@@ -1965,6 +1993,28 @@
 | African-American History | [55:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3320s) | Use `fct_recode` from the `forcats` package to change the factor levels for the `gender` variable while renaming `Man = "Boy"` and `Woman = "Girl"` |
 | African-American History | [57:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3440s) | Use `reorder_within` from the `tidytext` package to reorder the `geom_col` by `n` within `gender` variable for each facet panel. |
 | African-American History | [59:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3540s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Caribou Locations
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Caribou Locations | [4:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=240s) | Use `summarize` and `across` to calculate the proportion of `NA` values in the `individuals` dataset. Note, you do not need to use `list()`. |
+| Caribou Locations | [9:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=540s) | Use `ggplot` and `borders` from the `ggplot2` package to create a map of `Canada` with `deploy_on_longitude` and `deploy_on_latitude` from the `individuals` dataset. |
+| Caribou Locations | [13:50](https://www.youtube.com/watch?v=7G7SVODhVo4&t=830s) | Import Canada province `shapefile` using the `sf` package. [Unsuccessful] |
+| Caribou Locations | [25:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1500s) | Use `min` and `max` from `base r ` within `summarize` to find out the `start` and `end` dates for each caribou in the `locations` dataset. |
+| Caribou Locations | [27:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1635s) | Use `sample` from `base r` to pick one single caribou at a time then use the subset with `geom_path` from `ggplot2` to track the path a that caribou takes over time. `color = factor(floor_date(timestamp, "quarter")` is used to color the path according to what quarter the observation occured in. |
+| Caribou Locations | [35:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2115s) | Use `as.Date` from `base r` and `floor_date` from the `lubridate` package to convert `timestamp` variable into quarters then `facet_wrap` the previous plot by `quarter`. |
+| Caribou Locations | [37:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2235s) | Within `mutate`, use `as.numeric(difftime(timestamp, lag(timestamp), unit = "hours"))` from `base r` to figure out the gap in time between observations. |
+| Caribou Locations | [43:05](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2585s) | Use `distHaversine` from the `geosphere` package to calculate distance in `km` then convert it to speed in `kph`. |
+| Caribou Locations | [1:00:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=3600s) | Summary of dataset. |
 
 
 
