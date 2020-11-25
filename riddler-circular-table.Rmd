@@ -74,7 +74,7 @@ by_seat %>%
 sim %>%
   ggplot(aes(step)) +
   geom_histogram() +
-  facet_wrap(~ seat) +
+  facet_wrap(~ seat, scales = "free_y") +
   labs(x = "Step on which this seat gets the cranberry sauce")
 
 last_steps <- sim %>%
@@ -86,7 +86,7 @@ last_steps <- sim %>%
 last_steps %>%
   filter(table_size == 20,
          last_seat %in% c(1, 5, 10, 15))
-  inner_join(sim_full, by = c("trial",) %>%
+  inner_join(sim_full, by = c("trial") %>%
   filter(step <= last_step) %>%
   ggplot(aes(step, position, group = trial)) +
   geom_line() +
