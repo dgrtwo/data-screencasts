@@ -1,0 +1,95 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+0 is you, 1 is the person to your right, 19 is the person to your left
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+cumsum(sample(c(1, -1), 20, replace = TRUE)) %% 20
+
+sim_full <- crossing(trial = 1:10000,
+                     step = 1:1200) %>%
+  mutate(direction = sample(c(1, -1), n(), replace = TRUE)) %>%
+  group_by(trial) %>%
+  mutate(position = cumsum(direction)) %>%
+  ungroup() %>%
+  crossing(table_size = c(5, 10, 20, 30)) %>%
+  mutate(seat = position %% table_size)
+
+sim <- sim_full %>%
+  distinct(table_size, trial, seat, .keep_all = TRUE) %>%
+  filter(seat != 0)
+```
+
+```{r}
+by_seat <- sim %>%
+  group_by(table_size, trial) %>%
+  mutate(is_last = row_number() == table_size - 1) %>%
+  group_by(table_size, seat) %>%
+  summarize(avg_step = mean(step),
+            pct_last = mean(is_last),
+            avg_length_last = mean(step[is_last]))
+
+by_seat %>%
+  ggplot(aes(seat, avg_step, color = factor(table_size))) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(x = "Seat",
+       y = "Average # of steps to reach this seat",
+       color = "Table size")
+
+by_seat %>%
+  ggplot(aes(seat, pct_last, color = factor(table_size))) +
+  geom_line() +
+  geom_hline(aes(yintercept = 1 / (table_size - 1), color = factor(table_size)),
+             lty = 2) +
+  scale_y_continuous(labels = percent) +
+  expand_limits(y = 0) +
+  labs(x = "Seat",
+       y = "% this is the last seat to get cranberry sauce",
+       color = "Table size")
+
+by_seat %>%
+  mutate(seat = seat - 1) %>%
+  group_by(table_size) %>%
+  summarize(mod = list(lm(avg_step ~ I(seat ^ 2) + seat)),
+            td = map(mod, broom::tidy)) %>%
+  unnest(td)
+
+# - seat ^ 2 + 20 * seat - .22
+
+# Maximum is (table_size / 2) ^ 2
+
+sim %>%
+  ggplot(aes(step)) +
+  geom_histogram() +
+  facet_wrap(~ seat) +
+  labs(x = "Step on which this seat gets the cranberry sauce")
+
+last_steps <- sim %>%
+  group_by(trial) %>%
+  slice(19) %>%
+  ungroup() %>%
+  select(table_size, trial, last_step = step, last_seat = seat)
+
+last_steps %>%
+  filter(table_size == 20,
+         last_seat %in% c(1, 5, 10, 15))
+  inner_join(sim_full, by = c("trial",) %>%
+  filter(step <= last_step) %>%
+  ggplot(aes(step, position, group = trial)) +
+  geom_line() +
+  facet_wrap(~ last_seat)
+```
+
