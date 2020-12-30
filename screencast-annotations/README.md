@@ -2496,7 +2496,7 @@
 
 
 
-#### Riddler: Simulating a Random Circular Walk
+#### Riddler: Simulating a Circular Random Walk
 
 [Back to summary](#screencast-summary)
 
