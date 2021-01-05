@@ -79,7 +79,8 @@
 | [Great American Beer Festival](#great-american-beer-festival) | 2020-10-20 | Log odds ratio, Logistic regression, TIE Fighter plot | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
 | [IKEA Furniture](#ikea-furniture) | 2020-11-03 | Linear model, Coefficient/TIE fighter plot, Boxplots, Log scale discussion, Calculating volume | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
 | [Historical Phones](#historical-phones) | 2020-11-10 | Joining tables, Animated world choropleth, Adding IQR to geom_line, World development indicators package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
-
+| [Riddler: Simulating a Circular Random Walk](#riddler-simulating-a-circular-random-walk) | 2020-11-23 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=b1oKh9eeqkY) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-pass-the-cranberry-sauce/) |
+| [Ninja Warrior](#ninja-warrior) | 2020-12-15 | Log-odds with `tidylo` package, Graphing with `ggplot2` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=4AhXvMsCooM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-15/readme.md) |
 
 
 ***
@@ -2488,4 +2489,59 @@
 | Historical Phones | [42:25](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2545s) | Using the `WDIsearch` function to search the `WDI` package for proper population indicator. Ended up using the `SP.POP.TOTL` indicator. |
 | Historical Phones | [50:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3000s) | Create an animated choropleth world map with `fill = subscriptions`. |
 | Historical Phones | [1:00:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3600s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Riddler: Simulating a Circular Random Walk
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Riddler: Simulating a Circular Random Walk | [1:25](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=85s) | Using `sample()` and `cumsum()` to simulate a random walk |
+| Riddler: Simulating a Circular Random Walk | [2:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=150s) | Using `%%` (modulo operator) to "close" the circle (set the number of people in the circle) |
+| Riddler: Simulating a Circular Random Walk | [3:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=220s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating a Circular Random Walk | [5:10](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=310s) | Using `distinct` function and its `.keep_all` argument to get only the first unique set of the variables you give it |
+| Riddler: Simulating a Circular Random Walk | [8:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=495s) | Visualizing the number of steps it takes for the sauce to reach people at differents seats |
+| Riddler: Simulating a Circular Random Walk | [13:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=820s) | Visualizing the distribution of number of steps it takes to reach each seat |
+| Riddler: Simulating a Circular Random Walk | [26:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1590s) | Investigating the parabolic shape of average number of steps to reach a given seat |
+| Riddler: Simulating a Circular Random Walk | [28:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1720s) | Using `lm` and `I` functions to calculate formula of the parabola describing average number of steps |
+| Riddler: Simulating a Circular Random Walk | [30:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1815s) | Starting to vary the size of the table |
+| Riddler: Simulating a Circular Random Walk | [38:45](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=2325s) | Summary of screencast |
+
+
+
+***
+
+
+
+#### Ninja Warrior
+
+[Back to summary](#screencast-summary)
+
+| Screencast | Time | Description |
+| :--- | ---: | :--- |
+| Ninja Warrior | [2:35](https://www.youtube.com/watch?v=4AhXvMsCooM&t=155s) | Inspecting the dataset |
+| Ninja Warrior | [6:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=400s) | Using `geom_histogram` to look at distribution of obstacles in a stage |
+| Ninja Warrior | [9:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=545s) | Using `str_remove` function to clean stage names (remove "(Regional/City)") |
+| Ninja Warrior | [10:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=640s) | Asking, "Are there obstacles that are more common in the Finals than Qualifying rounds?" |
+| Ninja Warrior | [10:50](https://www.youtube.com/watch?v=4AhXvMsCooM&t=650s) | Using `bind_log_odds` function from `tidylo` package to calculate log-odds of obstacles within a stage type |
+| Ninja Warrior | [16:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=965s) | Using `unite` function to combine two columns |
+| Ninja Warrior | [18:20](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1100s) | Graphing the average position of different obstacles with many, many tweaks to make it look nice |
+| Ninja Warrior | [23:10](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1390s) | Creating a stacked bar plot of which obstacles appear in which order |
+| Ninja Warrior | [30:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1830s) | Turning stacked bar plot visualization into a custom function |
+| Ninja Warrior | [37:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2260s) | Asking, "Is there data on how difficult an obstacle is?" |
+| Ninja Warrior | [45:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2730s) | Visualizing which obstacles appear in different seasons with `geom_tile` and a lot of tweaking |
+| Ninja Warrior | [50:22](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3022s) | Reviewing the result of the previous step (obstacles in different seasons) |
+| Ninja Warrior | [59:25](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3565s) | Summary of screencast |
+
+
+
+***
+
+
 
