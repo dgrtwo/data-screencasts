@@ -1,0 +1,79 @@
+---
+title: "Transit Costs"
+runtime: shiny
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r echo = FALSE}
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(glue)
+theme_set(theme_light())
+library(countrycode)
+library(shiny)
+library(plotly)
+library(tidytext)
+
+tt <- tt_load("2021-01-05")
+
+transit_cost <- tt$transit_cost %>%
+  filter(!is.na(e)) %>%
+  mutate_at(vars(start_year, end_year, real_cost), as.numeric) %>%
+  mutate(country_code = ifelse(country == "UK", "GB", country),
+         country = countrycode(country_code, "iso2c", "country.name"),
+         tunnel_per = tunnel / length,
+         rr = ifelse(rr, "Railroad", "Not Railroad"),
+         station_density = stations / length) %>%
+  mutate(country = fct_infreq(country))
+```
+
+Most expensive lines in terms of cost/km:
+
+```{r eruptions, echo=FALSE}
+metrics <- c("Cost / KM (millions USD)" = "cost_km_millions",
+             "Length (KM)" = "length",
+             "Stations / KM" = "station_density")
+
+inputPanel(
+  selectizeInput("country", label = "Country:",
+                 choices = levels(transit_cost$country), selected = "United States"),
+  
+  selectInput("metric", label = "Metric:", choices = metrics,
+              selected = metrics[1]),
+  
+  sliderInput("num_lines", label = "# of lines to show:",
+              min = 1, max = 30, value = 16, step = 1)
+)
+
+transit_cost_country <- reactive({
+  transit_cost %>%
+    filter(country == input$country)
+})
+
+renderPlotly({
+  metric <- input$metric
+  x_axis_lab <- names(metrics)[metrics == metric]
+  
+  g <- transit_cost_country() %>%
+    arrange(desc(!!sym(metric))) %>%
+    head(input$num_lines) %>%
+    mutate(line = reorder_within(line, !!sym(metric), city)) %>%
+    ggplot(aes(!!sym(metric), line, fill = city)) +
+    geom_col() +
+    scale_y_reordered() +
+    labs(x = x_axis_lab,
+         y = "",
+         color = "City")
+  
+  if (metric %in% c("cost_km_millions")) {
+    g <- g + scale_x_continuous(labels = dollar)
+  }
+  
+  ggplotly(g)
+})
+```
