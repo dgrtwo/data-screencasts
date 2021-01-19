@@ -1,0 +1,307 @@
+---
+title: "TidyTemplate"
+date: 2021-01-12
+output: html_output
+---
+
+# TidyTuesday
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(janitor)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2021-01-12")
+
+artwork <- tt$artwork %>%
+  filter(artist != "Turner, Joseph Mallord William") %>%
+  clean_names()
+
+artists <- tt$artists %>%
+  clean_names()
+```
+
+```{r}
+artwork %>%
+  separate(medium, c("medium", "surface"), sep = " on ",
+           fill = "right", extra = "merge") %>%
+  count(medium, sort = TRUE) %>%
+  head(20) %>%
+  replace_na(list(medium = "Missing")) %>%
+  mutate(medium = fct_reorder(medium, n)) %>%
+  ggplot(aes(n, medium)) +
+  geom_col() +
+  labs(y = 'Medium (ignoring "on...")',
+       x = "# of pieces in Tate Modern")
+
+artwork %>%
+  filter(fct_lump(artist, 16) != "Other") %>%
+  mutate(medium = fct_lump(medium, 8)) %>%
+  count(artist, medium, sort = TRUE) %>%
+  mutate(artist = fct_reorder(artist, n, sum)) %>%
+  ggplot(aes(n, artist, fill = medium)) +
+  geom_col()
+```
+
+```{r}
+by_decade_medium <- artwork %>%
+  # separate(medium, c("medium", "surface"), sep = " on ",
+  #          fill = "right", extra = "merge") %>%
+  filter(year >= 1750) %>%
+  group_by(decade = round(year, -1)) %>%
+  mutate(n_artists_decade = n_distinct(artist)) %>%
+  ungroup() %>%
+  mutate(medium = fct_lump(medium, 11)) %>%
+  group_by(decade, medium, n_artists_decade) %>%
+  summarize(n = n(),
+            n_artists = n_distinct(artist)) %>%
+  ungroup() %>%
+  complete(decade, medium, fill = list(n = 0, n_artists = 0)) %>%
+  group_by(decade) %>%
+  mutate(pct = n / sum(n),
+         pct_artists = n_artists / n_artists_decade) %>%
+  ungroup()
+
+by_decade_medium %>%
+  ggplot(aes(decade, n, fill = medium)) +
+  geom_area()
+
+by_decade_medium %>%
+  filter(!is.na(medium)) %>%
+  mutate(medium = fct_reorder(medium, n, sum)) %>%
+  ggplot(aes(decade, pct, fill = medium)) +
+  geom_area() +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Decade",
+       y = "% of Tate Modern pieces",
+       fill = "Medium (without \"on...\")")
+
+by_decade_medium %>%
+  filter(!is.na(medium)) %>%
+  mutate(medium = fct_reorder(medium, pct, sum, .desc = TRUE)) %>%
+  ggplot(aes(decade, pct, fill = medium)) +
+  geom_col() +
+  facet_wrap(~ medium, scales = "free_y") +
+  scale_y_continuous(labels = percent) +
+  theme(legend.position = "none") +
+  labs(x = "Decade",
+       y = "% of Tate Modern pieces",
+       fill = "Medium (without \"on...\")")
+
+by_decade_medium %>%
+  filter(!is.na(medium)) %>%
+  mutate(medium = fct_reorder(medium, pct_artists, sum, .desc = TRUE)) %>%
+  ggplot(aes(decade, pct_artists, fill = medium)) +
+  geom_col() +
+  facet_wrap(~ medium, scales = "free_y") +
+  scale_y_continuous(labels = percent) +
+  theme(legend.position = "none") +
+  labs(x = "Decade",
+       y = "% of artists in this decade using this medium",
+       fill = "Medium (without \"on...\")")
+```
+
+```{r}
+artwork_size <- artwork %>%
+  filter(units == "mm",
+         !is.na(height),
+         !is.na(width)) %>%
+  mutate(area = (height / 1000) * (width / 1000),
+         ratio = width / height)
+
+artwork_size %>%
+  ggplot(aes(area)) +
+  geom_histogram() +
+  scale_x_log10(labels = comma) +
+  labs(x = "Area (square meters)")
+
+artwork_size %>%
+  filter(ratio > .2, ratio < 5) %>%
+  ggplot(aes(ratio)) +
+  geom_histogram(bins = 50) +
+  scale_x_log10() +
+  geom_vline(xintercept = c(3 / 4, 4 / 3),
+             linetype = "dashed", color = "red") +
+  labs(x = "Width / height ratio (log scale)",
+       title = "What are typical shapes of Tate artwork?",
+       subtitle = "Red lines show 3:4 and 4:3 ratios")
+
+artwork_size %>%
+  mutate(shape = case_when(
+    ratio > 1.05 ~ "Landscape",
+    ratio < .95 ~ "Portrait",
+    TRUE ~ "Square"
+  )) %>%
+  count(shape,
+        decade = round(year, -1)) %>%
+  filter(decade >= 1700) %>%
+  complete(decade, shape, fill = list(n = 0)) %>%
+  group_by(decade) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(decade, pct, fill = shape)) +
+  geom_area()
+
+size_by_decade <- artwork_size %>%
+  group_by(decade = round(year, -1)) %>%
+  summarize(median_ratio = median(ratio),
+            median_area = median(area),
+            n = n()) %>%
+  filter(decade >= 1700)
+
+size_by_decade %>%
+  ggplot(aes(decade, median_ratio)) +
+  geom_line() +
+  geom_point(aes(size = n)) +
+  labs(x = "Decade",
+       y = "Median ratio (width / height)")
+
+size_by_decade %>%
+  ggplot(aes(decade, median_area)) +
+  geom_line() +
+  geom_point(aes(size = n)) +
+  labs(x = "Decade",
+       y = "Median area in meters^2")
+
+artwork_size %>%
+  mutate(decade = round(year, -1)) %>%
+  filter(decade >= 1700) %>%
+  ggplot(aes(decade, area, group = decade)) +
+  geom_boxplot() +
+  scale_y_log10(labels = comma,
+                breaks = 10 ^ seq(-3, 2))
+```
+
+### Artists and size
+
+```{r}
+artwork_size %>%
+  group_by(artist) %>%
+  summarize(n_pieces = n(),
+            avg_year = mean(year, na.rm = TRUE),
+            first_year = min(year, na.rm = TRUE),
+            last_year = max(year, na.rm = TRUE),
+            median_area = median(area),
+            median_ratio = median(ratio)) %>%
+  arrange(desc(n_pieces))
+
+library(glue)
+
+artwork_size %>%
+  extract(medium, "medium_on", " on (.*)", remove = FALSE) %>%
+  filter(fct_lump(artist, 25) != "Other") %>%
+  add_count(artist) %>%
+  mutate(artist = glue("{ artist } ({ n })")) %>%
+  mutate(artist = fct_reorder(artist, ratio)) %>%
+  ggplot(aes(ratio, artist)) +
+  geom_boxplot() +
+  geom_vline(xintercept = c(3 / 4, 4 / 3),
+             linetype = "dashed", color = "red") +
+  scale_x_log10(limits = c(.25, 4)) +
+  labs(x = "Ratio (width / height)",
+       y = "",
+       title = "What aspect ratio do artists work in?",
+       subtitle = "For the 25 most common artists in the Tate")
+
+library(ggridges)
+artwork_size %>%
+  extract(medium, "medium_on", " on (.*)", remove = FALSE) %>%
+  filter(fct_lump(artist, 25) != "Other") %>%
+  add_count(artist) %>%
+  mutate(artist = glue("{ artist } ({ n })")) %>%
+  mutate(artist = fct_reorder(artist, ratio)) %>%
+  ggplot(aes(ratio, artist)) +
+  geom_density_ridges() +
+  geom_vline(xintercept = c(3 / 4, 4 / 3),
+             linetype = "dashed", color = "red") +
+  scale_x_log10(limits = c(.33, 3)) +
+  labs(x = "Ratio (width / height)",
+       y = "",
+       title = "What aspect ratio do artists work in?",
+       subtitle = "For the 25 most common artists in the Tate")
+
+artwork_size %>%
+  filter(fct_lump(medium, 25) != "Other") %>%
+  add_count(medium) %>%
+  mutate(medium = glue("{ medium } ({ n })")) %>%
+  mutate(medium = fct_reorder(medium, ratio)) %>%
+  ggplot(aes(ratio, medium)) +
+  geom_boxplot() +
+  geom_vline(xintercept = c(3 / 4, 4 / 3),
+             linetype = "dashed", color = "red") +
+  scale_x_log10(limits = c(.25, 4)) +
+  labs(x = "Ratio (width / height)",
+       y = "",
+       title = "What aspect ratio is a medium typically in?",
+       subtitle = "For the 25 most common medium in the Tate")
+```
+
+
+# Readme
+
+Take a look at the readme for the weekly data to get insight on the dataset.
+This includes a data dictionary, source, and a link to an article on the data.
+
+```{r Readme, eval = interactive()}
+
+tt
+
+```
+
+
+# Glimpse Data
+
+Take an initial look at the format of the data available.
+
+```{r Glimpse}
+
+tt %>% 
+  map(glimpse)
+
+```
+
+# Wrangle
+
+Explore the data and process it into a nice format for plotting! Access each dataset by name by using a dollarsign after the `tt` object and then the name of the data set.
+
+```{r Wrangle}
+
+
+
+```
+
+
+# Visualize
+
+Using your processed dataset, create your unique visualization.
+
+```{r Visualize}
+
+
+  
+```
+
+# Save Image
+
+Save your image for sharing. Be sure to use the `#TidyTuesday` hashtag in your post on twitter! 
+
+```{r}
+
+# This will save your most recent plot
+ggsave(
+  filename = "My TidyTuesday Plot.png",
+  device = "png")
+
+```
