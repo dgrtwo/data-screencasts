@@ -1,0 +1,239 @@
+---
+title: "TidyTemplate"
+date: 2021-02-23
+output: html_output
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2021-02-23")
+
+earn <- tt$earn
+
+employed <- tt$employed %>%
+  mutate(dimension = case_when(
+    race_gender == "TOTAL" ~ "Total",
+    race_gender %in% c("Men", "Women") ~ "Gender",
+    TRUE ~ "Race"
+  ))
+```
+
+```{r}
+employed_cleaned <- employed %>%
+  filter(!is.na(employ_n)) %>%
+  mutate(industry = fct_lump(industry, 15, w = employ_n),
+         industry = fct_reorder(industry, employ_n, sum))
+
+employed_cleaned %>%
+  filter(dimension == "Total") %>%
+  ggplot(aes(year, employ_n, fill = industry)) +
+  geom_col() +
+  scale_y_continuous(labels = comma) +
+  labs(y = "# employed in industry",
+       x = "Year")
+
+employed_cleaned %>%
+  filter(dimension == "Gender") %>%
+  group_by(industry, year, race_gender) %>%
+  summarize(employ_n = sum(employ_n)) %>%
+  ggplot(aes(year, employ_n, color = race_gender)) +
+  geom_line() +
+  facet_wrap(~ industry, scales = "free_y") +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = comma) +
+  labs(y = "# employed in industry",
+       x = "Year",
+       color = "Gender")
+
+employed_cleaned %>%
+  filter(year == 2020,
+         industry == "Wholesale and retail trade") %>%
+  View()
+```
+
+Not a ton of 2015-2019 variation; let's look at 2019 to 2020
+
+```{r}
+comparison <- employed_cleaned %>%
+  filter(year %in% c(2019, 2020)) %>%
+  mutate(major_occupation = paste(industry, major_occupation, sep = " - "),
+         minor_occupation = paste(major_occupation, minor_occupation, sep = " - ")) %>%
+  gather(level, occupation, industry, major_occupation, minor_occupation) %>%
+  group_by(dimension, race_gender, level, occupation, year) %>%
+  summarize(employ_n = sum(employ_n)) %>%
+  ungroup() %>%
+  arrange(year) %>%
+  group_by(dimension, level, occupation, race_gender) %>%
+  summarize(ratio = last(employ_n) / first(employ_n),
+            change = ratio - 1,
+            employed_2019 = first(employ_n)) %>%
+  group_by(dimension, level, occupation) %>%
+  mutate(total_2019 = sum(employed_2019)) %>%
+  ungroup()
+
+comparison %>%
+  View()
+
+comparison %>%
+  filter(dimension == "Total", level == "industry") %>%
+  mutate(occupation = fct_reorder(occupation, change)) %>%
+  ggplot(aes(change, occupation)) +
+  geom_col() +
+  scale_x_continuous(labels = percent) +
+  labs(title = "What industries suffered the most in 2020?",
+       x = "Shift in # employed from 2019 to 2020 (BLS)",
+       y = "")
+
+library(glue)
+
+compare_lollipop <- function(tbl) {
+  tbl %>%
+    mutate(occupation = glue("{ occupation } ({ comma(total_2019 / 1000) }K)"),
+           occupation = fct_reorder(occupation, change)) %>%
+    ggplot(aes(change, occupation)) +
+    geom_errorbarh(aes(xmin = 0, xmax = change, color = race_gender),
+                   height = 0,
+                   position = position_dodge(width = .7)) +
+    geom_point(aes(size = employed_2019, color = race_gender),
+               position = position_dodge(width = .7)) +
+    geom_vline(lty = 2, xintercept = 0) +
+    scale_x_continuous(labels = percent) +
+    scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+    scale_size_continuous(labels = comma, guide = FALSE) +
+    labs(x = "Shift in # employed from 2019 to 2020 (BLS)",
+         y = "",
+         color = "",
+         size = "# employed 2019")
+}
+
+comparison %>%
+  filter(dimension == "Gender", level == "industry") %>%
+  compare_lollipop()
+
+comparison %>%
+  filter(dimension == "Race", level == "industry") %>%
+  compare_lollipop() +
+  labs(title = "What industries suffered the most in 2020?",
+       subtitle = "Size of point represents # employed in industry in 2019")
+
+comparison %>%
+  filter(dimension == "Race", level == "major_occupation") %>%
+  separate(occupation, c("industry", "occupation"), sep = " - ") %>%
+  filter(industry == "Construction",
+         employed_2019 >= 10000) %>%
+  compare_lollipop()
+
+comparison %>%
+  filter(dimension == "Gender", level == "major_occupation") %>%
+  separate(occupation, c("industry", "occupation"), sep = " - ") %>%
+  filter(industry == "Construction",
+         employed_2019 >= 10000) %>%
+  compare_lollipop()
+
+comparison %>%
+  filter(dimension == "Race",
+         level == "major_occupation") %>%
+  separate(occupation, c("industry", "occupation"), sep = " - ") %>%
+  filter(industry == "Leisure and hospitality",
+         employed_2019 >= 10000) %>%
+  compare_lollipop() +
+  labs(title = "Within 'Leisure and hospitality', what occupations suffered?")
+
+compare_2019_2020 %>%
+  filter(dimension == "Gender") %>%
+  mutate(industry = fct_reorder(industry, change)) %>%
+  ggplot(aes(change, industry, fill = race_gender)) +
+  geom_col(position = "dodge") +
+  scale_x_continuous(labels = percent) +
+  scale_fill_discrete(guide = guide_legend(reverse = TRUE)) +
+  labs(title = "What industries suffered the most in 2020?",
+       x = "Shift in # employed from 2019 to 2020 (BLS)",
+       y = "",
+       fill = "Gender")
+
+compare_2019_2020 %>%
+  filter(dimension == "Race") %>%
+  mutate(industry = fct_reorder(industry, change)) %>%
+  ggplot(aes(change, industry, fill = race_gender)) +
+  geom_col(position = "dodge") +
+  scale_x_continuous(labels = percent) +
+  scale_fill_discrete(guide = guide_legend(reverse = TRUE)) +
+  labs(title = "What industries suffered the most in 2020?",
+       x = "Shift in # employed from 2019 to 2020 (BLS)",
+       y = "",
+       fill = "Race")
+
+compare_2019_2020 %>%
+  filter(dimension == "Race")
+
+compare_2019_2020 %>%
+  filter(dimension == "Gender") %>%
+  mutate(industry = fct_reorder(industry, change)) %>%
+  ggplot(aes(change, industry)) +
+  geom_errorbarh(aes(xmin = 0, xmax = change, color = race_gender),
+                 height = 0,
+                 position = position_dodge(width = .7)) +
+  geom_point(aes(size = employed_2019, color = race_gender),
+             position = position_dodge(width = .7)) +
+  geom_vline(lty = 2, xintercept = 0) +
+  scale_x_continuous(labels = percent) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  scale_size_continuous(labels = comma, guide = FALSE) +
+  labs(title = "What industries suffered the most in 2020?",
+       subtitle = "Size of point represents # employed in industry in 2019",
+       x = "Shift in # employed from 2019 to 2020 (BLS)",
+       y = "",
+       color = "Gender",
+       size = "# employed 2019")
+```
+
+```{r}
+library(ggrepel)
+
+compare_2019_2020 %>%
+  filter(dimension == "Total") %>%
+  mutate(industry = fct_reorder(industry, change)) %>%
+  ggplot(aes(employed_2019, change)) +
+  geom_point() +
+  geom_text_repel(aes(label = industry)) +
+  geom_hline(lty = 2, yintercept = 0) +
+  scale_x_continuous(labels = comma) +
+  scale_y_continuous(labels = percent)
+```
+
+```{r}
+employed_cleaned %>%
+  filter(year %in% c(2019, 2020)) %>%
+  filter(industry == "Construction") %>%
+  group_by(dimension, race_gender, major_occupation, year) %>%
+  summarize(employ_n = sum(employ_n)) %>%
+  arrange(year) %>%
+  summarize(ratio = last(employ_n) / first(employ_n),
+            change = ratio - 1,
+            employed_2019 = first(employ_n)) %>%
+  ungroup()
+```
+
