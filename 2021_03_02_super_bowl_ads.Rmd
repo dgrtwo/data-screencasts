@@ -1,0 +1,231 @@
+---
+title: "TidyTemplate"
+date: 2021-03-02
+output: html_output
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+theme_set(theme_light())
+library(scales)
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2021-03-02")
+
+youtube <- tt$youtube %>%
+  select(-favorite_count) %>%
+  mutate(brand = fct_recode(brand, Hyundai = "Hynudai"))
+
+```
+
+```{r}
+youtube %>%
+  count(brand, sort = TRUE) %>%
+  head(20) %>%
+  mutate(brand = fct_reorder(brand, n)) %>%
+  ggplot(aes(n, brand)) +
+  geom_col()
+```
+
+```{r}
+youtube %>%
+  ggplot(aes(year, fill = brand)) +
+  geom_bar() +
+  facet_wrap(~ brand) +
+  theme(legend.position = "none")
+```
+
+```{r}
+youtube %>%
+  ggplot(aes(view_count)) +
+  geom_histogram(binwidth = .5) +
+  scale_x_log10(labels = comma) +
+  labs(x = "# of views")
+```
+
+```{r}
+youtube %>%
+  gather(metric, value, contains("_count")) %>%
+  ggplot(aes(value)) +
+  geom_histogram(binwidth = .5) +
+  scale_x_log10(labels = comma) +
+  labs(x = "# of views") +
+  facet_wrap(~ metric)
+```
+
+```{r}
+youtube %>%
+  filter(!is.na(view_count)) %>%
+  mutate(brand = fct_reorder(brand, view_count)) %>%
+  ggplot(aes(view_count, brand, fill = funny)) +
+  geom_boxplot() +
+  scale_x_log10(labels = comma)
+
+youtube %>%
+  ggplot(aes(year, view_count, group = year)) +
+  geom_boxplot()
+
+youtube %>%
+  filter(!is.na(view_count)) %>%
+  group_by(year) %>%
+  summarize(n = n(),
+            median_views = median(view_count)) %>%
+  filter(n >= 7) %>%
+  ggplot(aes(year, median_views)) +
+  geom_line() +
+  geom_point(aes(size = n)) +
+  scale_y_continuous(labels = comma) +
+  theme(legend.position = "none") +
+  labs(y = "Median # of views of Super Bowl ads")
+
+gathered_categories <- youtube %>%
+  gather(category, value, funny:use_sex) %>%
+  mutate(category = str_to_title(str_replace_all(category, "_", " ")))
+
+gathered_categories %>%
+  ggplot(aes(category, view_count, fill = value)) +
+  geom_boxplot() +
+  scale_y_log10()
+
+gathered_categories %>%
+  filter(!is.na(view_count)) %>%
+  group_by(category, value) %>%
+  summarize(n = n(),
+            median_view_count = median(view_count)) %>%
+  ggplot(aes(median_view_count, category, fill = value)) +
+  geom_col(position = "dodge")
+
+gathered_categories %>%
+  filter(!is.na(view_count)) %>%
+  group_by(category) %>%
+  summarize(correlation = cor(value, log(view_count + 1))) %>%
+  arrange(desc(correlation))
+
+lm(log2(view_count) ~ danger + patriotic + funny + show_product_quickly + celebrity + animals + use_sex,
+   data = youtube) %>%
+  summary()
+```
+
+```{r}
+glm(celebrity ~ year,
+    data = youtube,
+    family = "binomial") %>%
+  summary()
+
+coefficients <- gathered_categories %>%
+  group_by(category) %>%
+  summarize(model = list(glm(value ~ year, family = "binomial"))) %>%
+  mutate(td = map(model, broom::tidy)) %>%
+  unnest(td) %>%
+  filter(term != "(Intercept)") %>%
+  arrange(desc(estimate))
+
+gathered_categories %>%
+  group_by(category,
+           year = 2 * (year %/% 2)) %>%
+  summarize(pct = mean(value),
+            n = n()) %>%
+  inner_join(coefficients, by = "category") %>%
+  filter(p.value <= .01) %>%
+  ggplot(aes(year, pct, color = category)) +
+  geom_line() +
+  scale_y_continuous(labels = percent) +
+  facet_wrap(~ category) +
+  theme(legend.position = "none") +
+  labs(x = "Time (rounded to 2-years)",
+       y = "% of ads with this quality")
+```
+
+```{r}
+library(tidytext)
+
+by_brand_category <- gathered_categories %>%
+  group_by(brand, category) %>%
+  summarize(pct = mean(value)) %>%
+  ungroup()
+
+by_brand_category %>%
+  mutate(brand = reorder_within(brand, pct, category)) %>%
+  ggplot(aes(pct, brand)) +
+  geom_col() +
+  scale_x_continuous(labels = percent) +
+  scale_y_reordered() +
+  facet_wrap(~ category, scales = "free_y") +
+  labs(y = "",
+       x = "% of brand's ads have this quality")
+
+by_brand_category %>%
+  mutate(category = reorder_within(category, pct, brand)) %>%
+  ggplot(aes(pct, category)) +
+  geom_col() +
+  scale_x_continuous(labels = percent) +
+  scale_y_reordered() +
+  facet_wrap(~ brand, scales = "free_y") +
+  labs(y = "",
+       x = "% of brand's ads have this quality") +
+  labs(title = "What is each brand's 'fingerprint' in terms of the type of ads it produces?")
+```
+
+```{r}
+by_brand_category %>%
+  ggplot(aes(category, brand, fill = pct)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = .5)
+
+by_brand_category %>%
+  reshape2::acast(brand ~ category, value.var = "pct") %>%
+  heatmap()
+```
+
+```{r}
+likes_dislikes <- youtube %>%
+  mutate(dislike_pct = dislike_count / view_count,
+         like_ratio = like_count / dislike_count) %>%
+  mutate(like_dislike_total = like_count + dislike_count) %>%
+  filter(like_dislike_total >= 500) %>%
+  filter(!is.na(dislike_pct)) %>%
+  select(brand, year, title, description, view_count, like_dislike_total, like_count,
+         dislike_count, like_ratio) %>%
+  mutate(dislike_pct = dislike_count / (like_count + dislike_count)) %>%
+  arrange(desc(view_count))
+
+likes_dislikes %>%
+  filter(like_dislike_total >= 1000) %>%
+  ggplot(aes(view_count, dislike_pct)) +
+  geom_point(aes(color = brand)) +
+  scale_x_log10(labels = comma) +
+  scale_y_continuous(labels = percent) +
+  geom_text(aes(label = str_trunc(title, 60)),
+            check_overlap = TRUE, vjust = 1,
+            hjust = 1, size = 3) +
+  labs(x = "Total views",
+       y = "Dislikes / (Likes + Dislikes)")
+
+likes_dislikes %>%
+  mutate(brand = fct_reorder(brand, dislike_pct, mean)) %>%
+  ggplot(aes(dislike_pct, brand)) +
+  geom_boxplot() +
+  scale_x_continuous(labels = percent) +
+  labs(title = "What brands tend to produce polarizing ads in terms of Youtube likes?",
+       x = "Dislikes / (Likes + Dislikes)",
+       y = "Brand")
+```
