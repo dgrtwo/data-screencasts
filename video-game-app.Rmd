@@ -1,0 +1,60 @@
+---
+title: "Video Game Popularity Over Time"
+runtime: shiny
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+```{r include = FALSE}
+library(shiny)
+library(plotly)
+library(dplyr)
+library(ggplot2)
+theme_set(theme_light())
+library(readr)
+library(lubridate)
+library(tidytuesdayR)
+library(forcats)
+library(scales)
+
+tt <- tt_load("2021-03-16")
+
+games <- tt$games %>%
+  mutate(avg_peak_perc = parse_number(avg_peak_perc) / 100) %>%
+  mutate(date = ymd(paste(year, month, 1))) %>%
+  filter(date > min(date)) %>%
+  mutate(month = fct_reorder(month, month(date))) %>%
+  mutate(gamename = fct_reorder(gamename, -avg))
+
+game_names <- levels(games$gamename)
+```
+
+```{r eruptions, echo=FALSE}
+inputPanel(
+  selectizeInput("games", label = "Games:",
+                 choices = game_names,
+                 selected = head(game_names, 9),
+                 multiple = TRUE)
+)
+
+renderPlotly({
+  req(input$games)
+  
+  g <- games %>%
+    filter(gamename %in% input$games) %>%
+    ggplot(aes(date, avg)) +
+    geom_line() +
+    expand_limits(y = 0) +
+    scale_y_continuous(labels = comma) +
+    facet_wrap(~ gamename, scales = "free_y") +
+    labs(x = "Month",
+       y = "Average players of this game in this month")
+  
+  ggplotly(g)
+})
+```
+
+
