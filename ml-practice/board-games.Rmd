@@ -395,7 +395,7 @@ attempt3 <- ensemble_fit_full_xg %>%
   bind_cols(holdout %>% select(game_id)) %>%
   select(game_id, geek_rating = .pred)
 
-write_csv(attempt1, "~/Desktop/attempt3.csv")
+write_csv(attempt3, "~/Desktop/attempt3.csv")
 ```
 
 
