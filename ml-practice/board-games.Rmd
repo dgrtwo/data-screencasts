@@ -1,0 +1,432 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+theme_set(theme_light())
+
+library(tidymodels)
+library(textrecipes)
+library(stacks)
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+full_data <- read_csv("~/Downloads/train (1).csv") %>%
+  unite(category, starts_with("category"),
+        sep = ", ", na.rm = TRUE, remove = FALSE)
+
+holdout <- read_csv("~/Downloads/test.csv") %>%
+  unite(category, starts_with("category"),
+        sep = ", ", na.rm = TRUE, remove = FALSE)
+
+set.seed(2021)
+spl <- initial_split(full_data, prop = .8)
+train <- training(spl)
+test <- testing(spl)
+```
+
+```{r}
+sd(train$geek_rating)
+```
+
+```{r}
+train %>%
+  ggplot(aes(geek_rating - min(geek_rating))) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+```{r}
+train %>%
+  mutate(min_players = pmin(min_players, 5)) %>%
+  ggplot(aes(min_players, geek_rating, group = min_players)) +
+  geom_boxplot()
+
+train %>%
+  ggplot(aes(num_votes, geek_rating)) +
+  geom_point() +
+  scale_x_log10()
+
+train %>%
+  ggplot(aes(max_time, geek_rating)) +
+  geom_point() +
+  scale_x_log10()
+
+train %>%
+  ggplot(aes(age, geek_rating)) +
+  geom_point() +
+  scale_x_log10()
+
+train %>%
+  ggplot(aes(owned)) +
+  geom_histogram() +
+  scale_x_log10()
+
+train %>%
+  ggplot(aes(owned, geek_rating)) +
+  geom_point() +
+  scale_x_log10()
+
+cor.test(log(train$age + 1), train$geek_rating)
+
+train %>%
+  group_by(year) %>%
+  summarize(median_rating = median(geek_rating),
+            n = n()) %>%
+  filter(n >= 20) %>%
+  ggplot(aes(year, median_rating)) +
+  geom_line() +
+  expand_limits(y = 0)
+```
+
+```{r}
+train %>%
+  View()
+```
+
+```{r}
+train %>%
+  separate_rows(mechanic, sep = ", ") %>%
+  count(mechanic, sort = TRUE)
+
+train %>%
+  separate_rows(category, sep = ", ") %>%
+  count(category, sort = TRUE)
+
+
+train %>%
+  select(owned)
+```
+
+### Modelling!
+
+.48 is a dummy model
+
+```{r}
+mset <- metric_set(rmse)
+
+set.seed(2021)
+train_fold <- train %>%
+  vfold_cv(10)
+```
+
+```{r}
+lin_spec <- linear_reg(penalty = tune()) %>%
+  set_engine("glmnet")
+
+lin_rec <- recipe(geek_rating ~ owned + num_votes + avg_time +
+                    min_players + max_players +
+                    year + mechanic + designer + age +
+                    category, data = train) %>%
+  step_log(owned, num_votes, avg_time, base = 2, offset = 1) %>%
+  step_mutate(max_players = pmin(max_players, 30)) %>%
+  step_ns(year, deg_free = 5) %>%
+  step_tokenize(mechanic, designer, category, token = "regex",
+                options = list(pattern = ", ")) %>%
+  step_tokenfilter(designer, max_tokens = 100) %>%
+  step_tf(mechanic, designer, category)
+
+lin_wflow <- workflow() %>%
+  add_recipe(lin_rec) %>%
+  add_model(lin_spec)
+```
+
+```{r}
+cv <- lin_wflow %>%
+  fit_resamples(train_fold)
+
+cv %>%
+  collect_metrics()
+```
+
+```{r}
+tuned <- lin_wflow %>%
+  tune_grid(train_fold,
+            grid = crossing(penalty = 10 ^ seq(-7, -2, .1)),
+            metrics = mset,
+            control = control_stack_grid())
+
+tuned %>%
+  autoplot()
+
+tuned %>%
+  collect_metrics() %>%
+  arrange(mean)
+```
+
+Linear model on just log of owned gets us to .265.
+Adding in some terms with spline of year gets us to .215.
+Adding mechanics with 100 tokens gets us .207, adding designer with glmnet gets .205
+Adding category gets to .201
+
+```{r}
+lin_rec %>%
+  prep() %>%
+  juice() %>%
+  View()
+```
+
+### Random forest
+
+```{r}
+set.seed(2021)
+train_fold5 <- train %>%
+  vfold_cv(5)
+
+rf_spec <- rand_forest("regression",
+                       mtry = tune(),
+                       trees = tune()) %>%
+  set_engine("ranger") %>%
+  set_args(importance = "impurity")
+
+rf_rec <- recipe(geek_rating ~ owned + num_votes + avg_time + max_players +
+                   year + age # + mechanic + designer + category
+                   , data = train)
+  # step_tokenize(mechanic, designer, category, token = "regex",
+  #               options = list(pattern = ", ")) %>%
+  # step_tokenfilter(mechanic, designer, category, max_tokens = tune()) %>%
+  # step_tf(mechanic, designer, category)
+
+rf_wflow <- workflow() %>%
+  add_recipe(rf_rec) %>%
+  add_model(rf_spec)
+
+rf_tune <- rf_wflow %>%
+  tune_grid(train_fold,
+            grid = crossing(trees = c(300),
+                            # max_tokens = c(1, 4),
+                            mtry = 2:6),
+            metrics = mset,
+            control = control_stack_grid())
+
+autoplot(rf_tune)
+
+rf_tune %>%
+  collect_metrics() %>%
+  arrange(mean)
+```
+
+```{r}
+rf_wflow %>%
+  finalize_workflow(list(trees = 300, mtry = 4)) %>%
+  last_fit(spl) %>%
+  collect_metrics()
+
+rf_wflow %>%
+  finalize_workflow(list(trees = 200, mtry = 20)) %>%
+  fit(train)
+
+prepped_training <- rf_rec %>%
+  prep() %>%
+  juice()
+
+fit(rf_spec, geek_rating ~ ., data = prepped_training)
+```
+
+Best out-of-sample: .182
+
+* Ensemble method combining linear and random forest
+
+```{r}
+rf_chosen <- rf_tune %>%
+  filter_parameters(mtry == 4, trees == 300)
+
+lin_chosen <- tuned %>%
+  filter_parameters(parameters = select_best(tuned))
+```
+
+```{r}
+pred <- rf_chosen %>%
+  collect_predictions()
+
+f <- function() {
+  ind <- sample(nrow(pred), 1500, replace = TRUE)
+  rmse_vec(pred$.pred[ind], pred$geek_rating[ind])
+}
+
+sd(replicate(100000, f()))
+```
+
+```{r}
+ensemble <- stacks() %>%
+  add_candidates(lin_chosen) %>%
+  add_candidates(rf_chosen)
+
+ensemble_blended <- ensemble %>%
+  blend_predictions()
+
+ensemble_fit <- ensemble_blended %>%
+  fit_members()
+```
+
+```{r}
+predict(ensemble_fit, test) %>%
+  bind_cols(test) %>%
+  rmse(geek_rating, .pred)
+```
+
+```{r}
+ensemble_blended_full <- ensemble_blended
+ensemble_blended_full$train <- full_data
+
+ensemble_fit_full <- ensemble_blended_full %>%
+  fit_members()
+
+attempt1 <- ensemble_fit_full %>%
+  predict(holdout) %>%
+  bind_cols(holdout %>% select(game_id)) %>%
+  select(game_id, geek_rating = .pred)
+
+write_csv(attempt1, "~/Desktop/attempt1.csv")
+```
+
+What were most important models?
+
+```{r}
+rf_fit <- rf_wflow %>%
+  finalize_workflow(list(trees = 300, mtry = 4)) %>%
+  fit(train)
+
+ranger::importance(rf_fit$fit$fit$fit) %>%
+  sort()
+```
+
+
+XGBoost
+
+```{r}
+set.seed(2021)
+train_fold5 <- train %>%
+  vfold_cv(5)
+
+xg_spec <- boost_tree("regression",
+                      mtry = tune(),
+                      trees = tune(),
+                      learn_rate = tune()) %>%
+  set_engine("xgboost")
+
+xg_rec <- recipe(geek_rating ~ owned + num_votes + avg_time +
+                   max_players +
+                   year + age,
+                 data = train)
+
+xg_wflow <- workflow() %>%
+  add_recipe(xg_rec) %>%
+  add_model(xg_spec)
+
+xg_tune <- xg_wflow %>%
+  tune_grid(train_fold,
+            grid = crossing(trees = c(1000, 3000, 5000),
+                            learn_rate = c(c(.005, .01)),
+                            mtry = 2:7),
+            metrics = mset,
+            control = control_stack_grid())
+
+autoplot(xg_tune) +
+  coord_cartesian(ylim = c(.17, .18))
+```
+
+```{r}
+xg_test <- xg_wflow %>%
+  finalize_workflow(list(trees = 3000,
+                         learn_rate = .005,
+                         mtry = 5)) %>%
+  last_fit(spl)
+
+xg_test %>%
+  collect_metrics()
+
+xg_fit <- xg_wflow %>%
+  finalize_workflow(list(trees = 3000,
+                         learn_rate = .01)) %>%
+  fit(full_data)
+
+attempt2 <- xg_fit %>%
+  predict(holdout) %>%
+  bind_cols(holdout %>% select(game_id)) %>%
+  select(game_id, geek_rating = .pred)
+
+write_csv(attempt2, "~/Desktop/attempt2.csv")
+```
+
+Blend it for attempt3.
+
+```{r}
+xg_chosen <- xg_tune %>%
+  filter_parameters(trees == 3000, learn_rate == .01)
+```
+
+```{r}
+ensemble_xg <- stacks() %>%
+  add_candidates(lin_chosen) %>%
+  add_candidates(xg_chosen)
+
+ensemble_blended_xg <- ensemble_xg %>%
+  blend_predictions()
+
+ensemble_fit_xg <- ensemble_blended_xg %>%
+  fit_members()
+```
+
+```{r}
+predict(ensemble_fit_xg, test) %>%
+  bind_cols(test) %>%
+  rmse(geek_rating, .pred)
+```
+
+```{r}
+ensemble_blended_full_xg <- ensemble_blended_xg
+ensemble_blended_full_xg$train <- full_data
+
+ensemble_fit_full_xg <- ensemble_blended_full_xg %>%
+  fit_members()
+
+attempt3 <- ensemble_fit_full_xg %>%
+  predict(holdout) %>%
+  bind_cols(holdout %>% select(game_id)) %>%
+  select(game_id, geek_rating = .pred)
+
+write_csv(attempt1, "~/Desktop/attempt3.csv")
+```
+
+
+```{r}
+xg_test <- xg_wflow %>%
+  finalize_workflow(list(trees = 3000,
+                         learn_rate = .01,
+                         mtry = 6)) %>%
+  last_fit(spl)
+
+xg_test %>%
+  collect_metrics()
+
+xg_fit <- xg_wflow %>%
+  finalize_workflow(list(trees = 3000,
+                         learn_rate = .01,
+                         mtry = 6)) %>%
+  fit(full_data)
+
+attempt4 <- xg_fit %>%
+  predict(holdout) %>%
+  bind_cols(holdout %>% select(game_id)) %>%
+  select(game_id, geek_rating = .pred)
+
+write_csv(attempt4, "~/Desktop/attempt4.csv")
+```
+
+Learnings
+  * XGBoost really is OP
+  * Look at importance scores of RF
+  * Tokens don't mix that well with xgboost, don't overly focus on them early
+Possible prep I could do
+  * stacks package takes a lot of code; write helper functions?
+  * Running on holdout set could have a helper function (give it a workflow, train on full, write to file)
