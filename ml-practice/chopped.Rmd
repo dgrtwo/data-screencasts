@@ -1,0 +1,348 @@
+---
+title: "Chopped prediction"
+output: html_document
+---
+
+Chopped test: https://www.kaggle.com/c/sliced-test/leaderboard
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(textrecipes)
+library(lubridate)
+theme_set(theme_light())
+library(scales)
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-test/train.csv")
+holdout <- read_csv("~/Downloads/sliced-test/test.csv")
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+mset <- metric_set(rmse)
+```
+
+```{r}
+train %>%
+  ggplot(aes(series_episode, rating)) +
+  geom_point(aes(color = season)) +
+  geom_smooth(method = "gam") +
+  labs(x = "Episode within entire series")
+
+train %>%
+  arrange(series_episode)
+
+summarize_ratings <- function(tbl) {
+  tbl %>%
+    summarize(avg_rating = mean(rating),
+              n = n()) %>%
+    arrange(desc(avg_rating))
+}
+
+train %>%
+  group_by(season) %>%
+  summarize_ratings() %>%
+  ggplot(aes(season, avg_rating)) +
+  geom_line() +
+  expand_limits(y = 0)
+
+train %>%
+  group_by(season_episode) %>%
+  summarize_ratings() %>%
+  ggplot(aes(season_episode, avg_rating)) +
+  geom_line() +
+  geom_point(aes(size = n))
+
+train %>%
+  ggplot(aes(season_episode, rating)) +
+  geom_boxplot(aes(group = season_episode)) +
+  geom_smooth(method = "loess")
+```
+
+```{r}
+train %>%
+  mutate(air_date = mdy(air_date)) %>%
+  ggplot(aes(series_episode, air_date)) +
+  geom_point()
+
+train %>%
+  gather(judge_position, judge, contains("judge")) %>%
+  count(judge, sort = TRUE)
+
+train %>%
+  gather(phase, food, appetizer, entree, dessert) %>%
+  separate_rows(food, sep = ", ") %>%
+  group_by(food) %>%
+  summarize_ratings() %>%
+  arrange(desc(n))
+
+# Not going to use contestant names. Tokenize the info
+train %>%
+  gather(key, value, contains("contestant"), -contains("info")) %>%
+  count(value, sort = TRUE)
+
+train %>%
+  ggplot(aes(votes, rating)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Features:
+
+* series_episode as a spline
+* Judges (categorical, many-to-one)
+* Tokenize: episode_nodes, and combined contestant info
+* Collapse ingredients together, include as features
+
+### Linear model
+
+Dummy model:
+
+```{r}
+sd(train$rating)
+```
+
+```{r}
+set.seed(2021)
+train_fold <- vfold_cv(train, v = 10)
+```
+
+```{r}
+# Graveyard of features
+  # step_mutate(judge = paste(judge1, judge2, judge3, sep = ";")) %>%
+  # step_tokenize(judge, token = "regex", options = list(pattern = ";")) %>%
+  # step_tokenfilter(judge, max_tokens = tune()) %>%
+  # step_tf(judge) %>%
+  # step_mutate(food = paste(appetizer, entree, dessert, sep = " ")) %>%
+  # step_tokenize(food) %>%
+  # step_stopwords(food) %>%
+  # step_tokenfilter(food, max_tokens = tune()) %>%
+  # step_tf(food) %>%
+```
+
+```{r}
+library(tidytext)
+
+words_selected <- c("part", "round", "tournament", "theme")
+
+train %>%
+  unnest_tokens(word, episode_notes) %>%
+  # anti_join(stop_words, by = "word") %>%
+  group_by(word) %>%
+  summarize(n_episodes = n_distinct(id)) %>%
+  arrange(desc(n_episodes)) %>%
+  View()
+```
+
+
+```{r}
+lin_rec <- recipe(rating ~ series_episode +
+                    # episode_notes +
+                    contestant1_info + contestant2_info + contestant3_info + contestant4_info, data = train) %>%
+  step_ns(series_episode, deg_free = 7) %>%
+  # Contestants
+  step_mutate(contestant_info = paste(contestant1_info, contestant2_info, contestant3_info, contestant4_info,
+                                      sep = " ")) %>%
+  step_tokenize(contestant_info) %>%
+  step_stopwords(contestant_info) %>%
+  step_tokenfilter(contestant_info, max_tokens = 3) %>%
+  step_tf(contestant_info) %>%
+  # step_tokenize(episode_notes) %>%
+  # step_stem(episode_notes) %>%
+  # step_stopwords(episode_notes, custom_stopword_source = words_selected, keep = TRUE) %>%
+  # step_tokenfilter(episode_notes, max_tokens = tune()) %>%
+  # step_tf(episode_notes) %>%
+  step_select(-c(contestant1_info, contestant2_info, contestant3_info, contestant4_info))
+
+lin_mod <- linear_reg(penalty = tune()) %>%
+  set_engine("glmnet")
+
+lin_wf <- workflow() %>%
+  add_recipe(lin_rec) %>%
+  add_model(lin_mod)
+
+lin_tuned <- lin_wf %>%
+  tune_grid(train_fold,
+            metrics = mset,
+            grid = crossing(penalty = 10 ^ seq(-7, -.5, .05)),
+            control = control_stack_grid())
+
+lin_tuned %>%
+  autoplot()
+```
+
+
+```{r}
+lin_rec <- recipe(rating ~ series_episode, data = train) %>%
+  step_ns(series_episode, deg_free = tune())
+
+lin_mod <- linear_reg(penalty = tune()) %>%
+  set_engine("glmnet")
+
+lin_wf <- workflow() %>%
+  add_recipe(lin_rec) %>%
+  add_model(lin_mod)
+
+lin_tuned <- lin_wf %>%
+  tune_grid(train_fold,
+            metrics = mset,
+            grid = crossing(deg_free = 1:10,
+                            penalty = 10 ^ seq(-7, -.5, .05)),
+            control = control_stack_grid())
+
+lin_tuned %>%
+  autoplot()
+```
+
+
+Best CV on trained for 7 df: .405
+
+No improvement from judges
+Tiny improvement at best from 3 tokens in contestant info
+The more food words we add, the worse the model
+* Including "part" helps a little; not going to include it.
+
+### K-nearest-neighbor on series_episode number
+
+```{r}
+knn_recipe <- recipe(rating ~ episode_notes + contestant1_info +
+                       contestant2_info + contestant3_info +
+                       contestant4_info, data = train) %>%
+  step_tokenize(episode_notes, contains("_info")) %>%
+  step_tokenmerge(episode_notes, contains("_info")) %>%
+  step_stopwords(tokenmerge) %>%
+  step_tokenfilter(tokenmerge, max_tokens = 100) %>%
+  step_tf(tokenmerge) %>%
+  step_center(starts_with("tf")) %>%
+  step_pca(starts_with("tf"), num_comp = tune())
+
+knn_mod <- nearest_neighbor("regression",
+                            neighbors = tune(),
+                            weight_func = tune()) %>%
+  set_engine("kknn")
+
+knn_wf <- workflow() %>%
+  add_recipe(knn_recipe) %>%
+  add_model(knn_mod)
+
+knn_tuned <- knn_wf %>%
+  tune_grid(train_fold,
+            metrics = mset,
+            grid = crossing(neighbors = seq(5, 40, 1),
+                            num_comp = seq(9, 20, 3),
+                            weight_func = c("triangular")),
+            control = control_stack_grid())
+
+autoplot(knn_tuned)
+```
+
+```{r}
+lin_mod <- lin_wf %>%
+  finalize_workflow(select_best(lin_tuned)) %>%
+  fit(train)
+
+knn_mod <- knn_wf %>%
+  finalize_workflow(select_best(knn_tuned)) %>%
+  fit(train)
+
+lin_mod %>%
+  predict(holdout)
+```
+
+```{r}
+lin_finalized <- lin_wf %>%
+  finalize_workflow(select_best(lin_tuned))
+
+knn_finalized <- knn_wf %>%
+  finalize_workflow(select_best(knn_tuned))
+
+lin_finalized %>%
+  last_fit(spl) %>%
+  collect_metrics()
+
+knn_finalized %>%
+  last_fit(spl) %>%
+  collect_metrics()
+```
+
+```{r}
+library(stacks)
+
+knn_best <- knn_tuned %>%
+  filter_parameters(parameters = select_best(knn_tuned))
+
+lin_best <- lin_tuned %>%
+  filter_parameters(parameters = select_best(lin_tuned))
+
+lin_knn_blended <- stacks() %>%
+  add_candidates(knn_best) %>%
+  add_candidates(lin_best) %>%
+  blend_predictions()
+
+lin_knn_blended$train <- dataset
+
+lin_knn_fit <- lin_knn_blended %>%
+  fit_members()
+```
+
+```{r}
+lin_knn_fit %>%
+  predict(holdout) %>%
+  bind_cols(holdout) %>%
+  select(id, rating = .pred) %>%
+  write_csv("~/Desktop/linear_knn_blend.csv")
+```
+
+
+```{r}
+knn_recipe %>%
+  prep() %>%
+  juice()
+```
+
+
+```{r}
+knn_recipe %>%
+  prep() %>%
+  juice() %>%
+  select(contains("tf")) %>%
+  as.matrix() %>%
+  svd() %>%
+  tidy(matrix = "d") %>%
+  ggplot(aes(PC, percent)) +
+  geom_point()
+```
+
+
+
+```{r}
+lin_rec %>%
+  finalize_recipe(list(max_tokens = 2)) %>%
+  prep() %>%
+  juice()
+
+?step_corr
+step_nz
+
+lin_wf %>%
+  finalize_workflow(select_best(tuned)) %>%
+  fit(train) %>%
+  extract_model() %>%
+  tidy() %>%
+  filter(str_detect(term, "info")) %>%
+  ggplot(aes(lambda, estimate, color = term)) +
+  geom_line() +
+  scale_x_log10() +
+  geom_vline(xintercept = select_best(tuned)$penalty)
+```
+
