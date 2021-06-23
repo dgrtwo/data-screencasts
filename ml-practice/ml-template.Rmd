@@ -1,0 +1,60 @@
+---
+title: "Machine Learning Template"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Core tidyverse
+library(tidyverse)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+
+# Tidy Models
+library(tidymodels)
+library(textrecipes)
+library(stacks)
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+Set up the datasets.
+
+```{r}
+# RMSE for linear (or roc_auc, etc, but better to pick one)
+mset <- metric_set(rmse)
+
+# Set up to inspect model outputs, or to stack model candidates
+grid_control <- control_grid(save_pred = TRUE,
+                             save_workflow = TRUE,
+                             extract = extract_model)
+```
+
+```{r}
+folder <- "~/Downloads/<FOLDER_NAME_HERE>"
+dataset <- read_csv(paste0(folder, "train.csv"))
+holdout <- read_csv(paste0(folder, "test.csv"))
+sample <- read_csv(paste0(folder, "sample_submission.csv"))
+
+# What are we predicting?
+colnames(sample)
+
+set.seed(2021)
+spl <- initial_split(dataset, .prop = .75)
+train <- training(spl)
+test <- testing(spl)
+
+train_fold <- train %>%
+  vfold_cv(5)
+```
+
+### EDA
+
+```{r}
+train
+```
+
