@@ -1,0 +1,458 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(scales)
+library(lubridate)
+library(textrecipes)
+library(stacks)
+theme_set(theme_light())
+
+set.seed(2021)
+```
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-s01e04-knyna9/train.csv") %>%
+  mutate(rain_tomorrow = factor(ifelse(rain_tomorrow, "Rained", "Didn't Rain")))
+holdout <- read_csv("~/Downloads/sliced-s01e04-knyna9/test.csv") %>%
+  mutate(rain_tomorrow = factor(ifelse(rain_tomorrow, "Rained", "Didn't Rain")))
+
+set.seed(2021)
+spl <- initial_split(dataset, prop = .75)
+train <- training(spl)
+test <- testing(spl)
+
+train_fold <- train %>%
+  vfold_cv(v = 5)
+
+doParallel::registerDoParallel(cores = 4)doPrimitiveMethod()
+```
+
+```{r}
+mset <- metric_set(mn_log_loss)
+
+grid_control <- control_grid(save_pred = TRUE,
+                             save_workflow = TRUE,
+                             extract = extract_model)
+
+augment.workflow <- function(x, newdata, ...) {
+  predict(x, newdata, ...) %>%
+    bind_cols(newdata)
+}
+augment.model_stack <- function(x, newdata, ...) {
+  predict(x, newdata, ...) %>%
+    bind_cols(newdata)
+}
+
+
+predict_on_holdout <- function(workflow) {
+  workflow %>%
+    fit(dataset) %>%
+    augment(holdout, type = "prob") %>%
+    select(id, rain_tomorrow = .pred_Rained)
+}
+```
+
+```{r}
+summarize_rainfall <- function(tbl) {
+  ret <- tbl %>%
+    summarize(n_rain = sum(rain_tomorrow == "Rained"),
+              n = n()) %>%
+    arrange(desc(n)) %>%
+    ungroup() %>%
+    mutate(pct_rain = n_rain / n,
+           low = qbeta(.025, n_rain + 5, n - n_rain + .5),
+           high = qbeta(.975, n_rain + 5, n - n_rain + .5)) %>%
+    mutate(pct = n / sum(n))
+
+  ret
+}
+
+train %>%
+  summarize_rainfall()
+
+train %>%
+  group_by(location = fct_lump(location, 50)) %>%
+  summarize_rainfall() %>%
+  mutate(location = fct_reorder(location, pct_rain)) %>%
+  ggplot(aes(pct_rain, location)) +
+  geom_point(aes(size = pct)) +
+  geom_errorbarh(aes(xmin = low, xmax = high), height = .3) +
+  scale_size_continuous(labels = percent, guide = "none", range = c(.5, 4)) +
+  scale_x_continuous(labels = percent) +
+  labs(x = "Probability of raining tomorrow",
+       y = "",
+       title = "What locations get the most/least rain?",
+       subtitle = "Including 95% confidence intervals. Size of points is proportional to frequency")
+```
+
+Time series! By year and within year
+
+```{r}
+train %>%
+  group_by(year = year(date)) %>%
+  summarize_rainfall() %>%
+  ggplot(aes(year, pct_rain)) +
+  geom_point(aes(size = n)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .1) +
+  expand_limits(y = 0) +
+  scale_x_continuous(breaks = seq(2007, 2017, 2)) +
+  scale_y_continuous(labels = percent_format()) +
+  scale_size_continuous(guide = "none") +
+  coord_cartesian(ylim = c(0, .35)) +
+  labs(x = "Year",
+       y = "% days rain (tomorrow) in year")
+```
+
+```{r}
+numeric_gathered <- train %>%
+  mutate(rainfall = log2(rainfall + 1)) %>%
+  gather(metric, value, min_temp, max_temp, rainfall, contains("speed"), contains("humidity"), contains("pressure"), contains("cloud"), contains("temp"))
+
+numeric_gathered %>%
+  ggplot(aes(value, color = rain_tomorrow)) +
+  geom_density() +
+  facet_wrap(~ metric, scales = "free")
+```
+
+Lots of linear trends! How well would each of these do by itself (AUC)?
+
+```{r}
+numeric_gathered %>%
+  group_by(metric) %>%
+  roc_auc(rain_tomorrow, value, event_level = "second") %>%
+  arrange(desc(.estimate)) %>%
+  mutate(metric = fct_reorder(metric, .estimate)) %>%
+  ggplot(aes(.estimate, metric)) +
+  geom_point() +
+  geom_vline(xintercept = .5) +
+  labs(x = "AUC in positive direction",
+       title = "How predictive is each linear predictor by itself?",
+       subtitle = ".5 is not predictive at all; <.5 means negatively associated with rain, >.5 means positively associated")
+
+```
+
+```{r}
+train %>%
+  group_by(wind_gust_dir = str_sub(wind_gust_dir, 1, 1)) %>%
+  summarize_rainfall()
+```
+
+
+It looks like the ones with the strongest trends are
+
+There's a bit of a time trend maybe. It's nonlinear and not huge.
+
+```{r}
+train %>%
+  group_by(week = as.Date("2020-01-01") + week(date) * 7) %>%
+  summarize_rainfall() %>%
+  ggplot(aes(week, pct_rain)) +
+  geom_point(aes(size = n)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .1) +
+  expand_limits(y = 0) +
+  scale_x_date(labels = date_format("%b")) +
+  scale_y_continuous(labels = percent) +
+  scale_size_continuous(guide = "none") +
+  labs(x = "Week within year",
+       y = "% days rain (tomorrow)",
+       title = "Rain really is more common in the summer!",
+       subtitle = "Ribbon shows 95% confidence bound")
+```
+
+Compass rose
+
+```{r}
+compass_directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
+  "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
+
+as_angle <- function(direction) {
+  (match(direction, compass_directions) - 1) * 360 / length(compass_directions)
+}
+```
+
+```{r}
+train %>%
+  gather(type, direction, contains("dir")) %>%
+  mutate(type = str_remove(type, "wind_dir"),
+         type = ifelse(type == "wind_gust_dir", "Overall", type)) %>%
+  group_by(type, direction) %>%
+  summarize_rainfall() %>%
+  mutate(angle = as_angle(direction)) %>%
+  ggplot(aes(angle)) +
+  geom_line(aes(y = pct_rain, color = type)) +
+  geom_text(aes(y = .4, label = direction), size = 6) +
+  scale_y_continuous(labels = percent) +
+  expand_limits(y = 0) +
+  coord_polar() +
+  labs(x = "",
+       y = "% rain tomorrow when wind is in this direction",
+       title = "How does rain depend on the compass direction?",
+       color = "Time")
+```
+
+
+Looking for interaction terms in change over day!
+
+```{r}
+spread_time <- train %>%
+  select(id, rain_tomorrow, contains("3"), contains("9")) %>%
+  select(-contains("dir")) %>%
+  gather(metric, value, -rain_tomorrow, -id) %>%
+  separate(metric, c("metric", "time"), sep = -3) %>%
+  mutate(time = paste0("at_", time)) %>%
+  spread(time, value)
+
+spread_time %>%
+  ggplot(aes(at_9am, at_3pm)) +
+  geom_point() +
+  geom_smooth(aes(color = rain_tomorrow), method = "lm") +
+  facet_wrap(~ metric, scales = "free") +
+  labs(x = "9 AM",
+       y = "3 PM",
+       title = "Does the difference over the course of the day differ by rain/won't rain?",
+       color = "")
+```
+
+```{r}
+spread_time %>%
+  ggplot(aes(at_3pm - at_9am)) +
+  geom_density(aes(color = rain_tomorrow)) +
+  facet_wrap(~ metric, scales = "free") +
+  labs(x = "Difference between 3 PM - 9 AM",
+       title = "Does the difference over the course of the day differ by rain/won't rain?",
+       color = "")
+```
+
+Conclusions:
+
+* If humidity increased, likely to rain
+* If pressure increased, slightly likely to rain
+* If temp increased, less likely to rain
+* No effect of change in wind speed or cloud cover from 9am to 3pm
+
+
+```{r}
+prep_juice <- function(x) juice(prep(x))
+
+lin_rec <- recipe(rain_tomorrow ~ date + location + rain_today +
+                    min_temp + max_temp + rainfall +
+                    wind_gust_speed + wind_speed9am +
+                    wind_speed3pm + humidity9am + humidity3pm + pressure9am +
+                    pressure3pm + cloud9am + cloud3pm + temp9am + temp3pm +
+                    wind_gust_dir + wind_dir9am + wind_dir3pm +
+                    rain_today, data = train) %>%
+  step_mutate(year = year(date),
+              month = month(date)) %>%
+  step_rm(date) %>% 
+  step_log(rainfall, offset = 1, base = 2) %>%
+  step_impute_mean(all_numeric_predictors()) %>%
+  step_ns(year, deg_free = 2) %>%
+  step_ns(month, deg_free = 4) %>%
+  step_other(location, threshold = .005) %>%
+  step_dummy(location) %>%
+  step_mutate(wind_gust_dir = str_sub(wind_gust_dir, 1, 1)) %>%
+  step_mutate(wind_dir9am = str_sub(wind_dir9am, 1, 1)) %>%
+  step_mutate(wind_dir3pm = str_sub(wind_dir3pm, 1, 1)) %>%
+  step_unknown(all_nominal_predictors()) %>%
+  step_dummy(all_nominal_predictors())
+
+lin_wf <- workflow() %>%
+  add_recipe(lin_rec) %>%
+  add_model(logistic_reg(penalty = tune()) %>% set_engine("glmnet"))
+
+lin_tune <- lin_wf %>%
+  tune_grid(train_fold,
+            grid = crossing(penalty = 10 ^ seq(-6, -.5, .05)),
+            metrics = mset,
+            control = grid_control)
+
+autoplot(lin_tune)
+```
+
+First model!
+
+```{r}
+lin_wf_best <- lin_wf %>%
+  finalize_workflow(select_best(lin_tune))
+
+lin_wf_best %>%
+  last_fit(spl, metrics = mset) %>%
+  collect_metrics()
+
+lin_wf_best %>%
+  predict_on_holdout() %>%
+  write_csv("~/Desktop/attempt1.csv")
+```
+
+XGBoost
+
+Trying out one more xgboost model: adding a location term, and tuning how many we include.
+
+```{r}
+set.seed(2021)
+
+train_fold_small <- train %>%
+  sample_n(4000) %>%
+  vfold_cv(v = 2)
+
+compass_directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
+  "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
+
+as_angle <- function(direction) {
+  (match(direction, compass_directions) - 1) * 360 / length(compass_directions)
+}
+
+
+xg_rec <- recipe(rain_tomorrow ~ date + rain_today +
+                    min_temp + max_temp + rainfall +
+                    wind_gust_speed + wind_speed9am +
+                    wind_speed3pm + humidity9am + humidity3pm + pressure9am +
+                    pressure3pm + cloud9am + cloud3pm + temp9am + temp3pm +
+                    wind_gust_dir + wind_dir9am + wind_dir3pm +
+                    location +
+                    rain_today, data = train) %>%
+  step_mutate(week = week(date)) %>%
+  step_mutate(wind_gust_dir = as_angle(wind_gust_dir)) %>%
+  step_mutate(wind_dir9am = as_angle(wind_dir9am)) %>%
+  step_mutate(wind_dir3pm = as_angle(wind_dir3pm)) %>%
+  step_other(location, threshold = tune()) %>%
+  step_rm(date) %>% 
+  step_impute_mean(all_numeric_predictors()) %>%
+  step_unknown(all_nominal_predictors()) %>%
+  step_dummy(all_nominal_predictors())
+
+xg_wf <- workflow() %>%
+  add_recipe(xg_rec) %>%
+  add_model(boost_tree("classification",
+                       mtry = tune(),
+                       trees = tune(),
+                       learn_rate = .01) %>% set_engine("xgboost"))
+
+xg_tune <- xg_wf %>%
+  tune_grid(train_fold,
+            grid = crossing(mtry = c(9, 12),
+                       trees = seq(100, 1600, 100),
+                       threshold = c(.01)),
+            metrics = mset,
+            control = grid_control)
+
+autoplot(xg_tune)
+```
+
+```{r}
+xg_wf_best <- xg_wf %>%
+  finalize_workflow(select_best(xg_tune))
+
+xg_fit_best <- xg_wf_best %>%
+  fit(train)
+
+importances <- xgboost::xgb.importance(model = xg_fit_best$fit$fit$fit)
+
+importances %>%
+  mutate(Feature = fct_reorder(Feature, Gain)) %>%
+  ggplot(aes(Gain, Feature)) +
+  geom_point() +
+  labs(title = "Importance of each term in xgboost",
+       subtitle = "Even after turning direction numeric, still not *that* important")
+
+predictions <- xg_fit_best %>%
+  augment(test, type = "prob")
+
+predictions %>%
+  mn_log_loss(rain_tomorrow, `.pred_Didn't Rain`)
+```
+
+```{r}
+xg_wf_best %>%
+  predict_on_holdout() %>%
+  write_csv("~/Desktop/attempt3.csv")
+```
+
+So far, xgboost slightly better .349 with gust turned numeric
+
+TODO:
+
+* Blend linear and xgboost (to get benefit of location)
+* Relationships between predictors
+
+
+```{r}
+prep_juice <- function(x) juice(prep(x))
+
+lin_location_rec <- recipe(rain_tomorrow ~ date + rainfall + location + humidity3pm, data = train) %>%
+  step_mutate(week = week(date)) %>%
+  step_rm(date) %>% 
+  step_log(rainfall, offset = 1, base = 2) %>%
+  step_impute_mean(all_numeric_predictors()) %>%
+  step_ns(week, deg_free = 4) %>%
+  step_other(location, threshold = .005) %>%
+  step_unknown(all_nominal_predictors()) %>%
+  step_dummy(all_nominal_predictors())
+
+lin_location_wf <- workflow() %>%
+  add_recipe(lin_location_rec) %>%
+  add_model(logistic_reg(penalty = tune()) %>% set_engine("glmnet"))
+
+lin_location_tune <- lin_location_wf %>%
+  tune_grid(train_fold,
+            grid = crossing(penalty = 10 ^ seq(-6, -.5, .05)),
+            metrics = mset,
+            control = grid_control)
+
+autoplot(lin_location_tune)
+```
+
+```{r}
+lin_best <- lin_location_tune %>% filter_parameters(parameters = select_best(lin_location_tune))
+xg_best <- xg_tune %>% filter_parameters(parameters = select_best(xg_tune))
+
+lin_xg_blend <- stacks() %>%
+  add_candidates(lin_best) %>%
+  add_candidates(xg_best) %>%
+  blend_predictions()
+
+lin_xg_fit <- lin_xg_blend %>%
+  fit_members()
+
+# Performance on test
+predictions <- lin_xg_fit %>%
+  predict(test, type = "prob", members = TRUE)
+
+# Log loss by model, or by the blend
+predictions %>%
+  select(contains("_Rained")) %>%
+  bind_cols(select(test, rain_tomorrow)) %>%
+  gather(model, prediction, -rain_tomorrow) %>%
+  mutate(prediction = 1 - prediction) %>%
+  group_by(model) %>%
+  mn_log_loss(rain_tomorrow, prediction)
+
+  mn_log_loss(rain_tomorrow, `.pred_Didn't Rain`)
+```
+
+
+### Old stuff
+
+Let's look at other relations
+
+Predictors:
+
+Year (weak), week within year (mostly summer)
+Location: strong effect and fairly evenly spread out
+Most important: pressure, humidity, cloud, temp3pm. 
+
+
+Compass rose plot on polar coordinates (while I'm waiting for xgboost, haha)
+
+
