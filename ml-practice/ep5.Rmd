@@ -1,0 +1,385 @@
+---
+title: "SLICED Season 1 Episode 5 (Practice)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(textrecipes)
+library(scales)
+library(stacks)
+theme_set(theme_light())
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-s01e05-WXx7h8/train.csv") %>%
+  mutate(price = log(price + 1))
+holdout <- read_csv("~/Downloads/sliced-s01e05-WXx7h8/test.csv")
+read_csv("~/Downloads/sliced-s01e05-WXx7h8/sample_submission.csv")
+
+set.seed(2021)
+
+spl <- initial_split(dataset, .75)
+train <- training(spl)
+test <- testing(spl)
+```
+
+```{r}
+library(broom)
+
+predict_holdout <- function(wf) {
+  wf %>%
+    augment(holdout) %>%
+    mutate(.pred = exp(.pred) - 1) %>%
+    select(id, price = .pred)
+}
+
+augment.model_stack <- function(x, data, ...) {
+  bind_cols(data, predict(x, data, ...))
+}
+```
+
+
+```{r}
+train %>%
+  count(name, sort = TRUE)
+
+summarize_prices <- function(tbl) {
+  tbl %>%
+    summarize(avg_price = exp(mean(price)) - 1,
+              median_price = exp(median(price)) - 1,
+              n = n()) %>%
+    arrange(desc(n))
+}
+
+train %>%
+  ggplot(aes(price)) +
+  geom_histogram()
+
+train %>%
+  group_by(neighbourhood_group) %>%
+  summarize_prices() %>%
+  mutate(neighbourhood_group = fct_reorder(neighbourhood_group, median_price)) %>%
+  ggplot(aes(median_price, neighbourhood_group)) +
+  geom_col()
+
+train %>%
+  mutate(neighbourhood_group = fct_reorder(neighbourhood_group, price)) %>%
+  ggplot(aes(exp(price), neighbourhood_group)) +
+  geom_boxplot() +
+  scale_x_log10()
+
+train %>%
+  mutate(neighbourhood = fct_lump(neighbourhood, 40),
+         neighbourhood = fct_reorder(neighbourhood, price)) %>%
+  ggplot(aes(exp(price), neighbourhood)) +
+  geom_boxplot() +
+  scale_x_log10()
+```
+
+```{r}
+train %>%
+  mutate(room_type = fct_reorder(room_type, price)) %>%
+  ggplot(aes(exp(price), room_type)) +
+  geom_boxplot() +
+  scale_x_log10()
+
+train %>%
+  mutate(minimum_nights = pmin(minimum_nights, 14)) %>%
+  ggplot(aes(minimum_nights, price, group = minimum_nights)) +
+  geom_boxplot()
+
+train %>%
+  sample_n(3000) %>%
+  ggplot(aes(minimum_nights + 1, price)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "loess")
+
+train %>%
+  ggplot(aes(reviews_per_month, price)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "lm")
+
+train %>%
+  ggplot(aes(calculated_host_listings_count, price)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "lm")
+
+train %>%
+  ggplot(aes(availability_365, price)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "lm")
+```
+
+Text analysis
+
+```{r}
+library(tidytext)
+
+train %>%
+  unnest_tokens(word, name) %>%
+  group_by(word) %>%
+  summarize_prices() %>%
+  head(50) %>%
+  mutate(word = fct_reorder(word, avg_price)) %>%
+  ggplot(aes(avg_price, word, size = n)) +
+  geom_point()
+```
+
+```{r}
+train %>%
+  mutate(host_id = factor(host_id)) %>%
+  mutate(host_id = fct_lump(host_id, 40)) %>%
+  mutate(host_id = fct_reorder(host_id, price)) %>%
+  ggplot(aes(price, host_id)) +
+  geom_boxplot()
+```
+
+Make a map!
+
+```{r}
+library(ggthemes)
+
+train %>%
+  group_by(latitude = round(latitude, 2),
+           longitude = round(longitude, 2)) %>%
+  summarize(price = mean(price)) %>%
+  ggplot(aes(longitude, latitude, color = exp(price) - 1)) +
+  geom_point() +
+  scale_color_gradient2(low = "blue", high = "red", midpoint = 2,
+                        trans = "log10") +
+  theme_map()
+```
+
+```{r}
+library(ggmap)
+
+bbox <- c(left = -74.24285, bottom = 40.50641, right = -73.71690, top = 40.91306)
+
+nyc_map <- get_stamenmap(bbox, zoom = 11)
+
+aggregated_lat_lon <- train %>%
+  group_by(latitude = round(latitude, 2),
+           longitude = round(longitude, 2)) %>%
+  summarize(price = mean(price),
+            n = n()) %>%
+  filter(n >= 5)
+
+ggmap(nyc_map) +
+  geom_point(aes(longitude, latitude, size = n, color = exp(price) - 1),
+             data = aggregated_lat_lon) +
+  scale_color_gradient2(low = "blue", high = "red", midpoint = 2,
+                        trans = "log10", labels = dollar) +
+  scale_size_continuous(range = c(.5, 4)) +
+  theme_map() +
+  labs(color = "Price",
+       size = "# of listings")
+```
+
+```{r}
+train %>%
+  ggplot(aes(last_review, price)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Jump into xgboost!
+
+```{r}
+mset <- metric_set(rmse)
+
+grid_control <- control_grid(save_pred = TRUE,
+                             save_workflow = TRUE,
+                             extract = extract_model)
+
+set.seed(2021)
+train_fold5 <- train %>%
+  vfold_cv(5)
+```
+
+```{r}
+prep_juice <- function(d) juice(prep(d))
+
+# Does not include name, host_id, host_name, neighbourhood
+xg_rec <- recipe(price ~ minimum_nights + room_type + number_of_reviews +
+                   latitude + longitude + neighbourhood_group +
+                   reviews_per_month + calculated_host_listings_count +
+                   availability_365 + last_review,
+                 data = train) %>%
+  #step_log(all_numeric_predictors(), offset = 1) %>%
+  step_mutate(is_manhattan = neighbourhood_group == "Manhattan") %>%
+  step_rm(neighbourhood_group) %>%
+  step_mutate(last_review = coalesce(as.integer(Sys.Date() - last_review), 0)) %>%
+  step_dummy(all_nominal_predictors())
+
+xg_mod <- boost_tree("regression",
+                     mtry = tune(),
+                     trees = tune(),
+                     learn_rate = tune()) %>%
+  set_engine("xgboost")
+
+xg_wf <- workflow() %>%
+  add_recipe(xg_rec) %>%
+  add_model(xg_mod)
+
+xg_tune <- xg_wf %>%
+  tune_grid(train_fold5,
+            metrics = mset,
+            control = grid_control,
+            grid = crossing(mtry = c(7),
+                            trees = seq(250, 1500, 25),
+                            learn_rate = c(.008, .01)))
+
+autoplot(xg_tune)
+
+xg_tune %>%
+  collect_metrics() %>%
+  arrange(mean)
+```
+
+Finalize version without categorical:
+
+```{r}
+xg_fit <- xg_wf %>%
+  finalize_workflow(select_best(xg_tune)) %>%
+  fit(train)
+
+xg_fit %>%
+  augment(test) %>%
+  rmse(price, .pred)
+
+importances <- xgboost::xgb.importance(model = xg_fit$fit$fit$fit)
+
+importances %>%
+  mutate(Feature = fct_reorder(Feature, Gain)) %>%
+  ggplot(aes(Gain, Feature)) +
+  geom_col()
+
+xg_fit %>%
+  predict_holdout() %>%
+  write_csv("~/Desktop/ep5_attempt1.csv")
+```
+
+* .535 with minimal version
+* .468 once we add lat/lng and neighborhood group
+* .444 once we add numeric variables like reviews per month
+
+```{r}
+xg_rec %>%
+  prep_juice() %>%
+  ggplot(aes(last_review)) +
+  geom_histogram()
+```
+
+Linear version on the categorical
+
+```{r}
+prep_juice <- function(d) juice(prep(d))
+
+lin_rec <- recipe(price ~ name + room_type +
+                    latitude + longitude +
+                    neighbourhood_group +
+                    neighbourhood +
+                    host_id,
+                  data = train) %>%
+  step_tokenize(name) %>%
+  step_tokenfilter(name, max_tokens = tune()) %>%
+  step_tf(name) %>%
+  step_mutate(host_id = factor(host_id)) %>%
+  step_other(host_id, neighbourhood, threshold = tune()) %>%
+  step_dummy(all_nominal_predictors()) %>%
+  step_normalize(all_predictors())
+
+lin_mod <- linear_reg(penalty = tune()) %>%
+  set_engine("glmnet")
+
+lin_wf <- workflow() %>%
+  add_recipe(lin_rec) %>%
+  add_model(lin_mod)
+
+lin_tune <- lin_wf %>%
+  tune_grid(train_fold5,
+            metrics = mset,
+            control = grid_control,
+            grid = crossing(penalty = 10 ^ seq(-7, -1, .1),
+                            threshold = .001,
+                            max_tokens = c(30, 100, 300, 500)))
+
+autoplot(lin_tune)
+
+lin_tune %>%
+  collect_metrics() %>%
+  arrange(mean)
+```
+
+```{r}
+lin_fit <- lin_wf %>%
+  finalize_workflow(select_best(lin_tune)) %>%
+  fit(train)
+
+lin_fit %>%
+  augment(test) %>%
+  rmse(.pred, price)
+```
+
+```{r}
+library(broom)
+
+lin_fit$fit$fit$fit %>%
+  tidy() %>%
+  filter(lambda >= select_best(lin_tune)$penalty) %>%
+  filter(lambda == min(lambda),
+         term != "(Intercept)") %>%
+  top_n(50, abs(estimate)) %>%
+  mutate(term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(estimate, term, fill = estimate > 0)) +
+  geom_col() +
+  theme(legend.position = "none",
+        x = "Coefficient in regularized linear model")
+```
+
+About .45 with the categorical + words
+
+```{r}
+lin_best <- lin_tune %>% filter_parameters(parameters = select_best(lin_tune))
+xg_best <- xg_tune %>% filter_parameters(parameters = select_best(xg_tune))
+
+blended_lin_xg <- stacks() %>%
+  add_candidates(lin_best) %>%
+  add_candidates(xg_best) %>%
+  blend_predictions()
+
+blended_lin_xg_fit <- blended_lin_xg %>%
+  fit_members()
+
+blended_lin_xg_fit %>%
+  augment(test) %>%
+  rmse(.pred, price)
+```
+
+```{r}
+blended_lin_xg_fulldata <- blended_lin_xg
+blended_lin_xg_fulldata$train <- dataset
+
+blended_lin_xg_fulldata_fit <- blended_lin_xg_fulldata %>%
+  fit_members()
+
+blended_lin_xg_fulldata_fit %>%
+  predict_holdout() %>%
+  write_csv("~/Desktop/ep5_attempt2.csv")
+```
+
+
+
+
