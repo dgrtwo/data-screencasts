@@ -1,0 +1,291 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ID and response
+
+* 'id': unique identifier for the customer
+* 'attrition_flag': whether the customer is churned (0 = no; 1 = yes)
+
+##  Categorical
+
+* 'gender': gender of the customer
+* 'education_level': education level of the customer
+* 'income_category': income range of the customer
+
+# Numeric
+
+* 'total_relationship_count': number of relationships
+* 'months_inactive_12_mon': number of months the customer is inactive in the past 12 months
+* 'credit_limit': the customer's credit limit
+* 'total_revolving_bal': the customer's total revolving balance
+* 'total_amt_chng_q4_q1': the amount the balance changed from Q4 to Q1
+* 'total_trans_amt': the value of all the customer's transactions in the period
+* 'total_trans_ct': the number of all of the customer's transactions
+* 'total_ct_chng_q4_q1': the difference in number of the customer's transactions from Q4 to Q1
+* 'avg_utilization_ratio': the customer's average utilization ratio during the period
+
+Strategy:
+
+* change attrition flag to "churned" yes/no
+* create summarize_churn function early on
+* for linear, log on credit limit (maybe others?)
+* Lot of numeric, so xgboost early on
+* Try turning income category and education level into ordinal numbers (unknown as either 0 or as mean impute)
+
+EDA:
+
+* Density of all numeric, comparing attrition and not
+* AUC of attrition vs all predictors
+
+* Relationship between relationships/months inactive (line plot)
+* Credit limit, age, total revolving balance, total amt change, (density plot or bucketed line plot)
+* gender, Education + income and churn (bar plot)
+* Total relationships and churn (line plot)
+
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(scales)
+library(lubridate)
+library(stacks)
+theme_set(theme_light())
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+education_levels <- c("Unknown", "Uneducated", "High School", "College", "Graduate", "Doctorate", "Post-Graduate")
+```
+
+```{r}
+process_data <- function(tbl) {
+  tbl %>%
+    mutate(education_level = fct_relevel(education_level, education_levels),
+           income_category = fct_reorder(income_category, parse_number(income_category)),
+           income_category = fct_relevel(income_category, "Less than $40K"))
+}
+```
+
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-s01e07-HmPsw2/train.csv") %>%
+  mutate(churned = ifelse(attrition_flag == 1, "yes", "no")) %>%
+  select(-attrition_flag) %>%
+  process_data()
+holdout <- read_csv("~/Downloads/sliced-s01e07-HmPsw2/test.csv") %>%
+  process_data()
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+train_5fold <- train %>%
+  vfold_cv(5)
+```
+
+```{r}
+summarize_churn <- function(tbl) {
+  tbl %>%
+    summarize(n = n(),
+              n_churned = sum(churned == "yes"),
+              pct_churned = n_churned / n,
+              low = qbeta(.025, n_churned + .5, n - n_churned + .5),
+              high = qbeta(.975, n_churned + .5, n - n_churned + .5)) %>%
+    arrange(desc(n))
+}
+
+plot_categorical <- function(tbl, category, ...) {
+  if (!is.factor(pull(tbl, {{ category }}))) {
+    tbl <- tbl %>%
+      mutate({{ category }} := fct_reorder({{ category }}, pct_churned))
+  }
+  
+  tbl %>%
+    ggplot(aes(pct_churned, {{ category }}, ...)) +
+    geom_col(position = position_dodge()) +
+    geom_errorbarh(position = position_dodge(width = 1), aes(xmin = low, xmax = high), height = .2) +
+    scale_x_continuous(labels = percent) +
+    labs(x = "% in category that churned")
+}
+
+train %>%
+  group_by(gender) %>%
+  summarize_churn() %>%
+  plot_categorical(gender)
+
+train %>%
+  group_by(education_level, gender) %>%
+  summarize_churn() %>%
+  plot_categorical(education_level, fill = gender, group = gender)
+
+train %>%
+  group_by(education_level) %>%
+  summarize_churn() %>%
+  plot_categorical(education_level) +
+  coord_flip() +
+  labs(x = "% churned",
+       y = "Education",
+       title = "How does churn risk differ by education")
+
+train %>%
+  group_by(income_category) %>%
+  summarize_churn() %>%
+  plot_categorical(income_category) +
+  coord_flip() +
+  labs(x = "% churned",
+       y = "Income category",
+       title = "How does churn risk differ by income category")
+
+qplot(train$customer_age)
+train %>%
+  group_by(age = cut(customer_age, c(20, 40, 50, 60, 70))) %>%
+  summarize_churn() %>%
+  plot_categorical(age) +
+  coord_flip()
+```
+
+Let's look at all numerics!
+
+```{r}
+gathered <- train %>%
+  select(customer_age, total_relationship_count:churned) %>%
+  gather(metric, value, -churned) %>%
+  mutate(churned = str_to_title(churned))
+
+gathered %>%
+  ggplot(aes(value, fill = churned)) +
+  geom_density(alpha = .5) +
+  facet_wrap(~ metric, scales = "free") +
+  scale_x_log10() +
+  labs(title = "How do numeric metrics differ between churn/didn't churn?",
+       subtitle = "All predictors on a log scale",
+       x = "Log(predictor)",
+       fill = "Churned?")
+
+gathered %>%
+  group_by(metric) %>%
+  mutate(rank = percent_rank(value)) %>%
+  ggplot(aes(rank, fill = churned)) +
+  geom_density(alpha = .5) +
+  facet_wrap(~ metric, scales = "free") +
+  labs(title = "How do numeric metrics differ between churn/didn't churn?",
+       subtitle = "All predictors on a percentile scale",
+       x = "Percentile of predictor",
+       fill = "Churned?")
+```
+
+Relationships between our important predictors
+
+```{r}
+train %>%
+  ggplot(aes(total_trans_ct, total_trans_amt, color = churned)) +
+  geom_point(alpha = .25) +
+  geom_smooth(method = "loess") +
+  scale_x_log10() +
+  scale_y_log10(labels = dollar_format()) +
+  labs(x = "Total transaction count",
+       y = "Total transaction amount")
+
+train %>%
+  ggplot(aes(total_trans_ct, total_trans_amt / total_trans_ct, color = churned)) +
+  geom_point(alpha = .25) +
+  geom_smooth(method = "loess") +
+  scale_x_log10() +
+  scale_y_log10(labels = dollar_format()) +
+  labs(x = "Total transaction count",
+       y = "Average transaction amount")
+```
+
+```{r}
+plot_line <- function(tbl, x, ...) {
+  tbl %>%
+    ggplot(aes({{ x }}, pct_churned, ...)) +
+    geom_point(aes(size = n)) +
+    geom_line() +
+    scale_y_continuous(labels = percent) +
+    geom_ribbon(aes(ymin = low, ymax = high), alpha = .5) +
+    expand_limits(y = 0) +
+    scale_size_continuous(guide = "none") +
+    labs(y = "% churned (with 95% confidence bounds)")
+}
+
+train %>%
+  group_by(total_relationship_count) %>%
+  summarize_churn() %>%
+  plot_line(total_relationship_count) +
+  labs(x = "Total relationships",
+       title = "Exploring the importance of # of relationships")
+```
+
+The importance of transaction count and transaction amount.
+
+```{r}
+# Distribution for cuts
+# Two types of products, or two types of customers?
+train %>%
+  mutate(avg_trans_amt = total_trans_amt / total_trans_ct) %>%
+  ggplot(aes(avg_trans_amt)) +
+  geom_histogram() +
+  geom_vline(xintercept = c(50, 100, 130), lty = 2, color = "red") +
+  scale_x_continuous(labels = dollar_format()) +
+  labs(title = "Average transaction amount is roughly bimodal",
+       subtitle = "Lines shown at 50, 100, 130",
+       x = "Average transaction amount")
+```
+
+Average transaction amount is roughly bimodal (possibly two types of product, but could also be two types of customer)
+
+```{r}
+train %>%
+  mutate(avg_trans_amt = total_trans_amt / total_trans_ct) %>%
+  group_by(total_trans_ct = cut(total_trans_ct, c(0, 30, 40, 50, 60, 80, Inf)),
+           avg_trans_amt = ifelse(avg_trans_amt >= 50, "> $50", "< $50")) %>%
+  summarize_churn() %>%
+  plot_line(total_trans_ct, group = avg_trans_amt, color = avg_trans_amt) +
+  labs(x = "Total transaction count (bucketed)",
+       title = "Clients with a moderate number of transactions are most likely to churn",
+       color = "Average transaction amount")
+```
+
+Customer segments:
+
+* <50 transactions, average > $50: very likely to churn
+* <50 transactions, average > $50: moderately likely to churn
+* 60+ transactions: very unlikely to churn
+
+(Note that this oversimplifies: the low transaction count are relatively unlikely to churn)
+
+```{r}
+train %>%
+  mutate(avg_trans_amt = total_trans_amt / total_trans_ct) %>%
+  group_by(total_transactions = ifelse(total_trans_ct >= 50,
+                                       "> 50 Transactions",
+                                       "< 50 Transactions"),
+           avg_transaction = ifelse(avg_trans_amt >= 50,
+                                    "> $50 Average",
+                                    "< $50 Average")) %>%
+  summarize_churn() %>%
+  ggplot(aes(total_transactions, avg_transaction)) +
+  geom_tile(aes(fill = pct_churned)) +
+  geom_text(aes(label = percent(pct_churned, 1)), size = 6) +
+  scale_fill_gradient2(low = "blue", high = "red", midpoint = .3) +
+  labs(x = "How many transactions did the customer do?",
+       y = "What was the average transaction size?",
+       fill = "% churned",
+       title = "Dividing customers into segments based on churn risk")
+```
+
+The highest churn rate was among low transaction, high average cost customers!
+
+New features to add:
+
+* The ratio of average transaction amount
+* 
+
