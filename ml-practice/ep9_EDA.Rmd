@@ -1,0 +1,532 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For more on baseball stats, check out my book, Introduction to Empirical Bayes, Examples from Baseball Statistics! (https://www.amazon.com/Introduction-Empirical-Bayes-Examples-Statistics-ebook/dp/B06WP26J8Q)
+
+Time series:
+game_date: date of game (YYYY-MM-DD)
+
+Numeric (heatmap? polar coordinate?)
+
+pitch_mph: speed of pitched ball (miles per hour)
+plate_x: ball position left(-) or right(+) of center plate (feet)
+plate_z: ball position above home plate (feet)
+launch_speed: speed of ball leaving the bat (miles per hour)
+launch_angle: vertical angle of ball leaving the bat (degrees relative to horizontal)
+
+(stadium details)
+LF_Dim: distance to left field wall (feet)
+CF_Dim: distance to center field wall (feet)
+RF_Dim: distance to right field wall (feet)
+LF_W: height of left field wall (feet)
+CF_W: height of center field wall (feet)
+RF_W: height of right field wall (feet)
+
+Boolean:
+
+is_batter_lefty: binary encoding of left-handed batters
+is_pitcher_lefty: binary encoding of left-handed pitchers
+
+## Categorical (less sparse)
+
+bb_type: batted ball type classification
+bearing: horizontal direction classification of ball leaving the bat (i.e. 'left' ball is traveling to the left side of the field)
+pitch_name: name of pitch type thrown
+cover: stadium cover
+
+## Categorical (Sparse)
+
+home_team: home team abbreviation
+away_team: away team abbreviation
+batter_team: batter's team abbreviation
+batter_name: batter's name
+pitcher_name: pitcher's name
+batter_id: batter's unique identifier
+pitcher_id: pitcher's unique identifier
+park: unique identifier of park venue
+
+## Game state
+
+inning: inning number within game
+outs_when_up: current number of outs
+balls: current number of balls
+strikes: current number of strikes
+
+## Outcome: Turn to yes/no factor
+is_home_run: binary encoding of home runs
+
+Ideas:
+
+* Left join with park off the bat
+Get a summarize_hr function, try some summaries by categorical and numeric
+
+Time series for change over time (month as well?)
+
+Categorical:
+
+* bb_type
+* bearing
+* pitch_name
+* Team
+* Stadium (compare stadium aggregations to the distances!)
+
+* Examine numeric first:
+
+pitch_mph: speed of pitched ball (miles per hour)
+plate_x: ball position left(-) or right(+) of center plate (feet)
+plate_z: ball position above home plate (feet)
+launch_speed: speed of ball leaving the bat (miles per hour)
+launch_angle: vertical angle of ball leaving the bat (degrees relative to horizontal)
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(stacks)
+library(ggrepel)
+theme_set(theme_light())
+
+library(lubridate)
+
+library(meme) ### WHAT?
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+# The meme package lets you bring in memes in the plot window
+meme("memes/cant_defeat_me.png")
+```
+
+```{r}
+mset <- metric_set(mn_log_loss)
+control <- control_grid(save_pred = TRUE,
+                        save_workflow = TRUE)
+```
+
+```{r}
+parks <- read_csv("~/Downloads/sliced-s01e09-playoffs-1/park_dimensions.csv") %>%
+  rename(park_name = NAME) %>%
+  janitor::clean_names()
+
+dataset <- read_csv("~/Downloads/sliced-s01e09-playoffs-1/train.csv") %>%
+  left_join(parks, by = "park") %>%
+  mutate(is_home_run = factor(ifelse(is_home_run, "yes", "no")))
+
+holdout <- read_csv("~/Downloads/sliced-s01e09-playoffs-1/test.csv") %>%
+  left_join(parks, by = "park")
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+train_5fold <- train %>%
+  vfold_cv(5)
+```
+
+```{r}
+summarize_homerun <- function(tbl) {
+  tbl %>%
+    summarize(hr = sum(is_home_run == "yes"),
+              n = n(),
+              .groups = "drop") %>%
+    mutate(pct_hr = hr / n,
+           low = qbeta(.025, hr + .5, n - hr + .5),
+           high = qbeta(.975, hr + .5, n - hr + .5))
+}
+```
+
+Let's look at park effects
+
+```{r}
+by_park <- train %>%
+  group_by(park_name, lf_dim, cf_dim, rf_dim, lf_w, cf_w, rf_w) %>%
+  summarize_homerun()
+
+# No trends with a park are statistically significant!
+by_park %>%
+  gather(metric, value, lf_dim:rf_w) %>%
+  group_by(metric) %>%
+  summarize(tidy(cor.test(value, pct_hr)))
+
+by_park %>%
+  ggplot(aes(cf_w, pct_hr)) +
+  geom_point() +
+  geom_text(aes(label = park_name), check_overlap = TRUE, vjust = 1, hjust = 1)
+```
+
+```{r}
+meme("memes/dont_think.png")
+```
+
+```{r}
+train %>%
+  group_by(week = floor_date(game_date, "week")) %>%
+  summarize_homerun() %>%
+  ggplot(aes(week, pct_hr)) +
+  geom_point(aes(size = n)) +
+  geom_line(group = 1) +
+  geom_errorbar(aes(ymin = low, ymax = high)) +
+  scale_y_continuous(labels = percent) +
+  labs(y = "% of hits in the park that are home runs",
+       x = "Week")
+```
+
+Postseason matters!
+
+Let's see the numeric!
+
+Numeric (heatmap? polar coordinate?)
+
+pitch_mph: speed of pitched ball (miles per hour)
+plate_x: ball position left(-) or right(+) of center plate (feet)
+plate_z: ball position above home plate (feet)
+launch_speed: speed of ball leaving the bat (miles per hour)
+launch_angle: vertical angle of ball leaving the bat (degrees relative to horizontal)
+
+```{r}
+train %>%
+  select(is_home_run, plate_x:launch_angle) %>%
+  gather(feature, value, -is_home_run) %>%
+  ggplot(aes(value, fill = is_home_run)) +
+  geom_density(alpha = .5) +
+  facet_wrap(~ feature, scales = "free")
+```
+
+A few observations:
+
+* There is a sweet spot of launch_angle (mid-way) and launch speed (must be high) where almost all home runs happen
+
+```{r}
+launch_angle_plot <- train %>%
+  group_by(launch_angle_bucket = round(launch_angle * 2, -1) / 2,
+           launch_speed_bucket = round(launch_speed * 2, -1) / 2) %>%
+  summarize_homerun() %>%
+  filter(n >= 30) %>%
+  filter(complete.cases(.)) %>%
+  ggplot(aes(launch_speed_bucket, launch_angle_bucket, fill = pct_hr)) +
+  geom_tile() +
+  scale_fill_gradient2(labels = percent, low = "darkblue", high = "red",
+                       midpoint = .2) +
+  labs(x = "Launch Speed",
+       y = "Launch Angle",
+       title = "There is a sweet spot of high speed + moderate angle that maximizes home runs",
+       subtitle = "Rounded to the nearest 5 on each scale; no buckets shown with <30 data points",
+       fill = "% HR")
+
+launch_angle_plot
+```
+
+```{r}
+plate_plot <- train %>%
+  group_by(plate_x = round(plate_x, 1),
+           plate_z = round(plate_z, 1)) %>%
+  summarize_homerun() %>%
+  filter(n >= 30) %>%
+  filter(complete.cases(.)) %>%
+  ggplot(aes(plate_x, plate_z, fill = pct_hr)) +
+  geom_tile() +
+  scale_fill_gradient2(labels = percent, low = "darkblue", high = "red",
+                       midpoint = .1) +
+  geom_vline(xintercept = 0, lty = 2) +
+  labs(x = "Relative position from center plate (in feet)",
+       y = "Distance above plate (in feet)",
+       title = "The best place for a home run is center plate, about 2.5-3.5 feet up",
+       subtitle = "Rounded to the nearest 5 on each scale; no buckets shown with <30 data points",
+       fill = "% HR")
+
+plate_plot
+```
+
+Generally, high and center is good
+
+Game state:
+
+```{r}
+train %>%
+  group_by(inning = pmin(inning, 10)) %>%
+  summarize_homerun() %>%
+  ggplot(aes(inning, pct_hr)) +
+  geom_point() +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .2) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Inning",
+       y = "% home run") +
+  expand_limits(y = 0) +
+  scale_x_continuous(breaks = 1:10, labels = c(1:9, "10+")) +
+  labs(title = "Home runs are slightly less likely later in the game")
+
+train %>%
+  group_by(balls) %>%
+  summarize_homerun() %>%
+  ggplot(aes(balls, pct_hr)) +
+  geom_point() +
+  geom_line() +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = .2) +
+  scale_y_continuous(labels = percent) +
+  labs(y = "% home run") +
+  expand_limits(y = 0) +
+  scale_x_continuous(breaks = 1:10, labels = c(1:9, "10+"))
+  # labs(title = "Home runs are slightly less likely later in the game")
+```
+
+I bet that the greater the number of balls, the more cautious the pitcher is
+
+```{r}
+train %>%
+  group_by(balls, strikes) %>%
+  summarize_homerun() %>%
+  ggplot(aes(balls, strikes, fill = pct_hr)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "pink", midpoint = .08,
+                       labels = percent) +
+  labs(x = "# of balls",
+       y = "# of strikes",
+       title = 'Home runs are more likely with many balls, fewer strikes',
+       fill = "% HR")
+
+# Understand the mechanism: is this because pitchers are more likely to aim for the center of the plate with a full count?
+
+train %>%
+  group_by(balls, strikes) %>%
+  summarize(pct_hr = mean(is_home_run == "yes"),
+            avg_height = mean((plate_z), na.rm = TRUE),
+            avg_abs_distance_center = mean(abs(plate_x), na.rm = TRUE)) %>%
+  mutate(count = paste0(balls, "-", strikes)) %>%
+  ggplot(aes(avg_abs_distance_center, avg_height)) +
+  geom_point(aes(color = pct_hr)) +
+  geom_text_repel(aes(label = count)) +
+  scale_color_gradient2(low = "blue", high = "red", mid = "pink", midpoint = .08,
+                        labels = percent) +
+  labs(x = "Average distance from center plate (feet)",
+       y = "Average height (feet)",
+       color = "% home run",
+       title = "The count affects where a pitcher throws the ball, & therefore probability of HR")
+```
+
+We found the reason; they go closer to the center and a bit higher when the count has more balls
+
+```{r}
+train %>%
+  group_by(bb_type) %>%
+  summarize_homerun() %>%
+  filter(!is.na(bb_type)) %>%
+  ggplot(aes(bb_type, pct_hr)) +
+  geom_col() +
+  scale_y_continuous(labels = percent) +
+  labs(y = "% home run")
+```
+
+Ground balls and pop-ups are (literally) *never* home runs. Fly balls often are
+
+(This means it might not even be predictive once we include the height and distance!)
+
+Home runs are more likely with a "full count"
+
+Pitch speed didn't really look as important, but we'll keep an eye on it
+
+### Look a bit at teams and players!
+
+```{r}
+plot_categorical <- function(tbl, col) {
+  tbl %>%
+    mutate({{ col }} := fct_reorder({{ col }}, pct_hr)) %>%
+    ggplot(aes(pct_hr, {{ col }})) +
+    geom_point(aes(size = n)) +
+    geom_errorbarh(aes(xmin = low, xmax = high)) +
+    scale_x_continuous(labels = percent)
+}
+
+train %>%
+  group_by(park_name) %>%
+  summarize_homerun() %>%
+  plot_categorical(park_name) +
+  labs(x = "% of hits in the park that are home runs",
+       y = "Stadium name",
+       title = "It's easier to hit a home run in the Great American Ballpark or New Yankee Stadium!",
+       subtitle = "Shown is 95% confidence interval") +
+  labs(size = "# of hits")
+```
+
+```{r}
+train %>%
+  group_by(batter_team) %>%
+  summarize_homerun() %>%
+  plot_categorical(batter_team) +
+  labs(x = "% of hits that are home runs",
+       y = "Batter team",
+       # title = "It's easier to hit a home run in the Great American Ballpark or New Yankee Stadium!",
+       titles = "Teams differ in % HR (some had a great season, others less so!)",
+       subtitle = "Shown is 95% confidence interval") +
+  labs(size = "# of hits")
+```
+
+Does it matter if you're home team?
+
+```{r}
+train %>%
+  mutate(is_home = ifelse(home_team == batter_team, "Home", "Away")) %>%
+  group_by(is_home) %>%
+  summarize_homerun() %>%
+  ggplot(aes(is_home, pct_hr)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = low, ymax = high)) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "",
+       y = "% home runs",
+       title = "There is a *slight* advantage to being the home team",
+       subtitle = "Shown are 95% confidence intervals")
+```
+
+Bearing
+
+```{r}
+train %>%
+  group_by(bearing) %>%
+  summarize_homerun()  %>%
+  ggplot(aes(bearing, pct_hr)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = low, ymax = high)) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Bearing",
+       y = "% home runs")
+
+train %>%
+  group_by(pitch_name) %>%
+  summarize_homerun() %>%
+  filter(n >= 10) %>%
+  ggplot(aes(pitch_name, pct_hr)) +
+  geom_point() +
+  geom_errorbar(aes(ymin = low, ymax = high)) +
+  scale_y_continuous(labels = percent) +
+  labs(x = "Pitch Name",
+       y = "% home runs")
+```
+
+Try a linear model!
+
+## Categorical (less sparse)
+
+bb_type: batted ball type classification
+bearing: horizontal direction classification of ball leaving the bat (i.e. 'left' ball is traveling to the left side of the field)
+pitch_name: name of pitch type thrown
+
+home_team: home team abbreviation
+away_team: away team abbreviation
+batter_team: batter's team abbreviation
+batter_name: batter's name
+pitcher_name: pitcher's name
+batter_id: batter's unique identifier
+pitcher_id: pitcher's unique identifier
+park: unique identifier of park venue
+
+```{r}
+# Include bb_type and as a large explanatory factor
+lin_rec <- recipe(is_home_run ~ bb_type +
+         home_team + away_team + batter_team +
+         batter_name + pitcher_name + pitch_name + park_name,
+       data = train) %>%
+  step_unknown(all_nominal_predictors()) %>%
+  step_other(all_nominal_predictors(), threshold = tune()) %>%
+  step_dummy(all_nominal_predictors())
+
+lin_wf <- workflow(lin_rec, logistic_reg(penalty = tune()))
+
+# Hello world version
+lin_tune <- lin_wf %>%
+  tune_grid(train %>% head(1000) %>% vfold_cv(2),
+            metrics = mset,
+            control = control,
+            grid = crossing(penalty = 10 ^ seq(-8, -.5, .5),
+                            threshold = .05))
+
+autoplot(lin_tune)
+```
+
+Trying out a linear predictor on all the sparse ones like team, pitch name, etc
+
+
+## Do pitchers have a style where they throw the ball?
+
+```{r}
+train %>%
+  group_by(pitcher_name) %>%
+  summarize(hr = sum(is_home_run == "yes"),
+            n = n(),
+            avg_plate_x = mean(plate_x, na.rm = TRUE),
+            avg_plate_z = mean(plate_z, na.rm = TRUE)) %>%
+  mutate(pct_hr = hr / n) %>%
+  arrange(desc(n)) %>%
+  mutate(pitcher_name = str_to_title(pitcher_name)) %>%
+  head(20) %>%
+  ggplot(aes(avg_plate_x, avg_plate_z)) +
+  geom_point(aes(color = pct_hr, size = n)) +
+  geom_text_repel(aes(label = pitcher_name)) +
+  scale_color_gradient2(low = "blue", high = "red",
+                        midpoint = .05,
+                        labels = percent) +
+  geom_vline(lty = 2, xintercept = 0) +
+  labs(x = "Average position relative to the plate",
+       y = "Average height",
+       color = "% home runs",
+       title = "Where are pitchers throwing?",
+       size = "# of pitches")
+```
+
+The meme package lets me come up with my own memes on the spot
+
+```{r}
+meme("ml-practice/memes/templates/thinking.jpg") +
+  mm_caption("Can't overfit your model",
+             "if your model never finishes fitting",
+             size = 3)
+```
+
+I can also play with the magick package for more image manipulation
+
+```{r}
+library(magick)
+
+as_image <- function(p, height = 700, width = 700) {
+  tmp <- tempfile(fileext = ".png")
+  ggsave(tmp, p, height = height, width = width, unit = "px")
+  image_read(tmp)
+}
+
+launch_img <- as_image(launch_angle_plot +
+                         labs(title = "", subtitle = ""))
+plate_img <- as_image(plate_plot + labs(y = "Distance above plate",
+                                        x = "X position",
+                                        title = "", subtitle = ""))
+
+# magick lets me combine images
+combined <- image_append(c(plate_img, launch_img), stack = TRUE)
+
+# I originally expected position around the plate to be most important, but nope
+meme_img <- image_read("ml-practice/memes/templates/drake.jpeg")
+
+# Combine them
+image_append(c(drake, combined)) %>%
+  image_ggplot()
+
+composite_meme <- function(meme_img, plots) {
+  combined <- image_append(do.call(c, plots), stack = TRUE)
+  meme_img <- meme_img %>%
+    image_scale(geometry_area(height = image_info(combined)$height))
+  
+  image_append(c(meme_img, combined)) %>%
+    image_ggplot()
+}
+
+composite_meme(image_read("ml-practice/memes/templates/drake.jpeg"),
+               list(plate_img, launch_img))
+```
+
+This could be an addition to the meme package; composite memes
