@@ -1,0 +1,436 @@
+---
+title: "Episode 11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* 5 distinct levels (can order with parse_number)
+  * 0-250000
+  * 250000-350000
+  * 350000-450000
+  * 450000-650000
+  * 650000+
+
+* Turn into 1-5 numbers, fit with RMSE, then postprocess by adding the levels
+  * Uses the ordinality
+  * Makes the features interpretable
+  * Easier to use with stacks
+* Treat as classification?
+    *  Reflects the evaluation metric more precisely
+
+Strategy:
+
+* process the levels to numeric
+* summarize_price function
+* xgboost with everything numeric and categorical
+* glmnet with the text
+* stacks to combine!
+
+Other features:
+
+Plot ideas:
+
+* Animation of lat/long over time in Austin!
+* Extract zip code? (Unlikely to be helpful when we already have lat/long, but let's do a graph)
+* 
+
+Ignore:
+
+uid: A unique identifier for the Zillow property.
+city: The lowercase name of a city or town in or surrounding Austin, Texas.
+
+Numeric:
+
+latitude: Latitude of the listing.
+longitude: Longitude of the listing.
+garageSpaces: Number of garage spaces.
+yearBuilt: The year the property was built.
+numOfPatioAndPorchFeatures: The number of unique patio and/or porch features in the Zillow listing.
+lotSizeSqFt: The lot size of the property reported in Square Feet. This includes the living area. (HAS OUTLIERS)
+numOfBathrooms: The number of bathrooms in a property.
+numOfBedrooms: The number of bedrooms in a property.
+avgSchoolRating: The average school rating of all school types (i.e., Middle, High) in the Zillow listing.
+MedianStudentsPerTeacher: The median students per teacher for all schools in the Zillow listing.
+
+Categorical and usable:
+hasSpa: Boolean indicating if the home has a Spa
+homeType: The home type (i.e., Single Family, Townhouse, Apartment).
+
+Text data!
+
+description: The description of the listing from Zillow.
+
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(textrecipes)
+library(stacks)
+library(scales)
+
+theme_set(theme_light())
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-s01e11-semifinals/train.csv") %>%
+  janitor::clean_names() %>%
+  mutate(price_range = fct_reorder(price_range, parse_number(price_range))) %>%
+  mutate(price_range_number = as.integer(price_range))
+
+price_levels <- levels(dataset$price_range)
+
+holdout <- read_csv("~/Downloads/sliced-s01e11-semifinals/test.csv") %>%
+  janitor::clean_names()
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+train_5fold <- train %>%
+  vfold_cv(10)
+```
+
+```{r}
+summarize_price <- function(tbl) {
+  tbl %>%
+    summarize(avg_level = mean(price_range_number),
+              pct_above_450K = mean(price_range_number >= 4),
+              n = n()) %>%
+    arrange(desc(n))
+}
+
+train %>%
+  group_by(home_type = fct_lump(home_type, 4)) %>%
+  summarize_price() %>%
+  mutate(home_type = fct_reorder(home_type, pct_above_450K)) %>%
+  ggplot(aes(pct_above_450K, home_type)) +
+  geom_col() +
+  scale_x_continuous(labels = percent_format(1)) +
+  labs(x = "% of houses above $450,000",
+       y = "Home type")
+```
+
+```{r}
+train %>%
+  count(home_type = fct_lump(home_type, 3), price_range) %>%
+  group_by(home_type) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(pct, price_range)) +
+  geom_col() +
+  facet_wrap(~ home_type) +
+  scale_x_continuous(labels = percent) +
+  labs(x = "% of homes",
+       y = "Price range")
+```
+
+Before we do EDA, let's train our first model
+
+```{r}
+control <- control_grid(save_pred = TRUE,
+                        save_workflow = TRUE)
+
+# Using RMSE on the ordinal level, then processing that
+mset <- metric_set(mn_log_loss)
+```
+
+Attempt 1: just the numeric predictors; ordinal output
+
+```{r}
+rec <- recipe(price_range ~ ., data = train) %>%
+  step_rm(uid, city, description, price_range_number, home_type,
+          has_spa) %>%
+  step_dummy(all_nominal_predictors())
+
+xg_wf <- workflow(rec,
+                  boost_tree("classification",
+                             mtry = tune(),
+                             trees = tune(),
+                             learn_rate = tune()))
+
+xg_tune <- xg_wf %>%
+  tune_grid(train_5fold,
+            metrics = mset,
+            control = control,
+            grid = crossing(mtry = c(3, 4),
+                            trees = seq(200, 1000, 25),
+                            learn_rate = c(.02)))
+
+autoplot(xg_tune)
+```
+
+Needed to set learn_rate. Trying to tune it now.
+
+Taking a new strategy today: get a model on the board fast, then use its importances to guide my EDA and storytelling.
+
+Check out the importances:
+
+```{r}
+xg_fit <- xg_wf %>%
+  finalize_workflow(select_best(xg_tune)) %>%
+  fit(train)
+
+importances <- xgboost::xgb.importance(mod = extract_fit_engine(xg_fit))
+
+importances %>%
+  mutate(Feature = fct_reorder(Feature, Gain)) %>%
+  ggplot(aes(Gain, Feature)) +
+  geom_col()
+```
+
+```{r}
+read_csv("~/Downloads/sliced-s01e11-semifinals/sample_submission.csv")
+```
+
+
+Story so far:
+
+* Location, location, location! (Both in school and lat/long) Let's make some maps in a bit.
+* Spa is unimportant, garage space is lower. Bathrooms wind up more important than bedrooms (perhaps just correlated)
+
+List of plots:
+
+* Map. Represent as interpolated average price? Or as % above some threshold? (Try the latter first) 
+* Over time (aggregated by decade)
+* 
+
+### Map
+
+```{r}
+library(ggmap)
+
+bbox <- c(left = min(train$longitude),
+          bottom = min(train$latitude),
+          right = max(train$longitude),
+          top = max(train$latitude))
+
+austin_map <- get_stamenmap(bbox, zoom = 11)
+
+lat_lng_points <- train %>%
+  group_by(latitude = round(latitude, 2),
+           longitude = round(longitude, 2)) %>%
+  summarize_price() %>%
+  filter(n >= 5)
+
+ggmap(austin_map) +
+  geom_point(aes(x = longitude,
+                 y = latitude,
+                 color = pct_above_450K),
+             data = lat_lng_points,
+             alpha = .6,
+             size = 3) +
+  scale_color_gradient2(low = "blue",
+                        high = "red",
+                        midpoint = .5,
+                        labels = percent_format(1)) +
+  scale_size_continuous(limits = c(0, 40),
+                        range = c(.1, 4),
+                        guide = "none") +
+  labs(x = "", y = "",
+       color = "% above $450K",
+       title = "What are the expensive neighborhoods in Austin?",
+       subtitle = "Showing only points with at least 5 houses")
+```
+
+More EDA
+
+How does the age of the house affect its price?
+
+```{r}
+train %>%
+  group_by(decade = 10 * (year_built %/% 10)) %>%
+  summarize_price() %>%
+  filter(n >= 10) %>%
+  ggplot(aes(decade, pct_above_450K)) +
+  geom_line() +
+  geom_point(aes(size = n)) +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = percent) +
+  scale_size_continuous(labels = comma_format()) +
+  labs(title = "How does the age of a house affect its price?",
+       x = "Decade built",
+       y = "% above $450K",
+       subtitle = "Only decades with at least 10 houses in the data")
+```
+
+Houses from the 1970s and 1980s are least likely to be high value.
+
+Is that a neighborhood issue?
+
+```{r}
+library(gganimate)
+
+year_points <- train %>%
+  crossing(year = seq(1910, 2020, 1)) %>%
+  filter(year_built <= year)
+
+ggmap(austin_map) +
+  geom_point(aes(longitude, latitude, color = price_range),
+             data = year_points,
+             size = .5) +
+  transition_manual(year) +
+  labs(title = "How have houses been built in Austin over time?",
+       subtitle = "Year: { current_frame }",
+       color = "Price Range",
+       x = "",
+       y = "") +
+  scale_color_brewer(palette = "YlOrRd")
+```
+
+```{r}
+anim_save("~/Desktop/austin_houses.gif")
+```
+
+Let's work with text!
+
+
+If I were working from just text, what would be most predictive of cost?
+
+```{r}
+text_wf <- recipe(price_range_number ~ description, data = train) %>%
+  step_tokenize(description) %>%
+  step_tokenfilter(description, max_tokens = tune()) %>%
+  step_tf(description) %>%
+  workflow(linear_reg(engine = "glmnet",
+                      penalty = tune()))
+
+text_tune <- text_wf %>%
+  tune_grid(train_5fold,
+            metrics = metric_set(rmse),
+            grid = crossing(penalty = 10 ^ seq(-5, -.5, .1),
+                            max_tokens = c(500)))
+
+text_tune %>%
+  autoplot()
+```
+
+```{r}
+text_mod <- text_wf %>%
+  finalize_workflow(select_best(text_tune)) %>%
+  fit(train)
+
+text_mod %>%
+  extract_fit_engine() %>%
+  broom::tidy() %>%
+  filter(lambda >= select_best(text_tune)$penalty) %>%
+  filter(lambda == min(lambda)) %>%
+  filter(term != "(Intercept)") %>%
+  top_n(50, abs(estimate)) %>%
+  mutate(term = str_remove(term, "tf_description_"),
+         term = fct_reorder(term, estimate)) %>%
+  ggplot(aes(estimate, term, fill = estimate > 0)) +
+  geom_col() +
+  scale_fill_discrete(guide = "none") +
+  labs(x = "Impact on price level",
+       y = "What words are correlated with price?",
+       subtitle = "Coefficient of 1 would mean this increases by one price level on average")
+```
+
+Look at zip codes
+
+```{r}
+train_zipcode <- train %>%
+  extract(description, "zipcode", "(\\d\\d\\d\\d\\d)",
+          remove = FALSE)
+
+train_zipcode %>%
+  group_by(zipcode) %>%
+  summarize_price()
+```
+
+Most houses don't have a zip code
+
+Hypothesis: some neighborhoods are more likely to provide a zipcode than others (e.g. nicer areas)
+
+```{r}
+zipcode_pts <- train_zipcode %>%
+  group_by(latitude = round(latitude, 1.5),
+           longitude = round(longitude, 1.5)) %>%
+  summarize(n = n(),
+            pct_zipcode = mean(!is.na(zipcode))) %>%
+  arrange(desc(n)) %>%
+  filter(n >= 10)
+
+ggmap(austin_map) +
+  geom_point(aes(longitude, latitude, color = pct_zipcode),
+             data = zipcode_pts,
+             size = 2) +
+  scale_color_gradient2(low = "blue", high = "red", midpoint = .3,
+                        labels = percent) +
+  labs(x = "",
+       y = "",
+       color = "% report zipcode",
+       title = "Some neighborhoods may be especially likely to report zip code")
+```
+
+One conclusion: some neighborhoods are more
+
+```{r}
+library(zipcodeR)
+
+# Find the median home value per zip code from public database
+austin_zip_codes <- zip_code_db %>%
+  as_tibble() %>%
+  filter(major_city == "Austin",
+         state == "TX") %>%
+  select(latitude = lat, longitude = lng, zipcode, median_home_value) %>%
+  filter(!is.na(latitude),
+         !is.na(median_home_value))
+
+# Join to nearest center
+library(fuzzyjoin)
+
+# Closest zip code center within 10 miles
+train_closest_zip <- train %>%
+  select(uid, longitude, latitude, price_range, price_range_number) %>%
+  geo_join(austin_zip_codes, max_dist = 4,
+           distance_col = "distance") %>%
+  arrange(distance) %>%
+  distinct(uid, .keep_all = TRUE)
+
+train_closest_zip %>%
+  group_by(zipcode, median_home_value) %>%
+  summarize_price() %>%
+  head(20) %>%
+  ungroup() %>%
+  mutate(zipcode = fct_reorder(glue::glue("{ zipcode } ({ dollar(median_home_value) })"),
+                                          pct_above_450K)) %>%
+  ggplot(aes(pct_above_450K, zipcode)) +
+  geom_col() +
+  scale_x_continuous(labels = percent) +
+  labs(title = "What are Austin's priciest zipcodes?",
+       subtitle = "Zipcode based on nearest zip code center, within 4 miles") +
+  labs(x = "% of houses above $450K",
+       y = "Zip code (with external 'median home value')")
+```
+
+External "median home value" definitely looks like it has some signal, though hard to say if it's better than lon/lat.
+
+A few more plots!
+
+Haven't done anything with education quite yet
+
+```{r}
+train %>%
+  ggplot(aes(avg_school_rating, price_range)) +
+  geom_boxplot() +
+  labs(x = "Average school rating")
+
+train  %>%
+  group_by(price_range) %>%
+  summarize(median_lot_size = median(lot_size_sq_ft)) %>%
+  ggplot(aes(median_lot_size, price_range)) +
+  geom_col() +
+  labs(x = "Lot size")
+```
+
+Favorite conclusions:
+
+* Location matters a lot! Animated map
+* Some text features matter (including zipcodes, but also e.g. "marble")
+

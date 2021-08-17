@@ -1,0 +1,324 @@
+---
+title: "Episode 11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* 5 distinct levels (can order with parse_number)
+  * 0-250000
+  * 250000-350000
+  * 350000-450000
+  * 450000-650000
+  * 650000+
+
+* Turn into 1-5 numbers, fit with RMSE, then postprocess by adding the levels
+  * Uses the ordinality
+  * Makes the features interpretable
+  * Easier to use with stacks
+* Treat as classification?
+    *  Reflects the evaluation metric more precisely
+
+Strategy:
+
+* process the levels to numeric
+* summarize_price function
+* xgboost with everything numeric and categorical
+* glmnet with the text
+* stacks to combine!
+
+Other features:
+
+Plot ideas:
+
+* Animation of lat/long over time in Austin!
+* Extract zip code? (Unlikely to be helpful when we already have lat/long, but let's do a graph)
+* 
+
+Ignore:
+
+uid: A unique identifier for the Zillow property.
+city: The lowercase name of a city or town in or surrounding Austin, Texas.
+
+Numeric:
+
+latitude: Latitude of the listing.
+longitude: Longitude of the listing.
+garageSpaces: Number of garage spaces.
+yearBuilt: The year the property was built.
+numOfPatioAndPorchFeatures: The number of unique patio and/or porch features in the Zillow listing.
+lotSizeSqFt: The lot size of the property reported in Square Feet. This includes the living area. (HAS OUTLIERS)
+numOfBathrooms: The number of bathrooms in a property.
+numOfBedrooms: The number of bedrooms in a property.
+avgSchoolRating: The average school rating of all school types (i.e., Middle, High) in the Zillow listing.
+MedianStudentsPerTeacher: The median students per teacher for all schools in the Zillow listing.
+
+Categorical and usable:
+hasSpa: Boolean indicating if the home has a Spa
+homeType: The home type (i.e., Single Family, Townhouse, Apartment).
+
+Text data!
+
+description: The description of the listing from Zillow.
+
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(textrecipes)
+library(stacks)
+library(scales)
+
+theme_set(theme_light())
+
+doParallel::registerDoParallel(cores = 4)
+```
+
+```{r}
+library(zipcodeR)
+# Find the median home value per zip code from public database
+austin_zip_codes <- zip_code_db %>%
+  as_tibble() %>%
+  filter(major_city == "Austin",
+         state == "TX") %>%
+  select(lat, lng, zipcode, median_home_value) %>%
+  filter(!is.na(lat),
+         !is.na(median_home_value))
+
+# Join to nearest center
+library(fuzzyjoin)
+```
+
+```{r}
+process_data <- function(d) {
+  d %>%
+    geo_left_join(austin_zip_codes, max_dist = 4,
+                  distance_col = "distance",
+                  by = c("longitude" = "lng",
+                         "latitude" = "lat")) %>%
+    arrange(distance) %>%
+    distinct(uid, .keep_all = TRUE)
+}
+
+dataset <- read_csv("~/Downloads/sliced-s01e11-semifinals/train.csv") %>%
+  janitor::clean_names() %>%
+  mutate(price_range = fct_reorder(price_range, parse_number(price_range))) %>%
+  mutate(price_range_number = as.integer(price_range))
+
+price_levels <- levels(dataset$price_range)
+
+holdout <- read_csv("~/Downloads/sliced-s01e11-semifinals/test.csv") %>%
+  janitor::clean_names() %>%
+  process_data()
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+# lol this was 10fold all along
+train_5fold <- train %>%
+  vfold_cv(10)
+```
+
+```{r}
+summarize_price <- function(tbl) {
+  tbl %>%
+    summarize(avg_level = mean(price_range_number),
+              pct_above_450K = mean(price_range_number >= 4),
+              n = n()) %>%
+    arrange(desc(n))
+}
+
+train %>%
+  group_by(home_type = fct_lump(home_type, 4)) %>%
+  summarize_price() %>%
+  mutate(home_type = fct_reorder(home_type, pct_above_450K)) %>%
+  ggplot(aes(pct_above_450K, home_type)) +
+  geom_col() +
+  scale_x_continuous(labels = percent_format(1)) +
+  labs(x = "% of houses above $450,000",
+       y = "Home type")
+```
+
+```{r}
+train %>%
+  count(home_type = fct_lump(home_type, 3), price_range) %>%
+  group_by(home_type) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(pct, price_range)) +
+  geom_col() +
+  facet_wrap(~ home_type) +
+  scale_x_continuous(labels = percent) +
+  labs(x = "% of homes",
+       y = "Price range")
+```
+
+Before we do EDA, let's train our first model
+
+```{r}
+control <- control_grid(save_pred = TRUE,
+                        save_workflow = TRUE)
+
+# Using RMSE on the ordinal level, then processing that
+mset <- metric_set(mn_log_loss)
+```
+
+Attempt 1: just the numeric predictors; ordinal output
+
+```{r}
+rec <- recipe(price_range ~ ., data = train) %>%
+  step_rm(uid, city, description, price_range_number, home_type,
+          has_spa) %>%
+  step_dummy(all_nominal_predictors())
+
+xg_wf <- workflow(rec,
+                  boost_tree("classification",
+                             mtry = tune(),
+                             trees = tune(),
+                             learn_rate = tune()))
+
+xg_tune2 <- xg_wf %>%
+  tune_grid(train_5fold,
+            metrics = mset,
+            control = control,
+            grid = crossing(mtry = c(2),
+                            trees = seq(200, 1300, 20),
+                            learn_rate = c(.018)))
+
+autoplot(xg_tune2)
+```
+
+Can't really do better than 1000 trees and mtry 2!
+
+Catboost after text!
+
+Needed to set learn_rate. Trying to tune it now.
+
+Taking a new strategy today: get a model on the board fast, then use its importances to guide my EDA and storytelling.
+
+Check out the importances:
+
+```{r}
+xg_fit <- xg_wf %>%
+  finalize_workflow(select_best(xg_tune)) %>%
+  fit(train)
+
+importances <- xgboost::xgb.importance(mod = extract_fit_engine(xg_fit))
+
+importances %>%
+  mutate(Feature = fct_reorder(Feature, Gain)) %>%
+  ggplot(aes(Gain, Feature)) +
+  geom_col()
+```
+
+Catboost!
+
+```{r}
+library(treesnip)
+
+rec <- recipe(price_range ~ ., data = train) %>%
+  step_rm(uid, city, description, price_range_number, home_type,
+          has_spa) %>%
+  step_dummy(all_nominal_predictors())
+
+cb_wf <- workflow(rec,
+                  boost_tree("classification",
+                             engine = "catboost",
+                             mtry = tune(),
+                             trees = tune(),
+                             learn_rate = tune()))
+
+# Trying out catboost!
+cb_tune <- cb_wf %>%
+  tune_grid(train_5fold,
+            metrics = mset,
+            control = control,
+            grid = crossing(mtry = c(4),
+                            trees = seq(200, 1500, 20),
+                            learn_rate = c(.025)))
+
+autoplot(cb_tune)
+```
+
+```{r}
+cb_fit <- cb_wf %>%
+  finalize_workflow(select_best(cb_tune)) %>%
+  fit(train)
+```
+
+On cross-validated data, it's better than xg_tune. Let's try it on holdout
+
+Still all about location location location!
+
+```{r}
+# Evaluate the mean log loss fit on training data and applied to testing data
+xg_fit %>%
+  last_fit(spl, metrics = mset) %>%
+  collect_metrics()
+
+cb_fit %>%
+  last_fit(spl, metrics = mset) %>%
+  collect_metrics()
+```
+
+Mean log loss on test data is .907. .906 for best
+For catboost, it's .911 (so don't replace xgboost; overfitting)
+
+Attempt 2: .906! Let's upload it
+
+```{r}
+apply_holdout <- function(wf) {
+  wf %>%
+    # price_range_number is removed in recipe
+    augment(holdout %>%
+              mutate(price_range_number = 1)) %>%
+    select(uid, contains(".pred")) %>%
+    select(-.pred_class) %>%
+    rename_all(str_remove, ".pred_")
+}
+
+xg_fit %>%
+  apply_holdout() %>%
+  write_csv("~/Desktop/attempt2.csv")
+```
+
+Oh! I just realized I never fit the data on the entire dataset including testing. I'm leaving performance on the table. Will do that next.
+
+```{r}
+xg_fit_full <- xg_wf %>%
+  finalize_workflow(select_best(xg_tune)) %>%
+  fit(dataset)
+
+xg_fit_full %>%
+  apply_holdout() %>%
+  write_csv("~/Desktop/attempt3.csv")
+```
+
+
+look at:
+
+* Zip codes
+
+
+
+
+```{r}
+read_csv("~/Downloads/sliced-s01e11-semifinals/sample_submission.csv")
+```
+
+
+Story so far:
+
+* Location, location, location! (Both in school and lat/long) Let's make some maps in a bit.
+* Spa is unimportant, garage space is lower. Bathrooms wind up more important than bedrooms (perhaps just correlated)
+
+List of plots:
+
+* Map. Represent as interpolated average price? Or as % above some threshold? (Try the latter first) 
+* Over time (aggregated by decade)
+* 
+
+
