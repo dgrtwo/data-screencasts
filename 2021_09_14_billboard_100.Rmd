@@ -1,0 +1,222 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+tuesdata <- tidytuesdayR::tt_load('2021-09-14')
+```
+
+```{r}
+billboard <- tuesdata$billboard %>%
+  mutate(week = mdy(week_id)) %>%
+  select(-week_id)
+
+longest_number_1 <- billboard %>%
+  filter(week_position == 1) %>%
+  count(song_id, song, performer, sort = TRUE)
+
+billboard %>%
+  semi_join(head(longest_number_1, 9), by = "song_id") %>%
+  ggplot(aes(week, week_position, group = instance)) +
+  geom_line() +
+  facet_wrap(~ song, scales = "free_x") +
+  scale_y_reverse() +
+  labs(x = "Time",
+       y = "Billboard position",
+       title = "What are the trajectories of #1 hits?")
+```
+
+```{r}
+summarize_songs <- function(tbl) {
+  tbl %>%
+    summarize(total_weeks_on_top_100 = n(),
+              total_weeks_at_number_1 = sum(week_position == 1),
+              n_songs_on_top_100 = n_distinct(song),
+              n_songs_at_number_1 = n_distinct(song[week_position == 1]),
+              .groups = "drop") %>%
+    arrange(desc(n_songs_at_number_1))
+}
+
+by_performer <- billboard %>%
+  group_by(performer) %>%
+  summarize_songs()
+
+by_performer %>%
+  arrange(desc(n_songs_on_top_100)) %>%
+  head(30) %>%
+  mutate(performer = fct_reorder(performer, n_songs_on_top_100)) %>%
+  ggplot(aes(n_songs_on_top_100, performer)) +
+  geom_col() +
+  labs(x = "# of songs on the Billboard Top 100",
+       y = "")
+
+by_performer %>%
+  arrange(desc(n_songs_at_number_1)) %>%
+  head(30) %>%
+  mutate(performer = fct_reorder(performer, n_songs_at_number_1)) %>%
+  ggplot(aes(n_songs_at_number_1, performer)) +
+  geom_col() +
+  labs(x = "# of songs reach #1",
+       y = "")
+
+by_performer %>%
+  arrange(desc(n_songs_on_top_100)) %>%
+  ggplot(aes(n_songs_on_top_100, n_songs_at_number_1)) +
+  geom_point() +
+  labs(x = "# of songs on the Billboard Top 100",
+       y = "# of songs at #1") +
+  geom_text(aes(label = performer), check_overlap = TRUE, vjust = 1, hjust = 1) +
+  expand_limits(x = -10)
+```
+
+```{r}
+by_performer_decade <- billboard %>%
+  group_by(performer,
+           decade = 10 * year(week) %/% 10) %>%
+  summarize_songs()
+
+by_performer_decade %>%
+  group_by(decade) %>%
+  slice_max(total_weeks_at_number_1, n = 1)
+
+billboard %>%
+  mutate(performer_lumped = fct_lump(performer, 16)) %>%
+  count(performer_lumped,
+        year = 5 * year(week) %/% 5) %>%
+  filter(performer_lumped != "Other") %>%
+  mutate(performer_lumped = fct_reorder(performer_lumped, year)) %>%
+  ggplot(aes(year, n / 5, fill = performer_lumped)) +
+  geom_area() +
+  facet_wrap(~ performer_lumped, scales = "free_y") +
+  scale_fill_discrete(guide = "none") +
+  labs(x = "Year",
+       y = "Average weeks on Billboard Top 100 / year")
+```
+
+Could do ML to predict each song's popularity!
+
+Task: predict the log number of weeks
+
+```{r}
+by_song <- billboard %>%
+  group_by(song_id) %>%
+  summarize(peak = max(week_position),
+            week_started_chart = min(week),
+            n_weeks = n(),
+            log_n_weeks = log2(n_weeks))
+
+songs_joined <- by_song %>%
+  inner_join(tuesdata$audio_features, by = "song_id") %>%
+  filter(!is.na(spotify_track_id))
+```
+
+```{r}
+library(tidymodels)
+doParallel::registerDoParallel(cores = 8)
+
+set.seed(2021)
+spl <- initial_split(songs_joined)
+train <- training(spl)
+test <- testing(spl)
+folds <- vfold_cv(train, 3)
+```
+
+3-fold cross validation (for speed!)
+
+Let's fit an xgboost!
+
+```{r}
+library(textrecipes)
+
+xg_wf <- recipe(log_n_weeks ~ danceability + energy + key + loudness + mode +
+                  speechiness + acousticness + instrumentalness + liveness +
+                  valence + tempo + time_signature + spotify_genre +
+                  week_started_chart, data = train) %>%
+  step_mutate(month = month(week_started_chart),
+              spotify_genre = str_remove_all(spotify_genre, "\\['|'\\]")) %>%
+  step_rm(week_started_chart) %>%
+  step_tokenize(spotify_genre, token = "regex", options = list(pattern = "', '")) %>%
+  step_tokenfilter(spotify_genre, max_tokens = tune()) %>%
+  step_tf(spotify_genre) %>%
+  workflow(boost_tree("regression",
+                      mtry = tune(),
+                      trees = tune(),
+                      learn_rate = .02))
+
+tune <- xg_wf %>%
+  tune_grid(folds,
+            metrics = metric_set(rmse),
+            grid = crossing(mtry = c(3, 5),
+                            max_tokens = c(3, 10, 30),
+                            trees = seq(25, 500, 25)))
+
+autoplot(tune)
+```
+
+```{r}
+xg_fit <- xg_wf %>%
+  finalize_workflow(select_best(tune)) %>%
+  fit(train)
+
+xg_fit %>%
+  augment(test) %>%
+  rmse(log_n_weeks, .pred)
+
+xg_fit %>%
+  augment(test) %>%
+  ggplot(aes(2 ^ .pred, 2 ^ log_n_weeks)) +
+  geom_point(alpha = .25) +
+  geom_smooth(method = "lm") +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x = "Predicted weeks on top 100",
+       y = "Actual weeks on top 100")
+```
+
+Interpret the features
+
+```{r}
+importances <- xg_fit %>%
+  extract_fit_engine() %>%
+  xgboost::xgb.importance(mod = .)
+
+importances %>%
+  mutate(Feature = fct_reorder(Feature, Gain)) %>%
+  ggplot(aes(Gain, Feature)) +
+  geom_col() +
+  labs(x = "Importance")
+```
+
+```{r}
+
+spl <- initial_
+```
+
+What do you vote for?
+
+```{r}
+tuesdata$audio_features
+```
+
+
+```{r}
+billboard %>%
+  arrange(desc(week)) %>%
+  select(week)
+```
+
+
+```{r}
+
+```
+
+

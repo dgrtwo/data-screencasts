@@ -1,0 +1,376 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Data types
+
+ID
+
+LoanNr_ChkDgt: Identifier Primary key
+
+Text:
+
+Name: Borrower name
+
+Categorical/regional:
+
+Sector: Borrower industry sector
+City: Borrower city
+State: Borrower state
+Zip: Borrower zip code
+Bank: Bank name
+BankState: Bank state
+NAICS: North American industry classification system code
+FranchiseCode: Franchise code, (00000 or 00001) = No franchise (maybe need to clean those two?)
+
+(Join with zipcodeDB for population density and income etc?)
+
+Small categorical:
+NewExist: 1 = Existing business, 2 = New business
+UrbanRural: 1 = Urban, 2 = rural, 0 = undefined
+
+Numeric:
+ApprovalFY: Fiscal year of commitment
+NoEmp: Number of business employees
+CreateJob: Number of jobs created
+RetainedJob: Number of jobs retained
+
+(Money:)
+DisbursementGross: Amount disbursed
+GrAppv: Gross amount of loan approved by bank
+SBA_Appv: SBA’s guaranteed amount of approved loan
+default_amount: Amount of the loan that was charged-off (if defaulted)
+
+
+New features:
+* Bank same state
+* % of loan guaranteed by SBA
+
+Metric set: mae()
+
+EDA:
+
+* summarize_default function (look in terms of % of loan amount?)
+* Spend a little time with the money columns, understand percentages etc
+* Choice: do I predict the % of the loan that will be defaulted, or the total amount? The latter is the actual MAE that we're trying to optimize, but the former may be better behaved
+* Explore % defaulted and amount defaulted (relationship?)
+* Look by sector, State, Bank, Franchise, time
+
+Other figures:
+* Choropleth by state (animated?)
+
+Model strategy:
+
+* Start with all the numeric columns, xgboost
+* Examine high-cardinality categorical features; if there are predictive ones, consider glmnet (along with text mining)
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(stacks)
+library(textrecipes)
+library(scales)
+theme_set(theme_light())
+library(meme)
+```
+
+```{r}
+dataset <- read_csv("~/Downloads/sliced-s01e12-championship/train.csv") %>%
+  janitor::clean_names()
+holdout <- read_csv("~/Downloads/sliced-s01e12-championship/test.csv") %>%
+  janitor::clean_names()
+sample_submission <- read_csv("~/Downloads/sliced-s01e12-championship/sample_submission.csv")
+
+set.seed(2021)
+spl <- initial_split(dataset)
+train <- training(spl)
+test <- testing(spl)
+
+# Large data, let's do 3-fold CV first
+train_3fold <- train %>%
+  vfold_cv(3)
+```
+
+```{r}
+mset <- metric_set(mae)
+
+control <- control_grid(save_pred = TRUE,
+                        save_workflow = TRUE)
+```
+
+
+```{r}
+train %>%
+  ggplot(aes(default_amount + 1)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+MAE is going to be heavily driven by the largest amounts (we may even want to *filter* out the small loans: they'll have minimal impact!)
+
+(Money:)
+DisbursementGross: Amount disbursed
+GrAppv: Gross amount of loan approved by bank
+SBA_Appv: SBA’s guaranteed amount of approved loan
+default_amount: Amount of the loan that was charged-off (if defaulted)
+
+```{r}
+train %>%
+  mutate(default_pct = default_amount / gr_appv) %>%
+  ggplot(aes(default_pct)) +
+  geom_histogram()
+
+# (Data problem? Or interest that's discharged? shrug)
+train %>%
+  filter(default_amount > gr_appv) %>%
+  select(default_amount, gr_appv)
+
+train %>%
+  ggplot(aes(disbursement_gross, gr_appv)) +
+  geom_point()
+
+train %>%
+  ggplot(aes(gr_appv)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+Loans tend to fall in the 10K to 1M range.
+
+I'm going to report in terms of % defaulted!
+
+```{r}
+summarize_default <- function(tbl) {
+  tbl %>%
+    summarize(n_loans = n(),
+            total_gr_appv = sum(gr_appv),
+            pct_default = mean(default_amount > 0),
+            total_default = sum(default_amount),
+            pct_discharged = total_default / total_gr_appv) %>%
+    arrange(desc(n_loans))
+}
+
+withfreq <- function(x) {
+  tibble(x) %>%
+    add_count(x) %>%
+    mutate(combined = glue::glue("{ x } ({ n })")) %>%
+    pull(combined)
+}
+
+plot_category <- function(tbl, category, n_categories = 15) {
+  tbl %>%
+    group_by({{ category }} := withfreq(fct_lump(as.character({{ category }}), n_categories))) %>%
+    summarize_default() %>%
+    mutate({{ category }} := fct_reorder({{ category }}, pct_discharged)) %>%
+    ggplot(aes(pct_discharged, {{ category }}, size = total_gr_appv)) +
+    geom_point() +
+    scale_x_continuous(labels = percent_format()) +
+    scale_size_continuous(labels = dollar_format()) +
+    expand_limits(x = 0, size = 0) +
+    labs(x = "Gross % of loans discharged in default",
+         y = "",
+         size = "Total loans approved",
+         subtitle = "Parentheses show the # of loans in that category (in training set)")
+}
+
+train %>%
+  plot_category(state)
+
+train %>%
+  plot_category(city)
+
+train %>%
+  plot_category(sector) +
+  labs(title = "Healthcare was unlikely to default, Waste management was more likely")
+
+train %>%
+  plot_category(bank)
+
+train %>%
+  plot_category(bank_state)
+
+train %>%
+  mutate(same_state = ifelse(bank_state == state, "Same State", "Different State")) %>%
+  plot_category(same_state) +
+  labs(title = "Banks in different states are much more likely to default!")
+
+train %>%
+  mutate(new_exist = ifelse(new_exist == 1, "Existing Business", "New Business")) %>%
+  plot_category(new_exist) +
+  labs(title = "New businesses are moderately more likely to default")
+
+train %>%
+  plot_category(franchise_code) +
+  labs(title = "Some francishes are more likely to default, but *very* sparse")
+
+train %>%
+  plot_category(naics) +
+  labs(title = "Some industries are more likely to default, but pretty sparse")
+
+train %>%
+  mutate(urban_rural = case_when(urban_rural == 1 ~ "Urban",
+                                urban_rural == 2 ~ "Rural",
+                                urban_rural == 0 ~ "Undefined")) %>%
+  plot_category(urban_rural)
+
+# Undefined are less likely (and hey I'll take what I can get!)
+```
+
+Time series!
+
+```{r}
+train %>%
+  group_by(approval_fy) %>%
+  summarize_default() %>%
+  ggplot(aes(approval_fy, pct_default)) +
+  geom_line() +
+  geom_point(aes(size = total_gr_appv)) +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0) +
+  labs(x = "Year Approved",
+       y = "% defaulted",
+       title = "The rate of default went *way* up in 2005-2009",
+       size = "Total gross loan amount")
+
+train %>%
+  group_by(approval_fy, state = fct_lump(state, 7)) %>%
+  summarize_default() %>%
+  ungroup() %>%
+  ggplot(aes(approval_fy, pct_default, color = state)) +
+  geom_line() +
+  geom_point(aes(size = total_gr_appv)) +
+  scale_y_continuous(labels = percent_format()) +
+  expand_limits(y = 0) +
+  labs(x = "Year Approved",
+       y = "% defaulted",
+       title = "Some states were more heavily hit by the crisis than others",
+       size = "Total gross loan amount")
+```
+
+```{r}
+library(ggthemes)
+
+by_state <- train %>%
+  group_by(state) %>%
+  summarize_default()
+
+map_data("state") %>%
+  as_tibble() %>%
+  mutate(state = state.abb[match(region, str_to_lower(state.name))]) %>%
+  inner_join(by_state, by = "state") %>%
+  ggplot(aes(long, lat, group = group, fill = pct_default)) +
+  geom_polygon() +
+  scale_fill_viridis_c(labels = percent_format()) +
+  labs(fill = "% of loans defaulted") +
+  theme_map() +
+  coord_map()
+```
+
+```{r}
+library(gganimate)
+
+by_state_year <- train %>%
+  group_by(state, approval_fy) %>%
+  summarize_default()
+
+map_data("state") %>%
+  as_tibble() %>%
+  mutate(state = state.abb[match(region, str_to_lower(state.name))]) %>%
+  inner_join(by_state_year, by = "state") %>%
+  ggplot(aes(long, lat, group = group, fill = pct_default)) +
+  geom_polygon() +
+  transition_manual(approval_fy) +
+  scale_fill_viridis_c(labels = percent_format()) +
+  labs(fill = "% of loans defaulted",
+       title = "Loans defaulted in: { approval_fy }") +
+  theme_map() +
+  coord_map()
+```
+
+Industries over time
+
+```{r}
+train %>%
+  group_by(sector = fct_lump(sector, 5), approval_fy) %>%
+  summarize_default() %>%
+  mutate(sector = fct_reorder(sector, pct_discharged)) %>%
+  ggplot(aes(approval_fy, pct_discharged, color = sector)) +
+  geom_line() +
+  geom_point(aes(size = total_gr_appv)) +
+  facet_wrap(~ sector) +
+  scale_y_continuous(labels = percent_format()) +
+  scale_size_continuous(labels = dollar_format()) +
+  labs(y = "% of loans defaulted",
+       x = "Year",
+       size = "Total $ Approved")
+```
+
+```{r}
+train %>%
+  ggplot(aes(no_emp + 1)) +
+  geom_histogram() +
+  scale_x_log10()
+
+train %>%
+  mutate(pct_job = retained_job / (no_emp + 1)) %>%
+  filter(pct_job <= 1) %>%
+  arrange(desc(pct_job)) %>%
+  ggplot(aes(pct_job)) +
+  geom_histogram()
+
+train %>%
+  mutate(no_emp = cut(no_emp, c(0, 1, 3, 10, 30, Inf), include.lowest = TRUE)) %>%
+  plot_category(no_emp) +
+  labs(y = "# of employees",
+       title = "Larger companies were less likely to default")
+```
+
+
+
+
+
+Let's do a model on amount defaulted! (I wish I could do a postprocess transformation btw, e.g. minimum at 0, but trees might pull that off anyway)
+
+Small categorical:
+NewExist: 1 = Existing business, 2 = New business
+UrbanRural: 1 = Urban, 2 = rural, 0 = undefined
+
+Numeric:
+ApprovalFY: Fiscal year of commitment
+NoEmp: Number of business employees
+CreateJob: Number of jobs created
+RetainedJob: Number of jobs retained
+
+
+(Money:)
+DisbursementGross: Amount disbursed
+GrAppv: Gross amount of loan approved by bank
+SBA_Appv: SBA’s guaranteed amount of approved loan
+default_amount: Amount of the loan that was charged-off (if defaulted)
+
+
+
+Transformations:
+* Same state
+* Could divide franchises into 0, 1, and Other
+* 
+
+EDA todo:
+
+* Map by state (or zip code)
+* Join with NAICS industry names
+* 
+
+```{r}
+
+```
+
+
+
+
+

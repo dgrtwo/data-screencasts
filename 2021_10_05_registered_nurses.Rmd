@@ -1,0 +1,118 @@
+---
+title: "TidyTemplate"
+date: 2021-10-05
+output: html_output
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(janitor)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2021-10-05")
+
+nurses <- tt$nurses %>%
+  clean_names()
+```
+
+```{r}
+nurses %>%
+  count(year, wt = total_employed_rn) %>%
+  ggplot(aes(year, n)) +
+  geom_col() +
+  labs(y = "# of registered nurses nationally")
+```
+
+```{r}
+nurses %>%
+  filter(state %in% c("New York", "California",
+                      "Texas", "Pennsylvania")) %>%
+  ggplot(aes(year, total_employed_rn, color = state)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(y = "# of employed registered nurses") +
+  scale_y_continuous(labels = comma_format())
+```
+
+```{r}
+nurses %>%
+  filter(state %in% c("New York", "California",
+                      "Texas", "Pennsylvania",
+                      "Michigan", "Florida",
+                      "Ohio", "Washington")) %>%
+  ggplot(aes(year, hourly_wage_median, color = state)) +
+  geom_line() +
+  expand_limits(y = 0) +
+  labs(y = "Hourly wage") +
+  scale_y_continuous(labels = dollar_format())
+
+nurses %>%
+  filter(!is.na(hourly_wage_avg)) %>%
+  group_by(year) %>%
+  summarize(weighted_avg_wage = sum(hourly_wage_avg * total_employed_rn) / sum(total_employed_rn)) %>%
+  filter(!is.na(weighted_avg_wage)) %>%
+  ggplot(aes(year, weighted_avg_wage)) +
+  geom_line() +
+  geom_point() +
+  expand_limits(y = 0) +
+  scale_y_continuous(labels = dollar_format())
+```
+
+```{r}
+nurses %>%
+  filter(year %in% c(2000, 2020)) %>%
+  select(state, year, total_employed_rn, hourly_wage_median) %>%
+  pivot_wider(names_from = year, values_from = c(total_employed_rn, hourly_wage_median)) %>%
+  mutate(rn_increase = total_employed_rn_2020 / total_employed_rn_2000 - 1,
+         wage_increase = hourly_wage_median_2020 / hourly_wage_median_2000 - 1) %>%
+  ggplot(aes(rn_increase, wage_increase)) +
+  geom_point(aes(size = total_employed_rn_2000)) +
+  geom_text(aes(label = state), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  scale_x_continuous(labels = percent_format()) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(x = "% increase in # of registered nurses, 2000-2020",
+       y = "% increase in hourly wage, 2000-2020",
+       size = "# nurses 2000")
+```
+
+First let's make a choropleth!
+
+```{r}
+nurses %>%
+  filter(year == 2020) %>%
+  mutate(state = str_to_lower(state)) %>%
+  inner_join(map_data("state"), by = c(state = "region")) %>%
+  ggplot(aes(long, lat, group = group, fill = hourly_wage_median)) +
+  geom_polygon() +
+  coord_map() +
+  scale_fill_viridis_c(labels = dollar_format()) +
+  ggthemes::theme_map() +
+  labs(title = "Hourly wage of registered nurses by state, 2020",
+       fill = "Median wage")
+```
+
+Let's make a Shiny app!
+
+
+
