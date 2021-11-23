@@ -1,0 +1,254 @@
+---
+title: "TidyTemplate"
+date: 2021-11-23
+output: html_output
+editor_options: 
+  chunk_output_type: console
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+theme_set(theme_light())
+```
+
+# Load the weekly Data
+
+Dowload the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2021-11-23")
+
+episodes <- tt$episodes %>%
+  select(-serial_title) %>%
+  fill(season_number) %>%
+  mutate(episode = paste0(season_number, ".", coalesce(as.character(episode_number), "X"), " ", episode_title),
+         episode = fct_reorder(episode, first_aired),
+         episode_title = fct_reorder(episode_title, first_aired),
+         overall_episode_number = as.integer(episode_title))
+
+episodes %>%
+  filter(season_number <= 4) %>%
+  ggplot(aes(episode_title, uk_viewers, fill = factor(season_number))) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "",
+       y = "# of UK viewers (millions)",
+       title = "UK Viewers per episode of Doctor Who (Davies years)",
+       fill = "Season")
+
+episodes %>%
+  filter(season_number <= 4) %>%
+  ggplot(aes(episode_title, rating)) +
+  geom_line(group = 1) +
+  geom_point(aes(color = factor(season_number))) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "",
+       y = "Average rating (IMDb)",
+       title = "Popularity of episodes (Davies years)",
+       fill = "Season")
+
+episodes %>%
+  filter(!is.na(rating)) %>%
+  ggplot(aes(as.numeric(episode_title), rating)) +
+  geom_line(group = 1) +
+  geom_point(aes(color = factor(season_number))) +
+  geom_text(aes(label = episode_title), hjust = 1, vjust = 1, check_overlap = TRUE) +
+  geom_smooth(method = "loess") +
+  theme(axis.text.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank()) +
+  labs(x = "",
+       y = "Average rating (IMDb)",
+       title = "Rating of episodes over time",
+       color = "Season")
+
+episodes %>%
+  ggplot(aes(as.numeric(episode_title), uk_viewers, fill = factor(season_number))) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(x = "",
+       y = "# of UK viewers (millions)",
+       title = "UK Viewers per episode of Doctor Who (Davies years)",
+       fill = "Season")
+```
+
+```{r}
+summarize_episodes <- function(tbl) {
+  tbl %>%
+    summarize(avg_rating = mean(rating, na.rm = TRUE),
+              avg_viewers = mean(uk_viewers, na.rm = TRUE),
+              n_episodes = n(),
+              t_test = list(broom::tidy(t.test(rating[!is.na(rating)])))) %>%
+    unnest(t_test)
+}
+
+episodes %>%
+  group_by(season_number) %>%
+  summarize_episodes()
+
+episodes %>%
+  inner_join(tt$writers, by = "story_number") %>%
+  group_by(writer = fct_lump(writer, 6)) %>%
+  summarize_episodes() %>%
+  arrange(desc(n_episodes)) %>%
+  mutate(writer = fct_reorder(writer, avg_rating)) %>%
+  ggplot(aes(avg_rating, writer)) +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high), height = .1) +
+  geom_point() +
+  labs(x = "Average rating (w/ 95% confidence interval)",
+       y = "Writer")
+```
+
+```{r}
+episodes %>%
+  inner_join(tt$writers, by = "story_number") %>%
+  mutate(writer = fct_lump(writer, 6)) %>%
+  filter(writer != "Other") %>%
+  mutate(writer = fct_reorder(writer, as.integer(episode))) %>%
+  ggplot(aes(as.integer(episode), rating)) +
+  geom_line(data = episodes, alpha = .2) +
+  geom_point(color = "#003b6f", size = 2) +
+  facet_wrap(~ writer) +
+  theme(axis.text.x = element_blank()) +
+  labs(y = "Average IMDb Rating",
+       x = "") +
+  labs(title = "Prolific writers tended to write episodes in line with their seasons' popularity")
+
+episodes %>%
+  inner_join(tt$director, by = "story_number") %>%
+  mutate(director = fct_lump(director, 6)) %>%
+  filter(director != "Other") %>%
+  mutate(director = fct_reorder(director, as.integer(episode))) %>%
+  ggplot(aes(as.integer(episode), rating)) +
+  geom_line(data = episodes, alpha = .2) +
+  geom_point(color = "#003b6f", size = 2) +
+  facet_wrap(~ director) +
+  theme(axis.text.x = element_blank()) +
+  labs(y = "Average IMDb Rating",
+       x = "")
+```
+
+
+
+How would we do a statistical test of "does one writer make unusually (un)popular episodes?
+
+```{r}
+writers_spread <- episodes %>%
+  inner_join(tt$writers, by = "story_number") %>%
+  mutate(writer = fct_lump(writer, 6)) %>%
+  mutate(value = 1) %>%
+  spread(writer, value, fill = 0) %>%
+  janitor::clean_names()
+```
+
+```{r}
+episodes %>%
+  ggplot(aes(overall_episode_number, rating)) +
+  geom_line() +
+  geom_smooth(method = "gam", formula = y ~ s(x, k = 3))
+
+episodes_no_na <- episodes %>%
+  filter(!is.na(rating))
+
+episode_predictions <- lm(rating ~
+     ns(overall_episode_number, 3),
+   episodes_no_na) %>%
+  broom::augment(data = episodes_no_na) %>%
+  select(episode_title, story_number, rating, .fitted, .resid)
+
+episode_predictions %>%
+  inner_join(tt$writers) %>%
+  mutate(writer = fct_lump(writer, 6),
+         writer = fct_reorder(writer, .resid)) %>%
+  ggplot(aes(.resid, writer)) +
+  geom_boxplot() +
+  labs(x = "Residual rating relative to position in series")
+
+library(splines)
+lm(rating ~
+     ns(overall_episode_number, 3)+
+     russell_t_davies +
+     mark_gatiss +
+     chris_chibnall +
+     steven_moffat,
+   writers_spread) %>%
+  summary()
+```
+
+```{r}
+
+```
+
+
+
+
+# Readme
+
+Take a look at the readme for the weekly data to get insight on the dataset.
+This includes a data dictionary, source, and a link to an article on the data.
+
+```{r Readme, eval = interactive()}
+
+tt
+
+```
+
+
+# Glimpse Data
+
+Take an initial look at the format of the data available.
+
+```{r Glimpse}
+
+tt %>% 
+  map(glimpse)
+
+```
+
+# Wrangle
+
+Explore the data and process it into a nice format for plotting! Access each dataset by name by using a dollarsign after the `tt` object and then the name of the data set.
+
+```{r Wrangle}
+
+
+
+```
+
+
+# Visualize
+
+Using your processed dataset, create your unique visualization.
+
+```{r Visualize}
+
+
+  
+```
+
+# Save Image
+
+Save your image for sharing. Be sure to use the `#TidyTuesday` hashtag in your post on twitter! 
+
+```{r}
+
+# This will save your most recent plot
+ggsave(
+  filename = "My TidyTuesday Plot.png",
+  device = "png")
+
+```
