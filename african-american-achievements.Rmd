@@ -54,8 +54,7 @@ g <- firsts %>%
              color = category,
              text = glue("{ year }: { accomplishment }\n{ person }"))) +
   geom_point() +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
+  theme(axis.ticks.y = element_blank(),
         panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank(),
         legend.position = "none") +
