@@ -1,2547 +1,2234 @@
-### Screencast Summary
+### Screencast Summary {#screencast-summary}
 
+| Screencast                                                                                                    | Date       | Notable Topics                                                                                                                   |     Annotated      |                         Link                          |                                                             Data                                                              |
+|:-----------|------------|------------|:----------:|:----------:|:----------:|
+| [College Majors and Income](#college-majors-and-income)                                                       | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis)                                                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16)         |
+| [Horror Movie Profits](#horror-movie-profits)                                                                 | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis)                                                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23)         |
+| [R Downloads](#r-downloads)                                                                                   | 2018-10-30 | Data manipulation (especially time series using `lubridate` package)                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06)         |
+| [US Wind Turbines](#us-wind-turbines)                                                                         | 2018-11-06 | Animated map using `gganimate`                                                                                                   | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06)         |
+| [Malaria Incidence](#malaria-incidence)                                                                       | 2018-11-12 | Map visualization, Animated map using `gganimate` package                                                                        | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13)         |
+| [Thanksgiving Dinner](#thanksgiving-dinner)                                                                   | 2018-11-21 | Survey data, Network graphing                                                                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20)         |
+| [Maryland Bridges](#maryland-bridges)                                                                         | 2018-11-27 | Data manipulation, Map visualization                                                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27)         |
+| [Medium Articles](#medium-articles)                                                                           | 2018-12-04 | Text mining using `tidytext` package                                                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04)         |
+| [Riddler: Monte Carlo Simulation](#riddler-monte-carlo-simulation)                                            | 2018-12-04 | Simulation                                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) |     [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/)     |
+| [NYC Restaurant Inspections](#nyc-restaurant-inspections)                                                     | 2018-12-11 | Multiple t-test models using `broom` package, Principal Component Analysis (PCA)                                                 | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11)         |
+| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain)                                      | 2018-12-12 | Simulation                                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
+| [Dolphins](#dolphins)                                                                                         | 2018-12-18 | Survival analysis using `survival` package                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18)         |
+| [TidyTuesday Tweets](#tidytuesday-tweets)                                                                     | 2019-01-07 | Text mining using `tidytext` package                                                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01)         |
+| [TV Golden Age](#tv-golden-age)                                                                               | 2019-01-09 | Data manipulation, Logistic regression                                                                                           | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08)         |
+| [Space Launches](#space-launches)                                                                             | 2019-01-15 | Graphing for EDA (Exploratory Data Analysis)                                                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15)         |
+| [US Incarceration](#us-incarceration)                                                                         | 2019-01-25 | Animated map using `gganimate` package, Dealing with missing data                                                                | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22)         |
+| [US Dairy Consumption](#us-dairy-consumption)                                                                 | 2019-01-29 | Time series analysis, Forecasting using `sweep` package                                                                          | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29)         |
+| [US PhDs](#us-phds)                                                                                           | 2019-02-22 | Tidying very un-tidy data                                                                                                        | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19)         |
+| [French Train Delays](#french-train-delays)                                                                   | 2019-02-26 | Heat map                                                                                                                         | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26)         |
+| [Women in the Workplace](#women-in-the-workplace)                                                             | 2019-03-05 | Interactive scatterplot using `plotly` and `shiny` packages                                                                      | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05)         |
+| [Board Game Reviews](#board-game-reviews)                                                                     | 2019-03-15 | Lasso regression using `glmnet` package                                                                                          | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12)         |
+| [Seattle Pet Names](#seattle-pet-names)                                                                       | 2019-03-16 | Hypergeometric hypothesis testing, Adjusting for multiple hypothesis testing                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26)         |
+| [Seattle Bike Counts](#seattle-bike-counts)                                                                   | 2019-04-05 | Data manipulation (especially time series using `lubridate` package)                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02)         |
+| [Tennis Tournaments](#tennis-tournaments)                                                                     | 2019-04-09 | Data manipulation (especially using `dplyr` for groups within dataframes)                                                        | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09)         |
+| [Bird Collisions](#bird-collisions)                                                                           | 2019-05-03 | Bootstrapping                                                                                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=zjWm__nFLXI) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-30)         |
+| [Student Teacher Ratios](#student-teacher-ratios)                                                             | 2019-05-10 | `WDI` package (World Development Indicators)                                                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07)         |
+| [Nobel Prize Winners](#nobel-prize-winners)                                                                   | 2019-05-24 | Data manipulation, Graphing for EDA (Exploratory Data Analysis)                                                                  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14)         |
+| [Plastic Waste](#plastic-waste)                                                                               | 2019-05-27 | Choropleth map                                                                                                                   | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BRdLOYtJk9o) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21)         |
+| [Wine Ratings](#wine-ratings)                                                                                 | 2019-05-31 | Text mining using `tidytext` package, Lasso regression using `glmnet` package                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28)         |
+| [Ramen Reviews](#ramen-reviews)                                                                               | 2019-06-04 | Web scraping using `rvest` package                                                                                               | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04)         |
+| [Media Franchise Revenue](#media-franchise-revenue)                                                           | 2019-06-22 | Data manipulation (especially re-ordering factors)                                                                               | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1xsbTs9-a50) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02)         |
+| [Women's World Cup](#womens-world-cup)                                                                        | 2019-07-22 | Data manipulation and exploratory graphing                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09)         |
+| [Bob Ross Paintings](#bob-ross-paintings)                                                                     | 2019-08-12 | Network graphs, Principal Component Analysis (PCA)                                                                               | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sD993H5FBIY) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06)         |
+| [Simpsons Guest Stars](#simpsons-guest-stars)                                                                 | 2019-08-30 | Text mining using `tidytext` package                                                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27)         |
+| [Pizza Ratings](#pizza-ratings)                                                                               | 2019-10-01 | Statistical testing with `t.test`                                                                                                | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Mkac8DHScps) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01)         |
+| [Car Fuel Efficiency](#car-fuel-efficiency)                                                                   | 2019-10-15 | Natural splines for regression                                                                                                   | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=RpeioixHOHw) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-15)         |
+| [Horror Movies](#horror-movies)                                                                               | 2019-10-22 | ANOVA, Text mining using `tidytext` package, Lasso regression using `glmnet` package                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22)         |
+| [NYC Squirrel Census](#nyc-squirrel-census)                                                                   | 2019-11-01 | Map visualization using `ggmap` package                                                                                          | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29)         |
+| [CRAN Package Code](#cran-package-code)                                                                       | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis)                                                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) |         [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12)         |
+| [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb)                                            | 2020-01-06 | Simulation with matrixes                                                                                                         | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) |           [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/)            |
+| [The Office](#the-office)                                                                                     | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md)    |
+| [COVID-19 Open Research Dataset (CORD-19)](#covid-19-open-research-dataset-cord-19)                           | 2020-03-18 | JSON formatted data                                                                                                              | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) |            [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)             |
+| [CORD-19 Data Package](#cord-19-data-package)                                                                 | 2020-03-19 | R package development and documentation-writing                                                                                  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) |            [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)             |
+| [R trick: Creating Pascal's Triangle with `accumulate()`](#r-trick-creating-pascals-triangle-with-accumulate) | 2020-03-29 | `accumulate()` for recursive formulas                                                                                            | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) |                         [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle)                         |
+| [Riddler: Simulating Replacing Die Sides](#riddler-simulating-replacing-die-sides)                            | 2020-03-30 | `accumulate()` for simulation                                                                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) |           [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/)           |
+| [Beer Production](#beer-production)                                                                           | 2020-04-01 | `tidymetrics` package demonstrated, Animated map (`gganimate` package)                                                           | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md)    |
+| [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence)                | 2020-04-06 | Simulation                                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) |                   [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/)                    |
+| [Tour de France](#tour-de-france)                                                                             | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package)                                                                      | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md)    |
+| [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process)                            | 2020-04-13 | Simulation, Exponential and Geometric distributions                                                                              | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) |              [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/)               |
+| [GDPR Violations](#gdpr-violations)                                                                           | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics`                                                   | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md)    |
+| [Broadway Musicals](#broadway-musicals)                                                                       | 2020-04-28 | Creating an interactive dashboard with `shinymetrics` and `tidymetrics`, moving windows, period aggregation                      | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md)    |
+| [Riddler: Simulating and Optimizing Coin Flipping](#riddler-simulating-and-optimizing-coin-flipping)          | 2020-05-03 | Simulation                                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) |             [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/)              |
+| [Animal Crossing](#animal-crossing)                                                                           | 2020-05-05 | Text mining using `tidytext` package                                                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md)    |
+| [Volcano Eruptions](#volcano-eruptions)                                                                       | 2020-05-12 | Static map with `ggplot2`, Interactive map with `leaflet`, Animated map with `gganimate`                                         | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md)    |
+| [Beach Volleyball](#beach-volleyball)                                                                         | 2020-05-19 | Data cleaning, Logistic regression                                                                                               | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md)    |
+| [Cocktails](#cocktails)                                                                                       | 2020-05-26 | Pairwise correlation, Network diagram, Principal component analysis (PCA)                                                        | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EC0SVkFB2OU) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md)    |
+| [African-American Achievements](#african-american-achievements)                                               | 2020-06-09 | `plotly` interactive timeline, Wikipedia web scraping                                                                            | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md)    |
+| [African-American History](#african-american-history)                                                         | 2020-06-16 | Network diagram, Wordcloud                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md)    |
+| [Caribou Locations](#caribou-locations)                                                                       | 2020-06-23 | Maps with `ggplot2`, Calculating distance and speed with `geosphere`                                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=7G7SVODhVo4) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-23/readme.md)    |
+| [X-Men Comics](#x-men-comics)                                                                                 | 2020-06-30 | Data manipulation, Lollipop graph, `floor` function                                                                              | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md)    |
+| [Coffee Ratings](#coffee-ratings)                                                                             | 2020-07-07 | Ridgeline plot, Pairwise correlation, Network plot, Singular value decomposition (SVD), Linear model                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md)    |
+| [Australian Animal Outcomes](#australian-animal-outcomes)                                                     | 2020-07-21 | Data manipulation, Web scraping (`rvest` package) and `SelectorGadget`, Animated choropleth map                                  | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md)    |
+| [Palmer Penguins](#palmer-penguins)                                                                           | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md)    |
+| [European Energy](#european-energy)                                                                           | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation                                                                 | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md)    |
+| [Plants in Danger](#plants-in-danger)                                                                         | 2020-08-18 | Data manipulation, Web scraping using `rvest` package                                                                            | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md)    |
+| [Chopped](#chopped)                                                                                           | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines)                                             | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md)    |
+| [Global Crop Yields](#global-crop-yields)                                                                     | 2020-09-01 | Interactive Shiny dashboard                                                                                                      | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md)    |
+| [Friends](#friends)                                                                                           | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining                                                            | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md)    |
+| [Government Spending on Kids](#government-spending-on-kids)                                                   | 2020-09-15 | Data Manipulation, Functions, Embracing, Reading in Many .csv Files, Pairwise Correlation                                        | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md)    |
+| [Himalayan Climbers](#himalayan-climbers)                                                                     | 2020-09-22 | Data Manipulation, Empirical Bayes, Logistic Regression Model                                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md)    |
+| [Beyoncé and Taylor Swift Lyrics](#beyoncé-and-taylor-swift-lyrics)                                           | 2020-09-29 | Text analysis, `tf_idf`, Log odds ratio, Diverging bar graph, Lollipop graph                                                     | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md)    |
+| [NCAA Women's Basketball](#ncaa-womens-basketball)                                                            | 2020-10-06 | Heatmap, Correlation analysis                                                                                                    | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md)    |
+| [Great American Beer Festival](#great-american-beer-festival)                                                 | 2020-10-20 | Log odds ratio, Logistic regression, TIE Fighter plot                                                                            | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md)    |
+| [IKEA Furniture](#ikea-furniture)                                                                             | 2020-11-03 | Linear model, Coefficient/TIE fighter plot, Boxplots, Log scale discussion, Calculating volume                                   | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md)    |
+| [Historical Phones](#historical-phones)                                                                       | 2020-11-10 | Joining tables, Animated world choropleth, Adding IQR to geom_line, World development indicators package                         | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md)    |
+| [Riddler: Simulating a Circular Random Walk](#riddler-simulating-a-circular-random-walk)                      | 2020-11-23 | Simulation                                                                                                                       | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=b1oKh9eeqkY) |             [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-pass-the-cranberry-sauce/)              |
+| [Ninja Warrior](#ninja-warrior)                                                                               | 2020-12-15 | Log-odds with `tidylo` package, Graphing with `ggplot2`                                                                          | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=4AhXvMsCooM) |    [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-15/readme.md)    |
 
-
-| Screencast | Date | Notable Topics | Annotated | Link | Data |
-| :--- | --- | --- | :---: | :---: | :---: |
-| [College Majors and Income](#college-majors-and-income) | 2018-10-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nx5yhXAQLxw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-16) |
-| [Horror Movie Profits](#horror-movie-profits) | 2018-10-23 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=3-DRwg9yeNA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-10-23) |
-| [R Downloads](#r-downloads) | 2018-10-30 | Data manipulation (especially time series using `lubridate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nms9F-XubJU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-06) |
-| [US Wind Turbines](#us-wind-turbines) | 2018-11-06 | Animated map using `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=O1oDIQV6VKU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-06) |
-| [Malaria Incidence](#malaria-incidence) | 2018-11-12 | Map visualization, Animated map using `gganimate` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=5_6O2oDy5Jk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-13) |
-| [Thanksgiving Dinner](#thanksgiving-dinner) | 2018-11-21 | Survey data, Network graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rxJZT0duwfU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-20) |
-| [Maryland Bridges](#maryland-bridges) | 2018-11-27 | Data manipulation, Map visualization | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=kzM-4jMh9Qs) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-11-27) |
-| [Medium Articles](#medium-articles) | 2018-12-04 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=C69QyycHsgE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-04) |
-| [Riddler: Monte Carlo Simulation](#riddler-monte-carlo-simulation) | 2018-12-04 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pBGMt28xgvk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-riddler-just-had-to-go-and-reinvent-beer-pong/) |
-| [NYC Restaurant Inspections](#nyc-restaurant-inspections) | 2018-12-11 | Multiple t-test models using `broom` package, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=em4FXPf4H-Y) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-11) |
-| [Riddler: Simulating a Week of Rain](#riddler-simulating-a-week-of-rain) | 2018-12-12 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=TDzd73z8thU) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) |
-| [Dolphins](#dolphins) | 2018-12-18 | Survival analysis using `survival` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KiqpX-gNIS4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-12-18) |
-| [TidyTuesday Tweets](#tidytuesday-tweets) | 2019-01-07 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KE9ItC3doEU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-01) |
-| [TV Golden Age](#tv-golden-age) | 2019-01-09 | Data manipulation, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=oYGi2wgSJaM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-08) |
-| [Space Launches](#space-launches) | 2019-01-15 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZyPrP_Yo1BA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-15) |
-| [US Incarceration](#us-incarceration) | 2019-01-25 | Animated map using `gganimate` package, Dealing with missing data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=78kv808ZU6o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-22) |
-| [US Dairy Consumption](#us-dairy-consumption) | 2019-01-29 | Time series analysis, Forecasting using `sweep` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=13iG_HkEPVc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29) |
-| [US PhDs](#us-phds) | 2019-02-22 | Tidying very un-tidy data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=KzRP40PzopY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-19) |
-| [French Train Delays](#french-train-delays) | 2019-02-26 | Heat map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bmaigtpKyiM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26) |
-| [Women in the Workplace](#women-in-the-workplace) | 2019-03-05 | Interactive scatterplot using `plotly` and `shiny` packages | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=fv9SQ4IFNr4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-05) |
-| [Board Game Reviews](#board-game-reviews) | 2019-03-15 | Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=qirKGdQvy9U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-12) |
-| [Seattle Pet Names](#seattle-pet-names) | 2019-03-16 | Hypergeometric hypothesis testing, Adjusting for multiple hypothesis testing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EF4A4OtQprg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-03-26) |
-| [Seattle Bike Counts](#seattle-bike-counts) | 2019-04-05 | Data manipulation (especially time series using `lubridate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sBho2GJE5lc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-02) |
-| [Tennis Tournaments](#tennis-tournaments) | 2019-04-09 | Data manipulation (especially using `dplyr` for groups within dataframes) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=YWUCUfEeNJI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-09) |
-| [Bird Collisions](#bird-collisions) | 2019-05-03 | Bootstrapping | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=zjWm__nFLXI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-04-30) |
-| [Student Teacher Ratios](#student-teacher-ratios) | 2019-05-10 | `WDI` package (World Development Indicators) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NoUHdrailxA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-07) |
-| [Nobel Prize Winners](#nobel-prize-winners) | 2019-05-24 | Data manipulation, Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yWSpLfmES7w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14) |
-| [Plastic Waste](#plastic-waste) | 2019-05-27 | Choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BRdLOYtJk9o) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21) |
-| [Wine Ratings](#wine-ratings) | 2019-05-31 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=AQzZNIyjyWM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-28) |
-| [Ramen Reviews](#ramen-reviews) | 2019-06-04 | Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=tCa2di7aEP4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-06-04) |
-| [Media Franchise Revenue](#media-franchise-revenue) | 2019-06-22 | Data manipulation (especially re-ordering factors) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1xsbTs9-a50) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02) |
-| [Women's World Cup](#womens-world-cup) | 2019-07-22 | Data manipulation and exploratory graphing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ZOQSuapvHqA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-09) |
-| [Bob Ross Paintings](#bob-ross-paintings) | 2019-08-12 | Network graphs, Principal Component Analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=sD993H5FBIY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06) |
-| [Simpsons Guest Stars](#simpsons-guest-stars) | 2019-08-30 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EYuuAGDeGrQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-27) |
-| [Pizza Ratings](#pizza-ratings) | 2019-10-01 | Statistical testing with `t.test` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Mkac8DHScps) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01) |
-| [Car Fuel Efficiency](#car-fuel-efficiency) | 2019-10-15 | Natural splines for regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=RpeioixHOHw) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-15) |
-| [Horror Movies](#horror-movies) | 2019-10-22 | ANOVA, Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=yFRSTlk3kRQ) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-22) |
-| [NYC Squirrel Census](#nyc-squirrel-census) | 2019-11-01 | Map visualization using `ggmap` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6GV9sAD6Pi0) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-29) |
-| [CRAN Package Code](#cran-package-code) | 2019-12-30 | Graphing for EDA (Exploratory Data Analysis) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dr4qw8o0nYU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-11-12) |
-| [Riddler: Spelling Bee Honeycomb](#riddler-spelling-bee-honeycomb) | 2020-01-06 | Simulation with matrixes | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=wFZhuQEfEYA) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-solve-the-vexing-vexillology/) |
-| [The Office](#the-office) | 2020-03-16 | Text mining using `tidytext` package, Lasso regression using `glmnet` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=_IvAubTDQME) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-17/readme.md) |
-| [COVID-19 Open Research Dataset (CORD-19)](#covid-19-open-research-dataset-cord-19) | 2020-03-18 | JSON formatted data | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-5HYdBq_PTM) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
-| [CORD-19 Data Package](#cord-19-data-package) | 2020-03-19 | R package development and documentation-writing | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=F4oUJp76KUY) | [:chart_with_upwards_trend:](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge) |
-| [R trick: Creating Pascal's Triangle with `accumulate()`](#r-trick-creating-pascals-triangle-with-accumulate) | 2020-03-29 | `accumulate()` for recursive formulas | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=rUK9Wz9B2n0) | [:chart_with_upwards_trend:](https://en.wikipedia.org/wiki/Pascal's_triangle) |
-| [Riddler: Simulating Replacing Die Sides](#riddler-simulating-replacing-die-sides) | 2020-03-30 | `accumulate()` for simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=XEsNpxl5b1M) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/) |
-| [Beer Production](#beer-production) | 2020-04-01 | `tidymetrics` package demonstrated, Animated map (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=1R4X09w7tQ8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-03-31/readme.md) |
-| [Riddler: Simulating a Non-increasing Sequence](#riddler-simulating-a-non-increasing-sequence) | 2020-04-06 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=aR6jf6ZzlFk) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/how-low-can-you-roll/) |
-| [Tour de France](#tour-de-france) | 2020-04-07 | Survival analysis, Animated bar graph (`gganimate` package) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vT-DElIaKtE) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-07/readme.md) |
-| [Riddler: Simulating a Branching Process](#riddler-simulating-a-branching-process) | 2020-04-13 | Simulation, Exponential and Geometric distributions | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=QtThluGted0) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-catch-the-free-t-shirt/) |
-| [GDPR Violations](#gdpr-violations) | 2020-04-21 | Data manipulation, Interactive dashboard with `shinymetrics` and `tidymetrics` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EVvnnWKO_4w) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md) |
-| [Broadway Musicals](#broadway-musicals) | 2020-04-28 | Creating an interactive dashboard with `shinymetrics` and `tidymetrics`, moving windows, period aggregation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=OhY5ZaILRpg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) |
-| [Riddler: Simulating and Optimizing Coin Flipping](#riddler-simulating-and-optimizing-coin-flipping) | 2020-05-03 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=nmS3UZSWYRo) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-flip-your-way-to-freedom/) |
-| [Animal Crossing](#animal-crossing) | 2020-05-05 | Text mining using `tidytext` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Xt7ACiedRRI) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-05/readme.md) |
-| [Volcano Eruptions](#volcano-eruptions) | 2020-05-12 | Static map with `ggplot2`, Interactive map with `leaflet`, Animated map with `gganimate` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pZINGjQ86Hc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md) |
-| [Beach Volleyball](#beach-volleyball) | 2020-05-19 | Data cleaning, Logistic regression | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=MfDdmsW3OMo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-19/readme.md) |
-| [Cocktails](#cocktails) | 2020-05-26 | Pairwise correlation, Network diagram, Principal component analysis (PCA) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=EC0SVkFB2OU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md) |
-| [African-American Achievements](#african-american-achievements) | 2020-06-09 | `plotly` interactive timeline, Wikipedia web scraping | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-W-OopvhNPo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-09/readme.md) |
-| [African-American History](#african-american-history) | 2020-06-16 | Network diagram, Wordcloud | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=2L-jA-Me3zg) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-16/readme.md) |
-| [Caribou Locations](#caribou-locations) | 2020-06-23 | Maps with `ggplot2`, Calculating distance and speed with `geosphere` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=7G7SVODhVo4) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-23/readme.md) |
-| [X-Men Comics](#x-men-comics) | 2020-06-30 | Data manipulation, Lollipop graph, `floor` function | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=NY0-IFet5AM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-06-30/readme.md) |
-| [Coffee Ratings](#coffee-ratings) | 2020-07-07 | Ridgeline plot, Pairwise correlation, Network plot, Singular value decomposition (SVD), Linear model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-1x8Kpyndss) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-07/readme.md) |
-| [Australian Animal Outcomes](#australian-animal-outcomes) | 2020-07-21 | Data manipulation, Web scraping (`rvest` package) and `SelectorGadget`, Animated choropleth map | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=E2amEz_upzU) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-21/readme.md) |
-| [Palmer Penguins](#palmer-penguins) | 2020-07-08 | Modeling (logistic regression, k-nearest neighbors, decision tree, multiclass logistic regression) with cross validated accuracy | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=ImpXawPNCfM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-07-28/readme.md) |
-| [European Energy](#european-energy) | 2020-08-04 | Data manipulation, Country flags, Slope graph, Function creation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=Rcmu5e-9FSc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-04/readme.md) |
-| [Plants in Danger](#plants-in-danger) | 2020-08-18 | Data manipulation, Web scraping using `rvest` package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=f7Rc1bvMgZY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-18/readme.md) |
-| [Chopped](#chopped) | 2020-08-25 | Data manipulation, Modelling (Linear Regression, Random Forest, and Natural Splines) | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=6V0vAx2Km7U) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-08-25/readme.md) |
-| [Global Crop Yields](#global-crop-yields) | 2020-09-01 | Interactive Shiny dashboard | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=0uqAhIiK9Rc) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md) |
-| [Friends](#friends) | 2020-09-08 | Data Manipulation, Linear Modeling, Pairwise Correlation, Text Mining | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=bgcBEBqVnx8) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-08/readme.md) |
-| [Government Spending on Kids](#government-spending-on-kids) | 2020-09-15 | Data Manipulation, Functions, Embracing, Reading in Many .csv Files, Pairwise Correlation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=dHRPrVsnNwo) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-15/readme.md) |
-| [Himalayan Climbers](#himalayan-climbers) | 2020-09-22 | Data Manipulation, Empirical Bayes, Logistic Regression Model | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=WT7FMn-_jPY) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-22/readme.md) |
-| [Beyoncé and Taylor Swift Lyrics](#beyoncé-and-taylor-swift-lyrics) | 2020-09-29 | Text analysis, `tf_idf`, Log odds ratio, Diverging bar graph, Lollipop graph | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=vYbDyfv_v4Q) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-29/readme.md) |
-| [NCAA Women's Basketball](#ncaa-womens-basketball) | 2020-10-06 | Heatmap, Correlation analysis | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=-RD8GNCNsCk) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md) |
-| [Great American Beer Festival](#great-american-beer-festival) | 2020-10-20 | Log odds ratio, Logistic regression, TIE Fighter plot | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=BV_afpCDQ70) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-20/readme.md) |
-| [IKEA Furniture](#ikea-furniture) | 2020-11-03 | Linear model, Coefficient/TIE fighter plot, Boxplots, Log scale discussion, Calculating volume | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=lY0YLDZhT88) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-03/readme.md) |
-| [Historical Phones](#historical-phones) | 2020-11-10 | Joining tables, Animated world choropleth, Adding IQR to geom_line, World development indicators package | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=pJPqAIb8MKA) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-11-10/readme.md) |
-| [Riddler: Simulating a Circular Random Walk](#riddler-simulating-a-circular-random-walk) | 2020-11-23 | Simulation | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=b1oKh9eeqkY) | [:chart_with_upwards_trend:](https://fivethirtyeight.com/features/can-you-pass-the-cranberry-sauce/) |
-| [Ninja Warrior](#ninja-warrior) | 2020-12-15 | Log-odds with `tidylo` package, Graphing with `ggplot2` | :heavy_check_mark: | [:link:](https://www.youtube.com/watch?v=4AhXvMsCooM) | [:chart_with_upwards_trend:](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-15/readme.md) |
-
-
-***
-
-
+------------------------------------------------------------------------
 
 ### Individual Screencasts
 
-
-
-#### College Majors and Income
+#### College Majors and Income {#college-majors-and-income}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| College Majors and Income | [1:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=105s) | Using `read_csv` function to import data directly from Github to R (without cloning the repository) |
-| College Majors and Income | [7:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=440s) | Creating a histogram (`geom_histogram`), then a boxplot (`geom_boxplot`), to explore the distribution of salaries |
-| College Majors and Income | [8:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=535s) | Using `fct_reorder` function to sort boxplot of college majors by salary |
-| College Majors and Income | [9:35](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=575s) | Using `dollar_format` function from `scales` package to convert scientific notation to dollar format (e.g., "4e+04" becomes "$40,000") |
-| College Majors and Income | [14:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=850s) | Creating a dotplot (`geom_point`) of 20 top-earning majors (includes adjusting axis, using the colour aesthetic, and adding error bars) |
-| College Majors and Income | [17:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1065s) | Using `str_to_title` function to convert string from ALL CAPS to Title Case |
-| College Majors and Income | [20:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1245s) | Creating a Bland-Altman graph to explore relationship between sample size and median salary |
-| College Majors and Income | [21:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1305s) | Using `geom_text_repel` function from `ggrepel` package to get text labels on scatter plot points |
-| College Majors and Income | [28:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1710s) | Using `count` function's `wt` argument to specify what should be counted (default is number of rows) |
-| College Majors and Income | [30:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1800s) | Spicing up a dull bar graph by adding a redundant colour aesthetic (trick from Julia Silge) |
-| College Majors and Income | [36:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2180s) | Starting to explore relationship between gender and salary |
-| College Majors and Income | [37:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2230s) | Creating a stacked bar graph (`geom_col`) of gender breakdown within majors |
-| College Majors and Income | [40:15](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2415s) | Using `summarise_at` to aggregate men and women from majors into categories of majors |
-| College Majors and Income | [45:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2730s) | Graphing scatterplot (`geom_point`) of share of women and median salary |
-| College Majors and Income | [47:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2830s) | Using `geom_smooth` function to add a line of best fit to scatterplot above |
-| College Majors and Income | [48:40](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2920s) | Explanation of why not to aggregate first when performing a statistical test (including explanation of Simpson's Paradox) |
-| College Majors and Income | [49:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2995s) | Fixing `geom_smooth` so that we get one overall line while still being able to map to the colour aesthetic |
-| College Majors and Income | [51:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3070s) | Predicting median salary from share of women with weighted linear regression (to take sample sizes into account) |
-| College Majors and Income | [56:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3365s) | Using `nest` function and `tidy` function from the `broom` package to apply a linear model to many categories at once |
-| College Majors and Income | [58:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3485s) | Using `p.adjust` function to adjust p-values to correct for multiple testing (using FDR, False Discovery Rate) |
-| College Majors and Income | [1:04:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3890s) | Showing how to add an appendix to an `Rmarkdown` file with code that doesn't run when compiled |
-| College Majors and Income | [1:09:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4140s) | Using `fct_lump` function to aggregate major categories into the top four and an "Other" category |
-| College Majors and Income | [1:10:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4205s) | Adding sample size to the size aesthetic within the `aes` function |
-| College Majors and Income | [1:10:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4250s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot (tooltips appear when moused over) |
-| College Majors and Income | [1:15:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4555s) | Exploring IQR (Inter-Quartile Range) of salaries by major |
+| Screencast                |                                                           Time | Description                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| College Majors and Income |     [1:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=105s) | Using `read_csv` function to import data directly from Github to R (without cloning the repository)                                     |
+| College Majors and Income |     [7:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=440s) | Creating a histogram (`geom_histogram`), then a boxplot (`geom_boxplot`), to explore the distribution of salaries                       |
+| College Majors and Income |     [8:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=535s) | Using `fct_reorder` function to sort boxplot of college majors by salary                                                                |
+| College Majors and Income |     [9:35](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=575s) | Using `dollar_format` function from `scales` package to convert scientific notation to dollar format (e.g., "4e+04" becomes "\$40,000") |
+| College Majors and Income |    [14:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=850s) | Creating a dotplot (`geom_point`) of 20 top-earning majors (includes adjusting axis, using the colour aesthetic, and adding error bars) |
+| College Majors and Income |   [17:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1065s) | Using `str_to_title` function to convert string from ALL CAPS to Title Case                                                             |
+| College Majors and Income |   [20:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1245s) | Creating a Bland-Altman graph to explore relationship between sample size and median salary                                             |
+| College Majors and Income |   [21:45](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1305s) | Using `geom_text_repel` function from `ggrepel` package to get text labels on scatter plot points                                       |
+| College Majors and Income |   [28:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1710s) | Using `count` function's `wt` argument to specify what should be counted (default is number of rows)                                    |
+| College Majors and Income |   [30:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=1800s) | Spicing up a dull bar graph by adding a redundant colour aesthetic (trick from Julia Silge)                                             |
+| College Majors and Income |   [36:20](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2180s) | Starting to explore relationship between gender and salary                                                                              |
+| College Majors and Income |   [37:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2230s) | Creating a stacked bar graph (`geom_col`) of gender breakdown within majors                                                             |
+| College Majors and Income |   [40:15](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2415s) | Using `summarise_at` to aggregate men and women from majors into categories of majors                                                   |
+| College Majors and Income |   [45:30](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2730s) | Graphing scatterplot (`geom_point`) of share of women and median salary                                                                 |
+| College Majors and Income |   [47:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2830s) | Using `geom_smooth` function to add a line of best fit to scatterplot above                                                             |
+| College Majors and Income |   [48:40](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2920s) | Explanation of why not to aggregate first when performing a statistical test (including explanation of Simpson's Paradox)               |
+| College Majors and Income |   [49:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=2995s) | Fixing `geom_smooth` so that we get one overall line while still being able to map to the colour aesthetic                              |
+| College Majors and Income |   [51:10](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3070s) | Predicting median salary from share of women with weighted linear regression (to take sample sizes into account)                        |
+| College Majors and Income |   [56:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3365s) | Using `nest` function and `tidy` function from the `broom` package to apply a linear model to many categories at once                   |
+| College Majors and Income |   [58:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3485s) | Using `p.adjust` function to adjust p-values to correct for multiple testing (using FDR, False Discovery Rate)                          |
+| College Majors and Income | [1:04:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=3890s) | Showing how to add an appendix to an `Rmarkdown` file with code that doesn't run when compiled                                          |
+| College Majors and Income | [1:09:00](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4140s) | Using `fct_lump` function to aggregate major categories into the top four and an "Other" category                                       |
+| College Majors and Income | [1:10:05](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4205s) | Adding sample size to the size aesthetic within the `aes` function                                                                      |
+| College Majors and Income | [1:10:50](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4250s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot (tooltips appear when moused over)                 |
+| College Majors and Income | [1:15:55](https://www.youtube.com/watch?v=nx5yhXAQLxw&t=4555s) | Exploring IQR (Inter-Quartile Range) of salaries by major                                                                               |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Horror Movie Profits
+#### Horror Movie Profits {#horror-movie-profits}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Horror Movie Profits | [2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
-| Horror Movie Profits | [7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category |
-| Horror Movie Profits | [8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | Investigating strange numbers in the data and discovering duplication |
-| Horror Movie Profits | [12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | Using problems function to look at parsing errors when importing data |
-| Horror Movie Profits | [14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations |
-| Horror Movie Profits | [16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | Using `geom_boxplot` function to create a boxplot of budget by distributor |
-| Horror Movie Profits | [19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970") |
-| Horror Movie Profits | [21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | Using `summarise_at` function to apply the same function to multiple variables at the same time |
-| Horror Movie Profits | [24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | Using `geom_line` to visualize multiple metrics at the same time |
-| Horror Movie Profits | [26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor |
-| Horror Movie Profits | [28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | Starting analysis of profit ratio of movies |
-| Horror Movie Profits | [32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times") |
-| Horror Movie Profits | [41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | Starting analysis of the most common genres over time |
-| Horror Movie Profits | [45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | Starting analysis of the most profitable individual horror movies |
-| Horror Movie Profits | [51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | Using `paste0` function to add release date of movie to labels in a bar graph |
-| Horror Movie Profits | [53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot |
-| Horror Movie Profits | [58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot |
-| Horror Movie Profits | [1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | Reviewing unexplored areas of investigation |
+| Screencast           |                                                           Time | Description                                                                                                                                      |
+|:-----------------------|-----------------------:|:-----------------------|
+| Horror Movie Profits |     [2:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=170s) | Using `parse_date` function from `lubridate` package to convert date formatted as character to date class (should have used mdy function though) |
+| Horror Movie Profits |     [7:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=465s) | Using `fct_lump` function to aggregate distributors into top 6 (by number of movies) and and "Other" category                                    |
+| Horror Movie Profits |     [8:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=530s) | Investigating strange numbers in the data and discovering duplication                                                                            |
+| Horror Movie Profits |    [12:40](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=760s) | Using problems function to look at parsing errors when importing data                                                                            |
+| Horror Movie Profits |    [14:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=875s) | Using `arrange` and `distinct` function and its `.keep_all` argument to de-duplicate observations                                                |
+| Horror Movie Profits |    [16:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=970s) | Using `geom_boxplot` function to create a boxplot of budget by distributor                                                                       |
+| Horror Movie Profits |   [19:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1160s) | Using `floor` function to bin release years into decades (e.g., "1970" and "1973" both become "1970")                                            |
+| Horror Movie Profits |   [21:30](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1290s) | Using `summarise_at` function to apply the same function to multiple variables at the same time                                                  |
+| Horror Movie Profits |   [24:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1450s) | Using `geom_line` to visualize multiple metrics at the same time                                                                                 |
+| Horror Movie Profits |   [26:00](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1560s) | Using `facet_wrap` function to graph small multiples of genre-budget boxplots by distributor                                                     |
+| Horror Movie Profits |   [28:35](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1715s) | Starting analysis of profit ratio of movies                                                                                                      |
+| Horror Movie Profits |   [32:50](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=1970s) | Using `paste0` function in a custom function to show labels of multiple (e.g., "4X" or "6X" to mean "4 times" or "6 times")                      |
+| Horror Movie Profits |   [41:20](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2480s) | Starting analysis of the most common genres over time                                                                                            |
+| Horror Movie Profits |   [45:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=2755s) | Starting analysis of the most profitable individual horror movies                                                                                |
+| Horror Movie Profits |   [51:45](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3105s) | Using `paste0` function to add release date of movie to labels in a bar graph                                                                    |
+| Horror Movie Profits |   [53:25](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3205s) | Using `geom_text` function, along with its `check_overlap` argument, to add labels to some points on a scatterplot                               |
+| Horror Movie Profits |   [58:10](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3490s) | Using `ggplotly` function from `plotly` package to create an interactive scatterplot                                                             |
+| Horror Movie Profits | [1:00:55](https://www.youtube.com/watch?v=3-DRwg9yeNA&t=3655s) | Reviewing unexplored areas of investigation                                                                                                      |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### R Downloads
+#### R Downloads {#r-downloads}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| R Downloads | [5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | 	Using `geom_line` function to visualize changes over time |
-| R Downloads | [7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | 	Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions) |
-| R Downloads | [9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | 	Using `floor_date` function from `lubridate` package to round dates down to the week level |
-| R Downloads | [10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | Using `min` function to drop incomplete/partial week at the start of the dataset |
-| R Downloads | [12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada") |
-| R Downloads | [17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other" |
-| R Downloads | [20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable |
+| Screencast  |                                                         Time | Description                                                                                                                                           |
+|:-----------------------|-----------------------:|:-----------------------|
+| R Downloads |   [5:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=320s) | Using `geom_line` function to visualize changes over time                                                                                             |
+| R Downloads |   [7:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=455s) | Starting to decompose time series data into day-of-week trend and overall trend (lots of `lubridate` package functions)                               |
+| R Downloads |   [9:50](https://www.youtube.com/watch?v=nms9F-XubJU&t=590s) | Using `floor_date` function from `lubridate` package to round dates down to the week level                                                            |
+| R Downloads |  [10:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=605s) | Using `min` function to drop incomplete/partial week at the start of the dataset                                                                      |
+| R Downloads |  [12:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=740s) | Using `countrycode` function from `countrycode` package to replace two-letter country codes with full names (e.g., "CA" becomes "Canada")             |
+| R Downloads | [17:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1040s) | Using `fct_lump` function to get top N categories within a categorical variable and classify the rest as "Other"                                      |
+| R Downloads | [20:30](https://www.youtube.com/watch?v=nms9F-XubJU&t=1230s) | Using `hour` function from `lubridate` package to pull out integer hour value from a datetime variable                                                |
 | R Downloads | [22:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=1340s) | Using `facet_wrap` function to graph small multiples of downloads by country, then changing its `scales` argument to allow different scales on y-axis |
-| R Downloads | [31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | Starting analysis of downloads by IP address |
-| R Downloads | [35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable |
-| R Downloads | [36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function) |
-| R Downloads | [38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds) |
-| R Downloads | [38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | Explanation of a bimodal log-normal distribution |
-| R Downloads | [39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | Handy trick for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument |
-| R Downloads | [47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | Starting to explore package downloads |
-| R Downloads | [52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero |
-| R Downloads | [57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package |
+| R Downloads | [31:00](https://www.youtube.com/watch?v=nms9F-XubJU&t=1860s) | Starting analysis of downloads by IP address                                                                                                          |
+| R Downloads | [35:20](https://www.youtube.com/watch?v=nms9F-XubJU&t=2120s) | Using `as.POSIXlt` to combine separate date and time variables to get a single datetime variable                                                      |
+| R Downloads | [36:35](https://www.youtube.com/watch?v=nms9F-XubJU&t=2195s) | Using `lag` function to calculate time between downloads (time between events) per IP address (comparable to SQL window function)                     |
+| R Downloads | [38:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2285s) | Using `as.numeric` function to convert variable from a time interval object to a numeric variable (number in seconds)                                 |
+| R Downloads | [38:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2320s) | Explanation of a bimodal log-normal distribution                                                                                                      |
+| R Downloads | [39:05](https://www.youtube.com/watch?v=nms9F-XubJU&t=2345s) | Handy trick for setting easy-to-interpret intervals for time data on `scale_x_log10` function's `breaks` argument                                     |
+| R Downloads | [47:40](https://www.youtube.com/watch?v=nms9F-XubJU&t=2860s) | Starting to explore package downloads                                                                                                                 |
+| R Downloads | [52:15](https://www.youtube.com/watch?v=nms9F-XubJU&t=3135s) | Adding 1 to the numerator and denominator when calculating a ratio to get around dividing by zero                                                     |
+| R Downloads | [57:55](https://www.youtube.com/watch?v=nms9F-XubJU&t=3475s) | Showing how to look at package download data over time using `cran_downloads` function from the `cranlogs` package                                    |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### US Wind Turbines
+#### US Wind Turbines {#us-wind-turbines}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| US Wind Turbines | [3:50](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=230s) | Using `count` function to explore categorical variables |
-| US Wind Turbines | [5:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=300s) | Creating a quick-and-dirty map using `geom_point` function and latitude and longitude data |
-| US Wind Turbines | [6:10](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=370s) | Explaining need for `mapproj` package when plotting maps in `ggplot2` |
-| US Wind Turbines | [7:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=455s) | Using `borders` function to add US state borders to map |
-| US Wind Turbines | [10:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=645s) | Using `fct_lump` function to get the top 6 project categories and put the rest in a lumped "Other" category |
-| US Wind Turbines | [11:30](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=690s) | Changing data so that certain categories' points appear in front of other categories' points on the map |
-| US Wind Turbines | [14:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=855s) | Taking the centroid (average longitude and latitude) of points across a geographic area as a way to aggregate categories to one point |
-| US Wind Turbines | [19:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1180s) | Using `ifelse` function to clean missing data that is coded as "-9999" |
-| US Wind Turbines | [26:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1560s) | Asking, "How has turbine capacity changed over time?" |
-| US Wind Turbines | [33:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1995s) | Exploring different models of wind turbines |
-| US Wind Turbines | [38:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2280s) | Using `mutate_if` function to find NA values (coded as -9999) in multiple columns and replace them with an actual NA |
-| US Wind Turbines | [45:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2740s) | Reviewing documentation for `gganimate` package |
-| US Wind Turbines | [47:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2820s) | Attempting to set up `gganimate` map |
-| US Wind Turbines | [48:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2935s) | Understanding `gganimate` package using a "Hello World" / toy example, then trying to debug turbine animation |
-| US Wind Turbines | [56:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3405s) | Using `is.infinite` function to get rid of troublesome Inf values |
-| US Wind Turbines | [57:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3475s) | Quick hack for getting cumulative data from a table using `crossing` function (though it does end up with some duplication) |
-| US Wind Turbines | [1:01:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3705s) | Diagnosis of `gganimate` issue (points between integer years are being interpolated) |
-| US Wind Turbines | [1:04:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3875s) | Pseudo-successful `gganimate` map (cumulative points show up, but some points are missing) |
-| US Wind Turbines | [1:05:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3940s) | Summary of screencast |
+| Screencast       |                                                           Time | Description                                                                                                                           |
+|:-----------------------|-----------------------:|:-----------------------|
+| US Wind Turbines |     [3:50](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=230s) | Using `count` function to explore categorical variables                                                                               |
+| US Wind Turbines |     [5:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=300s) | Creating a quick-and-dirty map using `geom_point` function and latitude and longitude data                                            |
+| US Wind Turbines |     [6:10](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=370s) | Explaining need for `mapproj` package when plotting maps in `ggplot2`                                                                 |
+| US Wind Turbines |     [7:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=455s) | Using `borders` function to add US state borders to map                                                                               |
+| US Wind Turbines |    [10:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=645s) | Using `fct_lump` function to get the top 6 project categories and put the rest in a lumped "Other" category                           |
+| US Wind Turbines |    [11:30](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=690s) | Changing data so that certain categories' points appear in front of other categories' points on the map                               |
+| US Wind Turbines |    [14:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=855s) | Taking the centroid (average longitude and latitude) of points across a geographic area as a way to aggregate categories to one point |
+| US Wind Turbines |   [19:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1180s) | Using `ifelse` function to clean missing data that is coded as "-9999"                                                                |
+| US Wind Turbines |   [26:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1560s) | Asking, "How has turbine capacity changed over time?"                                                                                 |
+| US Wind Turbines |   [33:15](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=1995s) | Exploring different models of wind turbines                                                                                           |
+| US Wind Turbines |   [38:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2280s) | Using `mutate_if` function to find NA values (coded as -9999) in multiple columns and replace them with an actual NA                  |
+| US Wind Turbines |   [45:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2740s) | Reviewing documentation for `gganimate` package                                                                                       |
+| US Wind Turbines |   [47:00](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2820s) | Attempting to set up `gganimate` map                                                                                                  |
+| US Wind Turbines |   [48:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=2935s) | Understanding `gganimate` package using a "Hello World" / toy example, then trying to debug turbine animation                         |
+| US Wind Turbines |   [56:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3405s) | Using `is.infinite` function to get rid of troublesome Inf values                                                                     |
+| US Wind Turbines |   [57:55](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3475s) | Quick hack for getting cumulative data from a table using `crossing` function (though it does end up with some duplication)           |
+| US Wind Turbines | [1:01:45](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3705s) | Diagnosis of `gganimate` issue (points between integer years are being interpolated)                                                  |
+| US Wind Turbines | [1:04:35](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3875s) | Pseudo-successful `gganimate` map (cumulative points show up, but some points are missing)                                            |
+| US Wind Turbines | [1:05:40](https://www.youtube.com/watch?v=O1oDIQV6VKU&t=3940s) | Summary of screencast                                                                                                                 |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Malaria Incidence
+#### Malaria Incidence {#malaria-incidence}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Malaria Incidence | [2:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=165s) | Importing data using the `malariaAtlas` package |
-| Malaria Incidence | [14:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=850s) | Using `geom_line` function to visualize malaria prevalence over time |
-| Malaria Incidence | [15:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=910s) | Quick map visualization using longitude and latitude coordinates and the `geom_point` function |
-| Malaria Incidence | [18:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1120s) | Using `borders` function to add Kenyan country borders to map |
-| Malaria Incidence | [19:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1190s) | Using `scale_colour_gradient2` function to change the colour scale of points on the map |
-| Malaria Incidence | [20:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1240s) | Using `arrange` function to ensure that certain points on a map appear in front of/behind other points |
-| Malaria Incidence | [21:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1310s) | Aggregating data into decades using the truncated division operator `%/%` |
-| Malaria Incidence | [24:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1485s) | Starting to look at aggregated malaria data (instead of country-specific data) |
-| Malaria Incidence | [26:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1610s) | Using `sample` and `unique` functions to randomly select a few countries, which are then graphed |
-| Malaria Incidence | [28:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1710s) | Using `last` function to select the most recent observation from a set of arranged data |
-| Malaria Incidence | [32:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1975s) | Creating a Bland-Altman plot to explore relationship between current incidence and change in incidence in past 15 years |
-| Malaria Incidence | [35:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2145s) | Using `anti_join` function to find which countries are not in the malaria dataset |
-| Malaria Incidence | [36:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2200s) | Using the `iso3166` dataset set in the `maps` package to match three-letter country code (i.e., the ISO 3166 code) with country names |
-| Malaria Incidence | [38:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2310s) | Creating a world map using `geom_polygon` function (and eventually `theme_void` and `coord_map` functions) |
-| Malaria Incidence | [39:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2340s) | Getting rid of Antarctica from world map |
-| Malaria Incidence | [42:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2555s) | Using `facet_wrap` function to create small multiples of world map for different time periods |
-| Malaria Incidence | [47:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2850s) | Starting to create an animated map of malaria deaths (actual code writing starts at 57:45) |
-| Malaria Incidence | [51:25](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3085s) | Starting with a single year after working through some bugs |
-| Malaria Incidence | [52:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3130s) | Using `regex_inner_join` function from the `fuzzyjoin` package to join map datasets because one of them has values in regular expressions |
-| Malaria Incidence | [55:15](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3315s) | As alternative to `fuzzyjoin` package in above step, using `str_remove` function to get rid of unwanted regex |
-| Malaria Incidence | [57:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3465s) | Starting to turn static map into an animation using `gganimate` package |
-| Malaria Incidence | [1:02:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3720s) | The actual animated map |
-| Malaria Incidence | [1:02:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3755s) | Using `countrycode` package to filter down to countries in a specific continent (Africa, in this case) |
-| Malaria Incidence | [1:03:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3835s) | Summary of screencast |
+| Screencast        |                                                           Time | Description                                                                                                                               |
+|:-----------------------|-----------------------:|:-----------------------|
+| Malaria Incidence |     [2:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=165s) | Importing data using the `malariaAtlas` package                                                                                           |
+| Malaria Incidence |    [14:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=850s) | Using `geom_line` function to visualize malaria prevalence over time                                                                      |
+| Malaria Incidence |    [15:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=910s) | Quick map visualization using longitude and latitude coordinates and the `geom_point` function                                            |
+| Malaria Incidence |   [18:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1120s) | Using `borders` function to add Kenyan country borders to map                                                                             |
+| Malaria Incidence |   [19:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1190s) | Using `scale_colour_gradient2` function to change the colour scale of points on the map                                                   |
+| Malaria Incidence |   [20:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1240s) | Using `arrange` function to ensure that certain points on a map appear in front of/behind other points                                    |
+| Malaria Incidence |   [21:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1310s) | Aggregating data into decades using the truncated division operator `%/%`                                                                 |
+| Malaria Incidence |   [24:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1485s) | Starting to look at aggregated malaria data (instead of country-specific data)                                                            |
+| Malaria Incidence |   [26:50](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1610s) | Using `sample` and `unique` functions to randomly select a few countries, which are then graphed                                          |
+| Malaria Incidence |   [28:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1710s) | Using `last` function to select the most recent observation from a set of arranged data                                                   |
+| Malaria Incidence |   [32:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=1975s) | Creating a Bland-Altman plot to explore relationship between current incidence and change in incidence in past 15 years                   |
+| Malaria Incidence |   [35:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2145s) | Using `anti_join` function to find which countries are not in the malaria dataset                                                         |
+| Malaria Incidence |   [36:40](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2200s) | Using the `iso3166` dataset set in the `maps` package to match three-letter country code (i.e., the ISO 3166 code) with country names     |
+| Malaria Incidence |   [38:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2310s) | Creating a world map using `geom_polygon` function (and eventually `theme_void` and `coord_map` functions)                                |
+| Malaria Incidence |   [39:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2340s) | Getting rid of Antarctica from world map                                                                                                  |
+| Malaria Incidence |   [42:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2555s) | Using `facet_wrap` function to create small multiples of world map for different time periods                                             |
+| Malaria Incidence |   [47:30](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=2850s) | Starting to create an animated map of malaria deaths (actual code writing starts at 57:45)                                                |
+| Malaria Incidence |   [51:25](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3085s) | Starting with a single year after working through some bugs                                                                               |
+| Malaria Incidence |   [52:10](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3130s) | Using `regex_inner_join` function from the `fuzzyjoin` package to join map datasets because one of them has values in regular expressions |
+| Malaria Incidence |   [55:15](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3315s) | As alternative to `fuzzyjoin` package in above step, using `str_remove` function to get rid of unwanted regex                             |
+| Malaria Incidence |   [57:45](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3465s) | Starting to turn static map into an animation using `gganimate` package                                                                   |
+| Malaria Incidence | [1:02:00](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3720s) | The actual animated map                                                                                                                   |
+| Malaria Incidence | [1:02:35](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3755s) | Using `countrycode` package to filter down to countries in a specific continent (Africa, in this case)                                    |
+| Malaria Incidence | [1:03:55](https://www.youtube.com/watch?v=5_6O2oDy5Jk&t=3835s) | Summary of screencast                                                                                                                     |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Thanksgiving Dinner
+#### Thanksgiving Dinner {#thanksgiving-dinner}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Thanksgiving Dinner | [4:10](https://www.youtube.com/watch?v=rxJZT0duwfU&t=250s) | Exploratory bar chart of age distribution (and gender) of survey respondents |
-| Thanksgiving Dinner | [7:40](https://www.youtube.com/watch?v=rxJZT0duwfU&t=460s) | Using `count` function on multiple columns to get detailed counts |
-| Thanksgiving Dinner | [11:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=685s) | Parsing numbers from text using `parse_number` function, then using those numbers to re-level an ordinal factor (income bands) |
-| Thanksgiving Dinner | [13:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=785s) | Exploring relationship between income and using homemade (vs. canned) cranberry sauce |
-| Thanksgiving Dinner | [14:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=840s) | Adding group = 1 argument to the `aes` function to properly display a line chart |
-| Thanksgiving Dinner | [14:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=870s) | Rotating text for axis labels that overlap |
-| Thanksgiving Dinner | [16:50](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1010s) | Getting confidence intervals for proportions using Jeffreys interval (using beta distribution with an uniformative prior) |
-| Thanksgiving Dinner | [17:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1075s) | Explanation of Clopper-Pearson approach as alternative to Jeffreys interval |
-| Thanksgiving Dinner | [18:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1110s) | Using `geom_ribbon` function add shaded region to line chart that shows confidence intervals |
-| Thanksgiving Dinner | [21:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1315s) | Using `starts_with` function to select fields with names that start with a certain string (e.g., using "pie" selects "pie1" and "pie2") |
-| Thanksgiving Dinner | [22:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1375s) | Using `gather` function to get wide-format data to tidy (tall) format |
-| Thanksgiving Dinner | [23:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1425s) | Using `str_remove` and regex to remove digits from field values (e.g., "dessert1" and "dessert2" get turned into "dessert") |
-| Thanksgiving Dinner | [27:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1620s) | "What are people eating?" Graphing pies, sides, and desserts |
-| Thanksgiving Dinner | [28:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1680s) | Using `fct_reorder` function to reorder foods based on how popular they are |
-| Thanksgiving Dinner | [28:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1725s) | Using `n_distinct` function count the number of unique respondents |
-| Thanksgiving Dinner | [30:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1825s) | Using `facet_wrap` function to facet food types into their own graphs |
-| Thanksgiving Dinner | [32:50](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1970s) | Using `parse_number` function to convert age ranges as character string into a numeric field |
-| Thanksgiving Dinner | [35:35](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2135s) | Exploring relationship between US region and food types |
-| Thanksgiving Dinner | [36:15](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2175s) | Using `group_by`, then `mutate`, then `count` to calculate a complicated summary |
-| Thanksgiving Dinner | [40:35](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2435s) | Exploring relationship between praying at Thanksgiving (yes/no) and food types |
-| Thanksgiving Dinner | [42:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2550s) | Empirical Bayes binomial estimation for calculating binomial confidence intervals (see [Dave's book on Empirical Bayes](https://gumroad.com/l/empirical-bayes)) |
-| Thanksgiving Dinner | [45:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2730s) | Asking, "What sides/desserts/pies are eaten together?" |
-| Thanksgiving Dinner | [46:20](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2780s) | Calculating pairwise correlation of food types |
-| Thanksgiving Dinner | [49:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2945s) | Network graph of pairwise correlation |
-| Thanksgiving Dinner | [51:40](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3100s) | Adding text labels to nodes using `geom_node_text` function |
-| Thanksgiving Dinner | [53:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3180s) | Getting rid of unnecessary graph elements (e.g., axes, gridlines) with `theme_void` function |
-| Thanksgiving Dinner | [53:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3205s) | Explanation of network graph relationships |
-| Thanksgiving Dinner | [55:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3305s) | Adding dimension to network graph (node colour) to represent the type of food |
-| Thanksgiving Dinner | [57:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3465s) | Fixing overlapping text labels using the `geom_node_text` function's repel argument |
-| Thanksgiving Dinner | [58:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3535s) | Tweaking display of percentage legend to be in more readable format (e.g., "40%" instead of "0.4") |
-| Thanksgiving Dinner | [1:00:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3605s) | Summary of screencast |
+| Screencast          |                                                           Time | Description                                                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| Thanksgiving Dinner |     [4:10](https://www.youtube.com/watch?v=rxJZT0duwfU&t=250s) | Exploratory bar chart of age distribution (and gender) of survey respondents                                                                                    |
+| Thanksgiving Dinner |     [7:40](https://www.youtube.com/watch?v=rxJZT0duwfU&t=460s) | Using `count` function on multiple columns to get detailed counts                                                                                               |
+| Thanksgiving Dinner |    [11:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=685s) | Parsing numbers from text using `parse_number` function, then using those numbers to re-level an ordinal factor (income bands)                                  |
+| Thanksgiving Dinner |    [13:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=785s) | Exploring relationship between income and using homemade (vs. canned) cranberry sauce                                                                           |
+| Thanksgiving Dinner |    [14:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=840s) | Adding group = 1 argument to the `aes` function to properly display a line chart                                                                                |
+| Thanksgiving Dinner |    [14:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=870s) | Rotating text for axis labels that overlap                                                                                                                      |
+| Thanksgiving Dinner |   [16:50](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1010s) | Getting confidence intervals for proportions using Jeffreys interval (using beta distribution with an uniformative prior)                                       |
+| Thanksgiving Dinner |   [17:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1075s) | Explanation of Clopper-Pearson approach as alternative to Jeffreys interval                                                                                     |
+| Thanksgiving Dinner |   [18:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1110s) | Using `geom_ribbon` function add shaded region to line chart that shows confidence intervals                                                                    |
+| Thanksgiving Dinner |   [21:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1315s) | Using `starts_with` function to select fields with names that start with a certain string (e.g., using "pie" selects "pie1" and "pie2")                         |
+| Thanksgiving Dinner |   [22:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1375s) | Using `gather` function to get wide-format data to tidy (tall) format                                                                                           |
+| Thanksgiving Dinner |   [23:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1425s) | Using `str_remove` and regex to remove digits from field values (e.g., "dessert1" and "dessert2" get turned into "dessert")                                     |
+| Thanksgiving Dinner |   [27:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1620s) | "What are people eating?" Graphing pies, sides, and desserts                                                                                                    |
+| Thanksgiving Dinner |   [28:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1680s) | Using `fct_reorder` function to reorder foods based on how popular they are                                                                                     |
+| Thanksgiving Dinner |   [28:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1725s) | Using `n_distinct` function count the number of unique respondents                                                                                              |
+| Thanksgiving Dinner |   [30:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1825s) | Using `facet_wrap` function to facet food types into their own graphs                                                                                           |
+| Thanksgiving Dinner |   [32:50](https://www.youtube.com/watch?v=rxJZT0duwfU&t=1970s) | Using `parse_number` function to convert age ranges as character string into a numeric field                                                                    |
+| Thanksgiving Dinner |   [35:35](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2135s) | Exploring relationship between US region and food types                                                                                                         |
+| Thanksgiving Dinner |   [36:15](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2175s) | Using `group_by`, then `mutate`, then `count` to calculate a complicated summary                                                                                |
+| Thanksgiving Dinner |   [40:35](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2435s) | Exploring relationship between praying at Thanksgiving (yes/no) and food types                                                                                  |
+| Thanksgiving Dinner |   [42:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2550s) | Empirical Bayes binomial estimation for calculating binomial confidence intervals (see [Dave's book on Empirical Bayes](https://gumroad.com/l/empirical-bayes)) |
+| Thanksgiving Dinner |   [45:30](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2730s) | Asking, "What sides/desserts/pies are eaten together?"                                                                                                          |
+| Thanksgiving Dinner |   [46:20](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2780s) | Calculating pairwise correlation of food types                                                                                                                  |
+| Thanksgiving Dinner |   [49:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=2945s) | Network graph of pairwise correlation                                                                                                                           |
+| Thanksgiving Dinner |   [51:40](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3100s) | Adding text labels to nodes using `geom_node_text` function                                                                                                     |
+| Thanksgiving Dinner |   [53:00](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3180s) | Getting rid of unnecessary graph elements (e.g., axes, gridlines) with `theme_void` function                                                                    |
+| Thanksgiving Dinner |   [53:25](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3205s) | Explanation of network graph relationships                                                                                                                      |
+| Thanksgiving Dinner |   [55:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3305s) | Adding dimension to network graph (node colour) to represent the type of food                                                                                   |
+| Thanksgiving Dinner |   [57:45](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3465s) | Fixing overlapping text labels using the `geom_node_text` function's repel argument                                                                             |
+| Thanksgiving Dinner |   [58:55](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3535s) | Tweaking display of percentage legend to be in more readable format (e.g., "40%" instead of "0.4")                                                              |
+| Thanksgiving Dinner | [1:00:05](https://www.youtube.com/watch?v=rxJZT0duwfU&t=3605s) | Summary of screencast                                                                                                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Maryland Bridges
+#### Maryland Bridges {#maryland-bridges}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Maryland Bridges | [9:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=555s) | Using `geom_line` to create an exploratory line graph |
-| Maryland Bridges | [10:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=610s) | Using `%/%` operator (truncated division) to bin years into decades (e.g., 1980, 1984, and 1987 would all become "1980") |
-| Maryland Bridges | [12:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=750s) | Converting two-digit year to four-digit year (e.g., "16" becomes "2016") by adding 2000 to each one |
-| Maryland Bridges | [15:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=940s) | Using `percent_format` function from `scales` package to get nice-looking axis labels |
-| Maryland Bridges | [19:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1195s) | Using `geom_col` to create an ordered nice bar/column graph |
-| Maryland Bridges | [21:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1295s) | Using `replace_na` to replace NA values with "Other" |
-| Maryland Bridges | [27:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1635s) | Starting exploration of average daily traffic |
-| Maryland Bridges | [29:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1745s) | Using `comma_format` function from `scales` package to get more readable axis labels (e.g., "1e+05" becomes "100,000") |
-| Maryland Bridges | [31:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1875s) | Using `cut` function to bin continuous variable into customized breaks (also does a `mutate` within a `group_by`!) |
-| Maryland Bridges | [34:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2070s) | Starting to make a map |
-| Maryland Bridges | [37:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2220s) | Encoding a continuous variable to colour, then using `scale_colour_gradient2` function to specify colours and midpoint |
-| Maryland Bridges | [38:20](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2300s) | Specifying the `trans` argument (transformation) of the `scale_colour_gradient2` function to get a logarithmic scale |
-| Maryland Bridges | [45:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2755s) | Using `str_to_title` function to get values to Title Case (first letter of each word capitalized) |
-| Maryland Bridges | [48:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2915s) | Predicting whether bridges are in "Good" condition using logistic regression (remember to specify the family argument! Dave fixes this at 52:54) |
-| Maryland Bridges | [50:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3030s) | Explanation of why we should NOT be using an OLS linear regression |
-| Maryland Bridges | [51:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3070s) | Using the `augment` function from the `broom` package to illustrate why a linear model is not a good fit |
-| Maryland Bridges | [52:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3125s) | Specifying the `type.predict` argument in the `augment` function so that we get the actual predicted probability |
-| Maryland Bridges | [54:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3280s) | Explanation of why the sigmoidal shape of logistic regression can be a drawback |
-| Maryland Bridges | [55:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3305s) | Using a cubic spline model (a type of GAM, Generalized Additive Model) as an alternative to logistic regression |
-| Maryland Bridges | [56:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3360s) | Explanation of the shape that a cubic spline model can take (which logistic regression cannot) |
-| Maryland Bridges | [1:02:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3735s) | Visualizing the model in a different way, using a coefficient plot |
-| Maryland Bridges | [1:04:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3875s) | Using `geom_vline` function to add a red reference line to a graph |
+| Screencast       |                                                           Time | Description                                                                                                                                               |
+|:-----------------------|-----------------------:|:-----------------------|
+| Maryland Bridges |     [9:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=555s) | Using `geom_line` to create an exploratory line graph                                                                                                     |
+| Maryland Bridges |    [10:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=610s) | Using `%/%` operator (truncated division) to bin years into decades (e.g., 1980, 1984, and 1987 would all become "1980")                                  |
+| Maryland Bridges |    [12:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=750s) | Converting two-digit year to four-digit year (e.g., "16" becomes "2016") by adding 2000 to each one                                                       |
+| Maryland Bridges |    [15:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=940s) | Using `percent_format` function from `scales` package to get nice-looking axis labels                                                                     |
+| Maryland Bridges |   [19:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1195s) | Using `geom_col` to create an ordered nice bar/column graph                                                                                               |
+| Maryland Bridges |   [21:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1295s) | Using `replace_na` to replace NA values with "Other"                                                                                                      |
+| Maryland Bridges |   [27:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1635s) | Starting exploration of average daily traffic                                                                                                             |
+| Maryland Bridges |   [29:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1745s) | Using `comma_format` function from `scales` package to get more readable axis labels (e.g., "1e+05" becomes "100,000")                                    |
+| Maryland Bridges |   [31:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=1875s) | Using `cut` function to bin continuous variable into customized breaks (also does a `mutate` within a `group_by`!)                                        |
+| Maryland Bridges |   [34:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2070s) | Starting to make a map                                                                                                                                    |
+| Maryland Bridges |   [37:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2220s) | Encoding a continuous variable to colour, then using `scale_colour_gradient2` function to specify colours and midpoint                                    |
+| Maryland Bridges |   [38:20](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2300s) | Specifying the `trans` argument (transformation) of the `scale_colour_gradient2` function to get a logarithmic scale                                      |
+| Maryland Bridges |   [45:55](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2755s) | Using `str_to_title` function to get values to Title Case (first letter of each word capitalized)                                                         |
+| Maryland Bridges |   [48:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=2915s) | Predicting whether bridges are in "Good" condition using logistic regression (remember to specify the family argument! Dave fixes this at 52:54)          |
+| Maryland Bridges |   [50:30](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3030s) | Explanation of why we should NOT be using an OLS linear regression                                                                                        |
+| Maryland Bridges |   [51:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3070s) | Using the `augment` function from the `broom` package to illustrate why a linear model is not a good fit                                                  |
+| Maryland Bridges |   [52:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3125s) | Specifying the `type.predict` argument in the `augment` function so that we get the actual predicted probability                                          |
+| Maryland Bridges |   [54:40](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3280s) | Explanation of why the sigmoidal shape of logistic regression can be a drawback                                                                           |
+| Maryland Bridges |   [55:05](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3305s) | Using a cubic spline model (a type of GAM, Generalized Additive Model) as an alternative to logistic regression                                           |
+| Maryland Bridges |   [56:00](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3360s) | Explanation of the shape that a cubic spline model can take (which logistic regression cannot)                                                            |
+| Maryland Bridges | [1:02:15](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3735s) | Visualizing the model in a different way, using a coefficient plot                                                                                        |
+| Maryland Bridges | [1:04:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3875s) | Using `geom_vline` function to add a red reference line to a graph                                                                                        |
 | Maryland Bridges | [1:04:50](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3890s) | Adding confidence intervals to the coefficient plot by specifying `conf.int` argument of `tidy` function and graphing using the `geom_errorbarh` function |
-| Maryland Bridges | [1:05:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3935s) | Brief explanation of log-odds coefficients |
-| Maryland Bridges | [1:09:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=4150s) | Summary of screencast |
+| Maryland Bridges | [1:05:35](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=3935s) | Brief explanation of log-odds coefficients                                                                                                                |
+| Maryland Bridges | [1:09:10](https://www.youtube.com/watch?v=kzM-4jMh9Qs&t=4150s) | Summary of screencast                                                                                                                                     |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Medium Articles
+#### Medium Articles {#medium-articles}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Medium Articles | [5:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=340s) | Using `summarise_at` and `starts_with` functions to quickly sum up all variables starting with "tag_" |
-| Medium Articles | [6:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=415s) | Using `gather` function (now `pivot_longer`) to convert topic tag variables from wide to tall (tidy) format |
-| Medium Articles | [8:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=490s) | Explanation of how gathering step above will let us find the most/least common tags |
-| Medium Articles | [9:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=540s) | Explanation of using `median` (instead of `mean`) as measure of central tendency for number of claps an article got |
-| Medium Articles | [9:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=590s) | Visualizing log-normal (ish) distribution of number of claps an article gets |
-| Medium Articles | [12:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=725s) | Using `pmin` function to bin reading times of 10 minutes or more to cap out at 10 minutes |
-| Medium Articles | [12:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=755s) | Changing `scale_x_continuous` function's `breaks` argument to get custom labels and tick marks on a histogram |
-| Medium Articles | [14:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=875s) | Discussion of using mean vs. median as measure of central tendency for reading time (he decides on mean) |
-| Medium Articles | [16:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=960s) | Starting text mining analysis |
-| Medium Articles | [16:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=1000s) | Using `unnest_tokens` function from `tidytext` package to split character string into individual words |
-| Medium Articles | [17:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=1070s) | Explanation of stop words and using `anti_join` function to get rid of them |
-| Medium Articles | [20:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=1220s) | Using `str_detect` function to filter out "words" that are just numbers (e.g., "2", "35") |
-| Medium Articles | [22:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=1355s) | Quick analysis of which individual words are associated with more/fewer claps ("What are the hype words?") |
-| Medium Articles | [25:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=1515s) | Using geometric mean as alternative to median to get more distinction between words (note 27:33 where he makes a quick fix) |
-| Medium Articles | [28:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=1690s) | Starting analysis of clusters of related words (e.g., "neural" is linked to "network") |
-| Medium Articles | [30:30](https://www.youtube.com/watch?v=C69QyycHsgE&t=1830s) | Finding correlations pairs of words using `pairwise_cor` function from `widyr` package |
-| Medium Articles | [34:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2040s) | Using `ggraph` and `igraph` packages to make network plot of correlated pairs of words |
-| Medium Articles | [35:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2100s) | Using `geom_node_text` to add labels for points (vertices) in the network plot |
-| Medium Articles | [38:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=2320s) | Filtering original data to only include words appear in the network plot (150 word pairs with most correlation) |
-| Medium Articles | [40:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=2410s) | Adding colour as a dimension to the network plot, representing geometric mean of claps |
-| Medium Articles | [40:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2450s) | Changing default colour scale to one with Blue = Low and High = Red with `scale_colour_gradient2` function |
-| Medium Articles | [43:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=2595s) | Adding dark outlines to points on network plot with a hack |
-| Medium Articles | [44:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2685s) | Starting to predict number of claps based on title tag (Lasso regression) |
-| Medium Articles | [45:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2750s) | Explanation of data format needed to conduct Lasso regression (and using `cast_sparse` function to get sparse matrix) |
-| Medium Articles | [47:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2865s) | Bringing in number of claps to the sparse matrix (un-tidy methods) |
-| Medium Articles | [49:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2940s) | Using `cv.glmnet` function (cv = cross validated) from `glmnet` package to run Lasso regression |
-| Medium Articles | [49:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=2995s) | Finding and fixing mistake in defining Lasso model |
-| Medium Articles | [51:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=3065s) | Explanation of Lasso model |
-| Medium Articles | [52:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3155s) | Using `tidy` function from the `broom` package to tidy up the Lasso model |
-| Medium Articles | [54:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3275s) | Visualizing how specific words affect the prediction of claps as lambda (Lasso's penalty parameter) changes |
-| Medium Articles | [1:00:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=3620s) | Summary of screencast |
+| Screencast      |                                                           Time | Description                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Medium Articles |     [5:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=340s) | Using `summarise_at` and `starts_with` functions to quickly sum up all variables starting with "tag\_"                      |
+| Medium Articles |     [6:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=415s) | Using `gather` function (now `pivot_longer`) to convert topic tag variables from wide to tall (tidy) format                 |
+| Medium Articles |     [8:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=490s) | Explanation of how gathering step above will let us find the most/least common tags                                         |
+| Medium Articles |     [9:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=540s) | Explanation of using `median` (instead of `mean`) as measure of central tendency for number of claps an article got         |
+| Medium Articles |     [9:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=590s) | Visualizing log-normal (ish) distribution of number of claps an article gets                                                |
+| Medium Articles |    [12:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=725s) | Using `pmin` function to bin reading times of 10 minutes or more to cap out at 10 minutes                                   |
+| Medium Articles |    [12:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=755s) | Changing `scale_x_continuous` function's `breaks` argument to get custom labels and tick marks on a histogram               |
+| Medium Articles |    [14:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=875s) | Discussion of using mean vs. median as measure of central tendency for reading time (he decides on mean)                    |
+| Medium Articles |    [16:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=960s) | Starting text mining analysis                                                                                               |
+| Medium Articles |   [16:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=1000s) | Using `unnest_tokens` function from `tidytext` package to split character string into individual words                      |
+| Medium Articles |   [17:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=1070s) | Explanation of stop words and using `anti_join` function to get rid of them                                                 |
+| Medium Articles |   [20:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=1220s) | Using `str_detect` function to filter out "words" that are just numbers (e.g., "2", "35")                                   |
+| Medium Articles |   [22:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=1355s) | Quick analysis of which individual words are associated with more/fewer claps ("What are the hype words?")                  |
+| Medium Articles |   [25:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=1515s) | Using geometric mean as alternative to median to get more distinction between words (note 27:33 where he makes a quick fix) |
+| Medium Articles |   [28:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=1690s) | Starting analysis of clusters of related words (e.g., "neural" is linked to "network")                                      |
+| Medium Articles |   [30:30](https://www.youtube.com/watch?v=C69QyycHsgE&t=1830s) | Finding correlations pairs of words using `pairwise_cor` function from `widyr` package                                      |
+| Medium Articles |   [34:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2040s) | Using `ggraph` and `igraph` packages to make network plot of correlated pairs of words                                      |
+| Medium Articles |   [35:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2100s) | Using `geom_node_text` to add labels for points (vertices) in the network plot                                              |
+| Medium Articles |   [38:40](https://www.youtube.com/watch?v=C69QyycHsgE&t=2320s) | Filtering original data to only include words appear in the network plot (150 word pairs with most correlation)             |
+| Medium Articles |   [40:10](https://www.youtube.com/watch?v=C69QyycHsgE&t=2410s) | Adding colour as a dimension to the network plot, representing geometric mean of claps                                      |
+| Medium Articles |   [40:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2450s) | Changing default colour scale to one with Blue = Low and High = Red with `scale_colour_gradient2` function                  |
+| Medium Articles |   [43:15](https://www.youtube.com/watch?v=C69QyycHsgE&t=2595s) | Adding dark outlines to points on network plot with a hack                                                                  |
+| Medium Articles |   [44:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2685s) | Starting to predict number of claps based on title tag (Lasso regression)                                                   |
+| Medium Articles |   [45:50](https://www.youtube.com/watch?v=C69QyycHsgE&t=2750s) | Explanation of data format needed to conduct Lasso regression (and using `cast_sparse` function to get sparse matrix)       |
+| Medium Articles |   [47:45](https://www.youtube.com/watch?v=C69QyycHsgE&t=2865s) | Bringing in number of claps to the sparse matrix (un-tidy methods)                                                          |
+| Medium Articles |   [49:00](https://www.youtube.com/watch?v=C69QyycHsgE&t=2940s) | Using `cv.glmnet` function (cv = cross validated) from `glmnet` package to run Lasso regression                             |
+| Medium Articles |   [49:55](https://www.youtube.com/watch?v=C69QyycHsgE&t=2995s) | Finding and fixing mistake in defining Lasso model                                                                          |
+| Medium Articles |   [51:05](https://www.youtube.com/watch?v=C69QyycHsgE&t=3065s) | Explanation of Lasso model                                                                                                  |
+| Medium Articles |   [52:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3155s) | Using `tidy` function from the `broom` package to tidy up the Lasso model                                                   |
+| Medium Articles |   [54:35](https://www.youtube.com/watch?v=C69QyycHsgE&t=3275s) | Visualizing how specific words affect the prediction of claps as lambda (Lasso's penalty parameter) changes                 |
+| Medium Articles | [1:00:20](https://www.youtube.com/watch?v=C69QyycHsgE&t=3620s) | Summary of screencast                                                                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-#### Riddler: Monte Carlo Simulation
+#### Riddler: Monte Carlo Simulation {#riddler-monte-carlo-simulation}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Monte Carlo Simulation | [3:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=190s) | Using `crossing` function to set up structure of simulation (1,000 trials, each with 12 chess games) |
-| Riddler: Monte Carlo Simulation | [4:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=240s) | Adding result to the tidy simulation dataset |
-| Riddler: Monte Carlo Simulation | [6:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=405s) | Using `sample` function to simulate win/loss/draw for each game (good explanation of individual arguments within sample) |
-| Riddler: Monte Carlo Simulation | [7:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=425s) | Using `group_by` and `summarise` to get total points for each trial |
-| Riddler: Monte Carlo Simulation | [8:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=490s) | Adding red vertical reference line to histogram to know when a player wins a matchup |
-| Riddler: Monte Carlo Simulation | [10:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=600s) | Answering second piece of riddle (how many games would need to be played for better player to win 90% or 99% of the time?) |
-| Riddler: Monte Carlo Simulation | [10:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=650s) | Using `unnest` and `seq_len` functions to create groups of number of games (20, 40, …, 100), each with one game per row |
-| Riddler: Monte Carlo Simulation | [12:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=735s) | Creating a win field based on the simulated data, then summarising win percentage for each group of number of games (20, 40, …, 100) |
-| Riddler: Monte Carlo Simulation | [13:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=835s) | Using `seq` function to create groups of number of games programmatically |
-| Riddler: Monte Carlo Simulation | [15:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=905s) | Explanation of using logarithmic scale for this riddle |
-| Riddler: Monte Carlo Simulation | [15:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=945s) | Changing spacing of number of games from even spacing (20, 40, …, 100) to exponential (doubles every time, 12, 24, 48, …, 1536) |
-| Riddler: Monte Carlo Simulation | [18:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1080s) | Changing spacing of number of games to be finer |
-| Riddler: Monte Carlo Simulation | [19:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1140s) | Introduction of interpolation as the last step we will do |
-| Riddler: Monte Carlo Simulation | [19:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1170s) | Introducing `approx` function as method to linearly interpolate data |
-| Riddler: Monte Carlo Simulation | [22:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1355s) | Break point for the next riddle |
-| Riddler: Monte Carlo Simulation | [24:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1470s) | Starting recursive approach to this riddle |
-| Riddler: Monte Carlo Simulation | [25:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1535s) | Setting up a N x N matrix (N = 4 to start) |
-| Riddler: Monte Carlo Simulation | [25:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1555s) | Explanation of approach (random ball goes into random cup, represented by matrix) |
-| Riddler: Monte Carlo Simulation | [26:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1585s) | Using `sample` function to pick a random element of the matrix |
-| Riddler: Monte Carlo Simulation | [27:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1635s) | Using for loop to iterate random selection 100 times |
-| Riddler: Monte Carlo Simulation | [28:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1705s) | Converting for loop to while loop, using `colSums` to keep track of number of balls in cups |
-| Riddler: Monte Carlo Simulation | [30:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1805s) | Starting to code the pruning phase |
-| Riddler: Monte Carlo Simulation | [30:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1815s) | Using `diag` function to pick matching matrix elements (e.g., the 4th row of the 4th column) |
-| Riddler: Monte Carlo Simulation | [31:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1910s) | Turning code up to this point into a custom simulate_round function |
-| Riddler: Monte Carlo Simulation | [32:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1945s) | Using custom simulate_round function to simulate 100 rounds |
-| Riddler: Monte Carlo Simulation | [33:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2010s) | Using `all` function to perform logic check on whether all cups in a round are not empty |
-| Riddler: Monte Carlo Simulation | [34:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2045s) | Converting loop approach to tidy approach |
-| Riddler: Monte Carlo Simulation | [35:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2110s) | Using `rerun` and `map_lgl` functions from `purrr` to simulate a round for each for in a dataframe |
-| Riddler: Monte Carlo Simulation | [36:20](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2180s) | Explanation of the tidy approach |
-| Riddler: Monte Carlo Simulation | [37:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2225s) | Using `cumsum` and `lag` functions to keep track of the number of rounds until you win a "game" |
-| Riddler: Monte Carlo Simulation | [39:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2385s) | Creating histogram of number of rounds until winning a game |
-| Riddler: Monte Carlo Simulation | [40:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2410s) | Setting boundary argument of `geom_histogram` function to include count of zeros |
-| Riddler: Monte Carlo Simulation | [40:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2430s) | Brief explanation of geometric distribution |
-| Riddler: Monte Carlo Simulation | [41:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2485s) | Extending custom simulate_round function to include number of balls thrown to win (in addition to whether we won a round) |
-| Riddler: Monte Carlo Simulation | [46:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2770s) | Extending to two values of N (N = 3 or N = 4) |
-| Riddler: Monte Carlo Simulation | [49:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2990s) | Reviewing results of N = 3 and N = 4 |
-| Riddler: Monte Carlo Simulation | [52:20](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3140s) | Extending to N = 5 |
-| Riddler: Monte Carlo Simulation | [53:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3235s) | Checking results of chess riddle with Riddler solution |
-| Riddler: Monte Carlo Simulation | [55:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3310s) | Checking results of ball-cup riddle with Riddler solution (Dave slightly misinterpreted what the riddle was asking) |
-| Riddler: Monte Carlo Simulation | [56:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3395s) | Changing simulation code to correct the misinterpretation |
-| Riddler: Monte Carlo Simulation | [1:01:40](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3700s) | Reviewing results of corrected simulation |
-| Riddler: Monte Carlo Simulation | [1:03:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3810s) | Checking results of ball-cup riddle with corrected simulation with Riddler solutions |
-| Riddler: Monte Carlo Simulation | [1:06:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3960s) | Visualizing number of balls thrown and rounds played |
+| Screencast                      |                                                           Time | Description                                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Monte Carlo Simulation |     [3:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=190s) | Using `crossing` function to set up structure of simulation (1,000 trials, each with 12 chess games)                                   |
+| Riddler: Monte Carlo Simulation |     [4:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=240s) | Adding result to the tidy simulation dataset                                                                                           |
+| Riddler: Monte Carlo Simulation |     [6:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=405s) | Using `sample` function to simulate win/loss/draw for each game (good explanation of individual arguments within sample)               |
+| Riddler: Monte Carlo Simulation |     [7:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=425s) | Using `group_by` and `summarise` to get total points for each trial                                                                    |
+| Riddler: Monte Carlo Simulation |     [8:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=490s) | Adding red vertical reference line to histogram to know when a player wins a matchup                                                   |
+| Riddler: Monte Carlo Simulation |    [10:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=600s) | Answering second piece of riddle (how many games would need to be played for better player to win 90% or 99% of the time?)             |
+| Riddler: Monte Carlo Simulation |    [10:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=650s) | Using `unnest` and `seq_len` functions to create groups of number of games (20, 40, ..., 100), each with one game per row              |
+| Riddler: Monte Carlo Simulation |    [12:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=735s) | Creating a win field based on the simulated data, then summarising win percentage for each group of number of games (20, 40, ..., 100) |
+| Riddler: Monte Carlo Simulation |    [13:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=835s) | Using `seq` function to create groups of number of games programmatically                                                              |
+| Riddler: Monte Carlo Simulation |    [15:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=905s) | Explanation of using logarithmic scale for this riddle                                                                                 |
+| Riddler: Monte Carlo Simulation |    [15:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=945s) | Changing spacing of number of games from even spacing (20, 40, ..., 100) to exponential (doubles every time, 12, 24, 48, ..., 1536)    |
+| Riddler: Monte Carlo Simulation |   [18:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1080s) | Changing spacing of number of games to be finer                                                                                        |
+| Riddler: Monte Carlo Simulation |   [19:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1140s) | Introduction of interpolation as the last step we will do                                                                              |
+| Riddler: Monte Carlo Simulation |   [19:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1170s) | Introducing `approx` function as method to linearly interpolate data                                                                   |
+| Riddler: Monte Carlo Simulation |   [22:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1355s) | Break point for the next riddle                                                                                                        |
+| Riddler: Monte Carlo Simulation |   [24:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1470s) | Starting recursive approach to this riddle                                                                                             |
+| Riddler: Monte Carlo Simulation |   [25:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1535s) | Setting up a N x N matrix (N = 4 to start)                                                                                             |
+| Riddler: Monte Carlo Simulation |   [25:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1555s) | Explanation of approach (random ball goes into random cup, represented by matrix)                                                      |
+| Riddler: Monte Carlo Simulation |   [26:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1585s) | Using `sample` function to pick a random element of the matrix                                                                         |
+| Riddler: Monte Carlo Simulation |   [27:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1635s) | Using for loop to iterate random selection 100 times                                                                                   |
+| Riddler: Monte Carlo Simulation |   [28:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1705s) | Converting for loop to while loop, using `colSums` to keep track of number of balls in cups                                            |
+| Riddler: Monte Carlo Simulation |   [30:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1805s) | Starting to code the pruning phase                                                                                                     |
+| Riddler: Monte Carlo Simulation |   [30:15](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1815s) | Using `diag` function to pick matching matrix elements (e.g., the 4th row of the 4th column)                                           |
+| Riddler: Monte Carlo Simulation |   [31:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1910s) | Turning code up to this point into a custom simulate_round function                                                                    |
+| Riddler: Monte Carlo Simulation |   [32:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=1945s) | Using custom simulate_round function to simulate 100 rounds                                                                            |
+| Riddler: Monte Carlo Simulation |   [33:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2010s) | Using `all` function to perform logic check on whether all cups in a round are not empty                                               |
+| Riddler: Monte Carlo Simulation |   [34:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2045s) | Converting loop approach to tidy approach                                                                                              |
+| Riddler: Monte Carlo Simulation |   [35:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2110s) | Using `rerun` and `map_lgl` functions from `purrr` to simulate a round for each for in a dataframe                                     |
+| Riddler: Monte Carlo Simulation |   [36:20](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2180s) | Explanation of the tidy approach                                                                                                       |
+| Riddler: Monte Carlo Simulation |   [37:05](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2225s) | Using `cumsum` and `lag` functions to keep track of the number of rounds until you win a "game"                                        |
+| Riddler: Monte Carlo Simulation |   [39:45](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2385s) | Creating histogram of number of rounds until winning a game                                                                            |
+| Riddler: Monte Carlo Simulation |   [40:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2410s) | Setting boundary argument of `geom_histogram` function to include count of zeros                                                       |
+| Riddler: Monte Carlo Simulation |   [40:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2430s) | Brief explanation of geometric distribution                                                                                            |
+| Riddler: Monte Carlo Simulation |   [41:25](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2485s) | Extending custom simulate_round function to include number of balls thrown to win (in addition to whether we won a round)              |
+| Riddler: Monte Carlo Simulation |   [46:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2770s) | Extending to two values of N (N = 3 or N = 4)                                                                                          |
+| Riddler: Monte Carlo Simulation |   [49:50](https://www.youtube.com/watch?v=pBGMt28xgvk&t=2990s) | Reviewing results of N = 3 and N = 4                                                                                                   |
+| Riddler: Monte Carlo Simulation |   [52:20](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3140s) | Extending to N = 5                                                                                                                     |
+| Riddler: Monte Carlo Simulation |   [53:55](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3235s) | Checking results of chess riddle with Riddler solution                                                                                 |
+| Riddler: Monte Carlo Simulation |   [55:10](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3310s) | Checking results of ball-cup riddle with Riddler solution (Dave slightly misinterpreted what the riddle was asking)                    |
+| Riddler: Monte Carlo Simulation |   [56:35](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3395s) | Changing simulation code to correct the misinterpretation                                                                              |
+| Riddler: Monte Carlo Simulation | [1:01:40](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3700s) | Reviewing results of corrected simulation                                                                                              |
+| Riddler: Monte Carlo Simulation | [1:03:30](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3810s) | Checking results of ball-cup riddle with corrected simulation with Riddler solutions                                                   |
+| Riddler: Monte Carlo Simulation | [1:06:00](https://www.youtube.com/watch?v=pBGMt28xgvk&t=3960s) | Visualizing number of balls thrown and rounds played                                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### NYC Restaurant Inspections
+#### NYC Restaurant Inspections {#nyc-restaurant-inspections}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| NYC Restaurant Inspections | [18:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1125s) | Separating column using `separate` function |
-| NYC Restaurant Inspections | [21:15](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1275s) | Taking distinct observations, but keeping the remaining variables using `distinct` function with .keep_all argument |
-| NYC Restaurant Inspections | [25:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1500s) | Using `broom` package and `nest` function to perform multiple t-tests at the same time |
-| NYC Restaurant Inspections | [26:20](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1580s) | Tidying nested t-test models using `broom` |
-| NYC Restaurant Inspections | [27:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1620s) | Creating TIE fighter plot of estimates of means and their confidence intervals |
-| NYC Restaurant Inspections | [28:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1725s) | Recode long description using regex to remove everything after a parenthesis |
-| NYC Restaurant Inspections | [33:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2025s) | Using `cut` function to manually bin data along user-specified intervals |
-| NYC Restaurant Inspections | [42:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2520s) | Asking, "What type of violations tend to occur more in some cuisines than others?" |
-| NYC Restaurant Inspections | [42:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2565s) | Using `semi_join` function to get the most recent inspection of all the restaurants |
-| NYC Restaurant Inspections | [52:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3120s) | Asking, "What violations tend to occur together?" |
-| NYC Restaurant Inspections | [53:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3180s) | Using `widyr` package function `pairwise_cor` (pairwise correlation) to find co-occurrence of violation types |
-| NYC Restaurant Inspections | [55:30](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3330s) | Beginning of PCA (Principal Component Analysis) using `widely_svd` function |
-| NYC Restaurant Inspections | [58:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3480s) | Actually typing in the `widely_svd` function |
-| NYC Restaurant Inspections | [58:15](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3495s) | Reviewing and explaining output of `widely_svd` function |
-| NYC Restaurant Inspections | [1:01:30](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3690s) | Creating graph of opposing elements of a PCA dimension |
-| NYC Restaurant Inspections | [1:02:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3720s) | Shortening string using `str_sub` function |
+| Screencast                 |                                                           Time | Description                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| NYC Restaurant Inspections |   [18:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1125s) | Separating column using `separate` function                                                                            |
+| NYC Restaurant Inspections |   [21:15](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1275s) | Taking distinct observations, but keeping the remaining variables using `distinct` function with .keep_all argument    |
+| NYC Restaurant Inspections |   [25:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1500s) | Using `broom` package and `nest` function to perform multiple t-tests at the same time                                 |
+| NYC Restaurant Inspections |   [26:20](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1580s) | Tidying nested t-test models using `broom`                                                                             |
+| NYC Restaurant Inspections |   [27:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1620s) | Creating TIE fighter plot of estimates of means and their confidence intervals                                         |
+| NYC Restaurant Inspections |   [28:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=1725s) | Recode long description using regex to remove everything after a parenthesis                                           |
+| NYC Restaurant Inspections |   [33:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2025s) | Using `cut` function to manually bin data along user-specified intervals                                               |
+| NYC Restaurant Inspections |   [42:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2520s) | Asking, "What type of violations tend to occur more in some cuisines than others?"                                     |
+| NYC Restaurant Inspections |   [42:45](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=2565s) | Using `semi_join` function to get the most recent inspection of all the restaurants                                    |
+| NYC Restaurant Inspections |   [52:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3120s) | Asking, "What violations tend to occur together?"                                                                      |
+| NYC Restaurant Inspections |   [53:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3180s) | Using `widyr` package function `pairwise_cor` (pairwise correlation) to find co-occurrence of violation types          |
+| NYC Restaurant Inspections |   [55:30](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3330s) | Beginning of PCA (Principal Component Analysis) using `widely_svd` function                                            |
+| NYC Restaurant Inspections |   [58:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3480s) | Actually typing in the `widely_svd` function                                                                           |
+| NYC Restaurant Inspections |   [58:15](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3495s) | Reviewing and explaining output of `widely_svd` function                                                               |
+| NYC Restaurant Inspections | [1:01:30](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3690s) | Creating graph of opposing elements of a PCA dimension                                                                 |
+| NYC Restaurant Inspections | [1:02:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3720s) | Shortening string using `str_sub` function                                                                             |
 | NYC Restaurant Inspections | [1:04:00](https://www.youtube.com/watch?v=em4FXPf4H-Y&t=3840s) | Reference to [Julia Silge's PCA walkthrough](https://juliasilge.com/blog/stack-overflow-pca/) using StackOverflow data |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating a Week of Rain
+#### Riddler: Simulating a Week of Rain {#riddler-simulating-a-week-of-rain}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating a Week of Rain | [1:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=80s) | Using `crossing` function to get all combinations of specified variables (100 trials of 5 days) |
-| Riddler: Simulating a Week of Rain | [2:35](https://www.youtube.com/watch?v=TDzd73z8thU&t=155s) | Using `rbinom` function to simulate whether it rains or not |
-| Riddler: Simulating a Week of Rain | [3:15](https://www.youtube.com/watch?v=TDzd73z8thU&t=195s) | Using `ifelse` function to set starting number of umbrellas at beginning of week |
-| Riddler: Simulating a Week of Rain | [4:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=260s) | Explanation of structure of simulation and approach to determining number of umbrellas in each location |
-| Riddler: Simulating a Week of Rain | [5:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=330s) | Changing structure so that we have a row for each day's morning or evening |
-| Riddler: Simulating a Week of Rain | [7:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=430s) | Using `group_by`, `ifelse`, and `row_number` functions to set starting number of umbrellas for each trial |
-| Riddler: Simulating a Week of Rain | [8:45](https://www.youtube.com/watch?v=TDzd73z8thU&t=525s) | Using `case_when` function to returns different values for multiple logical checks (allows for more outputs than ifelse) |
-| Riddler: Simulating a Week of Rain | [10:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=620s) | Using `cumsum` function to create a running tally of number of umbrellas in each location |
-| Riddler: Simulating a Week of Rain | [11:25](https://www.youtube.com/watch?v=TDzd73z8thU&t=685s) | Explanation of output of simulated data |
-| Riddler: Simulating a Week of Rain | [12:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=750s) | Using `any` function to check if any day had a negative "umbrella count" (indicating there wasn't an umbrella available when raining) |
-| Riddler: Simulating a Week of Rain | [15:40](https://www.youtube.com/watch?v=TDzd73z8thU&t=940s) | Asking, "When was the first time Louie got wet?" |
-| Riddler: Simulating a Week of Rain | [17:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=1030s) | Creating a custom vector to convert an integer to a weekday (e.g., 2 = Tue) |
+| Screencast                         |                                                         Time | Description                                                                                                                           |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating a Week of Rain |    [1:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=80s) | Using `crossing` function to get all combinations of specified variables (100 trials of 5 days)                                       |
+| Riddler: Simulating a Week of Rain |   [2:35](https://www.youtube.com/watch?v=TDzd73z8thU&t=155s) | Using `rbinom` function to simulate whether it rains or not                                                                           |
+| Riddler: Simulating a Week of Rain |   [3:15](https://www.youtube.com/watch?v=TDzd73z8thU&t=195s) | Using `ifelse` function to set starting number of umbrellas at beginning of week                                                      |
+| Riddler: Simulating a Week of Rain |   [4:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=260s) | Explanation of structure of simulation and approach to determining number of umbrellas in each location                               |
+| Riddler: Simulating a Week of Rain |   [5:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=330s) | Changing structure so that we have a row for each day's morning or evening                                                            |
+| Riddler: Simulating a Week of Rain |   [7:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=430s) | Using `group_by`, `ifelse`, and `row_number` functions to set starting number of umbrellas for each trial                             |
+| Riddler: Simulating a Week of Rain |   [8:45](https://www.youtube.com/watch?v=TDzd73z8thU&t=525s) | Using `case_when` function to returns different values for multiple logical checks (allows for more outputs than ifelse)              |
+| Riddler: Simulating a Week of Rain |  [10:20](https://www.youtube.com/watch?v=TDzd73z8thU&t=620s) | Using `cumsum` function to create a running tally of number of umbrellas in each location                                             |
+| Riddler: Simulating a Week of Rain |  [11:25](https://www.youtube.com/watch?v=TDzd73z8thU&t=685s) | Explanation of output of simulated data                                                                                               |
+| Riddler: Simulating a Week of Rain |  [12:30](https://www.youtube.com/watch?v=TDzd73z8thU&t=750s) | Using `any` function to check if any day had a negative "umbrella count" (indicating there wasn't an umbrella available when raining) |
+| Riddler: Simulating a Week of Rain |  [15:40](https://www.youtube.com/watch?v=TDzd73z8thU&t=940s) | Asking, "When was the first time Louie got wet?"                                                                                      |
+| Riddler: Simulating a Week of Rain | [17:10](https://www.youtube.com/watch?v=TDzd73z8thU&t=1030s) | Creating a custom vector to convert an integer to a weekday (e.g., 2 = Tue)                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Dolphins
+#### Dolphins {#dolphins}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Dolphins | [6:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=385s) | Using `year` function from `lubridate` package to simplify calculating age of dolphins |
-| Dolphins | [8:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=510s) | Combining `count` and `fct_lump` functions to get counts of top 5 species (with other species lumped in "Other") |
-| Dolphins | [9:55](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=595s) | Creating boxplot of species and age |
-| Dolphins | [11:50](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=710s) | Dealing with different types of NA (double, logical) (he doesn't get it in this case, but it's still useful) |
-| Dolphins | [15:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=930s) | Adding acquisition type as colour dimension to histogram |
-| Dolphins | [16:00](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=960s) | Creating a spinogram of acquisition type over time (alternative to histogram) using `geom_area` |
-| Dolphins | [17:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1045s) | Binning year into decade using truncated division operator `%/%` |
-| Dolphins | [19:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1150s) | Fixing annoying triangular gaps in spinogram using complete function to fill in gaps in data |
-| Dolphins | [21:15](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1275s) | Using `fct_reorder` function to reorder acquisition type (bigger categories are placed on the bottom of the spinogram) |
-| Dolphins | [23:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1405s) | Adding vertical dashed reference line using `geom_vline` function |
-| Dolphins | [24:05](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1445s) | Starting analysis of acquisition location |
-| Dolphins | [27:05](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1625s) | Matching messy text data with regex to aggregate into a few categories variables with `fuzzyjoin` package |
-| Dolphins | [31:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1890s) | Using `distinct` function's .keep_all argument to keep only one row per animal ID |
-| Dolphins | [33:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1990s) | Using `coalesce` function to conditionally replace NAs (same functionality as SQL verb) |
-| Dolphins | [40:00](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2400s) | Starting survival analysis |
-| Dolphins | [46:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2785s) | Using `survfit` function from `survival` package to get a baseline survival curve (i.e., not regressed on any independent variables) |
-| Dolphins | [47:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2850s) | Fixing cases where death year is before birth year |
-| Dolphins | [48:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2910s) | Fixing specification of survfit model to better fit the format of our data (right-censored data) |
-| Dolphins | [50:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3010s) | Built-in plot of baseline survival model (estimation of percentage survival at a given age) |
-| Dolphins | [50:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3030s) | Using `broom` package to tidy the survival model data (which is better for `ggplot2` plotting) |
-| Dolphins | [52:20](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3140s) | Fitting survival curve based on sex |
-| Dolphins | [54:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3265s) | Cox proportional hazards model (to investigate association of survival time and one or more predictors) |
-| Dolphins | [55:50](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3350s) | Explanation of why dolphins with unknown sex likely have a systematic bias with their data |
-| Dolphins | [57:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3445s) | Investigating whether being born in captivity is associated with different survival rates |
-| Dolphins | [1:00:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3610s) | Summary of screencast |
+| Screencast |                                                           Time | Description                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Dolphins   |     [6:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=385s) | Using `year` function from `lubridate` package to simplify calculating age of dolphins                                               |
+| Dolphins   |     [8:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=510s) | Combining `count` and `fct_lump` functions to get counts of top 5 species (with other species lumped in "Other")                     |
+| Dolphins   |     [9:55](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=595s) | Creating boxplot of species and age                                                                                                  |
+| Dolphins   |    [11:50](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=710s) | Dealing with different types of NA (double, logical) (he doesn't get it in this case, but it's still useful)                         |
+| Dolphins   |    [15:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=930s) | Adding acquisition type as colour dimension to histogram                                                                             |
+| Dolphins   |    [16:00](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=960s) | Creating a spinogram of acquisition type over time (alternative to histogram) using `geom_area`                                      |
+| Dolphins   |   [17:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1045s) | Binning year into decade using truncated division operator `%/%`                                                                     |
+| Dolphins   |   [19:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1150s) | Fixing annoying triangular gaps in spinogram using complete function to fill in gaps in data                                         |
+| Dolphins   |   [21:15](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1275s) | Using `fct_reorder` function to reorder acquisition type (bigger categories are placed on the bottom of the spinogram)               |
+| Dolphins   |   [23:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1405s) | Adding vertical dashed reference line using `geom_vline` function                                                                    |
+| Dolphins   |   [24:05](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1445s) | Starting analysis of acquisition location                                                                                            |
+| Dolphins   |   [27:05](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1625s) | Matching messy text data with regex to aggregate into a few categories variables with `fuzzyjoin` package                            |
+| Dolphins   |   [31:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1890s) | Using `distinct` function's .keep_all argument to keep only one row per animal ID                                                    |
+| Dolphins   |   [33:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=1990s) | Using `coalesce` function to conditionally replace NAs (same functionality as SQL verb)                                              |
+| Dolphins   |   [40:00](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2400s) | Starting survival analysis                                                                                                           |
+| Dolphins   |   [46:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2785s) | Using `survfit` function from `survival` package to get a baseline survival curve (i.e., not regressed on any independent variables) |
+| Dolphins   |   [47:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2850s) | Fixing cases where death year is before birth year                                                                                   |
+| Dolphins   |   [48:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=2910s) | Fixing specification of survfit model to better fit the format of our data (right-censored data)                                     |
+| Dolphins   |   [50:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3010s) | Built-in plot of baseline survival model (estimation of percentage survival at a given age)                                          |
+| Dolphins   |   [50:30](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3030s) | Using `broom` package to tidy the survival model data (which is better for `ggplot2` plotting)                                       |
+| Dolphins   |   [52:20](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3140s) | Fitting survival curve based on sex                                                                                                  |
+| Dolphins   |   [54:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3265s) | Cox proportional hazards model (to investigate association of survival time and one or more predictors)                              |
+| Dolphins   |   [55:50](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3350s) | Explanation of why dolphins with unknown sex likely have a systematic bias with their data                                           |
+| Dolphins   |   [57:25](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3445s) | Investigating whether being born in captivity is associated with different survival rates                                            |
+| Dolphins   | [1:00:10](https://www.youtube.com/watch?v=KiqpX-gNIS4&t=3610s) | Summary of screencast                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### TidyTuesday Tweets
+#### TidyTuesday Tweets {#tidytuesday-tweets}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| TidyTuesday Tweets | [1:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=80s) | Importing an rds file using `read_rds` function |
-| TidyTuesday Tweets | [2:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=175s) | Using `floor_date` function from `lubridate` package to round dates down (that's what the floor part does) to the month level |
-| TidyTuesday Tweets | [5:25](https://www.youtube.com/watch?v=KE9ItC3doEU&t=325s) | Asking, "Which tweets get the most re-tweets?" |
-| TidyTuesday Tweets | [5:50](https://www.youtube.com/watch?v=KE9ItC3doEU&t=350s) | Using `contains` function to select only columns that contain a certain string ("retweet" in this case) |
-| TidyTuesday Tweets | [8:05](https://www.youtube.com/watch?v=KE9ItC3doEU&t=485s) | Exploring likes/re-tweets ratio, including dealing with one or the other being 0 (which would cause divide by zero error) |
-| TidyTuesday Tweets | [11:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=660s) | Starting exploration of actual text of tweets |
-| TidyTuesday Tweets | [11:35](https://www.youtube.com/watch?v=KE9ItC3doEU&t=695s) | Using `unnest_tokens` function from `tidytext` package to break tweets into individual words (using token argument specifically for tweet-style text) |
-| TidyTuesday Tweets | [12:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=775s) | Using `anti_join` function to filter out stop words (e.g., "and", "or", "the") from tokenized data frame |
-| TidyTuesday Tweets | [14:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=885s) | Calculating summary statistics per word (average retweets and likes), then looking at distributions |
-| TidyTuesday Tweets | [16:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=960s) | Explanation of Poisson log normal distribution (number of retweets fits this distribution) |
-| TidyTuesday Tweets | [17:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1065s) | Additional example of Poisson log normal distribution (number of likes) |
-| TidyTuesday Tweets | [18:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1100s) | Explanation of geometric mean as better summary statistic than median or arithmetic mean |
-| TidyTuesday Tweets | [25:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1520s) | Using `floor_date` function from `lubridate` package to floor dates to the week level and tweaking so that a week starts on Monday (default is Sunday) |
-| TidyTuesday Tweets | [30:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1820s) | Asking, "What topic is each week about?" using just the tweet text |
-| TidyTuesday Tweets | [31:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1890s) | Calculating TF-IDF of tweets, with week as the "document" |
-| TidyTuesday Tweets | [33:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2025s) | Using `top_n` and `group_by` functions to select the top tf-idf score for each week |
-| TidyTuesday Tweets | [37:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2275s) | Using `str_detect` function to filter out "words" that are just numbers (e.g., 16, 36) |
-| TidyTuesday Tweets | [41:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2460s) | Using `distinct` function with .keep_all argument to ensure only top 1 result, as alternative to `top_n` function (which includes ties) |
-| TidyTuesday Tweets | [42:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2550s) | Making Jenny Bryan disappointed |
-| TidyTuesday Tweets | [42:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2575s) | Using `geom_text` function to add text labels to graph to show to word associated with each week |
-| TidyTuesday Tweets | [44:10](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2650s) | Using `geom_text_repel` function from `ggrepel` package as an alternative to `geom_text` function for adding text labels to graph |
-| TidyTuesday Tweets | [46:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2790s) | Using `rvest` package to scrape web data from a table in Tidy Tuesday README |
-| TidyTuesday Tweets | [51:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3060s) | Starting to look at #rstats tweets |
-| TidyTuesday Tweets | [56:35](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3395s) | Spotting signs of fake accounts with purchased followers (lots of hashtags) |
-| TidyTuesday Tweets | [59:15](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3555s) | Explanation of spotting fake accounts |
-| TidyTuesday Tweets | [1:00:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3645s) | Using `str_detect` to filter out web URLs |
-| TidyTuesday Tweets | [1:03:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3835s) | Using `str_count` function and some regex to count how many hashtags a tweet has |
-| TidyTuesday Tweets | [1:07:25](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4045s) | Creating a Bland-Altman plot (total on x-axis, variable of interest on y-axis) |
-| TidyTuesday Tweets | [1:08:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4125s) | Using `geom_text` function with check_overlap argument to add labels to scatterplot |
-| TidyTuesday Tweets | [1:12:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4340s) | Asking, "Who are the most active #rstats tweeters?" |
-| TidyTuesday Tweets | [1:15:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4500s) | Summary of screncast |
+| Screencast         |                                                           Time | Description                                                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| TidyTuesday Tweets |      [1:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=80s) | Importing an rds file using `read_rds` function                                                                                                        |
+| TidyTuesday Tweets |     [2:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=175s) | Using `floor_date` function from `lubridate` package to round dates down (that's what the floor part does) to the month level                          |
+| TidyTuesday Tweets |     [5:25](https://www.youtube.com/watch?v=KE9ItC3doEU&t=325s) | Asking, "Which tweets get the most re-tweets?"                                                                                                         |
+| TidyTuesday Tweets |     [5:50](https://www.youtube.com/watch?v=KE9ItC3doEU&t=350s) | Using `contains` function to select only columns that contain a certain string ("retweet" in this case)                                                |
+| TidyTuesday Tweets |     [8:05](https://www.youtube.com/watch?v=KE9ItC3doEU&t=485s) | Exploring likes/re-tweets ratio, including dealing with one or the other being 0 (which would cause divide by zero error)                              |
+| TidyTuesday Tweets |    [11:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=660s) | Starting exploration of actual text of tweets                                                                                                          |
+| TidyTuesday Tweets |    [11:35](https://www.youtube.com/watch?v=KE9ItC3doEU&t=695s) | Using `unnest_tokens` function from `tidytext` package to break tweets into individual words (using token argument specifically for tweet-style text)  |
+| TidyTuesday Tweets |    [12:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=775s) | Using `anti_join` function to filter out stop words (e.g., "and", "or", "the") from tokenized data frame                                               |
+| TidyTuesday Tweets |    [14:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=885s) | Calculating summary statistics per word (average retweets and likes), then looking at distributions                                                    |
+| TidyTuesday Tweets |    [16:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=960s) | Explanation of Poisson log normal distribution (number of retweets fits this distribution)                                                             |
+| TidyTuesday Tweets |   [17:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1065s) | Additional example of Poisson log normal distribution (number of likes)                                                                                |
+| TidyTuesday Tweets |   [18:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1100s) | Explanation of geometric mean as better summary statistic than median or arithmetic mean                                                               |
+| TidyTuesday Tweets |   [25:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1520s) | Using `floor_date` function from `lubridate` package to floor dates to the week level and tweaking so that a week starts on Monday (default is Sunday) |
+| TidyTuesday Tweets |   [30:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1820s) | Asking, "What topic is each week about?" using just the tweet text                                                                                     |
+| TidyTuesday Tweets |   [31:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=1890s) | Calculating TF-IDF of tweets, with week as the "document"                                                                                              |
+| TidyTuesday Tweets |   [33:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2025s) | Using `top_n` and `group_by` functions to select the top tf-idf score for each week                                                                    |
+| TidyTuesday Tweets |   [37:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2275s) | Using `str_detect` function to filter out "words" that are just numbers (e.g., 16, 36)                                                                 |
+| TidyTuesday Tweets |   [41:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2460s) | Using `distinct` function with .keep_all argument to ensure only top 1 result, as alternative to `top_n` function (which includes ties)                |
+| TidyTuesday Tweets |   [42:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2550s) | Making Jenny Bryan disappointed                                                                                                                        |
+| TidyTuesday Tweets |   [42:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2575s) | Using `geom_text` function to add text labels to graph to show to word associated with each week                                                       |
+| TidyTuesday Tweets |   [44:10](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2650s) | Using `geom_text_repel` function from `ggrepel` package as an alternative to `geom_text` function for adding text labels to graph                      |
+| TidyTuesday Tweets |   [46:30](https://www.youtube.com/watch?v=KE9ItC3doEU&t=2790s) | Using `rvest` package to scrape web data from a table in Tidy Tuesday README                                                                           |
+| TidyTuesday Tweets |   [51:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3060s) | Starting to look at #rstats tweets                                                                                                                     |
+| TidyTuesday Tweets |   [56:35](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3395s) | Spotting signs of fake accounts with purchased followers (lots of hashtags)                                                                            |
+| TidyTuesday Tweets |   [59:15](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3555s) | Explanation of spotting fake accounts                                                                                                                  |
+| TidyTuesday Tweets | [1:00:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3645s) | Using `str_detect` to filter out web URLs                                                                                                              |
+| TidyTuesday Tweets | [1:03:55](https://www.youtube.com/watch?v=KE9ItC3doEU&t=3835s) | Using `str_count` function and some regex to count how many hashtags a tweet has                                                                       |
+| TidyTuesday Tweets | [1:07:25](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4045s) | Creating a Bland-Altman plot (total on x-axis, variable of interest on y-axis)                                                                         |
+| TidyTuesday Tweets | [1:08:45](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4125s) | Using `geom_text` function with check_overlap argument to add labels to scatterplot                                                                    |
+| TidyTuesday Tweets | [1:12:20](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4340s) | Asking, "Who are the most active #rstats tweeters?"                                                                                                    |
+| TidyTuesday Tweets | [1:15:00](https://www.youtube.com/watch?v=KE9ItC3doEU&t=4500s) | Summary of screncast                                                                                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### TV Golden Age
+#### TV Golden Age {#tv-golden-age}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| TV Golden Age | [2:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=145s) | Quick tip on how to start exploring a new dataset |
-| TV Golden Age | [7:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=450s) | Investigating inconsistency of shows having a count of seasons that is different from the number of seasons given in the data |
-| TV Golden Age | [10:10](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=610s) | Using `%in%` operator and `all` function to only get shows that have a first season and don't have skipped seasons in the data |
-| TV Golden Age | [15:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=930s) | Asking, "Which seasons have the most variation in ratings?" |
-| TV Golden Age | [20:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1225s) | Using `facet_wrap` function to separate different shows on a line graph into multiple small graphs |
-| TV Golden Age | [20:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1250s) | Writing custom embedded function to get width of breaks on the x-axis to always be even (e.g., season 2, 4, 6, etc.) |
-| TV Golden Age | [23:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1430s) | Committing, finding, and explaining a common error of using the same variable name when summarizing multiple things |
-| TV Golden Age | [28:20](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1700s) | Using truncated division operator `%/%` to bin data into two-year bins instead of annual (e.g., 1990 and 1991 get binned to 1990) |
-| TV Golden Age | [31:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1890s) | Using subsetting (with square brackets) within the `mutate` function to calculate mean on only a subset of data (without needing to filter) |
-| TV Golden Age | [33:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2030s) | Using `gather` function (now `pivot_longer`) to get metrics as columns into tidy format, in order to graph them all at once with a `facet_wrap` |
-| TV Golden Age | [36:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2190s) | Using `pmin` function to lump all seasons after 4 into one row (it still shows "4", but it represents "4+") |
-| TV Golden Age | [39:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2340s) | Asking, "If season 1 is good, do you get a second season?" (show survival) |
-| TV Golden Age | [40:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2435s) | Using `paste0` and `spread` functions to get season 1-3 ratings into three columns, one for each season |
-| TV Golden Age | [42:05](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2525s) | Using `distinct` function with `.keep_all` argument remove duplicates by only keeping the first one that appears |
-| TV Golden Age | [45:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2750s) | Using logistic regression to answer, "Does season 1 rating affect the probability of getting a second season?" (note he forgets to specify the family argument, fixed at 57:25) |
-| TV Golden Age | [48:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2915s) | Using `ntile` function to divide data into N bins (5 in this case), then eventually using `cut` function instead |
-| TV Golden Age | [57:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3420s) | Adding year as an independent variable to the logistic regression model |
-| TV Golden Age | [58:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3530s) | Adding an interaction term (season 1 interacting with year) to the logistic regression model |
-| TV Golden Age | [59:55](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3595s) | Using `augment` function as a method of visualizing and interpreting coefficients of regression model |
-| TV Golden Age | [1:00:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3630s) | Using `crossing` function to create new data to test the logistic regression model on and interpret model coefficients |
-| TV Golden Age | [1:03:40](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3820s) | Fitting natural splines using the `splines` package, which would capture a non-linear relationship |
-| TV Golden Age | [1:06:15](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3975s) | Summary of screencast |
+| Screencast    |                                                           Time | Description                                                                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| TV Golden Age |     [2:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=145s) | Quick tip on how to start exploring a new dataset                                                                                                                               |
+| TV Golden Age |     [7:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=450s) | Investigating inconsistency of shows having a count of seasons that is different from the number of seasons given in the data                                                   |
+| TV Golden Age |    [10:10](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=610s) | Using `%in%` operator and `all` function to only get shows that have a first season and don't have skipped seasons in the data                                                  |
+| TV Golden Age |    [15:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=930s) | Asking, "Which seasons have the most variation in ratings?"                                                                                                                     |
+| TV Golden Age |   [20:25](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1225s) | Using `facet_wrap` function to separate different shows on a line graph into multiple small graphs                                                                              |
+| TV Golden Age |   [20:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1250s) | Writing custom embedded function to get width of breaks on the x-axis to always be even (e.g., season 2, 4, 6, etc.)                                                            |
+| TV Golden Age |   [23:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1430s) | Committing, finding, and explaining a common error of using the same variable name when summarizing multiple things                                                             |
+| TV Golden Age |   [28:20](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1700s) | Using truncated division operator `%/%` to bin data into two-year bins instead of annual (e.g., 1990 and 1991 get binned to 1990)                                               |
+| TV Golden Age |   [31:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=1890s) | Using subsetting (with square brackets) within the `mutate` function to calculate mean on only a subset of data (without needing to filter)                                     |
+| TV Golden Age |   [33:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2030s) | Using `gather` function (now `pivot_longer`) to get metrics as columns into tidy format, in order to graph them all at once with a `facet_wrap`                                 |
+| TV Golden Age |   [36:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2190s) | Using `pmin` function to lump all seasons after 4 into one row (it still shows "4", but it represents "4+")                                                                     |
+| TV Golden Age |   [39:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2340s) | Asking, "If season 1 is good, do you get a second season?" (show survival)                                                                                                      |
+| TV Golden Age |   [40:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2435s) | Using `paste0` and `spread` functions to get season 1-3 ratings into three columns, one for each season                                                                         |
+| TV Golden Age |   [42:05](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2525s) | Using `distinct` function with `.keep_all` argument remove duplicates by only keeping the first one that appears                                                                |
+| TV Golden Age |   [45:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2750s) | Using logistic regression to answer, "Does season 1 rating affect the probability of getting a second season?" (note he forgets to specify the family argument, fixed at 57:25) |
+| TV Golden Age |   [48:35](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=2915s) | Using `ntile` function to divide data into N bins (5 in this case), then eventually using `cut` function instead                                                                |
+| TV Golden Age |   [57:00](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3420s) | Adding year as an independent variable to the logistic regression model                                                                                                         |
+| TV Golden Age |   [58:50](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3530s) | Adding an interaction term (season 1 interacting with year) to the logistic regression model                                                                                    |
+| TV Golden Age |   [59:55](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3595s) | Using `augment` function as a method of visualizing and interpreting coefficients of regression model                                                                           |
+| TV Golden Age | [1:00:30](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3630s) | Using `crossing` function to create new data to test the logistic regression model on and interpret model coefficients                                                          |
+| TV Golden Age | [1:03:40](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3820s) | Fitting natural splines using the `splines` package, which would capture a non-linear relationship                                                                              |
+| TV Golden Age | [1:06:15](https://www.youtube.com/watch?v=oYGi2wgSJaM&t=3975s) | Summary of screencast                                                                                                                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Space Launches
+#### Space Launches {#space-launches}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Space Launches | [4:40](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=280s) | Using `str_detect` function to find missions with "Apollo" in their name |
-| Space Launches | [6:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=380s) | Starting EDA (exploratory data analysis) |
-| Space Launches | [15:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=910s) | Using `fct_collapse` function to recode factors (similar to `case_when` function) |
+| Screencast     |                                                         Time | Description                                                                                                                       |
+|:-----------------------|-----------------------:|:-----------------------|
+| Space Launches |   [4:40](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=280s) | Using `str_detect` function to find missions with "Apollo" in their name                                                          |
+| Space Launches |   [6:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=380s) | Starting EDA (exploratory data analysis)                                                                                          |
+| Space Launches |  [15:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=910s) | Using `fct_collapse` function to recode factors (similar to `case_when` function)                                                 |
 | Space Launches | [16:45](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1005s) | Using `countrycode` function from `countrycode` package to get full country names from country codes (e.g. "RU" becomes "Russia") |
-| Space Launches | [18:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1095s) | Using `replace_na` function to convert NA (missing) observations to "Other" |
-| Space Launches | [19:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1150s) | Creating a line graph using `geom_line` function with different colours for different categories |
-| Space Launches | [21:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1265s) | Using `fct_reorder` function to reorder factors in line graph above, in order to make legend more readable |
-| Space Launches | [32:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1920s) | Creating a bar graph, using `geom_col` function, of most active (by number of launches) private or startup agencies |
-| Space Launches | [35:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2105s) | Using truncated division operator `%/%` to bin data into decades |
-| Space Launches | [35:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2135s) | Using `complete` function to turn implicit zeros into explicit zeros (makes for a cleaner line graph) |
-| Space Launches | [37:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2235s) | Using `facet_wrap` function to create small multiples of a line graph, then proceeding to tweak the graph |
-| Space Launches | [42:50](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2570s) | Using `semi_join` function as a filtering step |
-| Space Launches | [43:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2595s) | Using `geom_point` to create a timeline of launches by vehicle type |
-| Space Launches | [47:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2840s) | Explanation of why boxplots over time might not be a good visualization choice |
-| Space Launches | [48:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2880s) | Using `geom_jitter` function to tweak the timeline graph to be more readable |
-| Space Launches | [51:30](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3090s) | Creating a second timeline graph for US vehicles and launches |
-| Space Launches | [56:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3395s) | Summary of screencast |
+| Space Launches | [18:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1095s) | Using `replace_na` function to convert NA (missing) observations to "Other"                                                       |
+| Space Launches | [19:10](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1150s) | Creating a line graph using `geom_line` function with different colours for different categories                                  |
+| Space Launches | [21:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1265s) | Using `fct_reorder` function to reorder factors in line graph above, in order to make legend more readable                        |
+| Space Launches | [32:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=1920s) | Creating a bar graph, using `geom_col` function, of most active (by number of launches) private or startup agencies               |
+| Space Launches | [35:05](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2105s) | Using truncated division operator `%/%` to bin data into decades                                                                  |
+| Space Launches | [35:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2135s) | Using `complete` function to turn implicit zeros into explicit zeros (makes for a cleaner line graph)                             |
+| Space Launches | [37:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2235s) | Using `facet_wrap` function to create small multiples of a line graph, then proceeding to tweak the graph                         |
+| Space Launches | [42:50](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2570s) | Using `semi_join` function as a filtering step                                                                                    |
+| Space Launches | [43:15](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2595s) | Using `geom_point` to create a timeline of launches by vehicle type                                                               |
+| Space Launches | [47:20](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2840s) | Explanation of why boxplots over time might not be a good visualization choice                                                    |
+| Space Launches | [48:00](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=2880s) | Using `geom_jitter` function to tweak the timeline graph to be more readable                                                      |
+| Space Launches | [51:30](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3090s) | Creating a second timeline graph for US vehicles and launches                                                                     |
+| Space Launches | [56:35](https://www.youtube.com/watch?v=ZyPrP_Yo1BA&t=3395s) | Summary of screencast                                                                                                             |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### US Incarceration
+#### US Incarceration {#us-incarceration}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| US Incarceration | [4:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=270s) | Creating a facetted (small multiples) line graph of incarceration rate by urbanicity and race over time |
-| US Incarceration | [7:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=465s) | Discussion of statistical testing of incarceration rates by urbanicity (e.g., rural, suburban) |
-| US Incarceration | [11:25](https://www.youtube.com/watch?v=78kv808ZU6o&t=685s) | Exploring the extent of missing data on prison population |
-| US Incarceration | [14:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=855s) | Using `any` function to filter down to states that have at least one (hence the any function) row of non-missing data |
-| US Incarceration | [18:40](https://www.youtube.com/watch?v=78kv808ZU6o&t=1120s) | Using `cut` function to manually bin data along user-specified intervals |
-| US Incarceration | [24:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=1455s) | Starting to create a choropleth map of incarceration rate by state |
+| Screencast       |                                                         Time | Description                                                                                                                   |
+|:-----------------------|-----------------------:|:-----------------------|
+| US Incarceration |   [4:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=270s) | Creating a facetted (small multiples) line graph of incarceration rate by urbanicity and race over time                       |
+| US Incarceration |   [7:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=465s) | Discussion of statistical testing of incarceration rates by urbanicity (e.g., rural, suburban)                                |
+| US Incarceration |  [11:25](https://www.youtube.com/watch?v=78kv808ZU6o&t=685s) | Exploring the extent of missing data on prison population                                                                     |
+| US Incarceration |  [14:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=855s) | Using `any` function to filter down to states that have at least one (hence the any function) row of non-missing data         |
+| US Incarceration | [18:40](https://www.youtube.com/watch?v=78kv808ZU6o&t=1120s) | Using `cut` function to manually bin data along user-specified intervals                                                      |
+| US Incarceration | [24:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=1455s) | Starting to create a choropleth map of incarceration rate by state                                                            |
 | US Incarceration | [26:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=1580s) | Using `match` function to match two-letter state abbreviation to full state name, in order to get data needed to create a map |
-| US Incarceration | [28:00](https://www.youtube.com/watch?v=78kv808ZU6o&t=1680s) | Actually typing the code (now that we have the necessary data) to create a choropleth map |
-| US Incarceration | [33:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=1985s) | Using `str_remove` function and regex to chop off the end of county names (e.g., "Allen Parish" becomes "Allen") |
-| US Incarceration | [33:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=2010s) | Making choropleth more specific by drilling down to county-level data |
-| US Incarceration | [41:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=2470s) | Starting to make an animated choropleth map using `gganimate` package |
-| US Incarceration | [42:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=2540s) | Using modulo operator `%%` to choose every 5th year |
-| US Incarceration | [43:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=2625s) | Using `scale_fill_gradient2` function's `limits` argument to exclude unusally high values that were blowing out the scale |
-| US Incarceration | [48:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=2895s) | Using `summarise_at` function to apply the same function to multiple fields at the same time |
-| US Incarceration | [50:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=3010s) | Starting to investigate missing data (how much is missing, where is it missing, etc.) |
-| US Incarceration | [54:50](https://www.youtube.com/watch?v=78kv808ZU6o&t=3290s) | Creating a line graph that excludes counties with missing data |
-| US Incarceration | [57:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=3425s) | Summary of screencast |
+| US Incarceration | [28:00](https://www.youtube.com/watch?v=78kv808ZU6o&t=1680s) | Actually typing the code (now that we have the necessary data) to create a choropleth map                                     |
+| US Incarceration | [33:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=1985s) | Using `str_remove` function and regex to chop off the end of county names (e.g., "Allen Parish" becomes "Allen")              |
+| US Incarceration | [33:30](https://www.youtube.com/watch?v=78kv808ZU6o&t=2010s) | Making choropleth more specific by drilling down to county-level data                                                         |
+| US Incarceration | [41:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=2470s) | Starting to make an animated choropleth map using `gganimate` package                                                         |
+| US Incarceration | [42:20](https://www.youtube.com/watch?v=78kv808ZU6o&t=2540s) | Using modulo operator `%%` to choose every 5th year                                                                           |
+| US Incarceration | [43:45](https://www.youtube.com/watch?v=78kv808ZU6o&t=2625s) | Using `scale_fill_gradient2` function's `limits` argument to exclude unusally high values that were blowing out the scale     |
+| US Incarceration | [48:15](https://www.youtube.com/watch?v=78kv808ZU6o&t=2895s) | Using `summarise_at` function to apply the same function to multiple fields at the same time                                  |
+| US Incarceration | [50:10](https://www.youtube.com/watch?v=78kv808ZU6o&t=3010s) | Starting to investigate missing data (how much is missing, where is it missing, etc.)                                         |
+| US Incarceration | [54:50](https://www.youtube.com/watch?v=78kv808ZU6o&t=3290s) | Creating a line graph that excludes counties with missing data                                                                |
+| US Incarceration | [57:05](https://www.youtube.com/watch?v=78kv808ZU6o&t=3425s) | Summary of screencast                                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### US Dairy Consumption
+#### US Dairy Consumption {#us-dairy-consumption}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| US Dairy Consumption | [2:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=170s) | Identifying the need for a gather step |
-| US Dairy Consumption | [4:40](https://www.youtube.com/watch?v=13iG_HkEPVc&t=280s) | Changing snake case to title case using `str_to_title` and `str_replace_all` functions |
-| US Dairy Consumption | [6:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=380s) | Identifying need for separating categories into major and minor categories (e.g., "Cheese Other" can be divided into "Cheese" and "Other") |
-| US Dairy Consumption | [7:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=430s) | Using `separate` function to split categories into major and minor categories (good explanation of "extra" argument, which merges additional separations into one field) |
-| US Dairy Consumption | [8:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=500s) | Using `coalesce` function to deal with NAs resulting from above step |
-| US Dairy Consumption | [10:30](https://www.youtube.com/watch?v=13iG_HkEPVc&t=630s) | Dealing with graph of minor category that is linked to multiple major categories ("Other" linked to "Cheese" and "Frozen") |
-| US Dairy Consumption | [13:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=790s) | Introducing `fct_lump` function as an approach to work with many categories |
-| US Dairy Consumption | [14:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=890s) | Introducing facetting (`facet_wrap` function) as second alternative to working with many categories |
-| US Dairy Consumption | [15:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=950s) | Dealing with "Other" category having two parts to it by using `ifelse` function in the cleaning step (e.g., go from "Other" to "Other Cheese") |
-| US Dairy Consumption | [19:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1185s) | Looking at page for the `sweep` package |
-| US Dairy Consumption | [21:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1280s) | Using `tk_ts` function to coerce a tibble to a timeseries |
-| US Dairy Consumption | [22:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1330s) | Turning year column (numeric) into a date by adding number of years to Jan 1, 0001 |
-| US Dairy Consumption | [26:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1560s) | Nesting time series object into each combination of category and product |
-| US Dairy Consumption | [27:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1670s) | Applying ETS (Error, Trend, Seasonal) model to each time series |
-| US Dairy Consumption | [28:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1690s) | Using `sw_glance` function (`sweep` package's version of `glance` function) to pull out model parameters from model field created in above step |
-| US Dairy Consumption | [29:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1785s) | Using `sw_augment` function to append fitted values and residuals from the model to the original data |
-| US Dairy Consumption | [30:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1850s) | Visualising actual and fitted values on the same graph to get a look at the ETS model |
-| US Dairy Consumption | [32:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1930s) | Using `Arima` function (note the capital A) as alternative to ETS (not sure what difference is between `arima` and `Arima`) |
-| US Dairy Consumption | [35:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2100s) | Forecasting into the future using an ETS model using various functions: `unnest`, `sw_sweep`, `forecast` |
-| US Dairy Consumption | [37:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2265s) | Using `geom_ribbon` function to add confidence bounds to forecast |
-| US Dairy Consumption | [40:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2420s) | Forecasting using auto-ARIMA (instead of ETS) |
-| US Dairy Consumption | [40:55](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2455s) | Applying two forecasting methods at the same time (auto-ARIMA and ETS) using the `crossing` function |
-| US Dairy Consumption | [41:55](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2515s) | Quick test of how `invoke` function works (used to call a function easily, e.g., when it is a character string instead of called directly) |
-| US Dairy Consumption | [47:35](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2855s) | Removing only one part of legend (line type of solid or dashed) using `scale_linetype_discrete` function |
-| US Dairy Consumption | [51:25](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3085s) | Using `gather` function to clean up new dataset |
-| US Dairy Consumption | [52:05](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3125s) | Using `fct_recode` to fix a typo in a categorical variable |
-| US Dairy Consumption | [56:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3360s) | Copy-pasting previous forecasting code to cheese and reviewing any changes needed |
-| US Dairy Consumption | [57:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3440s) | Discussing alternative approach: creating interactive visualisation using `shiny` package to do direct comparisons |
+| Screencast           |                                                         Time | Description                                                                                                                                                              |
+|:-----------------------|-----------------------:|:-----------------------|
+| US Dairy Consumption |   [2:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=170s) | Identifying the need for a gather step                                                                                                                                   |
+| US Dairy Consumption |   [4:40](https://www.youtube.com/watch?v=13iG_HkEPVc&t=280s) | Changing snake case to title case using `str_to_title` and `str_replace_all` functions                                                                                   |
+| US Dairy Consumption |   [6:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=380s) | Identifying need for separating categories into major and minor categories (e.g., "Cheese Other" can be divided into "Cheese" and "Other")                               |
+| US Dairy Consumption |   [7:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=430s) | Using `separate` function to split categories into major and minor categories (good explanation of "extra" argument, which merges additional separations into one field) |
+| US Dairy Consumption |   [8:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=500s) | Using `coalesce` function to deal with NAs resulting from above step                                                                                                     |
+| US Dairy Consumption |  [10:30](https://www.youtube.com/watch?v=13iG_HkEPVc&t=630s) | Dealing with graph of minor category that is linked to multiple major categories ("Other" linked to "Cheese" and "Frozen")                                               |
+| US Dairy Consumption |  [13:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=790s) | Introducing `fct_lump` function as an approach to work with many categories                                                                                              |
+| US Dairy Consumption |  [14:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=890s) | Introducing facetting (`facet_wrap` function) as second alternative to working with many categories                                                                      |
+| US Dairy Consumption |  [15:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=950s) | Dealing with "Other" category having two parts to it by using `ifelse` function in the cleaning step (e.g., go from "Other" to "Other Cheese")                           |
+| US Dairy Consumption | [19:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1185s) | Looking at page for the `sweep` package                                                                                                                                  |
+| US Dairy Consumption | [21:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1280s) | Using `tk_ts` function to coerce a tibble to a timeseries                                                                                                                |
+| US Dairy Consumption | [22:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1330s) | Turning year column (numeric) into a date by adding number of years to Jan 1, 0001                                                                                       |
+| US Dairy Consumption | [26:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1560s) | Nesting time series object into each combination of category and product                                                                                                 |
+| US Dairy Consumption | [27:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1670s) | Applying ETS (Error, Trend, Seasonal) model to each time series                                                                                                          |
+| US Dairy Consumption | [28:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1690s) | Using `sw_glance` function (`sweep` package's version of `glance` function) to pull out model parameters from model field created in above step                          |
+| US Dairy Consumption | [29:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1785s) | Using `sw_augment` function to append fitted values and residuals from the model to the original data                                                                    |
+| US Dairy Consumption | [30:50](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1850s) | Visualising actual and fitted values on the same graph to get a look at the ETS model                                                                                    |
+| US Dairy Consumption | [32:10](https://www.youtube.com/watch?v=13iG_HkEPVc&t=1930s) | Using `Arima` function (note the capital A) as alternative to ETS (not sure what difference is between `arima` and `Arima`)                                              |
+| US Dairy Consumption | [35:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2100s) | Forecasting into the future using an ETS model using various functions: `unnest`, `sw_sweep`, `forecast`                                                                 |
+| US Dairy Consumption | [37:45](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2265s) | Using `geom_ribbon` function to add confidence bounds to forecast                                                                                                        |
+| US Dairy Consumption | [40:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2420s) | Forecasting using auto-ARIMA (instead of ETS)                                                                                                                            |
+| US Dairy Consumption | [40:55](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2455s) | Applying two forecasting methods at the same time (auto-ARIMA and ETS) using the `crossing` function                                                                     |
+| US Dairy Consumption | [41:55](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2515s) | Quick test of how `invoke` function works (used to call a function easily, e.g., when it is a character string instead of called directly)                               |
+| US Dairy Consumption | [47:35](https://www.youtube.com/watch?v=13iG_HkEPVc&t=2855s) | Removing only one part of legend (line type of solid or dashed) using `scale_linetype_discrete` function                                                                 |
+| US Dairy Consumption | [51:25](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3085s) | Using `gather` function to clean up new dataset                                                                                                                          |
+| US Dairy Consumption | [52:05](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3125s) | Using `fct_recode` to fix a typo in a categorical variable                                                                                                               |
+| US Dairy Consumption | [56:00](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3360s) | Copy-pasting previous forecasting code to cheese and reviewing any changes needed                                                                                        |
+| US Dairy Consumption | [57:20](https://www.youtube.com/watch?v=13iG_HkEPVc&t=3440s) | Discussing alternative approach: creating interactive visualisation using `shiny` package to do direct comparisons                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### US PhDs
+#### US PhDs {#us-phds}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| US PhDs | [3:15](https://www.youtube.com/watch?v=KzRP40PzopY&t=195s) | Using `read_xlsx` function to read in Excel spreadsheet, including skipping first few rows that don't have data |
-| US PhDs | [7:25](https://www.youtube.com/watch?v=KzRP40PzopY&t=445s) | Overview of starting very messy data |
-| US PhDs | [8:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=500s) | Using `gather` function to clean up wide dataset |
-| US PhDs | [9:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=560s) | Using `fill` function to fill in NA values with a entries in a previous observation |
-| US PhDs | [10:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=610s) | Cleaning variable that has number and percent in it, on top of one another using a combination of `ifelse` and `fill` functions |
-| US PhDs | [12:00](https://www.youtube.com/watch?v=KzRP40PzopY&t=720s) | Using `spread` function on cleaned data to separate number and percent by year |
-| US PhDs | [13:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=830s) | Spotted a mistake where he had the wrong string on `str_detect` function |
-| US PhDs | [16:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=1010s) | Using `sample` function to get 6 random fields of study to graph |
-| US PhDs | [18:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=1130s) | Cleaning another dataset, which is much easier to clean |
-| US PhDs | [19:05](https://www.youtube.com/watch?v=KzRP40PzopY&t=1145s) | Renaming the first field, even without knowing the exact name |
-| US PhDs | [21:55](https://www.youtube.com/watch?v=KzRP40PzopY&t=1315s) | Cleaning another dataset |
-| US PhDs | [23:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=1390s) | Discussing challenge of when indentation is used in original dataset (for group / sub-group distinction) |
-| US PhDs | [25:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=1520s) | Starting to separate out data that is appended to one another in the original dataset (all, male, female) |
-| US PhDs | [27:30](https://www.youtube.com/watch?v=KzRP40PzopY&t=1650s) | Removing field with long name using `contains` function |
-| US PhDs | [28:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=1690s) | Using `fct_recode` function to rename an oddly-named category in a categorical variable (`ifelse` function is probably a better alternative) |
-| US PhDs | [35:30](https://www.youtube.com/watch?v=KzRP40PzopY&t=2130s) | Discussing solution to broad major field description and fine major field description (meaningfully indented in original data) |
-| US PhDs | [39:40](https://www.youtube.com/watch?v=KzRP40PzopY&t=2380s) | Using `setdiff` function to separate broad and fine major fields |
+| Screencast |                                                         Time | Description                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| US PhDs    |   [3:15](https://www.youtube.com/watch?v=KzRP40PzopY&t=195s) | Using `read_xlsx` function to read in Excel spreadsheet, including skipping first few rows that don't have data                              |
+| US PhDs    |   [7:25](https://www.youtube.com/watch?v=KzRP40PzopY&t=445s) | Overview of starting very messy data                                                                                                         |
+| US PhDs    |   [8:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=500s) | Using `gather` function to clean up wide dataset                                                                                             |
+| US PhDs    |   [9:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=560s) | Using `fill` function to fill in NA values with a entries in a previous observation                                                          |
+| US PhDs    |  [10:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=610s) | Cleaning variable that has number and percent in it, on top of one another using a combination of `ifelse` and `fill` functions              |
+| US PhDs    |  [12:00](https://www.youtube.com/watch?v=KzRP40PzopY&t=720s) | Using `spread` function on cleaned data to separate number and percent by year                                                               |
+| US PhDs    |  [13:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=830s) | Spotted a mistake where he had the wrong string on `str_detect` function                                                                     |
+| US PhDs    | [16:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=1010s) | Using `sample` function to get 6 random fields of study to graph                                                                             |
+| US PhDs    | [18:50](https://www.youtube.com/watch?v=KzRP40PzopY&t=1130s) | Cleaning another dataset, which is much easier to clean                                                                                      |
+| US PhDs    | [19:05](https://www.youtube.com/watch?v=KzRP40PzopY&t=1145s) | Renaming the first field, even without knowing the exact name                                                                                |
+| US PhDs    | [21:55](https://www.youtube.com/watch?v=KzRP40PzopY&t=1315s) | Cleaning another dataset                                                                                                                     |
+| US PhDs    | [23:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=1390s) | Discussing challenge of when indentation is used in original dataset (for group / sub-group distinction)                                     |
+| US PhDs    | [25:20](https://www.youtube.com/watch?v=KzRP40PzopY&t=1520s) | Starting to separate out data that is appended to one another in the original dataset (all, male, female)                                    |
+| US PhDs    | [27:30](https://www.youtube.com/watch?v=KzRP40PzopY&t=1650s) | Removing field with long name using `contains` function                                                                                      |
+| US PhDs    | [28:10](https://www.youtube.com/watch?v=KzRP40PzopY&t=1690s) | Using `fct_recode` function to rename an oddly-named category in a categorical variable (`ifelse` function is probably a better alternative) |
+| US PhDs    | [35:30](https://www.youtube.com/watch?v=KzRP40PzopY&t=2130s) | Discussing solution to broad major field description and fine major field description (meaningfully indented in original data)               |
+| US PhDs    | [39:40](https://www.youtube.com/watch?v=KzRP40PzopY&t=2380s) | Using `setdiff` function to separate broad and fine major fields                                                                             |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### French Train Delays
+#### French Train Delays {#french-train-delays}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| French Train Delays | [10:20](https://www.youtube.com/watch?v=bmaigtpKyiM&t=620s) | Boxplots of departure stations using `fct_lump` function |
-| French Train Delays | [14:25](https://www.youtube.com/watch?v=bmaigtpKyiM&t=865s) | Creating heat map of departure and arrival delays, then cleaning up a sparse heat map |
-| French Train Delays | [15:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=930s) | Using `fct_reorder` function and length function to reorder stations based on how frequently they appear |
-| French Train Delays | [16:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=990s) | Using `fct_infreq` to reorder based on infrequently-appearing stations (same as above, but without a trick needed) |
-| French Train Delays | [17:45](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1065s) | Using `fct_lump` function to lump based on proportion instead of number of top categories desired |
-| French Train Delays | [18:45](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1125s) | Using `scale_fill_gradient2` function to specify diverging colour scale |
-| French Train Delays | [26:00](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1560s) | Checking another person's take on the data, which is a heatmap over time |
+| Screencast          |                                                         Time | Description                                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| French Train Delays |  [10:20](https://www.youtube.com/watch?v=bmaigtpKyiM&t=620s) | Boxplots of departure stations using `fct_lump` function                                                                                        |
+| French Train Delays |  [14:25](https://www.youtube.com/watch?v=bmaigtpKyiM&t=865s) | Creating heat map of departure and arrival delays, then cleaning up a sparse heat map                                                           |
+| French Train Delays |  [15:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=930s) | Using `fct_reorder` function and length function to reorder stations based on how frequently they appear                                        |
+| French Train Delays |  [16:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=990s) | Using `fct_infreq` to reorder based on infrequently-appearing stations (same as above, but without a trick needed)                              |
+| French Train Delays | [17:45](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1065s) | Using `fct_lump` function to lump based on proportion instead of number of top categories desired                                               |
+| French Train Delays | [18:45](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1125s) | Using `scale_fill_gradient2` function to specify diverging colour scale                                                                         |
+| French Train Delays | [26:00](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1560s) | Checking another person's take on the data, which is a heatmap over time                                                                        |
 | French Train Delays | [28:40](https://www.youtube.com/watch?v=bmaigtpKyiM&t=1720s) | Converting year and month (as digits) into date-class variable using `sprintf` function and padding month number with extra zero when necessary |
-| French Train Delays | [34:50](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2090s) | Using `summarise_at` function to quickly sum multiple columns |
-| French Train Delays | [39:35](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2375s) | Creating heatmap using `geom_tile` function for percentage of late trains by station over time |
-| French Train Delays | [45:05](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2705s) | Using `fill` function to fill in missing NA values with data from previous observations |
-| French Train Delays | [50:35](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3035s) | Grouping multiple variables into a single category using `paste0` function |
-| French Train Delays | [51:40](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3100s) | Grouping heatmap into International / National chunks with a weird hack |
-| French Train Delays | [52:20](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3140s) | Further separating International / National visually |
-| French Train Delays | [53:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3210s) | Less hacky way of separating International / National (compared to previous two rows) |
+| French Train Delays | [34:50](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2090s) | Using `summarise_at` function to quickly sum multiple columns                                                                                   |
+| French Train Delays | [39:35](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2375s) | Creating heatmap using `geom_tile` function for percentage of late trains by station over time                                                  |
+| French Train Delays | [45:05](https://www.youtube.com/watch?v=bmaigtpKyiM&t=2705s) | Using `fill` function to fill in missing NA values with data from previous observations                                                         |
+| French Train Delays | [50:35](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3035s) | Grouping multiple variables into a single category using `paste0` function                                                                      |
+| French Train Delays | [51:40](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3100s) | Grouping heatmap into International / National chunks with a weird hack                                                                         |
+| French Train Delays | [52:20](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3140s) | Further separating International / National visually                                                                                            |
+| French Train Delays | [53:30](https://www.youtube.com/watch?v=bmaigtpKyiM&t=3210s) | Less hacky way of separating International / National (compared to previous two rows)                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Women in the Workplace
+#### Women in the Workplace {#women-in-the-workplace}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Women in the Workplace | [5:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=350s) | Writing a custom function that summarizes variables based on their names (then abandoning the idea) |
-| Women in the Workplace | [9:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=555s) | Using `complete.cases` function to find observations that have an NA value in any variable |
-| Women in the Workplace | [9:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=590s) | Using subsetting within a `summarise` function to calculate a weighted mean when dealing with 0 or NA values in some observations |
-| Women in the Workplace | [12:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=740s) | Debugging what is causing NA values to appear in the summarise output (finds the error at 13:25) |
-| Women in the Workplace | [17:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1070s) | Hypothesizing about one sector illustrating a variation of Simpson's Paradox |
-| Women in the Workplace | [25:25](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1525s) | Creating a scatterplot with a logarithmic scale and using `scale_colour_gradient2` function to encode data to point colour |
-| Women in the Workplace | [30:00](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1800s) | Creating an interactive plot (tooltips show up on hover) using `ggplotly` function from `plotly` package |
+| Screencast             |                                                         Time | Description                                                                                                                                   |
+|:-----------------------|-----------------------:|:-----------------------|
+| Women in the Workplace |   [5:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=350s) | Writing a custom function that summarizes variables based on their names (then abandoning the idea)                                           |
+| Women in the Workplace |   [9:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=555s) | Using `complete.cases` function to find observations that have an NA value in any variable                                                    |
+| Women in the Workplace |   [9:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=590s) | Using subsetting within a `summarise` function to calculate a weighted mean when dealing with 0 or NA values in some observations             |
+| Women in the Workplace |  [12:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=740s) | Debugging what is causing NA values to appear in the summarise output (finds the error at 13:25)                                              |
+| Women in the Workplace | [17:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1070s) | Hypothesizing about one sector illustrating a variation of Simpson's Paradox                                                                  |
+| Women in the Workplace | [25:25](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1525s) | Creating a scatterplot with a logarithmic scale and using `scale_colour_gradient2` function to encode data to point colour                    |
+| Women in the Workplace | [30:00](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=1800s) | Creating an interactive plot (tooltips show up on hover) using `ggplotly` function from `plotly` package                                      |
 | Women in the Workplace | [33:20](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2000s) | Fiddling with `scale_size_continuous` function's `range` argument to specify point size on a scatterplot (which are encoded to total workers) |
-| Women in the Workplace | [34:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2090s) | Explanation of why healthcare sector is a good example of Simpson's Paradox |
-| Women in the Workplace | [43:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2595s) | Starting to create a `shiny` app with "occupation" as only input (many tweaks in subsequent minutes to make it work) |
-| Women in the Workplace | [47:55](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2875s) | Tweaking size (height) of graph in `shiny` app |
-| Women in the Workplace | [54:05](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=3245s) | Summary of screencast |
+| Women in the Workplace | [34:50](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2090s) | Explanation of why healthcare sector is a good example of Simpson's Paradox                                                                   |
+| Women in the Workplace | [43:15](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2595s) | Starting to create a `shiny` app with "occupation" as only input (many tweaks in subsequent minutes to make it work)                          |
+| Women in the Workplace | [47:55](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=2875s) | Tweaking size (height) of graph in `shiny` app                                                                                                |
+| Women in the Workplace | [54:05](https://www.youtube.com/watch?v=fv9SQ4IFNr4&t=3245s) | Summary of screencast                                                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Board Game Reviews
+#### Board Game Reviews {#board-game-reviews}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Board Game Reviews | [2:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=170s) | Starting EDA (exploratory data analysis) with counts of categorical variables |
-| Board Game Reviews | [7:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=445s) | Specifying `scale_x_log10` function's `breaks` argument to get sensisble tick marks for time on histogram |
-| Board Game Reviews | [8:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=525s) | Tweaking `geom_histogram` function's `binwidth` argument to get something that makes sense for log scale |
-| Board Game Reviews | [10:10](https://www.youtube.com/watch?v=qirKGdQvy9U&t=610s) | Using `separate_rows` to break down comma-separated values for three different categorical variables |
-| Board Game Reviews | [15:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=955s) | Using `top_n` to get top 20 observations from each of several categories (not quite right, fixed at 17:47) |
-| Board Game Reviews | [16:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=975s) | Troubleshooting various issues with facetted graph (e.g., ordering, values appearing in multiple categories) |
-| Board Game Reviews | [19:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1195s) | Starting prediction of average rating with a linear model |
-| Board Game Reviews | [20:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1250s) | Splitting data into train/test sets (training/holdout) |
-| Board Game Reviews | [22:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1375s) | Investigating relationship between max number of players and average rating (to determine if it should be in linear model) |
-| Board Game Reviews | [25:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1505s) | Exploring average rating over time ("Do newer games tend to be rated higher/lower?") |
-| Board Game Reviews | [27:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1655s) | Discussing necessity of controlling for year a game was published in the linear model |
-| Board Game Reviews | [28:30](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1710s) | Non-model approach to exploring relationship between game features (e.g., card game, made in Germany) on average rating |
-| Board Game Reviews | [30:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1850s) | Using `geom_boxplot` function to create boxplot of average ratings for most common game features |
-| Board Game Reviews | [34:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2045s) | Using `unite` function to combine multiple variables into one |
-| Board Game Reviews | [37:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2245s) | Introducing Lasso regression as good option when you have many features likely to be correlated with one another |
-| Board Game Reviews | [38:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2295s) | Writing code to set up Lasso regression using `glmnet` and `tidytext` packages |
-| Board Game Reviews | [40:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2405s) | Adding average rating to the feature matrix (warning: method is messy) |
-| Board Game Reviews | [41:40](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2500s) | Using `setdiff` function to find games that are in one set, but not in another (while setting up matrix for Lasso regression) |
-| Board Game Reviews | [44:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2655s) | Spotting the error stemming from the step above (calling row names from the wrong data) |
-| Board Game Reviews | [45:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2745s) | Explaining what a Lasso regression does, including the penalty parameter lambda |
-| Board Game Reviews | [48:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2915s) | Using a cross-validated Lasso model to choose the level of the penalty parameter (lambda) |
-| Board Game Reviews | [51:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3095s) | Adding non-categorical variables to the Lasso model to control for them (e.g., max number of players) |
-| Board Game Reviews | [55:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3315s) | Using `unite` function to combine multiple variables into one, separated by a colon |
-| Board Game Reviews | [58:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3525s) | Graphing the top 20 coefficients in the Lasso model that have the biggest effect on predicted average rating |
-| Board Game Reviews | [1:00:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3655s) | Mentioning the yardstick package as a way to evaluate the model's performance |
-| Board Game Reviews | [1:01:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3675s) | Discussing drawbacks of linear models like Lasso (can't do non-linear relationships or interaction effects) |
+| Screencast         |                                                           Time | Description                                                                                                                   |
+|:-----------------------|-----------------------:|:-----------------------|
+| Board Game Reviews |     [2:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=170s) | Starting EDA (exploratory data analysis) with counts of categorical variables                                                 |
+| Board Game Reviews |     [7:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=445s) | Specifying `scale_x_log10` function's `breaks` argument to get sensisble tick marks for time on histogram                     |
+| Board Game Reviews |     [8:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=525s) | Tweaking `geom_histogram` function's `binwidth` argument to get something that makes sense for log scale                      |
+| Board Game Reviews |    [10:10](https://www.youtube.com/watch?v=qirKGdQvy9U&t=610s) | Using `separate_rows` to break down comma-separated values for three different categorical variables                          |
+| Board Game Reviews |    [15:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=955s) | Using `top_n` to get top 20 observations from each of several categories (not quite right, fixed at 17:47)                    |
+| Board Game Reviews |    [16:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=975s) | Troubleshooting various issues with facetted graph (e.g., ordering, values appearing in multiple categories)                  |
+| Board Game Reviews |   [19:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1195s) | Starting prediction of average rating with a linear model                                                                     |
+| Board Game Reviews |   [20:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1250s) | Splitting data into train/test sets (training/holdout)                                                                        |
+| Board Game Reviews |   [22:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1375s) | Investigating relationship between max number of players and average rating (to determine if it should be in linear model)    |
+| Board Game Reviews |   [25:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1505s) | Exploring average rating over time ("Do newer games tend to be rated higher/lower?")                                          |
+| Board Game Reviews |   [27:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1655s) | Discussing necessity of controlling for year a game was published in the linear model                                         |
+| Board Game Reviews |   [28:30](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1710s) | Non-model approach to exploring relationship between game features (e.g., card game, made in Germany) on average rating       |
+| Board Game Reviews |   [30:50](https://www.youtube.com/watch?v=qirKGdQvy9U&t=1850s) | Using `geom_boxplot` function to create boxplot of average ratings for most common game features                              |
+| Board Game Reviews |   [34:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2045s) | Using `unite` function to combine multiple variables into one                                                                 |
+| Board Game Reviews |   [37:25](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2245s) | Introducing Lasso regression as good option when you have many features likely to be correlated with one another              |
+| Board Game Reviews |   [38:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2295s) | Writing code to set up Lasso regression using `glmnet` and `tidytext` packages                                                |
+| Board Game Reviews |   [40:05](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2405s) | Adding average rating to the feature matrix (warning: method is messy)                                                        |
+| Board Game Reviews |   [41:40](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2500s) | Using `setdiff` function to find games that are in one set, but not in another (while setting up matrix for Lasso regression) |
+| Board Game Reviews |   [44:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2655s) | Spotting the error stemming from the step above (calling row names from the wrong data)                                       |
+| Board Game Reviews |   [45:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2745s) | Explaining what a Lasso regression does, including the penalty parameter lambda                                               |
+| Board Game Reviews |   [48:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=2915s) | Using a cross-validated Lasso model to choose the level of the penalty parameter (lambda)                                     |
+| Board Game Reviews |   [51:35](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3095s) | Adding non-categorical variables to the Lasso model to control for them (e.g., max number of players)                         |
+| Board Game Reviews |   [55:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3315s) | Using `unite` function to combine multiple variables into one, separated by a colon                                           |
+| Board Game Reviews |   [58:45](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3525s) | Graphing the top 20 coefficients in the Lasso model that have the biggest effect on predicted average rating                  |
+| Board Game Reviews | [1:00:55](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3655s) | Mentioning the yardstick package as a way to evaluate the model's performance                                                 |
+| Board Game Reviews | [1:01:15](https://www.youtube.com/watch?v=qirKGdQvy9U&t=3675s) | Discussing drawbacks of linear models like Lasso (can't do non-linear relationships or interaction effects)                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Seattle Pet Names
+#### Seattle Pet Names {#seattle-pet-names}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Seattle Pet Names | [2:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=160s) | Using `mdy` function from `lubridate` package to convert character-formatted date to date-class |
-| Seattle Pet Names | [4:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=260s) | Exploratory bar graph showing top species of cats, using `geom_col` function |
-| Seattle Pet Names | [6:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=390s) | Specifying `facet_wrap` function's `ncol` argument to get graphs stacked vertically (instead of side-by-side) |
-| Seattle Pet Names | [9:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=595s) | Asking, "Are some animal names associated with particular dog breeds?" |
-| Seattle Pet Names | [11:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=675s) | Explanation of `add_count` function |
-| Seattle Pet Names | [12:35](https://www.youtube.com/watch?v=EF4A4OtQprg&t=755s) | Adding up various metrics (e.g., number of names overall, number of breeds overall), but note a mistake that gets fixed at 17:05 |
-| Seattle Pet Names | [16:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=970s) | Calculating a ratio for names that appear over-represented within a breed, then explaining how small samples can be misleading |
-| Seattle Pet Names | [17:05](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1025s) | Spotting and fixing an aggregation mistake |
-| Seattle Pet Names | [17:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1075s) | Explanation of how to investigate which names might be over-represented within a breed |
-| Seattle Pet Names | [18:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1135s) | Explanation of how to use hypergeometric distribution to test for name over-representation |
-| Seattle Pet Names | [20:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1240s) | Using `phyper` function to calculate p-values for a one-sided hypergeometric test |
-| Seattle Pet Names | [23:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1410s) | Additional explanation of hypergeometric distribution |
-| Seattle Pet Names | [24:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1440s) | First investigation of why and how to interpret a p-value histogram (second at 29:45, third at 37:45, and answer at 39:30) |
-| Seattle Pet Names | [25:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1515s) | Noticing that we are missing zeros (i.e., having a breed/name combination with 0 dogs), which is important for the hypergeometric test |
-| Seattle Pet Names | [27:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1630s) | Using `complete` function to turn implicit zeros (for breed/name combination) into explicit zeros |
-| Seattle Pet Names | [29:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1785s) | Second investigation of p-value histogram (after adding in implicit zeros) |
-| Seattle Pet Names | [31:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1915s) | Explanation of multiple hypothesis testing and correction methods (e.g., Bonferroni, Holm), and applying using `p.adjust` function |
+| Screencast        |                                                         Time | Description                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Seattle Pet Names |   [2:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=160s) | Using `mdy` function from `lubridate` package to convert character-formatted date to date-class                                                      |
+| Seattle Pet Names |   [4:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=260s) | Exploratory bar graph showing top species of cats, using `geom_col` function                                                                         |
+| Seattle Pet Names |   [6:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=390s) | Specifying `facet_wrap` function's `ncol` argument to get graphs stacked vertically (instead of side-by-side)                                        |
+| Seattle Pet Names |   [9:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=595s) | Asking, "Are some animal names associated with particular dog breeds?"                                                                               |
+| Seattle Pet Names |  [11:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=675s) | Explanation of `add_count` function                                                                                                                  |
+| Seattle Pet Names |  [12:35](https://www.youtube.com/watch?v=EF4A4OtQprg&t=755s) | Adding up various metrics (e.g., number of names overall, number of breeds overall), but note a mistake that gets fixed at 17:05                     |
+| Seattle Pet Names |  [16:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=970s) | Calculating a ratio for names that appear over-represented within a breed, then explaining how small samples can be misleading                       |
+| Seattle Pet Names | [17:05](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1025s) | Spotting and fixing an aggregation mistake                                                                                                           |
+| Seattle Pet Names | [17:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1075s) | Explanation of how to investigate which names might be over-represented within a breed                                                               |
+| Seattle Pet Names | [18:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1135s) | Explanation of how to use hypergeometric distribution to test for name over-representation                                                           |
+| Seattle Pet Names | [20:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1240s) | Using `phyper` function to calculate p-values for a one-sided hypergeometric test                                                                    |
+| Seattle Pet Names | [23:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1410s) | Additional explanation of hypergeometric distribution                                                                                                |
+| Seattle Pet Names | [24:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1440s) | First investigation of why and how to interpret a p-value histogram (second at 29:45, third at 37:45, and answer at 39:30)                           |
+| Seattle Pet Names | [25:15](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1515s) | Noticing that we are missing zeros (i.e., having a breed/name combination with 0 dogs), which is important for the hypergeometric test               |
+| Seattle Pet Names | [27:10](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1630s) | Using `complete` function to turn implicit zeros (for breed/name combination) into explicit zeros                                                    |
+| Seattle Pet Names | [29:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1785s) | Second investigation of p-value histogram (after adding in implicit zeros)                                                                           |
+| Seattle Pet Names | [31:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=1915s) | Explanation of multiple hypothesis testing and correction methods (e.g., Bonferroni, Holm), and applying using `p.adjust` function                   |
 | Seattle Pet Names | [34:25](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2065s) | Explanation of False Discovery Rate (FDR) control as a method for correcting for multiple hypothesis testing, and applying using `p.adjust` function |
-| Seattle Pet Names | [37:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2265s) | Third investigation of p-value histogram, to hunt for under-represented names |
-| Seattle Pet Names | [39:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2370s) | Answer to why the p-value distribution is not well-behaved |
-| Seattle Pet Names | [42:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2560s) | Using `crossing` function to created a simulated dataset to explore how different values affect the p-value |
-| Seattle Pet Names | [44:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2695s) | Explanation of how total number of names and total number of breeds affects p-value |
-| Seattle Pet Names | [46:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2760s) | More general explanation of what different shapes of p-value histogram might indicate |
-| Seattle Pet Names | [47:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2850s) | Renaming variables within a `transmute` function, using backticks to get names with spaces in them |
-| Seattle Pet Names | [49:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2960s) | Using `kable` function from the `knitr` package to create a nice-looking table |
-| Seattle Pet Names | [50:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3000s) | Explanation of one-side p-value (as opposed to two-sided p-value) |
-| Seattle Pet Names | [53:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3235s) | Summary of screencast |
+| Seattle Pet Names | [37:45](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2265s) | Third investigation of p-value histogram, to hunt for under-represented names                                                                        |
+| Seattle Pet Names | [39:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2370s) | Answer to why the p-value distribution is not well-behaved                                                                                           |
+| Seattle Pet Names | [42:40](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2560s) | Using `crossing` function to created a simulated dataset to explore how different values affect the p-value                                          |
+| Seattle Pet Names | [44:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2695s) | Explanation of how total number of names and total number of breeds affects p-value                                                                  |
+| Seattle Pet Names | [46:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2760s) | More general explanation of what different shapes of p-value histogram might indicate                                                                |
+| Seattle Pet Names | [47:30](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2850s) | Renaming variables within a `transmute` function, using backticks to get names with spaces in them                                                   |
+| Seattle Pet Names | [49:20](https://www.youtube.com/watch?v=EF4A4OtQprg&t=2960s) | Using `kable` function from the `knitr` package to create a nice-looking table                                                                       |
+| Seattle Pet Names | [50:00](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3000s) | Explanation of one-side p-value (as opposed to two-sided p-value)                                                                                    |
+| Seattle Pet Names | [53:55](https://www.youtube.com/watch?v=EF4A4OtQprg&t=3235s) | Summary of screencast                                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Seattle Bike Counts
+#### Seattle Bike Counts {#seattle-bike-counts}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Seattle Bike Counts | [6:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=375s) | Using `summarise_all` and `summarise_at` functions to aggregate multiple variables at the same time |
-| Seattle Bike Counts | [8:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=495s) | Using magnitude instead of absolute numbers to see trends in time of day |
-| Seattle Bike Counts | [12:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=720s) | Dividing time into categories (four categories for times of day, e.g., morning commute, night) using `between` function |
-| Seattle Bike Counts | [15:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=900s) | Looking for systematically missing data (which would bias the results of the analysis) |
-| Seattle Bike Counts | [19:45](https://www.youtube.com/watch?v=sBho2GJE5lc&t=1185s) | Summarising using a filter in the arguments based on whether the time window is during a commute time |
+| Screencast          |                                                         Time | Description                                                                                                                                           |
+|:-----------------------|-----------------------:|:-----------------------|
+| Seattle Bike Counts |   [6:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=375s) | Using `summarise_all` and `summarise_at` functions to aggregate multiple variables at the same time                                                   |
+| Seattle Bike Counts |   [8:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=495s) | Using magnitude instead of absolute numbers to see trends in time of day                                                                              |
+| Seattle Bike Counts |  [12:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=720s) | Dividing time into categories (four categories for times of day, e.g., morning commute, night) using `between` function                               |
+| Seattle Bike Counts |  [15:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=900s) | Looking for systematically missing data (which would bias the results of the analysis)                                                                |
+| Seattle Bike Counts | [19:45](https://www.youtube.com/watch?v=sBho2GJE5lc&t=1185s) | Summarising using a filter in the arguments based on whether the time window is during a commute time                                                 |
 | Seattle Bike Counts | [22:45](https://www.youtube.com/watch?v=sBho2GJE5lc&t=1365s) | Combining day of week and hour using functions in the `lubridate` package and `as.difftime` function (but then he uses facetting as an easier method) |
-| Seattle Bike Counts | [26:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=1590s) | Normalizing day of week data to percent of weekly traffic |
-| Seattle Bike Counts | [42:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2520s) | Starting analysis of directions of travel by time of day (commute vs. reverse-commute) |
-| Seattle Bike Counts | [43:45](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2625s) | Filtering out weekend days using wday function from `lubridate` package |
-| Seattle Bike Counts | [45:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2730s) | Using `spread` function to create new variable of ratio of bike counts at different commute times |
-| Seattle Bike Counts | [47:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2850s) | Visualizing ratio of bike counts by time of day |
-| Seattle Bike Counts | [50:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3015s) | Visualizing ratio by hour instead of time of day |
-| Seattle Bike Counts | [52:50](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3170s) | Ordering crossing in graph by when the average trip happened using mean of hour weighted by bike count |
-| Seattle Bike Counts | [54:50](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3290s) | Quick and dirty filter when creating a new variable within a `mutate` function |
+| Seattle Bike Counts | [26:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=1590s) | Normalizing day of week data to percent of weekly traffic                                                                                             |
+| Seattle Bike Counts | [42:00](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2520s) | Starting analysis of directions of travel by time of day (commute vs. reverse-commute)                                                                |
+| Seattle Bike Counts | [43:45](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2625s) | Filtering out weekend days using wday function from `lubridate` package                                                                               |
+| Seattle Bike Counts | [45:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2730s) | Using `spread` function to create new variable of ratio of bike counts at different commute times                                                     |
+| Seattle Bike Counts | [47:30](https://www.youtube.com/watch?v=sBho2GJE5lc&t=2850s) | Visualizing ratio of bike counts by time of day                                                                                                       |
+| Seattle Bike Counts | [50:15](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3015s) | Visualizing ratio by hour instead of time of day                                                                                                      |
+| Seattle Bike Counts | [52:50](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3170s) | Ordering crossing in graph by when the average trip happened using mean of hour weighted by bike count                                                |
+| Seattle Bike Counts | [54:50](https://www.youtube.com/watch?v=sBho2GJE5lc&t=3290s) | Quick and dirty filter when creating a new variable within a `mutate` function                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Tennis Tournaments
+#### Tennis Tournaments {#tennis-tournaments}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Tennis Tournaments | [5:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=300s) | Identifying duplicated rows ands fixing them |
-| Tennis Tournaments | [11:15](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=675s) | Using `add_count` and `fct_reorder` functions to order categories that are broken down into sub-categories for graphing |
-| Tennis Tournaments | [13:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=780s) | Tidying graph titles (e.g., replacing underscores with spaces) using `str_to_title` and `str_replace` functions |
-| Tennis Tournaments | [15:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=900s) | Using `inner_join` function to merge datasets |
-| Tennis Tournaments | [15:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=930s) | Calculating age from date of birth using `difftime` and `as.numeric` functions |
-| Tennis Tournaments | [16:35](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=995s) | Adding simple calculations like `mean` and `median` into the text portion of markdown document |
-| Tennis Tournaments | [17:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1065s) | Looking at distribution of wins by sex using overlapping histograms |
-| Tennis Tournaments | [18:55](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1135s) | Binning years into decades using truncated division `%/%` |
-| Tennis Tournaments | [20:15](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1215s) | Splitting up boxplots so that they are separated into pairs (M/F) across a different group (decade) using `interaction` function |
-| Tennis Tournaments | [20:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1230s) | Analyzing distribution of ages across decades, looking specifically at the effect of Serena Williams (one individual having a disproportionate affect on the data, making it look like there's a trend) |
-| Tennis Tournaments | [24:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1470s) | Avoiding double-counting of individuals by counting their average age instead of their age at each win |
-| Tennis Tournaments | [30:20](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1820s) | Starting analysis to predict winner of Grand Slam tournaments |
-| Tennis Tournaments | [35:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2100s) | Creating rolling count using `row_number` function to make a count of previous tournament experience |
-| Tennis Tournaments | [39:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2385s) | Creating rolling win count using `cumsum` function |
-| Tennis Tournaments | [41:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2460s) | Lagging rolling win count using `lag` function (otherwise we get information about a win before a player has actually won, for prediction purposes) |
-| Tennis Tournaments | [43:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2610s) | Asking, "When someone is a finalist, what is their probability of winning as a function of previous tournaments won?" |
-| Tennis Tournaments | [48:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2880s) | Asking, "How does the number of wins a finalist has affect their chance of winning?" |
-| Tennis Tournaments | [49:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2940s) | Backtesting simple classifier where person with more tournament wins is predicted to win the given tournament |
-| Tennis Tournaments | [51:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3105s) | Creating classifier that gives points based on how far a player got in previous tournaments |
-| Tennis Tournaments | [52:55](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3175s) | Using `match` function to turn name of round reached (1st round, 2nd round, …) into a number score (1, 2, …) |
-| Tennis Tournaments | [54:20](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3260s) | Using `cummean` function to get score of average past performance (instead of `cumsum` function) |
-| Tennis Tournaments | [1:04:10](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3850s) | Pulling names of rounds (1st round, 2nd round, … ) based on the rounded numeric score of previous performance |
+| Screencast         |                                                           Time | Description                                                                                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Tennis Tournaments |     [5:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=300s) | Identifying duplicated rows ands fixing them                                                                                                                                                            |
+| Tennis Tournaments |    [11:15](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=675s) | Using `add_count` and `fct_reorder` functions to order categories that are broken down into sub-categories for graphing                                                                                 |
+| Tennis Tournaments |    [13:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=780s) | Tidying graph titles (e.g., replacing underscores with spaces) using `str_to_title` and `str_replace` functions                                                                                         |
+| Tennis Tournaments |    [15:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=900s) | Using `inner_join` function to merge datasets                                                                                                                                                           |
+| Tennis Tournaments |    [15:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=930s) | Calculating age from date of birth using `difftime` and `as.numeric` functions                                                                                                                          |
+| Tennis Tournaments |    [16:35](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=995s) | Adding simple calculations like `mean` and `median` into the text portion of markdown document                                                                                                          |
+| Tennis Tournaments |   [17:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1065s) | Looking at distribution of wins by sex using overlapping histograms                                                                                                                                     |
+| Tennis Tournaments |   [18:55](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1135s) | Binning years into decades using truncated division `%/%`                                                                                                                                               |
+| Tennis Tournaments |   [20:15](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1215s) | Splitting up boxplots so that they are separated into pairs (M/F) across a different group (decade) using `interaction` function                                                                        |
+| Tennis Tournaments |   [20:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1230s) | Analyzing distribution of ages across decades, looking specifically at the effect of Serena Williams (one individual having a disproportionate affect on the data, making it look like there's a trend) |
+| Tennis Tournaments |   [24:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1470s) | Avoiding double-counting of individuals by counting their average age instead of their age at each win                                                                                                  |
+| Tennis Tournaments |   [30:20](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=1820s) | Starting analysis to predict winner of Grand Slam tournaments                                                                                                                                           |
+| Tennis Tournaments |   [35:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2100s) | Creating rolling count using `row_number` function to make a count of previous tournament experience                                                                                                    |
+| Tennis Tournaments |   [39:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2385s) | Creating rolling win count using `cumsum` function                                                                                                                                                      |
+| Tennis Tournaments |   [41:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2460s) | Lagging rolling win count using `lag` function (otherwise we get information about a win before a player has actually won, for prediction purposes)                                                     |
+| Tennis Tournaments |   [43:30](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2610s) | Asking, "When someone is a finalist, what is their probability of winning as a function of previous tournaments won?"                                                                                   |
+| Tennis Tournaments |   [48:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2880s) | Asking, "How does the number of wins a finalist has affect their chance of winning?"                                                                                                                    |
+| Tennis Tournaments |   [49:00](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=2940s) | Backtesting simple classifier where person with more tournament wins is predicted to win the given tournament                                                                                           |
+| Tennis Tournaments |   [51:45](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3105s) | Creating classifier that gives points based on how far a player got in previous tournaments                                                                                                             |
+| Tennis Tournaments |   [52:55](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3175s) | Using `match` function to turn name of round reached (1st round, 2nd round, ...) into a number score (1, 2, ...)                                                                                        |
+| Tennis Tournaments |   [54:20](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3260s) | Using `cummean` function to get score of average past performance (instead of `cumsum` function)                                                                                                        |
+| Tennis Tournaments | [1:04:10](https://www.youtube.com/watch?v=YWUCUfEeNJI&t=3850s) | Pulling names of rounds (1st round, 2nd round, ... ) based on the rounded numeric score of previous performance                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Bird Collisions
+#### Bird Collisions {#bird-collisions}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Bird Collisions | [2:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=165s) | Analyzing when NAs appear in a dimension |
-| Bird Collisions | [7:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=450s) | Looking at multiple categorical variable at the same time by gathering them into one column and eventually graphing each as a different facet |
-| Bird Collisions | [9:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=570s) | Re-order facet graphs according to which ones have the fewest categories in them to ones that have the most |
-| Bird Collisions | [20:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1245s) | Geometric mean for estimating counts when there are a lot of low values (1-3 bird collisions, in this case) |
-| Bird Collisions | [23:15](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1395s) | Filling in "blank" observations where there were no observations made |
-| Bird Collisions | [27:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1620s) | Using log+1 to convert a dimension with values of 0 into a log scale |
-| Bird Collisions | [29:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1740s) | Adding confidence bounds for data using a geometric mean (where he first gets the idea of bootstrapping) |
-| Bird Collisions | [32:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1920s) | Actual coding of bootstrap starts |
-| Bird Collisions | [38:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2310s) | Adding confidence bounds using bootstrap data |
-| Bird Collisions | [42:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2520s) | Investigating potential confounding variables |
-| Bird Collisions | [44:15](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2655s) | Discussing approaches to dealing with confounding variables |
-| Bird Collisions | [46:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2805s) | Using `complete` function to get explicit NA values |
+| Screencast      |                                                         Time | Description                                                                                                                                   |
+|:-----------------------|-----------------------:|:-----------------------|
+| Bird Collisions |   [2:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=165s) | Analyzing when NAs appear in a dimension                                                                                                      |
+| Bird Collisions |   [7:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=450s) | Looking at multiple categorical variable at the same time by gathering them into one column and eventually graphing each as a different facet |
+| Bird Collisions |   [9:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=570s) | Re-order facet graphs according to which ones have the fewest categories in them to ones that have the most                                   |
+| Bird Collisions | [20:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1245s) | Geometric mean for estimating counts when there are a lot of low values (1-3 bird collisions, in this case)                                   |
+| Bird Collisions | [23:15](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1395s) | Filling in "blank" observations where there were no observations made                                                                         |
+| Bird Collisions | [27:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1620s) | Using log+1 to convert a dimension with values of 0 into a log scale                                                                          |
+| Bird Collisions | [29:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1740s) | Adding confidence bounds for data using a geometric mean (where he first gets the idea of bootstrapping)                                      |
+| Bird Collisions | [32:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=1920s) | Actual coding of bootstrap starts                                                                                                             |
+| Bird Collisions | [38:30](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2310s) | Adding confidence bounds using bootstrap data                                                                                                 |
+| Bird Collisions | [42:00](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2520s) | Investigating potential confounding variables                                                                                                 |
+| Bird Collisions | [44:15](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2655s) | Discussing approaches to dealing with confounding variables                                                                                   |
+| Bird Collisions | [46:45](https://www.youtube.com/watch?v=zjWm__nFLXI&t=2805s) | Using `complete` function to get explicit NA values                                                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Student Teacher Ratios
+#### Student Teacher Ratios {#student-teacher-ratios}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Student-Teacher Ratios | [7:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=450s) | Using `slice` function to select 10 highest and 10 lowest student-teacher ratios (like a filter using row numbers) |
-| Student-Teacher Ratios | [12:35](https://www.youtube.com/watch?v=NoUHdrailxA&t=755s) | Adding GDP per capita to a dataset using `WDI` package |
-| Student-Teacher Ratios | [17:40](https://www.youtube.com/watch?v=NoUHdrailxA&t=1060s) | Using `geom_text` to add labels to points on a scatterplot |
-| Student-Teacher Ratios | [19:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=1140s) | Using `WDIsearch` function from `WDI` package to search for country population data |
-| Student-Teacher Ratios | [23:20](https://www.youtube.com/watch?v=NoUHdrailxA&t=1400s) | Explanation of trick with `geom_text` function's check_overlap argument to get label for US to appear by rearranging row order |
-| Student-Teacher Ratios | [25:45](https://www.youtube.com/watch?v=NoUHdrailxA&t=1545s) | Using `comma_format` function from `scales` format to get more readable numeric legend (e.g., "500,000,000" instead of "5e+08") |
-| Student-Teacher Ratios | [27:55](https://www.youtube.com/watch?v=NoUHdrailxA&t=1675s) | Exploring different education-related indicators in the `WDI` package |
-| Student-Teacher Ratios | [31:55](https://www.youtube.com/watch?v=NoUHdrailxA&t=1915s) | Using `spread` function (now `pivot_wider`) to turn data from tidy to wide format |
-| Student-Teacher Ratios | [32:15](https://www.youtube.com/watch?v=NoUHdrailxA&t=1935s) | Using `to_snake_case` function from `snakecase` package to convert field names to snake_case |
-| Student-Teacher Ratios | [48:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=2910s) | Exploring female/male school secondary school enrollment |
-| Student-Teacher Ratios | [51:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=3110s) | Note of caution on keeping confounders in mind when interpreting scatterplots |
-| Student-Teacher Ratios | [52:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=3150s) | Creating a linear regression of secondary school enrollment to explore confounders |
-| Student-Teacher Ratios | [54:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=3270s) | Discussing the actual confounder (GDP per capita) in the linear regression above |
-| Student-Teacher Ratios | [57:20](https://www.youtube.com/watch?v=NoUHdrailxA&t=3440s) | Adding world region as another potential confounder |
-| Student-Teacher Ratios | [58:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=3480s) | Using `aov` function (ANOVA) to explore confounders further |
-| Student-Teacher Ratios | [1:06:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=4010s) | Reviewing and interpreting the final linear regression model |
-| Student-Teacher Ratios | [1:08:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=4080s) | Using `cor` function (correlation) to get correlation matrix for three variables (and brief explanation of multi-collinearity) |
-| Student-Teacher Ratios | [1:10:10](https://www.youtube.com/watch?v=NoUHdrailxA&t=4210s) | Summary of screencast |
+| Screencast             |                                                           Time | Description                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| Student-Teacher Ratios |     [7:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=450s) | Using `slice` function to select 10 highest and 10 lowest student-teacher ratios (like a filter using row numbers)              |
+| Student-Teacher Ratios |    [12:35](https://www.youtube.com/watch?v=NoUHdrailxA&t=755s) | Adding GDP per capita to a dataset using `WDI` package                                                                          |
+| Student-Teacher Ratios |   [17:40](https://www.youtube.com/watch?v=NoUHdrailxA&t=1060s) | Using `geom_text` to add labels to points on a scatterplot                                                                      |
+| Student-Teacher Ratios |   [19:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=1140s) | Using `WDIsearch` function from `WDI` package to search for country population data                                             |
+| Student-Teacher Ratios |   [23:20](https://www.youtube.com/watch?v=NoUHdrailxA&t=1400s) | Explanation of trick with `geom_text` function's check_overlap argument to get label for US to appear by rearranging row order  |
+| Student-Teacher Ratios |   [25:45](https://www.youtube.com/watch?v=NoUHdrailxA&t=1545s) | Using `comma_format` function from `scales` format to get more readable numeric legend (e.g., "500,000,000" instead of "5e+08") |
+| Student-Teacher Ratios |   [27:55](https://www.youtube.com/watch?v=NoUHdrailxA&t=1675s) | Exploring different education-related indicators in the `WDI` package                                                           |
+| Student-Teacher Ratios |   [31:55](https://www.youtube.com/watch?v=NoUHdrailxA&t=1915s) | Using `spread` function (now `pivot_wider`) to turn data from tidy to wide format                                               |
+| Student-Teacher Ratios |   [32:15](https://www.youtube.com/watch?v=NoUHdrailxA&t=1935s) | Using `to_snake_case` function from `snakecase` package to convert field names to snake_case                                    |
+| Student-Teacher Ratios |   [48:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=2910s) | Exploring female/male school secondary school enrollment                                                                        |
+| Student-Teacher Ratios |   [51:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=3110s) | Note of caution on keeping confounders in mind when interpreting scatterplots                                                   |
+| Student-Teacher Ratios |   [52:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=3150s) | Creating a linear regression of secondary school enrollment to explore confounders                                              |
+| Student-Teacher Ratios |   [54:30](https://www.youtube.com/watch?v=NoUHdrailxA&t=3270s) | Discussing the actual confounder (GDP per capita) in the linear regression above                                                |
+| Student-Teacher Ratios |   [57:20](https://www.youtube.com/watch?v=NoUHdrailxA&t=3440s) | Adding world region as another potential confounder                                                                             |
+| Student-Teacher Ratios |   [58:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=3480s) | Using `aov` function (ANOVA) to explore confounders further                                                                     |
+| Student-Teacher Ratios | [1:06:50](https://www.youtube.com/watch?v=NoUHdrailxA&t=4010s) | Reviewing and interpreting the final linear regression model                                                                    |
+| Student-Teacher Ratios | [1:08:00](https://www.youtube.com/watch?v=NoUHdrailxA&t=4080s) | Using `cor` function (correlation) to get correlation matrix for three variables (and brief explanation of multi-collinearity)  |
+| Student-Teacher Ratios | [1:10:10](https://www.youtube.com/watch?v=NoUHdrailxA&t=4210s) | Summary of screencast                                                                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Nobel Prize Winners
+#### Nobel Prize Winners {#nobel-prize-winners}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Nobel Prize Winners | [2:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=120s) | Creating a stacked bar plot using `geom_col` and the `aes` function's `fill` argument (also bins years into decades with truncated division operator `%/%`) |
-| Nobel Prize Winners | [3:30](https://www.youtube.com/watch?v=yWSpLfmES7w&t=210s) | Using `n_distinct` function to quickly count unique years in a group |
-| Nobel Prize Winners | [9:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=540s) | Using `distinct` function and its `.keep_all` argument to de-duplicate data |
-| Nobel Prize Winners | [10:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=650s) | Using `coalesce` function to replace NAs in a variable (similar to SQL COALESCE verb) |
-| Nobel Prize Winners | [16:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=970s) | Using `year` function from `lubridate` package to calculate (approx.) age of laureates at time of award |
-| Nobel Prize Winners | [16:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1010s) | Using `fct_reorder` function to arrange boxplot graph by the median age of winners |
-| Nobel Prize Winners | [22:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1370s) | Defining a new variable within the `count` function (like doing a `mutate` in the `count` function) |
-| Nobel Prize Winners | [23:40](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1420s) | Creating a small multiples bar plot using `geom_col` and `facet_wrap` functions |
-| Nobel Prize Winners | [26:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1575s) | Importing income data from `WDI` package to explore relationship between high/low income countries and winners |
-| Nobel Prize Winners | [33:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2025s) | Using `fct_relevel` to change the levels of a categorical income variable (e.g., "Upper middle income") so that the ordering makes sense |
-| Nobel Prize Winners | [36:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2185s) | Starting to explore new dataset of nobel laureate publications |
-| Nobel Prize Winners | [44:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2665s) | Taking the mean of a subset of data without needing to fully filter the data beforehand |
-| Nobel Prize Winners | [49:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2955s) | Using `rank` function and its `ties.method` argument to add the ordinal number of a laureate's publication (e.g., 1st paper, 2nd paper) |
-| Nobel Prize Winners | [1:05:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=3910s) | Lots of playing around with exploratory histograms (`geom_histogram`) |
-| Nobel Prize Winners | [1:06:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4005s) | Discussion of right-censoring as an issue (people winning the Nobel prize but still having active careers) |
-| Nobel Prize Winners | [1:10:20](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4220s) | Summary of screencast |
+| Screencast          |                                                           Time | Description                                                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Nobel Prize Winners |     [2:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=120s) | Creating a stacked bar plot using `geom_col` and the `aes` function's `fill` argument (also bins years into decades with truncated division operator `%/%`) |
+| Nobel Prize Winners |     [3:30](https://www.youtube.com/watch?v=yWSpLfmES7w&t=210s) | Using `n_distinct` function to quickly count unique years in a group                                                                                        |
+| Nobel Prize Winners |     [9:00](https://www.youtube.com/watch?v=yWSpLfmES7w&t=540s) | Using `distinct` function and its `.keep_all` argument to de-duplicate data                                                                                 |
+| Nobel Prize Winners |    [10:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=650s) | Using `coalesce` function to replace NAs in a variable (similar to SQL COALESCE verb)                                                                       |
+| Nobel Prize Winners |    [16:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=970s) | Using `year` function from `lubridate` package to calculate (approx.) age of laureates at time of award                                                     |
+| Nobel Prize Winners |   [16:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1010s) | Using `fct_reorder` function to arrange boxplot graph by the median age of winners                                                                          |
+| Nobel Prize Winners |   [22:50](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1370s) | Defining a new variable within the `count` function (like doing a `mutate` in the `count` function)                                                         |
+| Nobel Prize Winners |   [23:40](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1420s) | Creating a small multiples bar plot using `geom_col` and `facet_wrap` functions                                                                             |
+| Nobel Prize Winners |   [26:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=1575s) | Importing income data from `WDI` package to explore relationship between high/low income countries and winners                                              |
+| Nobel Prize Winners |   [33:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2025s) | Using `fct_relevel` to change the levels of a categorical income variable (e.g., "Upper middle income") so that the ordering makes sense                    |
+| Nobel Prize Winners |   [36:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2185s) | Starting to explore new dataset of nobel laureate publications                                                                                              |
+| Nobel Prize Winners |   [44:25](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2665s) | Taking the mean of a subset of data without needing to fully filter the data beforehand                                                                     |
+| Nobel Prize Winners |   [49:15](https://www.youtube.com/watch?v=yWSpLfmES7w&t=2955s) | Using `rank` function and its `ties.method` argument to add the ordinal number of a laureate's publication (e.g., 1st paper, 2nd paper)                     |
+| Nobel Prize Winners | [1:05:10](https://www.youtube.com/watch?v=yWSpLfmES7w&t=3910s) | Lots of playing around with exploratory histograms (`geom_histogram`)                                                                                       |
+| Nobel Prize Winners | [1:06:45](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4005s) | Discussion of right-censoring as an issue (people winning the Nobel prize but still having active careers)                                                  |
+| Nobel Prize Winners | [1:10:20](https://www.youtube.com/watch?v=yWSpLfmES7w&t=4220s) | Summary of screencast                                                                                                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Plastic Waste
+#### Plastic Waste {#plastic-waste}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Plastic Waste | [1:45](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=105s) | Using `summarise_all` to get proportion of NA values across many variables |
-| Plastic Waste | [16:50](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1010s) | Adding text labels to scatter plot for some points using check_overlap argument |
-| Plastic Waste | [21:45](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1305s) | Using `pmin` function to get the lower of two possible numbers for a percentage variable that was showing > 100% |
-| Plastic Waste | [29:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1740s) | Starting to make a choropleth map |
-| Plastic Waste | [29:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1770s) | Connecting ISO country names (used in mapping code) to country names given in the dataset |
-| Plastic Waste | [32:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1920s) | Actual code to create the map using given longitude and latitude |
+| Screencast    |                                                         Time | Description                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Plastic Waste |   [1:45](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=105s) | Using `summarise_all` to get proportion of NA values across many variables                                                                           |
+| Plastic Waste | [16:50](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1010s) | Adding text labels to scatter plot for some points using check_overlap argument                                                                      |
+| Plastic Waste | [21:45](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1305s) | Using `pmin` function to get the lower of two possible numbers for a percentage variable that was showing \> 100%                                    |
+| Plastic Waste | [29:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1740s) | Starting to make a choropleth map                                                                                                                    |
+| Plastic Waste | [29:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1770s) | Connecting ISO country names (used in mapping code) to country names given in the dataset                                                            |
+| Plastic Waste | [32:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=1920s) | Actual code to create the map using given longitude and latitude                                                                                     |
 | Plastic Waste | [33:45](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2025s) | Using `fuzzyjoin` package to link variables that use regular expression instead of character (using `regex_right_join` / `regex_left_join` function) |
-| Plastic Waste | [36:15](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2175s) | Using `coord_fixed` function as a hack to get proper ratios for maps |
-| Plastic Waste | [39:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2370s) | Bringing in additional data using `WDI` package |
-| Plastic Waste | [47:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2850s) | Using `patchwork` package to show multiple graphs in the same plot |
-| Plastic Waste | [53:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=3180s) | Importing and renaming multiple indicators from the `WDI` package at the same time |
+| Plastic Waste | [36:15](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2175s) | Using `coord_fixed` function as a hack to get proper ratios for maps                                                                                 |
+| Plastic Waste | [39:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2370s) | Bringing in additional data using `WDI` package                                                                                                      |
+| Plastic Waste | [47:30](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=2850s) | Using `patchwork` package to show multiple graphs in the same plot                                                                                   |
+| Plastic Waste | [53:00](https://www.youtube.com/watch?v=BRdLOYtJk9o&t=3180s) | Importing and renaming multiple indicators from the `WDI` package at the same time                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Wine Ratings
+#### Wine Ratings {#wine-ratings}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Wine Ratings | [3:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=195s) | Using `extract` function from `tidyr` package to pull out year from text field |
-| Wine Ratings | [9:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=555s) | Changing `extract` function to pull out year column more accurately |
-| Wine Ratings | [13:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=780s) | Starting to explore prediction of points |
-| Wine Ratings | [17:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1020s) | Using `fct_lump` on country variable to collapse countries into an "Other" category, then `fct_relevel` to set the baseline category for a linear model |
-| Wine Ratings | [21:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1290s) | Investigating year as a potential confounding variable |
-| Wine Ratings | [24:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1485s) | Investigating "taster_name" as a potential confounding variable |
-| Wine Ratings | [27:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1665s) | Coefficient (TIE fighter) plot to see effect size of terms in a linear model, using `tidy` function from `broom` package |
-| Wine Ratings | [30:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1845s) | Polishing category names for presentation in graph using `str_replace` function |
-| Wine Ratings | [32:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1935s) | Using `augment` function to add predictions of linear model to original data |
-| Wine Ratings | [33:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2010s) | Plotting predicted points vs. actual points |
-| Wine Ratings | [34:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2085s) | Using ANOVA to determine the amount of variation that explained by different terms |
-| Wine Ratings | [36:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2205s) | Using `tidytext` package to set up wine review text for Lasso regression |
-| Wine Ratings | [40:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2400s) | Setting up and using `pairwise_cor` function to look at words that appear in reviews together |
-| Wine Ratings | [45:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2700s) | Creating sparse matrix using `cast_sparse` function from `tidytext` package; used to perform a regression on positive/negative words |
-| Wine Ratings | [46:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2805s) | Checking if row names of sparse matrix correspond to the wine_id values they represent |
-| Wine Ratings | [47:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2820s) | Setting up sparse matrix for using `glmnet` package to do sparse regression using Lasso method |
-| Wine Ratings | [48:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2895s) | Actually writing code for doing Lasso regression |
-| Wine Ratings | [49:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2985s) | Basic explanation of Lasso regression |
-| Wine Ratings | [51:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3060s) | Putting Lasso model into tidy format |
-| Wine Ratings | [53:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3195s) | Explaining how the number of terms increases as lambda (penalty parameter) decreases |
-| Wine Ratings | [54:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3240s) | Answering how we choose a lambda value (penalty parameter) for Lasso regression |
-| Wine Ratings | [56:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3405s) | Using parallelization for intensive computations |
-| Wine Ratings | [58:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3510s) | Adding price (from original linear model) to Lasso regression |
-| Wine Ratings | [1:02:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3735s) | Shows glmnet.fit piece of a Lasso model (using `glmnet` package) |
-| Wine Ratings | [1:03:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3810s) | Picking a lambda value (penalty parameter) and explaining which one to pick |
-| Wine Ratings | [1:08:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4095s) | Taking most extreme coefficients (positive and negative) by grouping theme by direction |
-| Wine Ratings | [1:10:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4230s) | Demonstrating `tidytext` package's sentiment lexicon, then looking at individual reviews to demonstrate the model |
-| Wine Ratings | [1:17:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4650s) | Visualizing each coefficient's effect on a single review |
-| Wine Ratings | [1:20:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4830s) | Using `str_trunc` to truncate character strings |
+| Screencast   |                                                           Time | Description                                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Wine Ratings |     [3:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=195s) | Using `extract` function from `tidyr` package to pull out year from text field                                                                          |
+| Wine Ratings |     [9:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=555s) | Changing `extract` function to pull out year column more accurately                                                                                     |
+| Wine Ratings |    [13:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=780s) | Starting to explore prediction of points                                                                                                                |
+| Wine Ratings |   [17:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1020s) | Using `fct_lump` on country variable to collapse countries into an "Other" category, then `fct_relevel` to set the baseline category for a linear model |
+| Wine Ratings |   [21:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1290s) | Investigating year as a potential confounding variable                                                                                                  |
+| Wine Ratings |   [24:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1485s) | Investigating "taster_name" as a potential confounding variable                                                                                         |
+| Wine Ratings |   [27:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1665s) | Coefficient (TIE fighter) plot to see effect size of terms in a linear model, using `tidy` function from `broom` package                                |
+| Wine Ratings |   [30:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1845s) | Polishing category names for presentation in graph using `str_replace` function                                                                         |
+| Wine Ratings |   [32:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=1935s) | Using `augment` function to add predictions of linear model to original data                                                                            |
+| Wine Ratings |   [33:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2010s) | Plotting predicted points vs. actual points                                                                                                             |
+| Wine Ratings |   [34:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2085s) | Using ANOVA to determine the amount of variation that explained by different terms                                                                      |
+| Wine Ratings |   [36:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2205s) | Using `tidytext` package to set up wine review text for Lasso regression                                                                                |
+| Wine Ratings |   [40:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2400s) | Setting up and using `pairwise_cor` function to look at words that appear in reviews together                                                           |
+| Wine Ratings |   [45:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2700s) | Creating sparse matrix using `cast_sparse` function from `tidytext` package; used to perform a regression on positive/negative words                    |
+| Wine Ratings |   [46:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2805s) | Checking if row names of sparse matrix correspond to the wine_id values they represent                                                                  |
+| Wine Ratings |   [47:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2820s) | Setting up sparse matrix for using `glmnet` package to do sparse regression using Lasso method                                                          |
+| Wine Ratings |   [48:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2895s) | Actually writing code for doing Lasso regression                                                                                                        |
+| Wine Ratings |   [49:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=2985s) | Basic explanation of Lasso regression                                                                                                                   |
+| Wine Ratings |   [51:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3060s) | Putting Lasso model into tidy format                                                                                                                    |
+| Wine Ratings |   [53:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3195s) | Explaining how the number of terms increases as lambda (penalty parameter) decreases                                                                    |
+| Wine Ratings |   [54:00](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3240s) | Answering how we choose a lambda value (penalty parameter) for Lasso regression                                                                         |
+| Wine Ratings |   [56:45](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3405s) | Using parallelization for intensive computations                                                                                                        |
+| Wine Ratings |   [58:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3510s) | Adding price (from original linear model) to Lasso regression                                                                                           |
+| Wine Ratings | [1:02:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3735s) | Shows glmnet.fit piece of a Lasso model (using `glmnet` package)                                                                                        |
+| Wine Ratings | [1:03:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=3810s) | Picking a lambda value (penalty parameter) and explaining which one to pick                                                                             |
+| Wine Ratings | [1:08:15](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4095s) | Taking most extreme coefficients (positive and negative) by grouping theme by direction                                                                 |
+| Wine Ratings | [1:10:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4230s) | Demonstrating `tidytext` package's sentiment lexicon, then looking at individual reviews to demonstrate the model                                       |
+| Wine Ratings | [1:17:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4650s) | Visualizing each coefficient's effect on a single review                                                                                                |
+| Wine Ratings | [1:20:30](https://www.youtube.com/watch?v=AQzZNIyjyWM&t=4830s) | Using `str_trunc` to truncate character strings                                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Ramen Reviews
+#### Ramen Reviews {#ramen-reviews}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Ramen Reviews | [1:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=105s) | Looking at the website the data came from |
-| Ramen Reviews | [2:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=175s) | Using `gather` function (now `pivot_longer`) to convert wide data to long (tidy) format |
-| Ramen Reviews | [4:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=255s) | Graphing counts of all categorical variables at once, then exploring them |
-| Ramen Reviews | [5:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=335s) | Using `fct_lump` function to lump three categorical variables to the top N categories and "Other" |
-| Ramen Reviews | [7:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=465s) | Using `reorder_within` function to re-order factors that have the same name across multiple facets |
-| Ramen Reviews | [9:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=550s) | Using `lm` function (linear model) to predict star rating |
-| Ramen Reviews | [9:50](https://www.youtube.com/watch?v=tCa2di7aEP4&t=590s) | Visualising effects (and 95% CI) of indendent variables in linear model with a coefficient plot (TIE fighter plot) |
-| Ramen Reviews | [11:30](https://www.youtube.com/watch?v=tCa2di7aEP4&t=690s) | Using `fct_relevel` function to get "Other" as the base reference level for categorical independent variables in a linear model |
-| Ramen Reviews | [13:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=785s) | Using `extract` function and regex to split a camelCase variable into two separate variables |
-| Ramen Reviews | [14:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=885s) | Using `facet_wrap` function to split coefficient / TIE fighter plot into three separate plots, based on type of coefficient |
-| Ramen Reviews | [15:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=940s) | Using `geom_vline` function to add reference line to graph |
+| Screencast    |                                                         Time | Description                                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| Ramen Reviews |   [1:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=105s) | Looking at the website the data came from                                                                                                          |
+| Ramen Reviews |   [2:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=175s) | Using `gather` function (now `pivot_longer`) to convert wide data to long (tidy) format                                                            |
+| Ramen Reviews |   [4:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=255s) | Graphing counts of all categorical variables at once, then exploring them                                                                          |
+| Ramen Reviews |   [5:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=335s) | Using `fct_lump` function to lump three categorical variables to the top N categories and "Other"                                                  |
+| Ramen Reviews |   [7:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=465s) | Using `reorder_within` function to re-order factors that have the same name across multiple facets                                                 |
+| Ramen Reviews |   [9:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=550s) | Using `lm` function (linear model) to predict star rating                                                                                          |
+| Ramen Reviews |   [9:50](https://www.youtube.com/watch?v=tCa2di7aEP4&t=590s) | Visualising effects (and 95% CI) of indendent variables in linear model with a coefficient plot (TIE fighter plot)                                 |
+| Ramen Reviews |  [11:30](https://www.youtube.com/watch?v=tCa2di7aEP4&t=690s) | Using `fct_relevel` function to get "Other" as the base reference level for categorical independent variables in a linear model                    |
+| Ramen Reviews |  [13:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=785s) | Using `extract` function and regex to split a camelCase variable into two separate variables                                                       |
+| Ramen Reviews |  [14:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=885s) | Using `facet_wrap` function to split coefficient / TIE fighter plot into three separate plots, based on type of coefficient                        |
+| Ramen Reviews |  [15:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=940s) | Using `geom_vline` function to add reference line to graph                                                                                         |
 | Ramen Reviews | [17:20](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1040s) | Using `unnest_tokens` function from `tidytext` package to explore the relationship between variety (a sparse categorical variable) and star rating |
-| Ramen Reviews | [18:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1135s) | Explanation of how he would approach variety variable with Lasso regression |
-| Ramen Reviews | [19:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1175s) | Web scraping the using `rvest` package and `SelectorGadget` (Chrome Extension CSS selector) |
-| Ramen Reviews | [21:20](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1280s) | Actually writing code for web scraping, using `read_html`, `html_node`, and `html_table` functions |
-| Ramen Reviews | [22:25](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1345s) | Using `clean_names` function from `janitor` package to clean up names of variables |
-| Ramen Reviews | [23:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1385s) | Explanation of web scraping task: get full review text using the links from the review summary table scraped above |
-| Ramen Reviews | [25:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1540s) | Using `parse_number` function as alternative to `as.integer` function to cleverly drop extra weird text in review number |
-| Ramen Reviews | [26:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1605s) | Using `SelectorGadget` (Chrome Extension CSS selector) to identify part of page that contains review text |
-| Ramen Reviews | [27:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1655s) | Using `html_nodes`, `html_text`, and `str_subset` functions to write custom function to scrape review text identified in step above |
-| Ramen Reviews | [29:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1755s) | Adding `message` function to custom scraping function to display URLs as they are being scraped |
-| Ramen Reviews | [30:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1815s) | Using `unnest_tokens` and `anti_join` functions to split review text into individual words and remove stop words (e.g., "the", "or", "and") |
-| Ramen Reviews | [31:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1865s) | Catching a mistake in the custom function causing it to read the same URL every time |
-| Ramen Reviews | [31:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1915s) | Using `str_detect` function to filter out review paragraphs without a keyword in it |
-| Ramen Reviews | [32:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1960s) | Using `str_remove` function and regex to get rid of string that follows a specific pattern |
-| Ramen Reviews | [34:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2050s) | Explanation of `possibly` and `safely` functions in `purrr` package |
-| Ramen Reviews | [37:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2265s) | Reviewing output of the URL that failed to scrape, including using `character(0)` as a default null value |
-| Ramen Reviews | [48:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2880s) | Using `pairwise_cor` function from `widyr` package to see which words tend to appear in reviews together |
-| Ramen Reviews | [51:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3065s) | Using `igraph` and `ggraph` packages to make network plot of word correlations |
-| Ramen Reviews | [51:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3115s) | Using `geom_node_text` function to add labels to network plot |
-| Ramen Reviews | [52:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3155s) | Including all words (not just those connected to others) as vertices in the network plot |
-| Ramen Reviews | [54:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3280s) | Tweaking and refining network plot aesthetics (vertex size and colour) |
-| Ramen Reviews | [56:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3360s) | Weird hack for getting a dark outline on hard-to-see vertex points |
-| Ramen Reviews | [59:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3555s) | Summary of screencast |
+| Ramen Reviews | [18:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1135s) | Explanation of how he would approach variety variable with Lasso regression                                                                        |
+| Ramen Reviews | [19:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1175s) | Web scraping the using `rvest` package and `SelectorGadget` (Chrome Extension CSS selector)                                                        |
+| Ramen Reviews | [21:20](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1280s) | Actually writing code for web scraping, using `read_html`, `html_node`, and `html_table` functions                                                 |
+| Ramen Reviews | [22:25](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1345s) | Using `clean_names` function from `janitor` package to clean up names of variables                                                                 |
+| Ramen Reviews | [23:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1385s) | Explanation of web scraping task: get full review text using the links from the review summary table scraped above                                 |
+| Ramen Reviews | [25:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1540s) | Using `parse_number` function as alternative to `as.integer` function to cleverly drop extra weird text in review number                           |
+| Ramen Reviews | [26:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1605s) | Using `SelectorGadget` (Chrome Extension CSS selector) to identify part of page that contains review text                                          |
+| Ramen Reviews | [27:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1655s) | Using `html_nodes`, `html_text`, and `str_subset` functions to write custom function to scrape review text identified in step above                |
+| Ramen Reviews | [29:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1755s) | Adding `message` function to custom scraping function to display URLs as they are being scraped                                                    |
+| Ramen Reviews | [30:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1815s) | Using `unnest_tokens` and `anti_join` functions to split review text into individual words and remove stop words (e.g., "the", "or", "and")        |
+| Ramen Reviews | [31:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1865s) | Catching a mistake in the custom function causing it to read the same URL every time                                                               |
+| Ramen Reviews | [31:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1915s) | Using `str_detect` function to filter out review paragraphs without a keyword in it                                                                |
+| Ramen Reviews | [32:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=1960s) | Using `str_remove` function and regex to get rid of string that follows a specific pattern                                                         |
+| Ramen Reviews | [34:10](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2050s) | Explanation of `possibly` and `safely` functions in `purrr` package                                                                                |
+| Ramen Reviews | [37:45](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2265s) | Reviewing output of the URL that failed to scrape, including using `character(0)` as a default null value                                          |
+| Ramen Reviews | [48:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=2880s) | Using `pairwise_cor` function from `widyr` package to see which words tend to appear in reviews together                                           |
+| Ramen Reviews | [51:05](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3065s) | Using `igraph` and `ggraph` packages to make network plot of word correlations                                                                     |
+| Ramen Reviews | [51:55](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3115s) | Using `geom_node_text` function to add labels to network plot                                                                                      |
+| Ramen Reviews | [52:35](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3155s) | Including all words (not just those connected to others) as vertices in the network plot                                                           |
+| Ramen Reviews | [54:40](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3280s) | Tweaking and refining network plot aesthetics (vertex size and colour)                                                                             |
+| Ramen Reviews | [56:00](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3360s) | Weird hack for getting a dark outline on hard-to-see vertex points                                                                                 |
+| Ramen Reviews | [59:15](https://www.youtube.com/watch?v=tCa2di7aEP4&t=3555s) | Summary of screencast                                                                                                                              |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Media Franchise Revenue
+#### Media Franchise Revenue {#media-franchise-revenue}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Media Franchise Revenue | [9:15](https://www.youtube.com/watch?v=1xsbTs9-a50&t=555s) | Explaining use of `semi_join` function to aggregate and filter groups |
-| Media Franchise Revenue | [11:00](https://www.youtube.com/watch?v=1xsbTs9-a50&t=660s) | Putting the largest categories on the bottom of a stacked bar chart |
-| Media Franchise Revenue | [14:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=870s) | Using `glue` function as alternative to `paste` for combining text, plus good explanation of it |
-| Media Franchise Revenue | [19:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1170s) | Multiple re-ordering using `fct_reorder` function of facetted graph (he works through several obstacles) |
-| Media Franchise Revenue | [20:40](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1240s) | Re-ordering the position of facetted graphs so that highest total revenue is at top left |
-| Media Franchise Revenue | [26:00](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1560s) | Investigating relationship between year created and revenue |
-| Media Franchise Revenue | [26:40](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1600s) | Creating scatter plot with points scaled by size and labelled points (`geom_text` function) |
-| Media Franchise Revenue | [29:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1770s) | Summary of screencast up to this point |
+| Screencast              |                                                         Time | Description                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Media Franchise Revenue |   [9:15](https://www.youtube.com/watch?v=1xsbTs9-a50&t=555s) | Explaining use of `semi_join` function to aggregate and filter groups                                                                   |
+| Media Franchise Revenue |  [11:00](https://www.youtube.com/watch?v=1xsbTs9-a50&t=660s) | Putting the largest categories on the bottom of a stacked bar chart                                                                     |
+| Media Franchise Revenue |  [14:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=870s) | Using `glue` function as alternative to `paste` for combining text, plus good explanation of it                                         |
+| Media Franchise Revenue | [19:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1170s) | Multiple re-ordering using `fct_reorder` function of facetted graph (he works through several obstacles)                                |
+| Media Franchise Revenue | [20:40](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1240s) | Re-ordering the position of facetted graphs so that highest total revenue is at top left                                                |
+| Media Franchise Revenue | [26:00](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1560s) | Investigating relationship between year created and revenue                                                                             |
+| Media Franchise Revenue | [26:40](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1600s) | Creating scatter plot with points scaled by size and labelled points (`geom_text` function)                                             |
+| Media Franchise Revenue | [29:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1770s) | Summary of screencast up to this point                                                                                                  |
 | Media Franchise Revenue | [29:50](https://www.youtube.com/watch?v=1xsbTs9-a50&t=1790s) | Starting analysis original media of franchise (e.g., novel, video game, animated film) and revenue type (e.g., box office, merchandise) |
-| Media Franchise Revenue | [33:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2015s) | Graphing original media and revenue category as facetted bar plot with lots of reordering (ends at around 38:40) |
-| Media Franchise Revenue | [40:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2430s) | Alternative visualization of original media/revenue category using heat map |
-| Media Franchise Revenue | [41:20](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2480s) | Using `scale_fill_gradient2` function to specify custom colour scale |
-| Media Franchise Revenue | [42:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2525s) | Getting rid of gridlines in graph using `theme` function's panel.grid argument |
-| Media Franchise Revenue | [44:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2645s) | Using `fct_rev` function to reverse levels of factors |
-| Media Franchise Revenue | [44:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2675s) | Fixing overlapping axis text with tweaks to `theme` function's axis.text argument |
-| Media Franchise Revenue | [46:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2765s) | Reviewing visualization that inspired this dataset |
-| Media Franchise Revenue | [47:25](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2845s) | Adding text of total revenue to the end of each bar in a previous graph |
-| Media Franchise Revenue | [50:20](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3020s) | Using `paste0` function at add a "B" (for "billions") to the end of text labels on graph |
-| Media Franchise Revenue | [51:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3095s) | Using `expand_limits` functions to give more space for text labels not to get cut off |
-| Media Franchise Revenue | [53:45](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3225s) | Summary of screencast |
+| Media Franchise Revenue | [33:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2015s) | Graphing original media and revenue category as facetted bar plot with lots of reordering (ends at around 38:40)                        |
+| Media Franchise Revenue | [40:30](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2430s) | Alternative visualization of original media/revenue category using heat map                                                             |
+| Media Franchise Revenue | [41:20](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2480s) | Using `scale_fill_gradient2` function to specify custom colour scale                                                                    |
+| Media Franchise Revenue | [42:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2525s) | Getting rid of gridlines in graph using `theme` function's panel.grid argument                                                          |
+| Media Franchise Revenue | [44:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2645s) | Using `fct_rev` function to reverse levels of factors                                                                                   |
+| Media Franchise Revenue | [44:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2675s) | Fixing overlapping axis text with tweaks to `theme` function's axis.text argument                                                       |
+| Media Franchise Revenue | [46:05](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2765s) | Reviewing visualization that inspired this dataset                                                                                      |
+| Media Franchise Revenue | [47:25](https://www.youtube.com/watch?v=1xsbTs9-a50&t=2845s) | Adding text of total revenue to the end of each bar in a previous graph                                                                 |
+| Media Franchise Revenue | [50:20](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3020s) | Using `paste0` function at add a "B" (for "billions") to the end of text labels on graph                                                |
+| Media Franchise Revenue | [51:35](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3095s) | Using `expand_limits` functions to give more space for text labels not to get cut off                                                   |
+| Media Franchise Revenue | [53:45](https://www.youtube.com/watch?v=1xsbTs9-a50&t=3225s) | Summary of screencast                                                                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Women's World Cup
+#### Women's World Cup {#womens-world-cup}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Women's World Cup | [2:15](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=135s) | Adding country names using `countrycode` package |
-| Women's World Cup | [3:45](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=225s) | Web scraping country codes from Wikipedia |
-| Women's World Cup | [6:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=360s) | Combining tables that are separate lists into one dataframe |
-| Women's World Cup | [14:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=840s) | Using `rev` function (reverse) to turn multiple rows of soccer match scores into one row (base team and opposing team) |
-| Women's World Cup | [26:30](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=1590s) | Applying a `geom_smooth` linear model line to a scatter plot, then facetting it |
-| Women's World Cup | [28:30](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=1710s) | Adding a line with a slope of 1 (x = y) using `geom_abline` |
-| Women's World Cup | [40:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=2400s) | Pulling out elements of a list that is embedded in a dataframe |
-| Women's World Cup | [1:09:45](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=4185s) | Using `glue` function to add context to facet titles |
+| Screencast        |                                                           Time | Description                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| Women's World Cup |     [2:15](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=135s) | Adding country names using `countrycode` package                                                                       |
+| Women's World Cup |     [3:45](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=225s) | Web scraping country codes from Wikipedia                                                                              |
+| Women's World Cup |     [6:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=360s) | Combining tables that are separate lists into one dataframe                                                            |
+| Women's World Cup |    [14:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=840s) | Using `rev` function (reverse) to turn multiple rows of soccer match scores into one row (base team and opposing team) |
+| Women's World Cup |   [26:30](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=1590s) | Applying a `geom_smooth` linear model line to a scatter plot, then facetting it                                        |
+| Women's World Cup |   [28:30](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=1710s) | Adding a line with a slope of 1 (x = y) using `geom_abline`                                                            |
+| Women's World Cup |   [40:00](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=2400s) | Pulling out elements of a list that is embedded in a dataframe                                                         |
+| Women's World Cup | [1:09:45](https://www.youtube.com/watch?v=ZOQSuapvHqA&t=4185s) | Using `glue` function to add context to facet titles                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Bob Ross Paintings
+#### Bob Ross Paintings {#bob-ross-paintings}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Bob Ross Paintings | [1:40](https://www.youtube.com/watch?v=sD993H5FBIY&t=100s) | Using `clean_names` function in `janitor` package to get field names to snake_case |
-| Bob Ross Paintings | [1:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=110s) | Using `gather` function (now 'pivot_longer') to get wide elements into tall (tidy) format |
-| Bob Ross Paintings | [2:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=155s) | Cleaning text (`str_to_title`, `str_replace`) to get into nicer-to-read format |
-| Bob Ross Paintings | [3:30](https://www.youtube.com/watch?v=sD993H5FBIY&t=210s) | Using `str_remove_all` function to trim trimming quotation marks and backslashes |
-| Bob Ross Paintings | [4:40](https://www.youtube.com/watch?v=sD993H5FBIY&t=280s) | Using `extract` function to extract the season number and episode number from episode field; uses regex capturing groups |
-| Bob Ross Paintings | [14:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=840s) | Using `add_count` function's name argument to specify field's name |
-| Bob Ross Paintings | [15:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=935s) | Getting into whether the elements of Ross's paintings changed over time (e.g., are mountains more/less common over time?) |
-| Bob Ross Paintings | [20:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=1200s) | Quick point: could have used logistic regression to see change over time of elements |
-| Bob Ross Paintings | [21:10](https://www.youtube.com/watch?v=sD993H5FBIY&t=1270s) | Asking, "What elements tends to appear together?" prompting clustering analysis |
-| Bob Ross Paintings | [22:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=1335s) | Using `pairwise_cor` to see which elements tend to appear together |
+| Screencast         |                                                         Time | Description                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Bob Ross Paintings |   [1:40](https://www.youtube.com/watch?v=sD993H5FBIY&t=100s) | Using `clean_names` function in `janitor` package to get field names to snake_case                                          |
+| Bob Ross Paintings |   [1:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=110s) | Using `gather` function (now 'pivot_longer') to get wide elements into tall (tidy) format                                   |
+| Bob Ross Paintings |   [2:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=155s) | Cleaning text (`str_to_title`, `str_replace`) to get into nicer-to-read format                                              |
+| Bob Ross Paintings |   [3:30](https://www.youtube.com/watch?v=sD993H5FBIY&t=210s) | Using `str_remove_all` function to trim trimming quotation marks and backslashes                                            |
+| Bob Ross Paintings |   [4:40](https://www.youtube.com/watch?v=sD993H5FBIY&t=280s) | Using `extract` function to extract the season number and episode number from episode field; uses regex capturing groups    |
+| Bob Ross Paintings |  [14:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=840s) | Using `add_count` function's name argument to specify field's name                                                          |
+| Bob Ross Paintings |  [15:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=935s) | Getting into whether the elements of Ross's paintings changed over time (e.g., are mountains more/less common over time?)   |
+| Bob Ross Paintings | [20:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=1200s) | Quick point: could have used logistic regression to see change over time of elements                                        |
+| Bob Ross Paintings | [21:10](https://www.youtube.com/watch?v=sD993H5FBIY&t=1270s) | Asking, "What elements tends to appear together?" prompting clustering analysis                                             |
+| Bob Ross Paintings | [22:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=1335s) | Using `pairwise_cor` to see which elements tend to appear together                                                          |
 | Bob Ross Paintings | [22:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=1370s) | Discussion of a blind spot of pairwise correlation (high or perfect correlation on elements that only appear once or twice) |
-| Bob Ross Paintings | [28:05](https://www.youtube.com/watch?v=sD993H5FBIY&t=1685s) | Asking, "What are clusters of elements that belong together?" |
-| Bob Ross Paintings | [28:30](https://www.youtube.com/watch?v=sD993H5FBIY&t=1710s) | Creating network plot using `ggraph` and `igraph` packages |
-| Bob Ross Paintings | [30:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=1815s) | Reviewing network plot for interesting clusters (e.g., beach cluster, mountain cluster, structure cluster) |
-| Bob Ross Paintings | [31:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=1915s) | Explanation of Principal Component Analysis (PCA) |
-| Bob Ross Paintings | [34:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=2075s) | Start of actual PCA coding |
-| Bob Ross Paintings | [34:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=2090s) | Using `acast` function to create matrix of painting titles x painting elements (initially wrong, corrected at 36:30) |
-| Bob Ross Paintings | [36:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=2215s) | Centering the matrix data using `t` function (transpose of matrix), `colSums` function, and `colMeans` functions |
-| Bob Ross Paintings | [38:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=2295s) | Using `svd` function to performn singular value decomposition, then tidying with `broom` package |
-| Bob Ross Paintings | [39:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=2395s) | Exploring one principal component to get a better feel for what PCA is doing |
-| Bob Ross Paintings | [43:20](https://www.youtube.com/watch?v=sD993H5FBIY&t=2600s) | Using `reorder_within` function to re-order factors within a grouping |
-| Bob Ross Paintings | [48:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=2880s) | Exploring different matrix names in PCA (u, v, d) |
-| Bob Ross Paintings | [56:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=3410s) | Looking at top 6 principal components of painting elements |
-| Bob Ross Paintings | [57:45](https://www.youtube.com/watch?v=sD993H5FBIY&t=3465s) | Showing percentage of variation that each principal component is responsible for |
+| Bob Ross Paintings | [28:05](https://www.youtube.com/watch?v=sD993H5FBIY&t=1685s) | Asking, "What are clusters of elements that belong together?"                                                               |
+| Bob Ross Paintings | [28:30](https://www.youtube.com/watch?v=sD993H5FBIY&t=1710s) | Creating network plot using `ggraph` and `igraph` packages                                                                  |
+| Bob Ross Paintings | [30:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=1815s) | Reviewing network plot for interesting clusters (e.g., beach cluster, mountain cluster, structure cluster)                  |
+| Bob Ross Paintings | [31:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=1915s) | Explanation of Principal Component Analysis (PCA)                                                                           |
+| Bob Ross Paintings | [34:35](https://www.youtube.com/watch?v=sD993H5FBIY&t=2075s) | Start of actual PCA coding                                                                                                  |
+| Bob Ross Paintings | [34:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=2090s) | Using `acast` function to create matrix of painting titles x painting elements (initially wrong, corrected at 36:30)        |
+| Bob Ross Paintings | [36:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=2215s) | Centering the matrix data using `t` function (transpose of matrix), `colSums` function, and `colMeans` functions            |
+| Bob Ross Paintings | [38:15](https://www.youtube.com/watch?v=sD993H5FBIY&t=2295s) | Using `svd` function to performn singular value decomposition, then tidying with `broom` package                            |
+| Bob Ross Paintings | [39:55](https://www.youtube.com/watch?v=sD993H5FBIY&t=2395s) | Exploring one principal component to get a better feel for what PCA is doing                                                |
+| Bob Ross Paintings | [43:20](https://www.youtube.com/watch?v=sD993H5FBIY&t=2600s) | Using `reorder_within` function to re-order factors within a grouping                                                       |
+| Bob Ross Paintings | [48:00](https://www.youtube.com/watch?v=sD993H5FBIY&t=2880s) | Exploring different matrix names in PCA (u, v, d)                                                                           |
+| Bob Ross Paintings | [56:50](https://www.youtube.com/watch?v=sD993H5FBIY&t=3410s) | Looking at top 6 principal components of painting elements                                                                  |
+| Bob Ross Paintings | [57:45](https://www.youtube.com/watch?v=sD993H5FBIY&t=3465s) | Showing percentage of variation that each principal component is responsible for                                            |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Simpsons Guest Stars
+#### Simpsons Guest Stars {#simpsons-guest-stars}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Simpsons Guest Stars | [4:15](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=255s) | Using `str_detect` function to find guests that played themselves |
-| Simpsons Guest Stars | [7:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=475s) | Using `separate_rows` function and regex to get delimited values onto different rows (e.g., "Edna Krabappel; Ms. Melon" gets split into two rows) |
-| Simpsons Guest Stars | [9:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=595s) | Using `parse_number` function to convert a numeric variable coded as character to a proper numeric variable |
-| Simpsons Guest Stars | [14:45](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=885s) | Downloading and importing supplementary dataset of dialogue |
-| Simpsons Guest Stars | [16:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=970s) | Using `semi_join` function to filter dataframe based on values that appear in another dataframe |
-| Simpsons Guest Stars | [18:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1085s) | Using `anti_join` function to check which values in a dataframe do not appear in another dataframe |
-| Simpsons Guest Stars | [20:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1250s) | Using `ifelse` function to recode a single value with another (i.e., "Edna Krapabbel" becomes "Edna Krabappel-Flanders") |
-| Simpsons Guest Stars | [26:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1580s) | Explaining the goal of all the data cleaning steps |
-| Simpsons Guest Stars | [31:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1885s) | Using `sample` function to get an example line for each character |
-| Simpsons Guest Stars | [33:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2000s) | Setting `geom_histogram` function's `binwidth` and `center` arguments to get specific bin sizes |
+| Screencast           |                                                         Time | Description                                                                                                                                                      |
+|:-----------------------|-----------------------:|:-----------------------|
+| Simpsons Guest Stars |   [4:15](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=255s) | Using `str_detect` function to find guests that played themselves                                                                                                |
+| Simpsons Guest Stars |   [7:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=475s) | Using `separate_rows` function and regex to get delimited values onto different rows (e.g., "Edna Krabappel; Ms. Melon" gets split into two rows)                |
+| Simpsons Guest Stars |   [9:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=595s) | Using `parse_number` function to convert a numeric variable coded as character to a proper numeric variable                                                      |
+| Simpsons Guest Stars |  [14:45](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=885s) | Downloading and importing supplementary dataset of dialogue                                                                                                      |
+| Simpsons Guest Stars |  [16:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=970s) | Using `semi_join` function to filter dataframe based on values that appear in another dataframe                                                                  |
+| Simpsons Guest Stars | [18:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1085s) | Using `anti_join` function to check which values in a dataframe do not appear in another dataframe                                                               |
+| Simpsons Guest Stars | [20:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1250s) | Using `ifelse` function to recode a single value with another (i.e., "Edna Krapabbel" becomes "Edna Krabappel-Flanders")                                         |
+| Simpsons Guest Stars | [26:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1580s) | Explaining the goal of all the data cleaning steps                                                                                                               |
+| Simpsons Guest Stars | [31:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=1885s) | Using `sample` function to get an example line for each character                                                                                                |
+| Simpsons Guest Stars | [33:20](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2000s) | Setting `geom_histogram` function's `binwidth` and `center` arguments to get specific bin sizes                                                                  |
 | Simpsons Guest Stars | [37:25](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2245s) | Using `unnest_tokens` and `anti_join` functions from `tidytext` package to split dialogue into individual words and remove stop words (e.g., "the", "or", "and") |
-| Simpsons Guest Stars | [38:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2335s) | Using `bind_tf_idf` function from `tidytext` package to get the TF-IDF (term frequency-inverse document frequency) of individual words |
-| Simpsons Guest Stars | [42:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2570s) | Using `top_n` function to get the top 1 TF-IDF value for each role |
-| Simpsons Guest Stars | [44:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2645s) | Using `paste0` function to combine two character variables (e.g., "Groundskeeper Willie" and "ach" (separate variables) become "Groundskeeper Willie: ach") |
-| Simpsons Guest Stars | [48:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2890s) | Explanation of what TF-IDF (text frequency-inverse document frequency) tells us and how it is a "catchphrase detector" |
-| Simpsons Guest Stars | [56:40](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=3400s) | Summary of screencast |
+| Simpsons Guest Stars | [38:55](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2335s) | Using `bind_tf_idf` function from `tidytext` package to get the TF-IDF (term frequency-inverse document frequency) of individual words                           |
+| Simpsons Guest Stars | [42:50](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2570s) | Using `top_n` function to get the top 1 TF-IDF value for each role                                                                                               |
+| Simpsons Guest Stars | [44:05](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2645s) | Using `paste0` function to combine two character variables (e.g., "Groundskeeper Willie" and "ach" (separate variables) become "Groundskeeper Willie: ach")      |
+| Simpsons Guest Stars | [48:10](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=2890s) | Explanation of what TF-IDF (text frequency-inverse document frequency) tells us and how it is a "catchphrase detector"                                           |
+| Simpsons Guest Stars | [56:40](https://www.youtube.com/watch?v=EYuuAGDeGrQ&t=3400s) | Summary of screencast                                                                                                                                            |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Pizza Ratings
+#### Pizza Ratings {#pizza-ratings}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Pizza Ratings | [4:45](https://www.youtube.com/watch?v=Mkac8DHScps&t=285s) | Transforming time into something more readable (from time value of seconds since Unix epoch 1970-01-01), then converting it into a date |
-| Pizza Ratings | [9:05](https://www.youtube.com/watch?v=Mkac8DHScps&t=545s) | Formatting x-axis text so that it is rotated and readable, then re-ordering using `fct_relevel` function so that it is in its proper ordinal order |
-| Pizza Ratings | [11:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=660s) | Converting string answers to integer counterparts to get an overall numeric value for how good each place is |
-| Pizza Ratings | [12:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=750s) | Commentary on speed of `mutate` calculation within or without a group (non-grouped is slightly faster) |
-| Pizza Ratings | [15:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=930s) | Re-ordering groups by total votes using `fct_reorder` function, while still maintaining the groups themselves |
-| Pizza Ratings | [19:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1155s) | Using `glue` package to combine place name and total respondents |
-| Pizza Ratings | [20:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=1230s) | Using statistical test to give confidence intervals on average score |
-| Pizza Ratings | [22:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1335s) | Actually using the `t.test` function with toy example |
-| Pizza Ratings | [23:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1395s) | Using weighted linear model instead (which doesn't end up working) |
-| Pizza Ratings | [26:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=1560s) | Using custom function with `rep` function to get vector of repeated scores (sneaky way of weighting) so that we can perform a proper t-test |
-| Pizza Ratings | [27:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=1650s) | Summarizing `t.test` function into a list (alternative to nesting) |
-| Pizza Ratings | [31:20](https://www.youtube.com/watch?v=Mkac8DHScps&t=1880s) | Adding error bars using `geom_errorbarh` to make a TIE fighter plot that shows confidence intervals |
-| Pizza Ratings | [36:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=2190s) | Bringing in additional data from Barstool ratings (to supplement survey of Open R meetup NY) |
-| Pizza Ratings | [39:45](https://www.youtube.com/watch?v=Mkac8DHScps&t=2385s) | Getting survey data to the place level so that we can add an additional dataset |
-| Pizza Ratings | [41:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2475s) | Checking for duplicates in the joined data |
-| Pizza Ratings | [42:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2535s) | Calling off the planned analysis due to low sample sizes (too much noise, not enough overlap between datasets) |
-| Pizza Ratings | [45:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2715s) | Looking at Barstool data on its own |
-| Pizza Ratings | [55:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=3315s) | Renaming all variables with a certain string pattern in them |
-| Pizza Ratings | [58:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=3480s) | Comparing Dave's reviews with all other critics |
-| Pizza Ratings | [59:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=3555s) | Adding `geom_abline` showing x = y as comparison for `geom_smooth` linear model line |
-| Pizza Ratings | [1:02:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=3750s) | Changing the location of the `aes` function to change what the legend icons look like for size aesthetic |
+| Screencast    |                                                           Time | Description                                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| Pizza Ratings |     [4:45](https://www.youtube.com/watch?v=Mkac8DHScps&t=285s) | Transforming time into something more readable (from time value of seconds since Unix epoch 1970-01-01), then converting it into a date            |
+| Pizza Ratings |     [9:05](https://www.youtube.com/watch?v=Mkac8DHScps&t=545s) | Formatting x-axis text so that it is rotated and readable, then re-ordering using `fct_relevel` function so that it is in its proper ordinal order |
+| Pizza Ratings |    [11:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=660s) | Converting string answers to integer counterparts to get an overall numeric value for how good each place is                                       |
+| Pizza Ratings |    [12:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=750s) | Commentary on speed of `mutate` calculation within or without a group (non-grouped is slightly faster)                                             |
+| Pizza Ratings |    [15:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=930s) | Re-ordering groups by total votes using `fct_reorder` function, while still maintaining the groups themselves                                      |
+| Pizza Ratings |   [19:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1155s) | Using `glue` package to combine place name and total respondents                                                                                   |
+| Pizza Ratings |   [20:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=1230s) | Using statistical test to give confidence intervals on average score                                                                               |
+| Pizza Ratings |   [22:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1335s) | Actually using the `t.test` function with toy example                                                                                              |
+| Pizza Ratings |   [23:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=1395s) | Using weighted linear model instead (which doesn't end up working)                                                                                 |
+| Pizza Ratings |   [26:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=1560s) | Using custom function with `rep` function to get vector of repeated scores (sneaky way of weighting) so that we can perform a proper t-test        |
+| Pizza Ratings |   [27:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=1650s) | Summarizing `t.test` function into a list (alternative to nesting)                                                                                 |
+| Pizza Ratings |   [31:20](https://www.youtube.com/watch?v=Mkac8DHScps&t=1880s) | Adding error bars using `geom_errorbarh` to make a TIE fighter plot that shows confidence intervals                                                |
+| Pizza Ratings |   [36:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=2190s) | Bringing in additional data from Barstool ratings (to supplement survey of Open R meetup NY)                                                       |
+| Pizza Ratings |   [39:45](https://www.youtube.com/watch?v=Mkac8DHScps&t=2385s) | Getting survey data to the place level so that we can add an additional dataset                                                                    |
+| Pizza Ratings |   [41:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2475s) | Checking for duplicates in the joined data                                                                                                         |
+| Pizza Ratings |   [42:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2535s) | Calling off the planned analysis due to low sample sizes (too much noise, not enough overlap between datasets)                                     |
+| Pizza Ratings |   [45:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=2715s) | Looking at Barstool data on its own                                                                                                                |
+| Pizza Ratings |   [55:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=3315s) | Renaming all variables with a certain string pattern in them                                                                                       |
+| Pizza Ratings |   [58:00](https://www.youtube.com/watch?v=Mkac8DHScps&t=3480s) | Comparing Dave's reviews with all other critics                                                                                                    |
+| Pizza Ratings |   [59:15](https://www.youtube.com/watch?v=Mkac8DHScps&t=3555s) | Adding `geom_abline` showing x = y as comparison for `geom_smooth` linear model line                                                               |
+| Pizza Ratings | [1:02:30](https://www.youtube.com/watch?v=Mkac8DHScps&t=3750s) | Changing the location of the `aes` function to change what the legend icons look like for size aesthetic                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Car Fuel Efficiency
+#### Car Fuel Efficiency {#car-fuel-efficiency}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Car Fuel Efficiency | [3:20](https://www.youtube.com/watch?v=RpeioixHOHw&t=200s) | Using `select`, `sort`, and `colnames` functions to sort variables in alphabetical order |
-| Car Fuel Efficiency | [10:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=600s) | Adding `geom_abline` for y = x to a scatter plot for comparison |
-| Car Fuel Efficiency | [18:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1080s) | Visualising using `geom_boxplot` for mpg by vehicle class (size of car) |
-| Car Fuel Efficiency | [24:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=1485s) | Start of explanation of prediction goals |
-| Car Fuel Efficiency | [27:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1620s) | Creating train and test sets, along with trick using `sample_frac` function to randomly re-arrange all rows in a dataset |
-| Car Fuel Efficiency | [28:35](https://www.youtube.com/watch?v=RpeioixHOHw&t=1715s) | First step of developing linear model: visually adding `geom_smooth` |
-| Car Fuel Efficiency | [30:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1800s) | Using `augment` function to add extra variables from model to original dataset (fitted values and residuals, especially) |
-| Car Fuel Efficiency | [30:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=1845s) | Creating residuals plot and explaining what you want and don't want to see |
-| Car Fuel Efficiency | [31:50](https://www.youtube.com/watch?v=RpeioixHOHw&t=1910s) | Explanation of splines |
-| Car Fuel Efficiency | [33:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2010s) | Visualising effect of regressing using natural splines |
-| Car Fuel Efficiency | [35:10](https://www.youtube.com/watch?v=RpeioixHOHw&t=2110s) | Creating a tibble to test different degrees of freedom (1:10) for natural splines |
-| Car Fuel Efficiency | [36:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2190s) | Using `unnest` function to get tidy versions of different models |
-| Car Fuel Efficiency | [37:55](https://www.youtube.com/watch?v=RpeioixHOHw&t=2275s) | Visualising fitted values of all 6 different models at the same time |
+| Screencast          |                                                         Time | Description                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| Car Fuel Efficiency |   [3:20](https://www.youtube.com/watch?v=RpeioixHOHw&t=200s) | Using `select`, `sort`, and `colnames` functions to sort variables in alphabetical order                                        |
+| Car Fuel Efficiency |  [10:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=600s) | Adding `geom_abline` for y = x to a scatter plot for comparison                                                                 |
+| Car Fuel Efficiency | [18:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1080s) | Visualising using `geom_boxplot` for mpg by vehicle class (size of car)                                                         |
+| Car Fuel Efficiency | [24:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=1485s) | Start of explanation of prediction goals                                                                                        |
+| Car Fuel Efficiency | [27:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1620s) | Creating train and test sets, along with trick using `sample_frac` function to randomly re-arrange all rows in a dataset        |
+| Car Fuel Efficiency | [28:35](https://www.youtube.com/watch?v=RpeioixHOHw&t=1715s) | First step of developing linear model: visually adding `geom_smooth`                                                            |
+| Car Fuel Efficiency | [30:00](https://www.youtube.com/watch?v=RpeioixHOHw&t=1800s) | Using `augment` function to add extra variables from model to original dataset (fitted values and residuals, especially)        |
+| Car Fuel Efficiency | [30:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=1845s) | Creating residuals plot and explaining what you want and don't want to see                                                      |
+| Car Fuel Efficiency | [31:50](https://www.youtube.com/watch?v=RpeioixHOHw&t=1910s) | Explanation of splines                                                                                                          |
+| Car Fuel Efficiency | [33:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2010s) | Visualising effect of regressing using natural splines                                                                          |
+| Car Fuel Efficiency | [35:10](https://www.youtube.com/watch?v=RpeioixHOHw&t=2110s) | Creating a tibble to test different degrees of freedom (1:10) for natural splines                                               |
+| Car Fuel Efficiency | [36:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2190s) | Using `unnest` function to get tidy versions of different models                                                                |
+| Car Fuel Efficiency | [37:55](https://www.youtube.com/watch?v=RpeioixHOHw&t=2275s) | Visualising fitted values of all 6 different models at the same time                                                            |
 | Car Fuel Efficiency | [42:10](https://www.youtube.com/watch?v=RpeioixHOHw&t=2530s) | Investigating whether the model got "better" as we added degrees of freedom to the natural splines, using the `glance` function |
-| Car Fuel Efficiency | [47:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=2865s) | Using ANOVA to perform a statistical test on whether natural splines as a group explain variation in MPG |
-| Car Fuel Efficiency | [48:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2910s) | Exploring colinearity of dependant variables (displacement and cylinders) |
-| Car Fuel Efficiency | [55:10](https://www.youtube.com/watch?v=RpeioixHOHw&t=3310s) | Binning years into every two years using `floor` function |
-| Car Fuel Efficiency | [56:40](https://www.youtube.com/watch?v=RpeioixHOHw&t=3400s) | Using `summarise_at` function to do quick averaging of multiple variables |
+| Car Fuel Efficiency | [47:45](https://www.youtube.com/watch?v=RpeioixHOHw&t=2865s) | Using ANOVA to perform a statistical test on whether natural splines as a group explain variation in MPG                        |
+| Car Fuel Efficiency | [48:30](https://www.youtube.com/watch?v=RpeioixHOHw&t=2910s) | Exploring colinearity of dependant variables (displacement and cylinders)                                                       |
+| Car Fuel Efficiency | [55:10](https://www.youtube.com/watch?v=RpeioixHOHw&t=3310s) | Binning years into every two years using `floor` function                                                                       |
+| Car Fuel Efficiency | [56:40](https://www.youtube.com/watch?v=RpeioixHOHw&t=3400s) | Using `summarise_at` function to do quick averaging of multiple variables                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Horror Movies
+#### Horror Movies {#horror-movies}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Horror Movies | [4:15](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=255s) | Extracting digits (release year) from character string using regex, along with good explanation of `extract` function |
-| Horror Movies | [8:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=480s) | Quick check on why `parse_number` is unable to parse some values -- is it because they are NA or some other reason? |
-| Horror Movies | [9:45](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=585s) | Visually investigating correlation between budget and rating |
-| Horror Movies | [11:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=710s) | Investigating correlation between MPAA rating (PG-13, R, etc.) and rating using boxplots |
-| Horror Movies | [12:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=770s) | Using `pull` function to quickly check levels of a factor |
-| Horror Movies | [13:30](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=810s) | Using ANOVA to check difference of variation within groups (MPAA rating) than between groups |
-| Horror Movies | [15:40](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=940s) | Separating genre using `separate_rows` function (instead of `str_split` and `unnest`) |
+| Screencast    |                                                         Time | Description                                                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| Horror Movies |   [4:15](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=255s) | Extracting digits (release year) from character string using regex, along with good explanation of `extract` function                                                        |
+| Horror Movies |   [8:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=480s) | Quick check on why `parse_number` is unable to parse some values -- is it because they are NA or some other reason?                                                          |
+| Horror Movies |   [9:45](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=585s) | Visually investigating correlation between budget and rating                                                                                                                 |
+| Horror Movies |  [11:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=710s) | Investigating correlation between MPAA rating (PG-13, R, etc.) and rating using boxplots                                                                                     |
+| Horror Movies |  [12:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=770s) | Using `pull` function to quickly check levels of a factor                                                                                                                    |
+| Horror Movies |  [13:30](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=810s) | Using ANOVA to check difference of variation within groups (MPAA rating) than between groups                                                                                 |
+| Horror Movies |  [15:40](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=940s) | Separating genre using `separate_rows` function (instead of `str_split` and `unnest`)                                                                                        |
 | Horror Movies | [18:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1080s) | Removing boilerplate "Directed by..." and "With..." part of plot variable and isolating plot, first using regex, then by using `separate` function with periods as separator |
-| Horror Movies | [20:40](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1240s) | Unnesting word tokens, removing stop words, and counting appearances |
-| Horror Movies | [21:20](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1280s) | Aggregating by word to find words that appear in high- or low-rated movies |
-| Horror Movies | [23:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1380s) | Discussing potential confounding factors for ratings associated with specific words |
-| Horror Movies | [24:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1490s) | Searching for duplicated movie titles |
-| Horror Movies | [25:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1550s) | De-duping using `distinct` function |
-| Horror Movies | [26:55](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1615s) | Loading in and explaining `glmnet` package |
-| Horror Movies | [28:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1680s) | Using movie titles to pull out ratings using `rownmaes` and `match` functions to create an index of which rating to pull out of the original dataset |
-| Horror Movies | [29:10](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1750s) | Actually using `glmnet` function to create lasso model |
-| Horror Movies | [34:05](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2045s) | Showing built-in plot of lasso lambda against mean-squared error |
-| Horror Movies | [37:05](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2225s) | Explaining when certain terms appeared in the lasso model as the lambda value dropped |
-| Horror Movies | [41:10](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2470s) | Gathering all variables except for title, so that the dataset is very tall |
-| Horror Movies | [42:35](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2555s) | Using `unite` function to combine two variables (better alternative to `paste`) |
-| Horror Movies | [45:45](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2745s) | Creating a new lasso with tons of new variables other than plot words |
+| Horror Movies | [20:40](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1240s) | Unnesting word tokens, removing stop words, and counting appearances                                                                                                         |
+| Horror Movies | [21:20](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1280s) | Aggregating by word to find words that appear in high- or low-rated movies                                                                                                   |
+| Horror Movies | [23:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1380s) | Discussing potential confounding factors for ratings associated with specific words                                                                                          |
+| Horror Movies | [24:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1490s) | Searching for duplicated movie titles                                                                                                                                        |
+| Horror Movies | [25:50](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1550s) | De-duping using `distinct` function                                                                                                                                          |
+| Horror Movies | [26:55](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1615s) | Loading in and explaining `glmnet` package                                                                                                                                   |
+| Horror Movies | [28:00](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1680s) | Using movie titles to pull out ratings using `rownmaes` and `match` functions to create an index of which rating to pull out of the original dataset                         |
+| Horror Movies | [29:10](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=1750s) | Actually using `glmnet` function to create lasso model                                                                                                                       |
+| Horror Movies | [34:05](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2045s) | Showing built-in plot of lasso lambda against mean-squared error                                                                                                             |
+| Horror Movies | [37:05](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2225s) | Explaining when certain terms appeared in the lasso model as the lambda value dropped                                                                                        |
+| Horror Movies | [41:10](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2470s) | Gathering all variables except for title, so that the dataset is very tall                                                                                                   |
+| Horror Movies | [42:35](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2555s) | Using `unite` function to combine two variables (better alternative to `paste`)                                                                                              |
+| Horror Movies | [45:45](https://www.youtube.com/watch?v=yFRSTlk3kRQ&t=2745s) | Creating a new lasso with tons of new variables other than plot words                                                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### NYC Squirrel Census
+#### NYC Squirrel Census {#nyc-squirrel-census}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| NYC Squirrel Census | [5:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=345s) | Starter EDA of latitude and longitude using `geom_point` |
-| NYC Squirrel Census | [6:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=405s) | Aggregating squirrel counts by hectare to get a "binned" map |
-| NYC Squirrel Census | [9:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=540s) | Investigating colour notes |
-| NYC Squirrel Census | [10:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=630s) | Asking question, "Are there areas of the parks where we see certain-coloured squirrels |
-| NYC Squirrel Census | [12:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=765s) | Plotting latitude and percentage of gray squirrels to answer, "Do we get a lower proportion of gray squirrels as we go farther north?" |
-| NYC Squirrel Census | [13:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=810s) | Using logistic regression to test gray squirrel (proportion as we go farther north) |
-| NYC Squirrel Census | [16:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=990s) | Noting that he could have used original data sets as input for logistic regression function |
-| NYC Squirrel Census | [19:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1170s) | "Does a squirrel run away?" based on location in the park (latitude), using logistic regression |
-| NYC Squirrel Census | [20:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1245s) | Using `summarise_at` function to apply same function to multiple variables |
-| NYC Squirrel Census | [25:25](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1525s) | Loading `ggmap` package |
-| NYC Squirrel Census | [27:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1620s) | Start using `ggmap`, with the `get_map` function |
-| NYC Squirrel Census | [28:20](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1700s) | Decision to not set up Google API key to use `ggmap` properly |
-| NYC Squirrel Census | [30:15](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1815s) | Using the `sf` package to read in a shapefile of Central Park |
-| NYC Squirrel Census | [30:40](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1840s) | Using `read_sf` function from `sf` package to import a shapefile into R |
-| NYC Squirrel Census | [31:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1890s) | Using `geom_sf` function from `sf` package to visualise the imported shapefile |
-| NYC Squirrel Census | [32:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1965s) | Combining shapefile "background" with relevant squirrel data in one plot |
-| NYC Squirrel Census | [34:40](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2080s) | Visualising pathways (footpaths, bicycle paths) in the shapefile |
-| NYC Squirrel Census | [37:55](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2275s) | Finishing visualisation and moving on to analysing activity types |
-| NYC Squirrel Census | [38:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2325s) | Selecting fields based on whether they end with "ing", then gathering those fields into tidy format |
-| NYC Squirrel Census | [39:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2390s) | Decision to create a `shiny` visualisation |
-| NYC Squirrel Census | [41:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2490s) | Setting `shiny` app settings (e.g., slider for minimum number of squirrels) |
-| NYC Squirrel Census | [42:15](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2535s) | Setting up `shiny` app options / variables |
-| NYC Squirrel Census | [43:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2630s) | Explanation of why setting up options in `shiny` app the way he did |
-| NYC Squirrel Census | [46:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2760s) | Solving error "Discrete value supplied to continuous scale" |
-| NYC Squirrel Census | [46:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2810s) | First draft of `shiny` app |
-| NYC Squirrel Census | [48:35](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2915s) | Creating a dynamic midpoint for the two-gradient scale in the `shiny` app |
-| NYC Squirrel Census | [51:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3090s) | Adding additional variables of more behaviours to `shiny` app (kuks, moans, runs from, etc.) |
-| NYC Squirrel Census | [53:10](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3190s) | "What are the distributions of some of these behaviours?" |
-| NYC Squirrel Census | [56:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3410s) | Adding ground location (above ground, ground plane) to `shiny` app |
-| NYC Squirrel Census | [58:20](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3500s) | Summary of screencast |
+| Screencast          |                                                         Time | Description                                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| NYC Squirrel Census |   [5:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=345s) | Starter EDA of latitude and longitude using `geom_point`                                                                               |
+| NYC Squirrel Census |   [6:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=405s) | Aggregating squirrel counts by hectare to get a "binned" map                                                                           |
+| NYC Squirrel Census |   [9:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=540s) | Investigating colour notes                                                                                                             |
+| NYC Squirrel Census |  [10:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=630s) | Asking question, "Are there areas of the parks where we see certain-coloured squirrels                                                 |
+| NYC Squirrel Census |  [12:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=765s) | Plotting latitude and percentage of gray squirrels to answer, "Do we get a lower proportion of gray squirrels as we go farther north?" |
+| NYC Squirrel Census |  [13:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=810s) | Using logistic regression to test gray squirrel (proportion as we go farther north)                                                    |
+| NYC Squirrel Census |  [16:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=990s) | Noting that he could have used original data sets as input for logistic regression function                                            |
+| NYC Squirrel Census | [19:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1170s) | "Does a squirrel run away?" based on location in the park (latitude), using logistic regression                                        |
+| NYC Squirrel Census | [20:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1245s) | Using `summarise_at` function to apply same function to multiple variables                                                             |
+| NYC Squirrel Census | [25:25](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1525s) | Loading `ggmap` package                                                                                                                |
+| NYC Squirrel Census | [27:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1620s) | Start using `ggmap`, with the `get_map` function                                                                                       |
+| NYC Squirrel Census | [28:20](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1700s) | Decision to not set up Google API key to use `ggmap` properly                                                                          |
+| NYC Squirrel Census | [30:15](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1815s) | Using the `sf` package to read in a shapefile of Central Park                                                                          |
+| NYC Squirrel Census | [30:40](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1840s) | Using `read_sf` function from `sf` package to import a shapefile into R                                                                |
+| NYC Squirrel Census | [31:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1890s) | Using `geom_sf` function from `sf` package to visualise the imported shapefile                                                         |
+| NYC Squirrel Census | [32:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=1965s) | Combining shapefile "background" with relevant squirrel data in one plot                                                               |
+| NYC Squirrel Census | [34:40](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2080s) | Visualising pathways (footpaths, bicycle paths) in the shapefile                                                                       |
+| NYC Squirrel Census | [37:55](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2275s) | Finishing visualisation and moving on to analysing activity types                                                                      |
+| NYC Squirrel Census | [38:45](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2325s) | Selecting fields based on whether they end with "ing", then gathering those fields into tidy format                                    |
+| NYC Squirrel Census | [39:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2390s) | Decision to create a `shiny` visualisation                                                                                             |
+| NYC Squirrel Census | [41:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2490s) | Setting `shiny` app settings (e.g., slider for minimum number of squirrels)                                                            |
+| NYC Squirrel Census | [42:15](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2535s) | Setting up `shiny` app options / variables                                                                                             |
+| NYC Squirrel Census | [43:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2630s) | Explanation of why setting up options in `shiny` app the way he did                                                                    |
+| NYC Squirrel Census | [46:00](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2760s) | Solving error "Discrete value supplied to continuous scale"                                                                            |
+| NYC Squirrel Census | [46:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2810s) | First draft of `shiny` app                                                                                                             |
+| NYC Squirrel Census | [48:35](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=2915s) | Creating a dynamic midpoint for the two-gradient scale in the `shiny` app                                                              |
+| NYC Squirrel Census | [51:30](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3090s) | Adding additional variables of more behaviours to `shiny` app (kuks, moans, runs from, etc.)                                           |
+| NYC Squirrel Census | [53:10](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3190s) | "What are the distributions of some of these behaviours?"                                                                              |
+| NYC Squirrel Census | [56:50](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3410s) | Adding ground location (above ground, ground plane) to `shiny` app                                                                     |
+| NYC Squirrel Census | [58:20](https://www.youtube.com/watch?v=6GV9sAD6Pi0&t=3500s) | Summary of screencast                                                                                                                  |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### CRAN Package Code
+#### CRAN Package Code {#cran-package-code}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| CRAN Package Code | [4:30](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=270s) | Summarizing many things by language (e.g., lines of code, comment/code ratio) |
-| CRAN Package Code | [9:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=575s) | Using `gather` function (now `pivot_longer`) to consolidate multiple metrics into one dimension, then visualizing by facetting by metric |
-| CRAN Package Code | [11:20](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=680s) | Setting ncol = 1 within `facet_wrap` function to get facetted graphs to stack vertically |
-| CRAN Package Code | [11:30](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=690s) | Using `reorder_within` function from `tidytext` package to properly reorder factors within each facet |
-| CRAN Package Code | [16:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=960s) | Using `geom_text` label to add language name as label to scatter points |
-| CRAN Package Code | [20:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=1200s) | Completing preliminary overview and looking at distribution of R code in packages |
-| CRAN Package Code | [26:15](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=1575s) | Using `str_extract` to extract only letters and names from character vector (using regex) |
-| CRAN Package Code | [34:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2040s) | Re-ordering the order of categorical variables in the legend using `guides` function |
-| CRAN Package Code | [36:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2160s) | Investigating comment/code ratio |
-| CRAN Package Code | [43:05](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2585s) | Importing additional package data (looking around for a bit, then starting to actually import ~46:00) |
-| CRAN Package Code | [54:40](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3280s) | Importing even more additional data (available packages) |
-| CRAN Package Code | [57:50](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3470s) | Using `separate_rows` function to separate delimited values |
-| CRAN Package Code | [58:45](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3525s) | Using `extract` function and regex to pull out specific types of characters from a string |
-| CRAN Package Code | [1:05:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3935s) | Summary of screencast |
+| Screencast        |                                                           Time | Description                                                                                                                              |
+|:-----------------------|-----------------------:|:-----------------------|
+| CRAN Package Code |     [4:30](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=270s) | Summarizing many things by language (e.g., lines of code, comment/code ratio)                                                            |
+| CRAN Package Code |     [9:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=575s) | Using `gather` function (now `pivot_longer`) to consolidate multiple metrics into one dimension, then visualizing by facetting by metric |
+| CRAN Package Code |    [11:20](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=680s) | Setting ncol = 1 within `facet_wrap` function to get facetted graphs to stack vertically                                                 |
+| CRAN Package Code |    [11:30](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=690s) | Using `reorder_within` function from `tidytext` package to properly reorder factors within each facet                                    |
+| CRAN Package Code |    [16:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=960s) | Using `geom_text` label to add language name as label to scatter points                                                                  |
+| CRAN Package Code |   [20:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=1200s) | Completing preliminary overview and looking at distribution of R code in packages                                                        |
+| CRAN Package Code |   [26:15](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=1575s) | Using `str_extract` to extract only letters and names from character vector (using regex)                                                |
+| CRAN Package Code |   [34:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2040s) | Re-ordering the order of categorical variables in the legend using `guides` function                                                     |
+| CRAN Package Code |   [36:00](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2160s) | Investigating comment/code ratio                                                                                                         |
+| CRAN Package Code |   [43:05](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=2585s) | Importing additional package data (looking around for a bit, then starting to actually import \~46:00)                                   |
+| CRAN Package Code |   [54:40](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3280s) | Importing even more additional data (available packages)                                                                                 |
+| CRAN Package Code |   [57:50](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3470s) | Using `separate_rows` function to separate delimited values                                                                              |
+| CRAN Package Code |   [58:45](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3525s) | Using `extract` function and regex to pull out specific types of characters from a string                                                |
+| CRAN Package Code | [1:05:35](https://www.youtube.com/watch?v=dr4qw8o0nYU&t=3935s) | Summary of screencast                                                                                                                    |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Spelling Bee Honeycomb
+#### Riddler: Spelling Bee Honeycomb {#riddler-spelling-bee-honeycomb}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Spelling Bee Honeycomb | [2:00](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=120s) | Using `read_lines` function to import a plain text file (.txt) |
-| Riddler: Spelling Bee Honeycomb | [2:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=155s) | Using `str_detect` function to filter out words that do not contain the letter "g" |
-| Riddler: Spelling Bee Honeycomb | [3:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=205s) | Using `str_split` function to get a list of a word's individual letters |
-| Riddler: Spelling Bee Honeycomb | [3:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=235s) | Using `setdiff` function to find words with invalid letters (letters that are not in the puzzle honeycomb) -- also needs `map` function (at 4:35) |
-| Riddler: Spelling Bee Honeycomb | [10:45](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=645s) | Changing existing code to make a function that will calculate scores for letter combinations |
-| Riddler: Spelling Bee Honeycomb | [14:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=850s) | Noticing the rule about bonus points for pangrams and using `n_distinct` function to determine if a word gets those points |
-| Riddler: Spelling Bee Honeycomb | [17:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1045s) | Using `map` function to eliminate duplicate letters from each word's list of component letters |
-| Riddler: Spelling Bee Honeycomb | [25:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1555s) | Using `acast` function from `reshape2` package to create a matrix of words by letters |
-| Riddler: Spelling Bee Honeycomb | [27:50](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1670s) | Using the words/letters matrix to find valid words for a given letter combination |
-| Riddler: Spelling Bee Honeycomb | [29:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1795s) | Using the matrix multiplication operator `%*%` to find the number of "forbidden" letters for each word |
-| Riddler: Spelling Bee Honeycomb | [42:05](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2525s) | Using `microbenchmark` function from `microbenchmark` package to test how long it takes to run a function |
-| Riddler: Spelling Bee Honeycomb | [43:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2615s) | Using combn function to get the actual combinations of 6 letters (not just the count) |
-| Riddler: Spelling Bee Honeycomb | [45:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2715s) | Using `map` function to get scores for different combinations of letters created above |
-| Riddler: Spelling Bee Honeycomb | [47:30](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2850s) | Using `which.max` function to find the position of the max value in a vector |
-| Riddler: Spelling Bee Honeycomb | [1:05:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=3910s) | Using `t` function to transpose a matrix |
-| Riddler: Spelling Bee Honeycomb | [1:19:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=4755s) | Summary of screencast |
+| Screencast                      |                                                           Time | Description                                                                                                                                       |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Spelling Bee Honeycomb |     [2:00](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=120s) | Using `read_lines` function to import a plain text file (.txt)                                                                                    |
+| Riddler: Spelling Bee Honeycomb |     [2:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=155s) | Using `str_detect` function to filter out words that do not contain the letter "g"                                                                |
+| Riddler: Spelling Bee Honeycomb |     [3:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=205s) | Using `str_split` function to get a list of a word's individual letters                                                                           |
+| Riddler: Spelling Bee Honeycomb |     [3:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=235s) | Using `setdiff` function to find words with invalid letters (letters that are not in the puzzle honeycomb) -- also needs `map` function (at 4:35) |
+| Riddler: Spelling Bee Honeycomb |    [10:45](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=645s) | Changing existing code to make a function that will calculate scores for letter combinations                                                      |
+| Riddler: Spelling Bee Honeycomb |    [14:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=850s) | Noticing the rule about bonus points for pangrams and using `n_distinct` function to determine if a word gets those points                        |
+| Riddler: Spelling Bee Honeycomb |   [17:25](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1045s) | Using `map` function to eliminate duplicate letters from each word's list of component letters                                                    |
+| Riddler: Spelling Bee Honeycomb |   [25:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1555s) | Using `acast` function from `reshape2` package to create a matrix of words by letters                                                             |
+| Riddler: Spelling Bee Honeycomb |   [27:50](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1670s) | Using the words/letters matrix to find valid words for a given letter combination                                                                 |
+| Riddler: Spelling Bee Honeycomb |   [29:55](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=1795s) | Using the matrix multiplication operator `%*%` to find the number of "forbidden" letters for each word                                            |
+| Riddler: Spelling Bee Honeycomb |   [42:05](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2525s) | Using `microbenchmark` function from `microbenchmark` package to test how long it takes to run a function                                         |
+| Riddler: Spelling Bee Honeycomb |   [43:35](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2615s) | Using combn function to get the actual combinations of 6 letters (not just the count)                                                             |
+| Riddler: Spelling Bee Honeycomb |   [45:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2715s) | Using `map` function to get scores for different combinations of letters created above                                                            |
+| Riddler: Spelling Bee Honeycomb |   [47:30](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=2850s) | Using `which.max` function to find the position of the max value in a vector                                                                      |
+| Riddler: Spelling Bee Honeycomb | [1:05:10](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=3910s) | Using `t` function to transpose a matrix                                                                                                          |
+| Riddler: Spelling Bee Honeycomb | [1:19:15](https://www.youtube.com/watch?v=wFZhuQEfEYA&t=4755s) | Summary of screencast                                                                                                                             |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### The Office
+#### The Office {#the-office}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| The Office | [1:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=105s) | Overview of transcripts data |
-| The Office | [2:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=145s) | Overview of ratintgs data |
-| The Office | [4:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=250s) | Using `fct_inorder` function to create a factor with levels based on when they appear in the dataframe |
-| The Office | [4:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=290s) | Using `theme` and `element_text` functions to turn axis labels 90 degrees |
-| The Office | [5:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=355s) | Creating a line graph with points at each observation (using `geom_line` and `geom_point`) |
-| The Office | [7:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=430s) | Adding text labels to very high and very low-rated episodes |
-| The Office | [8:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=530s) | Using `theme` function's `panel.grid.major` argument to get rid of some extraneous gridlines, using `element_blank` function |
-| The Office | [10:15](https://www.youtube.com/watch?v=_IvAubTDQME&t=615s) | Using `geom_text_repel` from `ggrepel` package to experiment with different labelling (before abandoning this approach) |
-| The Office | [12:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=765s) | Using `row_number` function to add episode_number field to make graphing easier |
-| The Office | [14:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=845s) | Explanation of why number of ratings (votes) is relevant to interpreting the graph |
-| The Office | [19:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1150s) | Using `unnest_tokens` function from `tidytext` package to split full-sentence text field to individual words |
-| The Office | [20:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1210s) | Using `anti_join` function to filter out stop words (e.g., and, or, the) |
-| The Office | [22:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1345s) | Using `str_remove_all` function to get rid of quotation marks from character names (quirks that might pop up when parsing) |
-| The Office | [25:40](https://www.youtube.com/watch?v=_IvAubTDQME&t=1540s) | Asking, "Are there words that are specific to certain characters?" (using `bind_tf_idf` function) |
-| The Office | [32:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1945s) | Using `reorder_within` function to re-order factors within a grouping (when a term appears in multiple groups) and `scale_x_reordered` function to graph |
-| The Office | [37:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=2225s) | Asking, "What effects the popularity of an episode?" |
-| The Office | [37:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=2275s) | Dealing with inconsistent episode names between datasets |
-| The Office | [41:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=2485s) | Using `str_remove` function and some regex to remove "(Parts 1&2)" from some episode names |
-| The Office | [42:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=2565s) | Using `str_to_lower` function to further align episode names (addresses inconsistent capitalization) |
-| The Office | [52:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3140s) | Setting up dataframe of features for a LASSO regression, with director and writer each being a feature with its own line |
-| The Office | [52:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3175s) | Using `separate_rows` function to separate episodes with multiple writers so that each has their own row |
-| The Office | [58:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=3505s) | Using `log2` function to transform number of lines fields to something more useable (since it is log-normally distributed) |
-| The Office | [1:00:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3620s) | Using `cast_sparse` function from `tidytext` package to create a sparse matrix of features by episode |
-| The Office | [1:01:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3715s) | Using `semi_join` function as a "filtering join" |
-| The Office | [1:02:30](https://www.youtube.com/watch?v=_IvAubTDQME&t=3750s) | Setting up dataframes (after we have our features) to run LASSO regression |
-| The Office | [1:03:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=3830s) | Using `cv.glmnet` function from `glmnet` package to run a cross-validated LASSO regression |
-| The Office | [1:05:35](https://www.youtube.com/watch?v=_IvAubTDQME&t=3935s) | Explanation of how to pick a lambda penalty parameter |
-| The Office | [1:05:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3955s) | Explanation of output of LASSO model |
-| The Office | [1:09:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=4165s) | Outline of why David likes regularized linear models (which is what LASSO is) |
-| The Office | [1:10:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=4255s) | Summary of screencast |
+| Screencast |                                                           Time | Description                                                                                                                                              |
+|:-----------------------|-----------------------:|:-----------------------|
+| The Office |     [1:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=105s) | Overview of transcripts data                                                                                                                             |
+| The Office |     [2:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=145s) | Overview of ratintgs data                                                                                                                                |
+| The Office |     [4:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=250s) | Using `fct_inorder` function to create a factor with levels based on when they appear in the dataframe                                                   |
+| The Office |     [4:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=290s) | Using `theme` and `element_text` functions to turn axis labels 90 degrees                                                                                |
+| The Office |     [5:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=355s) | Creating a line graph with points at each observation (using `geom_line` and `geom_point`)                                                               |
+| The Office |     [7:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=430s) | Adding text labels to very high and very low-rated episodes                                                                                              |
+| The Office |     [8:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=530s) | Using `theme` function's `panel.grid.major` argument to get rid of some extraneous gridlines, using `element_blank` function                             |
+| The Office |    [10:15](https://www.youtube.com/watch?v=_IvAubTDQME&t=615s) | Using `geom_text_repel` from `ggrepel` package to experiment with different labelling (before abandoning this approach)                                  |
+| The Office |    [12:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=765s) | Using `row_number` function to add episode_number field to make graphing easier                                                                          |
+| The Office |    [14:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=845s) | Explanation of why number of ratings (votes) is relevant to interpreting the graph                                                                       |
+| The Office |   [19:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1150s) | Using `unnest_tokens` function from `tidytext` package to split full-sentence text field to individual words                                             |
+| The Office |   [20:10](https://www.youtube.com/watch?v=_IvAubTDQME&t=1210s) | Using `anti_join` function to filter out stop words (e.g., and, or, the)                                                                                 |
+| The Office |   [22:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1345s) | Using `str_remove_all` function to get rid of quotation marks from character names (quirks that might pop up when parsing)                               |
+| The Office |   [25:40](https://www.youtube.com/watch?v=_IvAubTDQME&t=1540s) | Asking, "Are there words that are specific to certain characters?" (using `bind_tf_idf` function)                                                        |
+| The Office |   [32:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=1945s) | Using `reorder_within` function to re-order factors within a grouping (when a term appears in multiple groups) and `scale_x_reordered` function to graph |
+| The Office |   [37:05](https://www.youtube.com/watch?v=_IvAubTDQME&t=2225s) | Asking, "What effects the popularity of an episode?"                                                                                                     |
+| The Office |   [37:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=2275s) | Dealing with inconsistent episode names between datasets                                                                                                 |
+| The Office |   [41:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=2485s) | Using `str_remove` function and some regex to remove "(Parts 1&2)" from some episode names                                                               |
+| The Office |   [42:45](https://www.youtube.com/watch?v=_IvAubTDQME&t=2565s) | Using `str_to_lower` function to further align episode names (addresses inconsistent capitalization)                                                     |
+| The Office |   [52:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3140s) | Setting up dataframe of features for a LASSO regression, with director and writer each being a feature with its own line                                 |
+| The Office |   [52:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3175s) | Using `separate_rows` function to separate episodes with multiple writers so that each has their own row                                                 |
+| The Office |   [58:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=3505s) | Using `log2` function to transform number of lines fields to something more useable (since it is log-normally distributed)                               |
+| The Office | [1:00:20](https://www.youtube.com/watch?v=_IvAubTDQME&t=3620s) | Using `cast_sparse` function from `tidytext` package to create a sparse matrix of features by episode                                                    |
+| The Office | [1:01:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3715s) | Using `semi_join` function as a "filtering join"                                                                                                         |
+| The Office | [1:02:30](https://www.youtube.com/watch?v=_IvAubTDQME&t=3750s) | Setting up dataframes (after we have our features) to run LASSO regression                                                                               |
+| The Office | [1:03:50](https://www.youtube.com/watch?v=_IvAubTDQME&t=3830s) | Using `cv.glmnet` function from `glmnet` package to run a cross-validated LASSO regression                                                               |
+| The Office | [1:05:35](https://www.youtube.com/watch?v=_IvAubTDQME&t=3935s) | Explanation of how to pick a lambda penalty parameter                                                                                                    |
+| The Office | [1:05:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=3955s) | Explanation of output of LASSO model                                                                                                                     |
+| The Office | [1:09:25](https://www.youtube.com/watch?v=_IvAubTDQME&t=4165s) | Outline of why David likes regularized linear models (which is what LASSO is)                                                                            |
+| The Office | [1:10:55](https://www.youtube.com/watch?v=_IvAubTDQME&t=4255s) | Summary of screencast                                                                                                                                    |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### COVID-19 Open Research Dataset (CORD-19)
+#### COVID-19 Open Research Dataset (CORD-19) {#covid-19-open-research-dataset-cord-19}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| COVID-19 Open Research Dataset (CORD-19) | [0:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=55s) | Disclaimer that David's not an epidemiologist |
-| COVID-19 Open Research Dataset (CORD-19) | [2:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=175s) | Overview of dataset |
-| COVID-19 Open Research Dataset (CORD-19) | [7:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=470s) | Using `dir` function with its `full.names` argument to get file paths for all files in a folder |
-| COVID-19 Open Research Dataset (CORD-19) | [9:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=585s) | Inspecting JSON-formatted data |
-| COVID-19 Open Research Dataset (CORD-19) | [10:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=640s) | Introducing `hoist` function as a way to deal with nested lists (typical for JSON data) |
-| COVID-19 Open Research Dataset (CORD-19) | [11:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=700s) | Continuing to use the `hoist` function |
-| COVID-19 Open Research Dataset (CORD-19) | [13:10](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=790s) | Brief explanation of `pluck` specification |
-| COVID-19 Open Research Dataset (CORD-19) | [16:35](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=995s) | Using `object.size` function to check size of JSON data |
-| COVID-19 Open Research Dataset (CORD-19) | [17:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1060s) | Using `map_chr` and `str_c` functions together to combine paragraphs of text in a list into a single character string |
-| COVID-19 Open Research Dataset (CORD-19) | [20:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1200s) | Using `unnest_tokens` function from `tidytext` package to split full paragraphs into individual words |
-| COVID-19 Open Research Dataset (CORD-19) | [22:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1370s) | Overview of `scispaCy` package for Python, which has named entity recognition features |
-| COVID-19 Open Research Dataset (CORD-19) | [24:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1480s) | Introducting `spacyr` package, which is a R wrapper around the Python `scispaCy` package |
-| COVID-19 Open Research Dataset (CORD-19) | [28:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1730s) | Showing how `tidytext` can use a custom tokenization function (David uses `spacyr` package's named entity recognition) |
-| COVID-19 Open Research Dataset (CORD-19) | [32:20](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1940s) | Demonstrating the `tokenize_words` function from the `tokenizers` package |
-| COVID-19 Open Research Dataset (CORD-19) | [37:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2220s) | Actually using a custom tokenizer in `unnest_tokens` function |
-| COVID-19 Open Research Dataset (CORD-19) | [39:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2385s) | Using `sample_n` function to get a random sample of n rows |
-| COVID-19 Open Research Dataset (CORD-19) | [43:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2605s) | Asking, "What are groups of words that tend to occur together?" |
-| COVID-19 Open Research Dataset (CORD-19) | [44:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2670s) | Using `pairwise_cor` from `widyr` package to find correlation between named entities |
-| COVID-19 Open Research Dataset (CORD-19) | [45:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2740s) | Using `ggraph` and `igraph` packages to create a network plot |
-| COVID-19 Open Research Dataset (CORD-19) | [52:05](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3125s) | Starting to look at papers' references |
-| COVID-19 Open Research Dataset (CORD-19) | [53:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3210s) | Using `unnest_longer` then `unnest_wider` function to convert lists into a tibble |
-| COVID-19 Open Research Dataset (CORD-19) | [59:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3570s) | Using `str_trunc` function to truncate long character strings to a certain number of characters |
-| COVID-19 Open Research Dataset (CORD-19) | [1:06:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3985s) | Using `glue` function for easy combination of strings and R code |
-| COVID-19 Open Research Dataset (CORD-19) | [1:19:15](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=4755s) | Summary of screencast |
+| Screencast                               |                                                           Time | Description                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| COVID-19 Open Research Dataset (CORD-19) |      [0:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=55s) | Disclaimer that David's not an epidemiologist                                                                          |
+| COVID-19 Open Research Dataset (CORD-19) |     [2:55](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=175s) | Overview of dataset                                                                                                    |
+| COVID-19 Open Research Dataset (CORD-19) |     [7:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=470s) | Using `dir` function with its `full.names` argument to get file paths for all files in a folder                        |
+| COVID-19 Open Research Dataset (CORD-19) |     [9:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=585s) | Inspecting JSON-formatted data                                                                                         |
+| COVID-19 Open Research Dataset (CORD-19) |    [10:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=640s) | Introducing `hoist` function as a way to deal with nested lists (typical for JSON data)                                |
+| COVID-19 Open Research Dataset (CORD-19) |    [11:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=700s) | Continuing to use the `hoist` function                                                                                 |
+| COVID-19 Open Research Dataset (CORD-19) |    [13:10](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=790s) | Brief explanation of `pluck` specification                                                                             |
+| COVID-19 Open Research Dataset (CORD-19) |    [16:35](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=995s) | Using `object.size` function to check size of JSON data                                                                |
+| COVID-19 Open Research Dataset (CORD-19) |   [17:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1060s) | Using `map_chr` and `str_c` functions together to combine paragraphs of text in a list into a single character string  |
+| COVID-19 Open Research Dataset (CORD-19) |   [20:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1200s) | Using `unnest_tokens` function from `tidytext` package to split full paragraphs into individual words                  |
+| COVID-19 Open Research Dataset (CORD-19) |   [22:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1370s) | Overview of `scispaCy` package for Python, which has named entity recognition features                                 |
+| COVID-19 Open Research Dataset (CORD-19) |   [24:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1480s) | Introducting `spacyr` package, which is a R wrapper around the Python `scispaCy` package                               |
+| COVID-19 Open Research Dataset (CORD-19) |   [28:50](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1730s) | Showing how `tidytext` can use a custom tokenization function (David uses `spacyr` package's named entity recognition) |
+| COVID-19 Open Research Dataset (CORD-19) |   [32:20](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=1940s) | Demonstrating the `tokenize_words` function from the `tokenizers` package                                              |
+| COVID-19 Open Research Dataset (CORD-19) |   [37:00](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2220s) | Actually using a custom tokenizer in `unnest_tokens` function                                                          |
+| COVID-19 Open Research Dataset (CORD-19) |   [39:45](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2385s) | Using `sample_n` function to get a random sample of n rows                                                             |
+| COVID-19 Open Research Dataset (CORD-19) |   [43:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2605s) | Asking, "What are groups of words that tend to occur together?"                                                        |
+| COVID-19 Open Research Dataset (CORD-19) |   [44:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2670s) | Using `pairwise_cor` from `widyr` package to find correlation between named entities                                   |
+| COVID-19 Open Research Dataset (CORD-19) |   [45:40](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=2740s) | Using `ggraph` and `igraph` packages to create a network plot                                                          |
+| COVID-19 Open Research Dataset (CORD-19) |   [52:05](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3125s) | Starting to look at papers' references                                                                                 |
+| COVID-19 Open Research Dataset (CORD-19) |   [53:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3210s) | Using `unnest_longer` then `unnest_wider` function to convert lists into a tibble                                      |
+| COVID-19 Open Research Dataset (CORD-19) |   [59:30](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3570s) | Using `str_trunc` function to truncate long character strings to a certain number of characters                        |
+| COVID-19 Open Research Dataset (CORD-19) | [1:06:25](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=3985s) | Using `glue` function for easy combination of strings and R code                                                       |
+| COVID-19 Open Research Dataset (CORD-19) | [1:19:15](https://www.youtube.com/watch?v=-5HYdBq_PTM&t=4755s) | Summary of screencast                                                                                                  |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### CORD-19 Data Package
+#### CORD-19 Data Package {#cord-19-data-package}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| CORD-19 Data Package | [1:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=70s) | Overview of JSON files with the data David will make a package of |
-| CORD-19 Data Package | [3:05](https://www.youtube.com/watch?v=F4oUJp76KUY&t=185s) | Starting to create a new package with "New Project" in RStudio |
-| CORD-19 Data Package | [5:40](https://www.youtube.com/watch?v=F4oUJp76KUY&t=340s) | Creating a file to reference the license for the dataset |
-| CORD-19 Data Package | [7:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=445s) | Using `use_data_raw` function from `usethis` package to set up a folder structure and preliminary function for raw data |
-| CORD-19 Data Package | [8:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=510s) | Explanation that we want to limit the number of packages we load when building a package (e.g., no `library(tidyverse)` ) |
-| CORD-19 Data Package | [9:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=540s) | Using `use_package` function from `usethis` package to add "Suggested packages" |
-| CORD-19 Data Package | [10:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=615s) | Reviewing import and cleaning code already completed |
-| CORD-19 Data Package | [14:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=895s) | Using `roxygen2` package to write documentation |
-| CORD-19 Data Package | [19:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1175s) | More documentation writing |
-| CORD-19 Data Package | [24:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1490s) | Using `use_data` function from `usethis` package to create a folder structure and datafile for (finished/cleaned) data |
-| CORD-19 Data Package | [26:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1570s) | Making a mistake clicking "Install and Restart" button on the "Build" tab (because of huge objects in the environment) (see 26:50 for alternative) |
-| CORD-19 Data Package | [26:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1610s) | Using `load_all` function from `devtrools` package as an alternative to "Install and Restart" from above step |
-| CORD-19 Data Package | [27:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1655s) | Using `document` function from `devtools` package to process written documentation |
-| CORD-19 Data Package | [32:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1940s) | De-duplicating paper data in a way the keeps records that have fewer missing values than other records for the same paper |
-| CORD-19 Data Package | [39:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2390s) | Using `use_data` function with its overwrite argument to overwrite existing data |
-| CORD-19 Data Package | [47:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2850s) | Writing documentation for paragraphs data |
-| CORD-19 Data Package | [57:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3475s) | Testing an install of the package |
-| CORD-19 Data Package | [59:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3570s) | Adding link to code in documentation |
-| CORD-19 Data Package | [1:03:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3780s) | Writing examples of how to use the package (in documentation) |
-| CORD-19 Data Package | [1:08:45](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4125s) | Discussion of outstanding items that David hasn't done yet (e.g., readme, vignettes, tests) |
-| CORD-19 Data Package | [1:09:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4160s) | Creating a simple readme, including examples, with `use_readme_rmd` function from `usethis` package |
-| CORD-19 Data Package | [1:16:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4570s) | Using `knit` function from the `knitr` package to knit the readme into a markdown file |
-| CORD-19 Data Package | [1:17:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4630s) | Creating a GitHub repository to host the package (includes how to commit to a GitHub repo using RStudio's GUI) |
-| CORD-19 Data Package | [1:18:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4695s) | Explanation that version 0.0.0.9000 means that the package is in early development |
-| CORD-19 Data Package | [1:20:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4830s) | Actually creating the GitHub repository |
-| CORD-19 Data Package | [1:22:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4945s) | Overview of remaining tasks |
+| Screencast           |                                                           Time | Description                                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| CORD-19 Data Package |      [1:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=70s) | Overview of JSON files with the data David will make a package of                                                                                  |
+| CORD-19 Data Package |     [3:05](https://www.youtube.com/watch?v=F4oUJp76KUY&t=185s) | Starting to create a new package with "New Project" in RStudio                                                                                     |
+| CORD-19 Data Package |     [5:40](https://www.youtube.com/watch?v=F4oUJp76KUY&t=340s) | Creating a file to reference the license for the dataset                                                                                           |
+| CORD-19 Data Package |     [7:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=445s) | Using `use_data_raw` function from `usethis` package to set up a folder structure and preliminary function for raw data                            |
+| CORD-19 Data Package |     [8:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=510s) | Explanation that we want to limit the number of packages we load when building a package (e.g., no `library(tidyverse)` )                          |
+| CORD-19 Data Package |     [9:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=540s) | Using `use_package` function from `usethis` package to add "Suggested packages"                                                                    |
+| CORD-19 Data Package |    [10:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=615s) | Reviewing import and cleaning code already completed                                                                                               |
+| CORD-19 Data Package |    [14:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=895s) | Using `roxygen2` package to write documentation                                                                                                    |
+| CORD-19 Data Package |   [19:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1175s) | More documentation writing                                                                                                                         |
+| CORD-19 Data Package |   [24:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1490s) | Using `use_data` function from `usethis` package to create a folder structure and datafile for (finished/cleaned) data                             |
+| CORD-19 Data Package |   [26:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1570s) | Making a mistake clicking "Install and Restart" button on the "Build" tab (because of huge objects in the environment) (see 26:50 for alternative) |
+| CORD-19 Data Package |   [26:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1610s) | Using `load_all` function from `devtrools` package as an alternative to "Install and Restart" from above step                                      |
+| CORD-19 Data Package |   [27:35](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1655s) | Using `document` function from `devtools` package to process written documentation                                                                 |
+| CORD-19 Data Package |   [32:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=1940s) | De-duplicating paper data in a way the keeps records that have fewer missing values than other records for the same paper                          |
+| CORD-19 Data Package |   [39:50](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2390s) | Using `use_data` function with its overwrite argument to overwrite existing data                                                                   |
+| CORD-19 Data Package |   [47:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=2850s) | Writing documentation for paragraphs data                                                                                                          |
+| CORD-19 Data Package |   [57:55](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3475s) | Testing an install of the package                                                                                                                  |
+| CORD-19 Data Package |   [59:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3570s) | Adding link to code in documentation                                                                                                               |
+| CORD-19 Data Package | [1:03:00](https://www.youtube.com/watch?v=F4oUJp76KUY&t=3780s) | Writing examples of how to use the package (in documentation)                                                                                      |
+| CORD-19 Data Package | [1:08:45](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4125s) | Discussion of outstanding items that David hasn't done yet (e.g., readme, vignettes, tests)                                                        |
+| CORD-19 Data Package | [1:09:20](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4160s) | Creating a simple readme, including examples, with `use_readme_rmd` function from `usethis` package                                                |
+| CORD-19 Data Package | [1:16:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4570s) | Using `knit` function from the `knitr` package to knit the readme into a markdown file                                                             |
+| CORD-19 Data Package | [1:17:10](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4630s) | Creating a GitHub repository to host the package (includes how to commit to a GitHub repo using RStudio's GUI)                                     |
+| CORD-19 Data Package | [1:18:15](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4695s) | Explanation that version 0.0.0.9000 means that the package is in early development                                                                 |
+| CORD-19 Data Package | [1:20:30](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4830s) | Actually creating the GitHub repository                                                                                                            |
+| CORD-19 Data Package | [1:22:25](https://www.youtube.com/watch?v=F4oUJp76KUY&t=4945s) | Overview of remaining tasks                                                                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### R Trick: Creating Pascal's Triangle with `accumulate()`
+#### R Trick: Creating Pascal's Triangle with `accumulate()` {#r-trick-creating-pascals-triangle-with-accumulate}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| R trick: Creating Pascal's Triangle with accumulate() | [1:10](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=70s) | Simple explanation of `accumulate` function |
-| R trick: Creating Pascal's Triangle with accumulate() | [1:30](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=90s) | Example using letters |
-| R trick: Creating Pascal's Triangle with accumulate() | [2:55](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=175s) | Using tilde `~` to create an anonymous function |
-| R trick: Creating Pascal's Triangle with accumulate() | [4:35](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=275s) | Introducing Pascal's Triangle |
-| R trick: Creating Pascal's Triangle with accumulate() | [6:25](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=385s) | Starting to create Pascal's triangle in R |
+| Screencast                                            |                                                       Time | Description                                                      |
+|:-----------------------|-----------------------:|:-----------------------|
+| R trick: Creating Pascal's Triangle with accumulate() |  [1:10](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=70s) | Simple explanation of `accumulate` function                      |
+| R trick: Creating Pascal's Triangle with accumulate() |  [1:30](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=90s) | Example using letters                                            |
+| R trick: Creating Pascal's Triangle with accumulate() | [2:55](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=175s) | Using tilde `~` to create an anonymous function                  |
+| R trick: Creating Pascal's Triangle with accumulate() | [4:35](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=275s) | Introducing Pascal's Triangle                                    |
+| R trick: Creating Pascal's Triangle with accumulate() | [6:25](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=385s) | Starting to create Pascal's triangle in R                        |
 | R trick: Creating Pascal's Triangle with accumulate() | [8:05](https://www.youtube.com/watch?v=rUK9Wz9B2n0&t=485s) | Concerting the conceptual solution into an `accumulate` function |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating Replacing Die Sides
+#### Riddler: Simulating Replacing Die Sides {#riddler-simulating-replacing-die-sides}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating Replacing Die Sides | [0:45](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=45s) | Explaining why the recursive nature of this problem is well-suited to simulation |
-| Riddler: Simulating Replacing Die Sides | [2:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=125s) | Introducing the `accumulate` function as a tool for simulation |
-| Riddler: Simulating Replacing Die Sides | [3:50](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=230s) | Creating a condition to call the `done` function |
-| Riddler: Simulating Replacing Die Sides | [7:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=420s) | After creating a function to simulate one round of the problem, using `replicate` function to run simulation many times |
-| Riddler: Simulating Replacing Die Sides | [7:15](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=435s) | Using `qplot` function to quickly create a histogram of simulations |
-| Riddler: Simulating Replacing Die Sides | [7:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=460s) | Making observations on the distribution of simulations (looks kind of like a gamma distribution) |
-| Riddler: Simulating Replacing Die Sides | [10:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=605s) | Observing that the distribution is kind of log-normal (but that doesn't really apply because we're using integers) |
-| Riddler: Simulating Replacing Die Sides | [10:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=635s) | Using `table` and `sort` functions to find the most common number of rolls |
-| Riddler: Simulating Replacing Die Sides | [11:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=680s) | Starting the Extra Credit portion of the problem (N-sided die) |
-| Riddler: Simulating Replacing Die Sides | [11:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=700s) | Using the `crossing` function to set up a tibble to run simulations |
-| Riddler: Simulating Replacing Die Sides | [12:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=755s) | Using `map_dbl` function to apply a set of simulations to each possibility of N sides |
-| Riddler: Simulating Replacing Die Sides | [13:30](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=810s) | Spotting an error in the formula for simulating one round (6-sided die was hard-coded) |
+| Screencast                              |                                                         Time | Description                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating Replacing Die Sides |    [0:45](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=45s) | Explaining why the recursive nature of this problem is well-suited to simulation                                                   |
+| Riddler: Simulating Replacing Die Sides |   [2:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=125s) | Introducing the `accumulate` function as a tool for simulation                                                                     |
+| Riddler: Simulating Replacing Die Sides |   [3:50](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=230s) | Creating a condition to call the `done` function                                                                                   |
+| Riddler: Simulating Replacing Die Sides |   [7:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=420s) | After creating a function to simulate one round of the problem, using `replicate` function to run simulation many times            |
+| Riddler: Simulating Replacing Die Sides |   [7:15](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=435s) | Using `qplot` function to quickly create a histogram of simulations                                                                |
+| Riddler: Simulating Replacing Die Sides |   [7:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=460s) | Making observations on the distribution of simulations (looks kind of like a gamma distribution)                                   |
+| Riddler: Simulating Replacing Die Sides |  [10:05](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=605s) | Observing that the distribution is kind of log-normal (but that doesn't really apply because we're using integers)                 |
+| Riddler: Simulating Replacing Die Sides |  [10:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=635s) | Using `table` and `sort` functions to find the most common number of rolls                                                         |
+| Riddler: Simulating Replacing Die Sides |  [11:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=680s) | Starting the Extra Credit portion of the problem (N-sided die)                                                                     |
+| Riddler: Simulating Replacing Die Sides |  [11:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=700s) | Using the `crossing` function to set up a tibble to run simulations                                                                |
+| Riddler: Simulating Replacing Die Sides |  [12:35](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=755s) | Using `map_dbl` function to apply a set of simulations to each possibility of N sides                                              |
+| Riddler: Simulating Replacing Die Sides |  [13:30](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=810s) | Spotting an error in the formula for simulating one round (6-sided die was hard-coded)                                             |
 | Riddler: Simulating Replacing Die Sides | [16:40](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1000s) | Using simple linear regression with the `lm` function to find the relationship between number of sides and average number of rolls |
-| Riddler: Simulating Replacing Die Sides | [17:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1040s) | Reviewing distributions for different N-sided dice |
-| Riddler: Simulating Replacing Die Sides | [18:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1080s) | Calculating variance, standard deviation, and coefficient of variation to get hints on the distribution (and ruling out Poisson) |
+| Riddler: Simulating Replacing Die Sides | [17:20](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1040s) | Reviewing distributions for different N-sided dice                                                                                 |
+| Riddler: Simulating Replacing Die Sides | [18:00](https://www.youtube.com/watch?v=XEsNpxl5b1M&t=1080s) | Calculating variance, standard deviation, and coefficient of variation to get hints on the distribution (and ruling out Poisson)   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Beer Production
+#### Beer Production {#beer-production}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Beer Production | [4:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=265s) | Asking, "What ingredients are used in beer?" |
-| Beer Production | [4:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=280s) | Using `filter` and `max` functions to look at the most recent period of time |
-| Beer Production | [7:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=445s) | Using `paste` and `ymd` functions (`ymd` is from `lubridate` package) to convert year-month field into an date-formatted field |
-| Beer Production | [9:20](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=560s) | Spotting potential missing or mis-parsed data |
-| Beer Production | [13:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=830s) | Introducing the `tidymetrics` framework |
-| Beer Production | [14:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=885s) | Using `install_github` function to install `tidymetrics` from GitHub |
-| Beer Production | [15:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=925s) | Using `cross_by_dimensions` function from `tidymetrics` package to get aggregations at different levels of multiple dimensions |
-| Beer Production | [18:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1090s) | Using `cross_by_periods` function from `tidymetrics` package to also get aggregations for different intervals (e.g, month, quarter, year) |
-| Beer Production | [22:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1320s) | Using `use_metrics_scaffold` function from `tidymetrics` package to create framework for documenting dimensions in RMarkdown YAML header |
-| Beer Production | [24:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1440s) | Using `create_metrics` function from `tidymetrics` package to save data as a tibble with useful metadata (good for visualizing interactively) |
-| Beer Production | [25:15](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1515s) | Using `preview_metric` function from `shinymetrics` package (still under development as of 2020-04-24) to demonstrate `shinymetrics` |
-| Beer Production | [27:35](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1655s) | Succesfuly getting `shinymetrics` to work |
-| Beer Production | [28:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1705s) | Explanation of the `shinymetrics` bug David ran into |
-| Beer Production | [34:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2050s) | Changing order of ordinal variable (e.g., "1,000 to 10,000" and "10,000 to 20,000") using the `parse_number`, `fct_lump`, and `coalesce` functions |
-| Beer Production | [41:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2485s) | Asking, "Where is beer produced?" |
-| Beer Production | [46:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2805s) | Looking up `sf` package documentation to refresh memory on how to draw state borders for a map |
-| Beer Production | [48:55](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2935s) | Using `match` function and `state.abb` vector (state abbreviations) from `sf` package to perform a lookup of state names |
-| Beer Production | [51:05](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3065s) | Using `geom_sf` function (and working through some hiccoughs) to create a choropleth map |
-| Beer Production | [52:30](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3150s) | Using `theme_map` function from `ggthemes` package to get more appropriate styling for maps |
-| Beer Production | [55:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3340s) | Experimenting with how to get the legend to display in the bottom right corner |
-| Beer Production | [58:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3505s) | Starting to build an animation of consumption patterns over time using `gganimate` package |
-| Beer Production | [1:03:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3820s) | Getting the year being animated to show up in the title of a `gganimate` map |
-| Beer Production | [1:05:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3940s) | Summary of screencast |
-| Beer Production | [1:06:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4010s) | Spotting a mistake in a `group_by` call causing the percentages not to add up properly |
-| Beer Production | [1:09:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4150s) | Brief extra overview of `tidymetrics` code |
+| Screencast      |                                                           Time | Description                                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| Beer Production |     [4:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=265s) | Asking, "What ingredients are used in beer?"                                                                                                       |
+| Beer Production |     [4:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=280s) | Using `filter` and `max` functions to look at the most recent period of time                                                                       |
+| Beer Production |     [7:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=445s) | Using `paste` and `ymd` functions (`ymd` is from `lubridate` package) to convert year-month field into an date-formatted field                     |
+| Beer Production |     [9:20](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=560s) | Spotting potential missing or mis-parsed data                                                                                                      |
+| Beer Production |    [13:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=830s) | Introducing the `tidymetrics` framework                                                                                                            |
+| Beer Production |    [14:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=885s) | Using `install_github` function to install `tidymetrics` from GitHub                                                                               |
+| Beer Production |    [15:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=925s) | Using `cross_by_dimensions` function from `tidymetrics` package to get aggregations at different levels of multiple dimensions                     |
+| Beer Production |   [18:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1090s) | Using `cross_by_periods` function from `tidymetrics` package to also get aggregations for different intervals (e.g, month, quarter, year)          |
+| Beer Production |   [22:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1320s) | Using `use_metrics_scaffold` function from `tidymetrics` package to create framework for documenting dimensions in RMarkdown YAML header           |
+| Beer Production |   [24:00](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1440s) | Using `create_metrics` function from `tidymetrics` package to save data as a tibble with useful metadata (good for visualizing interactively)      |
+| Beer Production |   [25:15](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1515s) | Using `preview_metric` function from `shinymetrics` package (still under development as of 2020-04-24) to demonstrate `shinymetrics`               |
+| Beer Production |   [27:35](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1655s) | Succesfuly getting `shinymetrics` to work                                                                                                          |
+| Beer Production |   [28:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=1705s) | Explanation of the `shinymetrics` bug David ran into                                                                                               |
+| Beer Production |   [34:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2050s) | Changing order of ordinal variable (e.g., "1,000 to 10,000" and "10,000 to 20,000") using the `parse_number`, `fct_lump`, and `coalesce` functions |
+| Beer Production |   [41:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2485s) | Asking, "Where is beer produced?"                                                                                                                  |
+| Beer Production |   [46:45](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2805s) | Looking up `sf` package documentation to refresh memory on how to draw state borders for a map                                                     |
+| Beer Production |   [48:55](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=2935s) | Using `match` function and `state.abb` vector (state abbreviations) from `sf` package to perform a lookup of state names                           |
+| Beer Production |   [51:05](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3065s) | Using `geom_sf` function (and working through some hiccoughs) to create a choropleth map                                                           |
+| Beer Production |   [52:30](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3150s) | Using `theme_map` function from `ggthemes` package to get more appropriate styling for maps                                                        |
+| Beer Production |   [55:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3340s) | Experimenting with how to get the legend to display in the bottom right corner                                                                     |
+| Beer Production |   [58:25](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3505s) | Starting to build an animation of consumption patterns over time using `gganimate` package                                                         |
+| Beer Production | [1:03:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3820s) | Getting the year being animated to show up in the title of a `gganimate` map                                                                       |
+| Beer Production | [1:05:40](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=3940s) | Summary of screencast                                                                                                                              |
+| Beer Production | [1:06:50](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4010s) | Spotting a mistake in a `group_by` call causing the percentages not to add up properly                                                             |
+| Beer Production | [1:09:10](https://www.youtube.com/watch?v=1R4X09w7tQ8&t=4150s) | Brief extra overview of `tidymetrics` code                                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating a Non-increasing Sequence
+#### Riddler: Simulating a Non-increasing Sequence {#riddler-simulating-a-non-increasing-sequence}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating a Non-increasing Sequence | [2:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=140s) | Introducing `accumulate` functon as a possible solution (but not used here) |
-| Riddler: Simulating a Non-increasing Sequence | [3:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=200s) | Using `sample` function to simulate 1000 rolls of a 10-sided die |
-| Riddler: Simulating a Non-increasing Sequence | [3:40](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=220s) | Explanation of dividing sample rolls into streaks (instead of using logic similar to a while loop) |
-| Riddler: Simulating a Non-increasing Sequence | [4:55](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=295s) | Using `cumsum` function to separate 1000 rolls into individual sequences (which end when a 0 is rolled) |
-| Riddler: Simulating a Non-increasing Sequence | [5:50](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=350s) | Using `lag` function to "shift" sequence numbering down by one row |
-| Riddler: Simulating a Non-increasing Sequence | [7:35](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=455s) | Using `cummax` and `lag` functions to check whether a roll is less than the highest value rolled previously in the sequence |
-| Riddler: Simulating a Non-increasing Sequence | [9:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=570s) | Fixing previous step with `cummin` function (instead of `cummax`) and dropping the `lag` function |
-| Riddler: Simulating a Non-increasing Sequence | [13:05](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=785s) | Finished simulation code and starting to calculate scores |
-| Riddler: Simulating a Non-increasing Sequence | [13:10](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=790s) | Using -`row_number` function (note the minus sign!) to calculate decimal position of number in the score |
-| Riddler: Simulating a Non-increasing Sequence | [15:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=930s) | Investigating the distribution of scores |
-| Riddler: Simulating a Non-increasing Sequence | [16:25](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=985s) | Using `seq` function in the `breaks` argument of `scale_x_continuous` to set custom, evenly-spaced axis ticks and labels |
+| Screencast                                    |                                                        Time | Description                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating a Non-increasing Sequence |  [2:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=140s) | Introducing `accumulate` functon as a possible solution (but not used here)                                                 |
+| Riddler: Simulating a Non-increasing Sequence |  [3:20](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=200s) | Using `sample` function to simulate 1000 rolls of a 10-sided die                                                            |
+| Riddler: Simulating a Non-increasing Sequence |  [3:40](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=220s) | Explanation of dividing sample rolls into streaks (instead of using logic similar to a while loop)                          |
+| Riddler: Simulating a Non-increasing Sequence |  [4:55](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=295s) | Using `cumsum` function to separate 1000 rolls into individual sequences (which end when a 0 is rolled)                     |
+| Riddler: Simulating a Non-increasing Sequence |  [5:50](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=350s) | Using `lag` function to "shift" sequence numbering down by one row                                                          |
+| Riddler: Simulating a Non-increasing Sequence |  [7:35](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=455s) | Using `cummax` and `lag` functions to check whether a roll is less than the highest value rolled previously in the sequence |
+| Riddler: Simulating a Non-increasing Sequence |  [9:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=570s) | Fixing previous step with `cummin` function (instead of `cummax`) and dropping the `lag` function                           |
+| Riddler: Simulating a Non-increasing Sequence | [13:05](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=785s) | Finished simulation code and starting to calculate scores                                                                   |
+| Riddler: Simulating a Non-increasing Sequence | [13:10](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=790s) | Using -`row_number` function (note the minus sign!) to calculate decimal position of number in the score                    |
+| Riddler: Simulating a Non-increasing Sequence | [15:30](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=930s) | Investigating the distribution of scores                                                                                    |
+| Riddler: Simulating a Non-increasing Sequence | [16:25](https://www.youtube.com/watch?v=aR6jf6ZzlFk&t=985s) | Using `seq` function in the `breaks` argument of `scale_x_continuous` to set custom, evenly-spaced axis ticks and labels    |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Tour de France
+#### Tour de France {#tour-de-france}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Tour de France | [3:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=235s) | Getting an overview of the data |
-| Tour de France | [8:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=535s) | Aggregating data into decades using the truncated division operator `%/%` |
-| Tour de France | [21:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1310s) | Noting that death data is right-censored (i.e., some winners are still alive) |
-| Tour de France | [24:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1445s) | Using `transmute` function, which combines functionality of `mutate` (to create new variables) and `select` (to choose variables to keep) |
-| Tour de France | [25:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1530s) | Using `survfit` function from `survival` package to conduct survival analysis |
-| Tour de France | [27:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1650s) | Using `glance` function from `broom` package to get a one-row model summary of the survival model |
-| Tour de France | [31:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1860s) | Using `extract` function to pull out a string matching a regular expression from a variable (stage number in this case) |
-| Tour de France | [34:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2070s) | Theorizing that there is a parsing issue with the original data's time field |
-| Tour de France | [41:15](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2475s) | Using `group_by` function's built-in "peeling" feature, where a `summarise` call will "peel away" one group but left other groupings intact |
-| Tour de France | [42:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2525s) | Using `rank` function, then upgrading to `percent_rank` function to give percentile rankings (between 0 and 1) |
-| Tour de France | [47:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2870s) | Using `geom_smooth` function with `method` argument as "lm" to plot a linear regression |
-| Tour de France | [48:10](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2890s) | Using `cut` function to bin numbers (percentiles in this case) into categories |
-| Tour de France | [50:25](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3025s) | Reviewing boxplots exploring relationship between first-stage performance and overall Tour performance |
-| Tour de France | [51:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3090s) | Starting to create an animation using `gganimate` package |
-| Tour de France | [56:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3360s) | Actually writing the code to create the animation |
-| Tour de France | [58:20](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3500s) | Using `reorder_within` function from `tidytext` package to re-order factors that have the same name across multiple groups |
-| Tour de France | [1:02:40](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3760s) | Summary of screencast |
+| Screencast     |                                                           Time | Description                                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Tour de France |     [3:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=235s) | Getting an overview of the data                                                                                                             |
+| Tour de France |     [8:55](https://www.youtube.com/watch?v=vT-DElIaKtE&t=535s) | Aggregating data into decades using the truncated division operator `%/%`                                                                   |
+| Tour de France |   [21:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1310s) | Noting that death data is right-censored (i.e., some winners are still alive)                                                               |
+| Tour de France |   [24:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1445s) | Using `transmute` function, which combines functionality of `mutate` (to create new variables) and `select` (to choose variables to keep)   |
+| Tour de France |   [25:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1530s) | Using `survfit` function from `survival` package to conduct survival analysis                                                               |
+| Tour de France |   [27:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1650s) | Using `glance` function from `broom` package to get a one-row model summary of the survival model                                           |
+| Tour de France |   [31:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=1860s) | Using `extract` function to pull out a string matching a regular expression from a variable (stage number in this case)                     |
+| Tour de France |   [34:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2070s) | Theorizing that there is a parsing issue with the original data's time field                                                                |
+| Tour de France |   [41:15](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2475s) | Using `group_by` function's built-in "peeling" feature, where a `summarise` call will "peel away" one group but left other groupings intact |
+| Tour de France |   [42:05](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2525s) | Using `rank` function, then upgrading to `percent_rank` function to give percentile rankings (between 0 and 1)                              |
+| Tour de France |   [47:50](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2870s) | Using `geom_smooth` function with `method` argument as "lm" to plot a linear regression                                                     |
+| Tour de France |   [48:10](https://www.youtube.com/watch?v=vT-DElIaKtE&t=2890s) | Using `cut` function to bin numbers (percentiles in this case) into categories                                                              |
+| Tour de France |   [50:25](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3025s) | Reviewing boxplots exploring relationship between first-stage performance and overall Tour performance                                      |
+| Tour de France |   [51:30](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3090s) | Starting to create an animation using `gganimate` package                                                                                   |
+| Tour de France |   [56:00](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3360s) | Actually writing the code to create the animation                                                                                           |
+| Tour de France |   [58:20](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3500s) | Using `reorder_within` function from `tidytext` package to re-order factors that have the same name across multiple groups                  |
+| Tour de France | [1:02:40](https://www.youtube.com/watch?v=vT-DElIaKtE&t=3760s) | Summary of screencast                                                                                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating a Branching Process
+#### Riddler: Simulating a Branching Process {#riddler-simulating-a-branching-process}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating a Branching Process | [0:35](https://www.youtube.com/watch?v=QtThluGted0&t=35s) | Explanation of a Poisson process |
-| Riddler: Simulating a Branching Process | [2:40](https://www.youtube.com/watch?v=QtThluGted0&t=160s) | Asking "How long do you have to wait for X to happen?", which the Exponential distribution can answer |
-| Riddler: Simulating a Branching Process | [4:20](https://www.youtube.com/watch?v=QtThluGted0&t=260s) | Using `rexp` function to generate numbers from the Exponential distribution |
-| Riddler: Simulating a Branching Process | [5:25](https://www.youtube.com/watch?v=QtThluGted0&t=325s) | Using a vector of rates inside the `rexp` function (to explore consecutive waiting times) |
-| Riddler: Simulating a Branching Process | [7:05](https://www.youtube.com/watch?v=QtThluGted0&t=425s) | Using `cumsum` function to calculate total waiting time until hitting a specific number in the Poisson process |
-| Riddler: Simulating a Branching Process | [7:35](https://www.youtube.com/watch?v=QtThluGted0&t=455s) | Using `which` function to determine the first instance > 3 in a vector |
-| Riddler: Simulating a Branching Process | [9:20](https://www.youtube.com/watch?v=QtThluGted0&t=560s) | Using `replicate` function to do a quick simulation of the function just written |
-| Riddler: Simulating a Branching Process | [10:55](https://www.youtube.com/watch?v=QtThluGted0&t=655s) | Discussing methods of making the simulation function faster |
-| Riddler: Simulating a Branching Process | [12:00](https://www.youtube.com/watch?v=QtThluGted0&t=720s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
-| Riddler: Simulating a Branching Process | [13:15](https://www.youtube.com/watch?v=QtThluGted0&t=795s) | Noting how the consecutive waiting times seems to follow the Harmonic series |
-| Riddler: Simulating a Branching Process | [17:10](https://www.youtube.com/watch?v=QtThluGted0&t=1030s) | Noticing that we are missing trials with 0 comments and fixing |
-| Riddler: Simulating a Branching Process | [20:25](https://www.youtube.com/watch?v=QtThluGted0&t=1225s) | Using `nls` function (non-linear least squares) to test how well the data fits with an exponential curve |
-| Riddler: Simulating a Branching Process | [23:05](https://www.youtube.com/watch?v=QtThluGted0&t=1385s) | Visualizing fit between data and the exponential curve calculated with `nls` in previous step |
-| Riddler: Simulating a Branching Process | [23:50](https://www.youtube.com/watch?v=QtThluGted0&t=1430s) | Using `augment` function to added fitted values of the `nls` function |
-| Riddler: Simulating a Branching Process | [26:00](https://www.youtube.com/watch?v=QtThluGted0&t=1560s) | Exploring whether the data actually follows a Geometric distribution |
-| Riddler: Simulating a Branching Process | [30:55](https://www.youtube.com/watch?v=QtThluGted0&t=1855s) | Explanation of the Geometric distribution as it applies to this question |
-| Riddler: Simulating a Branching Process | [34:05](https://www.youtube.com/watch?v=QtThluGted0&t=2045s) | Generalizing the question to ask how long it takes to get to multiple comments (not just 3) |
-| Riddler: Simulating a Branching Process | [38:45](https://www.youtube.com/watch?v=QtThluGted0&t=2325s) | Explanation of why we subtract 1 when fitting an exponential curve |
-| Riddler: Simulating a Branching Process | [46:00](https://www.youtube.com/watch?v=QtThluGted0&t=2760s) | Summary of screencast |
+| Screencast                              |                                                         Time | Description                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating a Branching Process |    [0:35](https://www.youtube.com/watch?v=QtThluGted0&t=35s) | Explanation of a Poisson process                                                                                     |
+| Riddler: Simulating a Branching Process |   [2:40](https://www.youtube.com/watch?v=QtThluGted0&t=160s) | Asking "How long do you have to wait for X to happen?", which the Exponential distribution can answer                |
+| Riddler: Simulating a Branching Process |   [4:20](https://www.youtube.com/watch?v=QtThluGted0&t=260s) | Using `rexp` function to generate numbers from the Exponential distribution                                          |
+| Riddler: Simulating a Branching Process |   [5:25](https://www.youtube.com/watch?v=QtThluGted0&t=325s) | Using a vector of rates inside the `rexp` function (to explore consecutive waiting times)                            |
+| Riddler: Simulating a Branching Process |   [7:05](https://www.youtube.com/watch?v=QtThluGted0&t=425s) | Using `cumsum` function to calculate total waiting time until hitting a specific number in the Poisson process       |
+| Riddler: Simulating a Branching Process |   [7:35](https://www.youtube.com/watch?v=QtThluGted0&t=455s) | Using `which` function to determine the first instance \> 3 in a vector                                              |
+| Riddler: Simulating a Branching Process |   [9:20](https://www.youtube.com/watch?v=QtThluGted0&t=560s) | Using `replicate` function to do a quick simulation of the function just written                                     |
+| Riddler: Simulating a Branching Process |  [10:55](https://www.youtube.com/watch?v=QtThluGted0&t=655s) | Discussing methods of making the simulation function faster                                                          |
+| Riddler: Simulating a Branching Process |  [12:00](https://www.youtube.com/watch?v=QtThluGted0&t=720s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating a Branching Process |  [13:15](https://www.youtube.com/watch?v=QtThluGted0&t=795s) | Noting how the consecutive waiting times seems to follow the Harmonic series                                         |
+| Riddler: Simulating a Branching Process | [17:10](https://www.youtube.com/watch?v=QtThluGted0&t=1030s) | Noticing that we are missing trials with 0 comments and fixing                                                       |
+| Riddler: Simulating a Branching Process | [20:25](https://www.youtube.com/watch?v=QtThluGted0&t=1225s) | Using `nls` function (non-linear least squares) to test how well the data fits with an exponential curve             |
+| Riddler: Simulating a Branching Process | [23:05](https://www.youtube.com/watch?v=QtThluGted0&t=1385s) | Visualizing fit between data and the exponential curve calculated with `nls` in previous step                        |
+| Riddler: Simulating a Branching Process | [23:50](https://www.youtube.com/watch?v=QtThluGted0&t=1430s) | Using `augment` function to added fitted values of the `nls` function                                                |
+| Riddler: Simulating a Branching Process | [26:00](https://www.youtube.com/watch?v=QtThluGted0&t=1560s) | Exploring whether the data actually follows a Geometric distribution                                                 |
+| Riddler: Simulating a Branching Process | [30:55](https://www.youtube.com/watch?v=QtThluGted0&t=1855s) | Explanation of the Geometric distribution as it applies to this question                                             |
+| Riddler: Simulating a Branching Process | [34:05](https://www.youtube.com/watch?v=QtThluGted0&t=2045s) | Generalizing the question to ask how long it takes to get to multiple comments (not just 3)                          |
+| Riddler: Simulating a Branching Process | [38:45](https://www.youtube.com/watch?v=QtThluGted0&t=2325s) | Explanation of why we subtract 1 when fitting an exponential curve                                                   |
+| Riddler: Simulating a Branching Process | [46:00](https://www.youtube.com/watch?v=QtThluGted0&t=2760s) | Summary of screencast                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-#### GDPR Violations
+#### GDPR Violations {#gdpr-violations}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| GDPR Violations | [4:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=245s) | Use the `mdy` function from the `lubridate` package to change the date variable from `character` class to `date` class. |
-| GDPR Violations | [5:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=335s) | Use the `rename` function from the `dplyr` package to rename variable in the dataset. |
-| GDPR Violations | [6:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=375s) | Use the `fct_reorder` function from the `forcats` package to sort the `geom_col` in descending order. |
-| GDPR Violations | [6:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=390s) | Use the `fct_lump` function from the `forcats` package within `count` to lump together country names except for the 6 most frequent. |
-| GDPR Violations | [7:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=425s) | Use the `scale_x_continuous` function from `ggplot2` with the `scales` package to change the x-axis values to dollar format. |
-| GDPR Violations | [8:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=495s) | Use the `month` and `floor_date` function from the `lubridate` package to get the month component from the `date` variable to count the total fines per month. |
-| GDPR Violations | [8:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=535s) | Use the `na_if` function from the `dplyr` package to convert specific date value to `NA`. |
-| GDPR Violations | [11:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=665s) | Use the `fct_reorder` function from the `forcats` package to sort the stacked `geom_col` and legend labels in descending order. |
-| GDPR Violations | [15:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=915s) | Use the `dollar` function from the `scales` package to convert the `price` variable into dollar format. |
-| GDPR Violations | [15:40](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=940s) | Use the `str_trunc` to shorten the `summary` string values to 140 characters. |
-| GDPR Violations | [17:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1055s) | Use the `separate_rows` function from the `tidyr` package with a `regular expression` to separate the values in the `article_violated` variable with each matching group placed in its own row. |
-| GDPR Violations | [19:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1170s) | Use the `extract` function from the `tidyr` package with a `regular expression` to turn each matching group into a new column. |
-| GDPR Violations | [27:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1650s) | Use the `geom_jitter` function from the `ggplot2` package to add points to the horizontal box plot. |
-| GDPR Violations | [31:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1915s) | Use the `inner_join` function from the `dplyr` package to join together `article_titles` and `separated_articles` tables. |
-| GDPR Violations | [32:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1975s) | Use the `paste0` function from `base R` to concatenate `article` and `article_title`. |
-| GDPR Violations | [38:48](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2328s) | Use the `str_detect` function from the `stringr` package to detect the presence of a pattern in a string. |
-| GDPR Violations | [40:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2425s) | Use the `group_by` and `summarize` functions from the `dplyr` package to aggregate fines that were issued to the same country on the same day allowing for size to be used in `geom_point` plot. |
-| GDPR Violations | [41:14](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2474s) | Use the `scale_size_continuous` function from the `ggplot2` package to remove the size legend. |
-| GDPR Violations | [42:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2575s) | Create an interactive dashboard using the `shinymetrics` and `tidymetrics` which is [a tidy approach to business intelligence](https://github.com/datacamp/tidymetrics). |
+| Screencast      |                                                         Time | Description                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| GDPR Violations |   [4:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=245s) | Use the `mdy` function from the `lubridate` package to change the date variable from `character` class to `date` class.                                                                                                                                                                                                                                                                                                                         |
+| GDPR Violations |   [5:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=335s) | Use the `rename` function from the `dplyr` package to rename variable in the dataset.                                                                                                                                                                                                                                                                                                                                                           |
+| GDPR Violations |   [6:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=375s) | Use the `fct_reorder` function from the `forcats` package to sort the `geom_col` in descending order.                                                                                                                                                                                                                                                                                                                                           |
+| GDPR Violations |   [6:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=390s) | Use the `fct_lump` function from the `forcats` package within `count` to lump together country names except for the 6 most frequent.                                                                                                                                                                                                                                                                                                            |
+| GDPR Violations |   [7:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=425s) | Use the `scale_x_continuous` function from `ggplot2` with the `scales` package to change the x-axis values to dollar format.                                                                                                                                                                                                                                                                                                                    |
+| GDPR Violations |   [8:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=495s) | Use the `month` and `floor_date` function from the `lubridate` package to get the month component from the `date` variable to count the total fines per month.                                                                                                                                                                                                                                                                                  |
+| GDPR Violations |   [8:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=535s) | Use the `na_if` function from the `dplyr` package to convert specific date value to `NA`.                                                                                                                                                                                                                                                                                                                                                       |
+| GDPR Violations |  [11:05](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=665s) | Use the `fct_reorder` function from the `forcats` package to sort the stacked `geom_col` and legend labels in descending order.                                                                                                                                                                                                                                                                                                                 |
+| GDPR Violations |  [15:15](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=915s) | Use the `dollar` function from the `scales` package to convert the `price` variable into dollar format.                                                                                                                                                                                                                                                                                                                                         |
+| GDPR Violations |  [15:40](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=940s) | Use the `str_trunc` to shorten the `summary` string values to 140 characters.                                                                                                                                                                                                                                                                                                                                                                   |
+| GDPR Violations | [17:35](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1055s) | Use the `separate_rows` function from the `tidyr` package with a `regular expression` to separate the values in the `article_violated` variable with each matching group placed in its own row.                                                                                                                                                                                                                                                 |
+| GDPR Violations | [19:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1170s) | Use the `extract` function from the `tidyr` package with a `regular expression` to turn each matching group into a new column.                                                                                                                                                                                                                                                                                                                  |
+| GDPR Violations | [27:30](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1650s) | Use the `geom_jitter` function from the `ggplot2` package to add points to the horizontal box plot.                                                                                                                                                                                                                                                                                                                                             |
+| GDPR Violations | [31:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1915s) | Use the `inner_join` function from the `dplyr` package to join together `article_titles` and `separated_articles` tables.                                                                                                                                                                                                                                                                                                                       |
+| GDPR Violations | [32:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=1975s) | Use the `paste0` function from `base R` to concatenate `article` and `article_title`.                                                                                                                                                                                                                                                                                                                                                           |
+| GDPR Violations | [38:48](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2328s) | Use the `str_detect` function from the `stringr` package to detect the presence of a pattern in a string.                                                                                                                                                                                                                                                                                                                                       |
+| GDPR Violations | [40:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2425s) | Use the `group_by` and `summarize` functions from the `dplyr` package to aggregate fines that were issued to the same country on the same day allowing for size to be used in `geom_point` plot.                                                                                                                                                                                                                                                |
+| GDPR Violations | [41:14](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2474s) | Use the `scale_size_continuous` function from the `ggplot2` package to remove the size legend.                                                                                                                                                                                                                                                                                                                                                  |
+| GDPR Violations | [42:55](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2575s) | Create an interactive dashboard using the `shinymetrics` and `tidymetrics` which is [a tidy approach to business intelligence](https://github.com/datacamp/tidymetrics).                                                                                                                                                                                                                                                                        |
 | GDPR Violations | [47:25](https://www.youtube.com/watch?v=EVvnnWKO_4w&t=2845s) | Use the `cross_by_dimensions` and `cross_by_periods` functions from the `tidyr` package which stacks an extra copy of the table for each dimension specified as an argument (`country`, `article_title`, `type`), replaces the value of the column with the word `All` and `periods`, and groups by all the columns. It acts as an extended group_by that allows complete summaries across each individual dimension and possible combinations. |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-#### Broadway Musicals
+#### Broadway Musicals {#broadway-musicals}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Broadway Musicals | [8:15](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=495s) | Use the `cross_by_periods ` function from the `tidymetrics` package to aggregate data over time (`month`, `quarter`, and `year`) then visualize with `geom_line`. |
-| Broadway Musicals | [14:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=840s) | Use the `cross_by_periods ` function from the `tidymetrics` package with `windows = c(28))` to create a 4-week rolling average across `month`, `quarter`, and `year`. |
-| Broadway Musicals | [21:50](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1310s) | Create and `interactive dashboard` using the `shinymetrics` and `tidymetrics` packages. |
-| Broadway Musicals | [25:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1500s) | Use the `str_remove` function from the `stringr` package to remove matched pattern in a string. |
+| Screencast        |                                                         Time | Description                                                                                                                                                                                           |
+|:-----------------------|-----------------------:|:-----------------------|
+| Broadway Musicals |   [8:15](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=495s) | Use the `cross_by_periods` function from the `tidymetrics` package to aggregate data over time (`month`, `quarter`, and `year`) then visualize with `geom_line`.                                      |
+| Broadway Musicals |  [14:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=840s) | Use the `cross_by_periods` function from the `tidymetrics` package with `windows = c(28))` to create a 4-week rolling average across `month`, `quarter`, and `year`.                                  |
+| Broadway Musicals | [21:50](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1310s) | Create and `interactive dashboard` using the `shinymetrics` and `tidymetrics` packages.                                                                                                               |
+| Broadway Musicals | [25:00](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1500s) | Use the `str_remove` function from the `stringr` package to remove matched pattern in a string.                                                                                                       |
 | Broadway Musicals | [25:20](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=1520s) | Use the `cross_by_dimensions` function from the `tidymetrics` package which acts as an extended `group_by` that allows complete summaries across each individual dimension and possible combinations. |
-| Broadway Musicals | [41:25](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=2485s) | Use the `shinybones` package to create an interactive dashboard to visualize all 3 metrics at the same time. |
+| Broadway Musicals | [41:25](https://www.youtube.com/watch?v=OhY5ZaILRpg&t=2485s) | Use the `shinybones` package to create an interactive dashboard to visualize all 3 metrics at the same time.                                                                                          |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating and Optimizing Coin Flipping
+#### Riddler: Simulating and Optimizing Coin Flipping {#riddler-simulating-and-optimizing-coin-flipping}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating and Optimizing Coin Flipping | [2:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=135s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
-| Riddler: Simulating and Optimizing Coin Flipping | [3:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=180s) | Using `rbinom` function to simulate the number of prisoners who choose to flip, then using `rbinom` again to simulate number of tails |
-| Riddler: Simulating and Optimizing Coin Flipping | [7:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=440s) | Using `dbinom` function (probability mass function) to see probabilities of any given number of prisoners choosing to flip |
-| Riddler: Simulating and Optimizing Coin Flipping | [10:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=615s) | Using `map_dbl` function to iterate a function, making sure to return a `dbl`-class object |
-| Riddler: Simulating and Optimizing Coin Flipping | [11:25](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=685s) | Using `seq_len(n)` instead of `1:n` to be slightly more efficient |
-| Riddler: Simulating and Optimizing Coin Flipping | [12:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=740s) | Using `optimise` function to conduct single-dimension optimisation (for analytical solution to this question) |
-| Riddler: Simulating and Optimizing Coin Flipping | [14:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=855s) | Using backticks (`like this`) for inline R functions in RMarkdown |
-| Riddler: Simulating and Optimizing Coin Flipping | [15:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=915s) | Starting the Extra Credit portion of the problem (N prisoners instead of 4) |
-| Riddler: Simulating and Optimizing Coin Flipping | [16:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=990s) | Using `map2_dbl` function to iterate a function that requires two inputs (and make sure it returns a `dbl`-class object) |
-| Riddler: Simulating and Optimizing Coin Flipping | [20:05](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1205s) | Reviewing visualisation of probabilties with a varying numbers of prisoners |
-| Riddler: Simulating and Optimizing Coin Flipping | [21:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1290s) | Tweaking graph to look nicer |
-| Riddler: Simulating and Optimizing Coin Flipping | [22:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1320s) | Get the exact optimal probability value for each number of prisoners |
-| Riddler: Simulating and Optimizing Coin Flipping | [22:45](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1365s) | Troubleshooting `optimise` function to work when iterated over different numbers of prisoners |
+| Screencast                                       |                                                         Time | Description                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating and Optimizing Coin Flipping |   [2:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=135s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it)                         |
+| Riddler: Simulating and Optimizing Coin Flipping |   [3:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=180s) | Using `rbinom` function to simulate the number of prisoners who choose to flip, then using `rbinom` again to simulate number of tails        |
+| Riddler: Simulating and Optimizing Coin Flipping |   [7:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=440s) | Using `dbinom` function (probability mass function) to see probabilities of any given number of prisoners choosing to flip                   |
+| Riddler: Simulating and Optimizing Coin Flipping |  [10:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=615s) | Using `map_dbl` function to iterate a function, making sure to return a `dbl`-class object                                                   |
+| Riddler: Simulating and Optimizing Coin Flipping |  [11:25](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=685s) | Using `seq_len(n)` instead of `1:n` to be slightly more efficient                                                                            |
+| Riddler: Simulating and Optimizing Coin Flipping |  [12:20](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=740s) | Using `optimise` function to conduct single-dimension optimisation (for analytical solution to this question)                                |
+| Riddler: Simulating and Optimizing Coin Flipping |  [14:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=855s) | Using backticks (`like this`) for inline R functions in RMarkdown                                                                            |
+| Riddler: Simulating and Optimizing Coin Flipping |  [15:15](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=915s) | Starting the Extra Credit portion of the problem (N prisoners instead of 4)                                                                  |
+| Riddler: Simulating and Optimizing Coin Flipping |  [16:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=990s) | Using `map2_dbl` function to iterate a function that requires two inputs (and make sure it returns a `dbl`-class object)                     |
+| Riddler: Simulating and Optimizing Coin Flipping | [20:05](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1205s) | Reviewing visualisation of probabilties with a varying numbers of prisoners                                                                  |
+| Riddler: Simulating and Optimizing Coin Flipping | [21:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1290s) | Tweaking graph to look nicer                                                                                                                 |
+| Riddler: Simulating and Optimizing Coin Flipping | [22:00](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1320s) | Get the exact optimal probability value for each number of prisoners                                                                         |
+| Riddler: Simulating and Optimizing Coin Flipping | [22:45](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1365s) | Troubleshooting `optimise` function to work when iterated over different numbers of prisoners                                                |
 | Riddler: Simulating and Optimizing Coin Flipping | [23:45](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1425s) | Using `unnest_wider` function to disaggregate a list, but put different elements on separate columns (not separate rows, which `unnest` does |
-| Riddler: Simulating and Optimizing Coin Flipping | [25:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1530s) | Explanation of what happens to probabilities as number of prisoners increases |
+| Riddler: Simulating and Optimizing Coin Flipping | [25:30](https://www.youtube.com/watch?v=nmS3UZSWYRo&t=1530s) | Explanation of what happens to probabilities as number of prisoners increases                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Animal Crossing
+#### Animal Crossing {#animal-crossing}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Animal Crossing | [5:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=305s) | Starting text analysis of critic reviews of Animal Crossing |
-| Animal Crossing | [7:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=470s) | Using `floor_date` function from `lubridate` package to round dates down to nearest month (then week) |
-| Animal Crossing | [9:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=540s) | Using `unnest_tokens` function and `anti_join` functions from `tidytext` package to break reviews into individual words and remove stop words |
-| Animal Crossing | [10:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=635s) | Taking the average rating associated with individual words (simple approach to gauge sentiment) |
-| Animal Crossing | [12:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=750s) | Using `geom_line` and `geom_point` to graph ratings over time |
-| Animal Crossing | [14:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=880s) | Using `mean` function and logical statement to calculate percentages that meet a certain condition |
-| Animal Crossing | [22:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1350s) | Using `geom_text` to visualize what words are associated with positive/negative reviews |
-| Animal Crossing | [27:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1620s) | Disclaimer that this exploration is not text regression -- wine ratings screencast is a good resource for that |
-| Animal Crossing | [28:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1710s) | Starting to do topic modelling |
-| Animal Crossing | [30:45](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1845s) | Explanation of `stm` function from `stm` package |
-| Animal Crossing | [34:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2070s) | Explanation of `stm` function's output (topic modelling output) |
-| Animal Crossing | [36:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2215s) | Changing the number of topics from 4 to 6 |
-| Animal Crossing | [37:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2260s) | Explanation of how topic modelling works conceptually |
-| Animal Crossing | [40:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2455s) | Using `tidy` function from `broom` package to find which "documents" (reviews) were the "strongest" representation of each topic |
-| Animal Crossing | [44:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2690s) | Noting that there might be a scraping issue resulting in review text being repeated |
-| Animal Crossing | [46:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2765s) | (Unsuccessfully) Using `str_sub` function to help fix repeated review text by locating where in the review text starts being repeated |
-| Animal Crossing | [48:20](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2900s) | (Unsuccessfully) Using `str_replace` and `map2_chr` functions, as well as regex cpaturing groups to fix repeated text |
-| Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic) |
-| Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values |
-| Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast |
+| Screencast      |                                                         Time | Description                                                                                                                                   |
+|:-----------------------|-----------------------:|:-----------------------|
+| Animal Crossing |   [5:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=305s) | Starting text analysis of critic reviews of Animal Crossing                                                                                   |
+| Animal Crossing |   [7:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=470s) | Using `floor_date` function from `lubridate` package to round dates down to nearest month (then week)                                         |
+| Animal Crossing |   [9:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=540s) | Using `unnest_tokens` function and `anti_join` functions from `tidytext` package to break reviews into individual words and remove stop words |
+| Animal Crossing |  [10:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=635s) | Taking the average rating associated with individual words (simple approach to gauge sentiment)                                               |
+| Animal Crossing |  [12:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=750s) | Using `geom_line` and `geom_point` to graph ratings over time                                                                                 |
+| Animal Crossing |  [14:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=880s) | Using `mean` function and logical statement to calculate percentages that meet a certain condition                                            |
+| Animal Crossing | [22:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1350s) | Using `geom_text` to visualize what words are associated with positive/negative reviews                                                       |
+| Animal Crossing | [27:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1620s) | Disclaimer that this exploration is not text regression -- wine ratings screencast is a good resource for that                                |
+| Animal Crossing | [28:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1710s) | Starting to do topic modelling                                                                                                                |
+| Animal Crossing | [30:45](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=1845s) | Explanation of `stm` function from `stm` package                                                                                              |
+| Animal Crossing | [34:30](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2070s) | Explanation of `stm` function's output (topic modelling output)                                                                               |
+| Animal Crossing | [36:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2215s) | Changing the number of topics from 4 to 6                                                                                                     |
+| Animal Crossing | [37:40](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2260s) | Explanation of how topic modelling works conceptually                                                                                         |
+| Animal Crossing | [40:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2455s) | Using `tidy` function from `broom` package to find which "documents" (reviews) were the "strongest" representation of each topic              |
+| Animal Crossing | [44:50](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2690s) | Noting that there might be a scraping issue resulting in review text being repeated                                                           |
+| Animal Crossing | [46:05](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2765s) | (Unsuccessfully) Using `str_sub` function to help fix repeated review text by locating where in the review text starts being repeated         |
+| Animal Crossing | [48:20](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=2900s) | (Unsuccessfully) Using `str_replace` and `map2_chr` functions, as well as regex cpaturing groups to fix repeated text                         |
+| Animal Crossing | [52:00](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3120s) | Looking at the association between review grade and gamma of the topic model (how "strong" a review represents a topic)                       |
+| Animal Crossing | [53:55](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3235s) | Using `cor` function with method = "spearman" to calculate correlation based on rank instead of actual values                                 |
+| Animal Crossing | [57:35](https://www.youtube.com/watch?v=Xt7ACiedRRI&t=3455s) | Summary of screencast                                                                                                                         |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Volcano Eruptions
+#### Volcano Eruptions {#volcano-eruptions}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Volcano Eruptions | [7:00](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=420s) | Change the `last_eruption_year` into `years_ago` by using `mutate` from the `dplyr` package with `years_ago = 2020 - as.numeric(last_eruption_year))`. In the plot David includes `+1` to account for 0 values in the `years_ago` variable. |
-| Volcano Eruptions | [9:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=590s) | Use `str_detect` from the `stringr` package to search the `volcano_name` variable for `Vesuvius` when not sure if spelling is correct. |
-| Volcano Eruptions | [12:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=770s) | Use the `longitude` and `latitude` to create a world map showing where the volcanoes are located. |
-| Volcano Eruptions | [15:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=930s) | Use `fct_lump` from the`forcats` package to lump together all `primary_volcano_type` factor levels except for the `n` most frequent. |
-| Volcano Eruptions | [16:25](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=985s) | Use `str_remove` from the `stringr` package with the regular expression `"\\(.\\)"` to remove the parentheses. |
-| Volcano Eruptions | [18:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1110s) | Use the `leaflet` package to create an interactive map with popup information about each volcano. |
-| Volcano Eruptions | [24:10](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1450s) | Use `glue` from the `glue` package to create an `HTML` string by concatenating `volcano_name` and `primary_volcano_type` between `HTML <p></p> tags`. |
-| Volcano Eruptions | [27:15](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1635s) | Use the `DT` package to turn the `leaflet` popup information into a `datatable`. |
-| Volcano Eruptions | [31:40](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1900s) | Use `str_replace_all` fromt he `stringr` package to replace all the underscores `_` in `volcano_name` with space. Then use `str_to_title` from the `stringr` package to convert the `volcano_name` variable to title case. |
-| Volcano Eruptions | [32:05](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1925s) | Use `kable` with `format = HTML` from the `knitr` package instead of `DT` to make turning the data into `HTML` much easier. |
-| Volcano Eruptions | [34:05](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2045s) | Use `paste0` from `base` R to bold the `Volcano Name`, `Primary Volcano Type`, and `Last Eruption Year` in the `leaflet` popup. |
-| Volcano Eruptions | [34:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2090s) | Use `replace_na` from the `tidyr` package to replace `unknown` with `NA`. |
-| Volcano Eruptions | [37:15](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2235s) | Use `addMeasure` from the `leaflet` package to add a tool to the map that allows for the measuring of distance between points. |
+| Screencast        |                                                         Time | Description                                                                                                                                                                                                                                                                                                                                    |
+|:-----------------------|-----------------------:|:-----------------------|
+| Volcano Eruptions |   [7:00](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=420s) | Change the `last_eruption_year` into `years_ago` by using `mutate` from the `dplyr` package with `years_ago = 2020 - as.numeric(last_eruption_year))`. In the plot David includes `+1` to account for 0 values in the `years_ago` variable.                                                                                                    |
+| Volcano Eruptions |   [9:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=590s) | Use `str_detect` from the `stringr` package to search the `volcano_name` variable for `Vesuvius` when not sure if spelling is correct.                                                                                                                                                                                                         |
+| Volcano Eruptions |  [12:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=770s) | Use the `longitude` and `latitude` to create a world map showing where the volcanoes are located.                                                                                                                                                                                                                                              |
+| Volcano Eruptions |  [15:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=930s) | Use `fct_lump` from the`forcats` package to lump together all `primary_volcano_type` factor levels except for the `n` most frequent.                                                                                                                                                                                                           |
+| Volcano Eruptions |  [16:25](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=985s) | Use `str_remove` from the `stringr` package with the regular expression `"\\(.\\)"` to remove the parentheses.                                                                                                                                                                                                                                 |
+| Volcano Eruptions | [18:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1110s) | Use the `leaflet` package to create an interactive map with popup information about each volcano.                                                                                                                                                                                                                                              |
+| Volcano Eruptions | [24:10](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1450s) | Use `glue` from the `glue` package to create an `HTML` string by concatenating `volcano_name` and `primary_volcano_type` between `HTML <p></p> tags`.                                                                                                                                                                                          |
+| Volcano Eruptions | [27:15](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1635s) | Use the `DT` package to turn the `leaflet` popup information into a `datatable`.                                                                                                                                                                                                                                                               |
+| Volcano Eruptions | [31:40](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1900s) | Use `str_replace_all` fromt he `stringr` package to replace all the underscores `_` in `volcano_name` with space. Then use `str_to_title` from the `stringr` package to convert the `volcano_name` variable to title case.                                                                                                                     |
+| Volcano Eruptions | [32:05](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=1925s) | Use `kable` with `format = HTML` from the `knitr` package instead of `DT` to make turning the data into `HTML` much easier.                                                                                                                                                                                                                    |
+| Volcano Eruptions | [34:05](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2045s) | Use `paste0` from `base` R to bold the `Volcano Name`, `Primary Volcano Type`, and `Last Eruption Year` in the `leaflet` popup.                                                                                                                                                                                                                |
+| Volcano Eruptions | [34:50](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2090s) | Use `replace_na` from the `tidyr` package to replace `unknown` with `NA`.                                                                                                                                                                                                                                                                      |
+| Volcano Eruptions | [37:15](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2235s) | Use `addMeasure` from the `leaflet` package to add a tool to the map that allows for the measuring of distance between points.                                                                                                                                                                                                                 |
 | Volcano Eruptions | [39:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2370s) | Use `colorNumeric` from the `leaflet` package to color the points based on their `population within 5km`. To accomplish this, David creates 2 new variables: 1) `transformed_pop` to get the population on a `log2` scale & 2) `pop_color` which uses the `colorNumeric` function to generate the color hex values based on `transformed_pop`. |
-| Volcano Eruptions | [46:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2790s) | Use the `gganimate` package to create an animated map. |
-| Volcano Eruptions | [48:45](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2925s) | Use `geom_point` from the `ggplot2` package with `size = .00001 * 10 ^ vei` so the size of the points are then proportional to the `volume` metrics provided in the `Volcano Eruption Index`. The metrics are in `Km^3`. |
-| Volcano Eruptions | [50:20](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3020s) | Use `scale_size_continuous` from the `ggplot2` package with `range = c(.1, 6)` to make the smaller points smaller and larger points larger. |
-| Volcano Eruptions | [50:55](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3055s) | Use `scale_color_gradient2` from the `ggplot2` package to apply color gradient to each point based on the volcano size and whether its low or high. |
-| Volcano Eruptions | [59:40](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3580s) | Summary of screencast while waiting for `gganimate` map to render. Also, brief discussion on using `transition_reveal` instead of `transition_time` to keep the point on the map instead of replacing them in each frame. |
+| Volcano Eruptions | [46:30](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2790s) | Use the `gganimate` package to create an animated map.                                                                                                                                                                                                                                                                                         |
+| Volcano Eruptions | [48:45](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=2925s) | Use `geom_point` from the `ggplot2` package with `size = .00001 * 10 ^ vei` so the size of the points are then proportional to the `volume` metrics provided in the `Volcano Eruption Index`. The metrics are in `Km^3`.                                                                                                                       |
+| Volcano Eruptions | [50:20](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3020s) | Use `scale_size_continuous` from the `ggplot2` package with `range = c(.1, 6)` to make the smaller points smaller and larger points larger.                                                                                                                                                                                                    |
+| Volcano Eruptions | [50:55](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3055s) | Use `scale_color_gradient2` from the `ggplot2` package to apply color gradient to each point based on the volcano size and whether its low or high.                                                                                                                                                                                            |
+| Volcano Eruptions | [59:40](https://www.youtube.com/watch?v=pZINGjQ86Hc&t=3580s) | Summary of screencast while waiting for `gganimate` map to render. Also, brief discussion on using `transition_reveal` instead of `transition_time` to keep the point on the map instead of replacing them in each frame.                                                                                                                      |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Beach Volleyball
+#### Beach Volleyball {#beach-volleyball}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Beach Volleyball | [5:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=330s) | Use `pivot_longer` from the `dplyr` package to pivot the data set from `wide` to `long`. |
-| Beach Volleyball | [7:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=440s) | Use `mutate_at` from the `dplyr` package with `starts_with` to change the class to `character` for all columns that start with `w_` and `l_`. |
-| Beach Volleyball | [8:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=480s) | Use `separate` from the `tidyr` package to separate the `name` variable into three columns with `extra = merge` and `fill = right`. |
-| Beach Volleyball | [10:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=635s) | Use `rename` from the `dplyr` package to rename `w_player1`, `w_player2`, `l_player1`, and `l_player2`. |
-| Beach Volleyball | [12:50](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=770s) | Use `pivot_wider` from the `dplyr` package to pivot the `name` variable from `long` to `wide`. |
-| Beach Volleyball | [15:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=915s) | Use `str_to_upper` to convert the `winner_loser` `w` and `l` values to uppercase. |
-| Beach Volleyball | [20:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1225s) | Add unique row numbers for each match using `mutate` with `row_number` from the `dplyr` package. |
-| Beach Volleyball | [21:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1280s) | Separate the `score` values into multiple rows using `separate_rows` from the `tidyr` package. |
-| Beach Volleyball | [22:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1365s) | Use `separate` from the `tidyr` package to actual scores into two columns, one for the winners score `w_score` and another for the losers score `l_score`. |
-| Beach Volleyball | [23:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1425s) | Use `na_if` from the `dplyr` package to change the `Forfeit or other` value from the `score` variable to `NA`. |
-| Beach Volleyball | [24:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1475s) | Use `str_remove` from the `stringr` package to remove scores that include `retired`. |
-| Beach Volleyball | [25:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1525s) | Determine how many times the winners score `w_score` is greter than the losers score `l_score` at least 1/3 of the time. |
-| Beach Volleyball | [28:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1710s) | Use `summarize` from the `dplyr` package to create the summary statistics including the `number of matches`, `winning percentage`, `date of first match`, `date of most recent match`. |
-| Beach Volleyball | [34:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2055s) | Use `type_convert` from the `readr` package to convert `character` class variables to `numeric`. |
-| Beach Volleyball | [35:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2100s) | Use `summarize_all` from the `dplyr` package to calculate the calculate which fraction of the data is not `NA`. |
-| Beach Volleyball | [42:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2520s) | Use `summarize` from the `dplyr` package to determine players `number of matches`, `winning percentage`, `average attacks`, `average errors`, `average kills`, `average aces`, `average serve errors`, and `total rows with data` for years prior to 2019. The summary statistics are then used to answer how would we could predict if a player will win in 2019 using `geom_point` and `logistic regression`. Initially, David wanted to predict performance based on players first year performance. (NOTE - David mistakingly grouped by `year` and `age`. He cathces this around 1:02:00.) |
-| Beach Volleyball | [49:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2965s) | Use `year` from the `lubridate` package within a `group_by` to determine the `age` for each play given their `birthdate`. |
-| Beach Volleyball | [54:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3270s) | Turn the summary statistics at timestamp `42:00` into a `.` DOT `%>%` PIPE function. |
-| Beach Volleyball | [1:04:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3870s) | Summary of screencast |
+| Screencast       |                                                           Time | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|:-----------------------|-----------------------:|:-----------------------|
+| Beach Volleyball |     [5:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=330s) | Use `pivot_longer` from the `dplyr` package to pivot the data set from `wide` to `long`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Beach Volleyball |     [7:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=440s) | Use `mutate_at` from the `dplyr` package with `starts_with` to change the class to `character` for all columns that start with `w_` and `l_`.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Beach Volleyball |     [8:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=480s) | Use `separate` from the `tidyr` package to separate the `name` variable into three columns with `extra = merge` and `fill = right`.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Beach Volleyball |    [10:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=635s) | Use `rename` from the `dplyr` package to rename `w_player1`, `w_player2`, `l_player1`, and `l_player2`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Beach Volleyball |    [12:50](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=770s) | Use `pivot_wider` from the `dplyr` package to pivot the `name` variable from `long` to `wide`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Beach Volleyball |    [15:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=915s) | Use `str_to_upper` to convert the `winner_loser` `w` and `l` values to uppercase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Beach Volleyball |   [20:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1225s) | Add unique row numbers for each match using `mutate` with `row_number` from the `dplyr` package.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Beach Volleyball |   [21:20](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1280s) | Separate the `score` values into multiple rows using `separate_rows` from the `tidyr` package.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Beach Volleyball |   [22:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1365s) | Use `separate` from the `tidyr` package to actual scores into two columns, one for the winners score `w_score` and another for the losers score `l_score`.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Beach Volleyball |   [23:45](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1425s) | Use `na_if` from the `dplyr` package to change the `Forfeit or other` value from the `score` variable to `NA`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Beach Volleyball |   [24:35](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1475s) | Use `str_remove` from the `stringr` package to remove scores that include `retired`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Beach Volleyball |   [25:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1525s) | Determine how many times the winners score `w_score` is greter than the losers score `l_score` at least 1/3 of the time.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Beach Volleyball |   [28:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=1710s) | Use `summarize` from the `dplyr` package to create the summary statistics including the `number of matches`, `winning percentage`, `date of first match`, `date of most recent match`.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Beach Volleyball |   [34:15](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2055s) | Use `type_convert` from the `readr` package to convert `character` class variables to `numeric`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Beach Volleyball |   [35:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2100s) | Use `summarize_all` from the `dplyr` package to calculate the calculate which fraction of the data is not `NA`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Beach Volleyball |   [42:00](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2520s) | Use `summarize` from the `dplyr` package to determine players `number of matches`, `winning percentage`, `average attacks`, `average errors`, `average kills`, `average aces`, `average serve errors`, and `total rows with data` for years prior to 2019. The summary statistics are then used to answer how would we could predict if a player will win in 2019 using `geom_point` and `logistic regression`. Initially, David wanted to predict performance based on players first year performance. (NOTE - David mistakingly grouped by `year` and `age`. He cathces this around 1:02:00.) |
+| Beach Volleyball |   [49:25](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=2965s) | Use `year` from the `lubridate` package within a `group_by` to determine the `age` for each play given their `birthdate`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Beach Volleyball |   [54:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3270s) | Turn the summary statistics at timestamp `42:00` into a `.` DOT `%>%` PIPE function.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Beach Volleyball | [1:04:30](https://www.youtube.com/watch?v=MfDdmsW3OMo&t=3870s) | Summary of screencast                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Cocktails
+#### Cocktails {#cocktails}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Cocktails | [6:20](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=380s) | Use `fct_reorder` from the `forcats` package to reorder the `ingredient` factor levels along `n`. |
-| Cocktails | [7:40](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=460s) | Use `fct_lump` from the `forcats` package to lump together all the levels except the `n` most frequent in the `category` and `ingredient` variables. |
-| Cocktails | [11:30](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=690s) | Use `pairwise_cor` from the `widyr` package to find the correlation between the `ingredients`. |
-| Cocktails | [16:00](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=960s) | Use `reorder_within` from the `tidytext` package with `scale_x_reordered` to reorder the the columns in each `facet`. |
-| Cocktails | [19:45](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1185s) | Use the `ggraph` and `igraph` packages to create a `network diagram` |
-| Cocktails | [25:15](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1515s) | Use `extract` from the `tidyr` package with `regex = (.*) oz` to create a new variable `amount` which doesn't include the `oz`. |
-| Cocktails | [26:40](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1600s) | Use `extract` with `regex` to turn the strings in the new `amount` variable into separate columns for the `ones`, `numerator`, and `denominator`. |
-| Cocktails | [28:53](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1733s) | Use `replace_na` from the `tidyr` package to replace `NA` with zeros in the `ones`, `numberator`, and `denominator` columns. David ends up reaplcing the `zero` in the `denominator` column with ones in order for the calculation to work. |
-| Cocktails | [31:49](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1909s) | Use `geom_text_repel` from the `ggrepel` package to add `ingredient` labels to the `geom_point` plot. |
-| Cocktails | [32:30](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1950s) | Use `na_if` from the `dplyr` package to replace `zeros` with `NA` |
-| Cocktails | [34:25](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2065s) | Use `scale_size_continuous` with `labels = percent_format()` to convert size legend values to percent. |
-| Cocktails | [36:35](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2195s) | Change the size of the points in the `network diagram` proportional to `n` using `vertices = ingredient_info` within `graph_from_data_frame` and `aes(size = n)` within `geom_node_point`. |
-| Cocktails | [48:05](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2885s) | Use `widely_svd` from the `widyr` package to perform principle component analysis on the `ingredients`. |
-| Cocktails | [52:32](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=3152s) | Use `paste0` to concatenate `PC` and `dimension` in the facet panel titles. |
-| Cocktails | [57:00](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=3420s) | Summary of screencast |
+| Screencast |                                                         Time | Description                                                                                                                                                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Cocktails  |   [6:20](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=380s) | Use `fct_reorder` from the `forcats` package to reorder the `ingredient` factor levels along `n`.                                                                                                                                           |
+| Cocktails  |   [7:40](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=460s) | Use `fct_lump` from the `forcats` package to lump together all the levels except the `n` most frequent in the `category` and `ingredient` variables.                                                                                        |
+| Cocktails  |  [11:30](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=690s) | Use `pairwise_cor` from the `widyr` package to find the correlation between the `ingredients`.                                                                                                                                              |
+| Cocktails  |  [16:00](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=960s) | Use `reorder_within` from the `tidytext` package with `scale_x_reordered` to reorder the the columns in each `facet`.                                                                                                                       |
+| Cocktails  | [19:45](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1185s) | Use the `ggraph` and `igraph` packages to create a `network diagram`                                                                                                                                                                        |
+| Cocktails  | [25:15](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1515s) | Use `extract` from the `tidyr` package with `regex = (.*) oz` to create a new variable `amount` which doesn't include the `oz`.                                                                                                             |
+| Cocktails  | [26:40](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1600s) | Use `extract` with `regex` to turn the strings in the new `amount` variable into separate columns for the `ones`, `numerator`, and `denominator`.                                                                                           |
+| Cocktails  | [28:53](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1733s) | Use `replace_na` from the `tidyr` package to replace `NA` with zeros in the `ones`, `numberator`, and `denominator` columns. David ends up reaplcing the `zero` in the `denominator` column with ones in order for the calculation to work. |
+| Cocktails  | [31:49](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1909s) | Use `geom_text_repel` from the `ggrepel` package to add `ingredient` labels to the `geom_point` plot.                                                                                                                                       |
+| Cocktails  | [32:30](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=1950s) | Use `na_if` from the `dplyr` package to replace `zeros` with `NA`                                                                                                                                                                           |
+| Cocktails  | [34:25](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2065s) | Use `scale_size_continuous` with `labels = percent_format()` to convert size legend values to percent.                                                                                                                                      |
+| Cocktails  | [36:35](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2195s) | Change the size of the points in the `network diagram` proportional to `n` using `vertices = ingredient_info` within `graph_from_data_frame` and `aes(size = n)` within `geom_node_point`.                                                  |
+| Cocktails  | [48:05](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=2885s) | Use `widely_svd` from the `widyr` package to perform principle component analysis on the `ingredients`.                                                                                                                                     |
+| Cocktails  | [52:32](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=3152s) | Use `paste0` to concatenate `PC` and `dimension` in the facet panel titles.                                                                                                                                                                 |
+| Cocktails  | [57:00](https://www.youtube.com/watch?v=EC0SVkFB2OU&t=3420s) | Summary of screencast                                                                                                                                                                                                                       |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### African-American Achievements
+#### African-American Achievements {#african-american-achievements}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| African-American Achievements | [8:20](https://www.youtube.com/watch?v=-W-OopvhNPo&t=500s) | Use ` fct_reorder` from the `forcats` package to reorder the `category` factor levels by sorting along `n`. |
-| African-American Achievements | [11:35](https://www.youtube.com/watch?v=-W-OopvhNPo&t=695s) | Use `str_remove` from the `stringr` package to remove anything after a bracket or parenthesis from the `person` variable with the `regular expression` `"[\\[\\(].*"` David then discusses how web scraping may be a better option than parsing the strings. |
-| African-American Achievements | [12:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=745s) | Use `str_trim` from the `stringr` package to remove the `whitespace` from the `person` variable. David then discusses how web scraping may be a better option than parsing the strings. |
-| African-American Achievements | [15:50](https://www.youtube.com/watch?v=-W-OopvhNPo&t=950s) | Create an interactive `plotly` timeline. |
-| African-American Achievements | [18:20](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1100s) | Use `ylim(c(-.1, 1))` to set scale limits moving the `geom_point` to the bottom of the graph. |
-| African-American Achievements | [19:30](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1170s) | Use `paste0` from `base R` to concatenate the `accomplishment` and `person` with `": "` in between the two displayed in the timeline hover label. |
-| African-American Achievements | [20:30](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1230s) | Set `y` to `category` in `ggplot` `aesthetics` to get 8 separate timelines on one plot, one for each category. Doing this allows David to remove the `ylim` mentioned above. |
-| African-American Achievements | [22:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1345s) | Use the `plotly` `tooltip = text` parameter to get just a single line of text in the `plotly` hover labels. |
-| African-American Achievements | [26:05](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1565s) | Use `glue` from the `glue` package to reformat `text` with `\n` included so that the single line of text can now be broken up into 2 separate lines in the hover labels. |
-| African-American Achievements | [33:55](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2035s) | Use `separate_rows` from the `tidyr` package to separate the `occupation_s` variable from the `science` dataset into multiple columns delimited by a semicolon with `sep = "; "` |
-| African-American Achievements | [34:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2065s) | Use `str_to_title` from the `stringr` package to conver the case to title case in the `occupation_s` variable. |
-| African-American Achievements | [35:15](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2115s) | Use `str_detect` from the `stringr` package to detect the presence of `statistician` from within the `occupation_s` variable with `regex("statistician", ignore_case = TRUE)` to perform a case-insensitive search. |
-| African-American Achievements | [41:55](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2515s) | Use the `rvest` package with `Selector Gadget` to scrape additional information about the individual from their `Wikipedia` infobox. |
-| African-American Achievements | [49:15](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2955s) | Use `map` and `possibly` from the `purrr` package to separate out the downloading of data from parsing the useful information. David then turns the infobox extraction step into an `anonymous function` using `.%>%` dot-pipe. |
-| African-American Achievements | [58:40](https://www.youtube.com/watch?v=-W-OopvhNPo&t=3520s) | Summary of screencast |
+| Screencast                    |                                                         Time | Description                                                                                                                                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| African-American Achievements |   [8:20](https://www.youtube.com/watch?v=-W-OopvhNPo&t=500s) | Use `fct_reorder` from the `forcats` package to reorder the `category` factor levels by sorting along `n`.                                                                                                                                                   |
+| African-American Achievements |  [11:35](https://www.youtube.com/watch?v=-W-OopvhNPo&t=695s) | Use `str_remove` from the `stringr` package to remove anything after a bracket or parenthesis from the `person` variable with the `regular expression` `"[\\[\\(].*"` David then discusses how web scraping may be a better option than parsing the strings. |
+| African-American Achievements |  [12:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=745s) | Use `str_trim` from the `stringr` package to remove the `whitespace` from the `person` variable. David then discusses how web scraping may be a better option than parsing the strings.                                                                      |
+| African-American Achievements |  [15:50](https://www.youtube.com/watch?v=-W-OopvhNPo&t=950s) | Create an interactive `plotly` timeline.                                                                                                                                                                                                                     |
+| African-American Achievements | [18:20](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1100s) | Use `ylim(c(-.1, 1))` to set scale limits moving the `geom_point` to the bottom of the graph.                                                                                                                                                                |
+| African-American Achievements | [19:30](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1170s) | Use `paste0` from `base R` to concatenate the `accomplishment` and `person` with `": "` in between the two displayed in the timeline hover label.                                                                                                            |
+| African-American Achievements | [20:30](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1230s) | Set `y` to `category` in `ggplot` `aesthetics` to get 8 separate timelines on one plot, one for each category. Doing this allows David to remove the `ylim` mentioned above.                                                                                 |
+| African-American Achievements | [22:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1345s) | Use the `plotly` `tooltip = text` parameter to get just a single line of text in the `plotly` hover labels.                                                                                                                                                  |
+| African-American Achievements | [26:05](https://www.youtube.com/watch?v=-W-OopvhNPo&t=1565s) | Use `glue` from the `glue` package to reformat `text` with `\n` included so that the single line of text can now be broken up into 2 separate lines in the hover labels.                                                                                     |
+| African-American Achievements | [33:55](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2035s) | Use `separate_rows` from the `tidyr` package to separate the `occupation_s` variable from the `science` dataset into multiple columns delimited by a semicolon with `sep = "; "`                                                                             |
+| African-American Achievements | [34:25](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2065s) | Use `str_to_title` from the `stringr` package to conver the case to title case in the `occupation_s` variable.                                                                                                                                               |
+| African-American Achievements | [35:15](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2115s) | Use `str_detect` from the `stringr` package to detect the presence of `statistician` from within the `occupation_s` variable with `regex("statistician", ignore_case = TRUE)` to perform a case-insensitive search.                                          |
+| African-American Achievements | [41:55](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2515s) | Use the `rvest` package with `Selector Gadget` to scrape additional information about the individual from their `Wikipedia` infobox.                                                                                                                         |
+| African-American Achievements | [49:15](https://www.youtube.com/watch?v=-W-OopvhNPo&t=2955s) | Use `map` and `possibly` from the `purrr` package to separate out the downloading of data from parsing the useful information. David then turns the infobox extraction step into an `anonymous function` using `.%>%` dot-pipe.                              |
+| African-American Achievements | [58:40](https://www.youtube.com/watch?v=-W-OopvhNPo&t=3520s) | Summary of screencast                                                                                                                                                                                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### African-American History
+#### African-American History {#african-american-history}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| African-American History | [6:55](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=415s) | Use `fct_lump` from the `forcats` package to lump together all the factor levels in `ship_name` except the `n` most frequent. Used within `filter` with `! = "Other"` to remove `other`. |
-| African-American History | [8:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=480s) | use `fct_reorder` from the `forcats` package to reorder the `ship_name` factor levels y sorting along the `n_slaves_arrived` variable. |
-| African-American History | [10:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=620s) | Add `geom_vline` to `geom_histogram` to annotate the plot with a vertical line indicating the Revolutionary War and the Civil War. |
-| African-American History | [13:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=780s) | Use `truncated division` within `count` to create a new `decade` variable equal to `10 * (year_arrival %/% 10))` |
-| African-American History | [17:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1040s) | Use `str_trunc` from the `stringr` package to truncate the titles in each facet panel accounting for the slave ports with really long names. |
-| African-American History | [18:05](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1085s) | Another option for accounting for long titles in the facet panels is to use `strip.text` within `theme` with `element_text(size = 6)` |
-| African-American History | [26:55](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1615s) | Use the `ggraph` package to create a `network diagram` using `port_origin` and `port_arrival`. |
-| African-American History | [29:05](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1745s) | Use `arrow` from the `grid` package to add directional arrows to the points in the `network diagram`. |
-| African-American History | [29:40](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1780s) | Use `scale_width_size_continuous` from the `ggraph` packge to adjust the size of the points in the `network diagram`. |
-| African-American History | [35:25](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=2125s) | Within `summarize` use `mean(n_slaves_arrived, na.rm = TRUE) * n())` to come up with an estimated total numer of slaves since 49% of the data is missing. |
-| African-American History | [48:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=2900s) | Create a faceted stacked percent barplot (spinogram) showing the percentage of `black_free`, `black_slaves`, `white`, and `other` for each region. |
+| Screencast               |                                                         Time | Description                                                                                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| African-American History |   [6:55](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=415s) | Use `fct_lump` from the `forcats` package to lump together all the factor levels in `ship_name` except the `n` most frequent. Used within `filter` with `! = "Other"` to remove `other`.                             |
+| African-American History |   [8:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=480s) | use `fct_reorder` from the `forcats` package to reorder the `ship_name` factor levels y sorting along the `n_slaves_arrived` variable.                                                                               |
+| African-American History |  [10:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=620s) | Add `geom_vline` to `geom_histogram` to annotate the plot with a vertical line indicating the Revolutionary War and the Civil War.                                                                                   |
+| African-American History |  [13:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=780s) | Use `truncated division` within `count` to create a new `decade` variable equal to `10 * (year_arrival %/% 10))`                                                                                                     |
+| African-American History | [17:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1040s) | Use `str_trunc` from the `stringr` package to truncate the titles in each facet panel accounting for the slave ports with really long names.                                                                         |
+| African-American History | [18:05](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1085s) | Another option for accounting for long titles in the facet panels is to use `strip.text` within `theme` with `element_text(size = 6)`                                                                                |
+| African-American History | [26:55](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1615s) | Use the `ggraph` package to create a `network diagram` using `port_origin` and `port_arrival`.                                                                                                                       |
+| African-American History | [29:05](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1745s) | Use `arrow` from the `grid` package to add directional arrows to the points in the `network diagram`.                                                                                                                |
+| African-American History | [29:40](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=1780s) | Use `scale_width_size_continuous` from the `ggraph` packge to adjust the size of the points in the `network diagram`.                                                                                                |
+| African-American History | [35:25](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=2125s) | Within `summarize` use `mean(n_slaves_arrived, na.rm = TRUE) * n())` to come up with an estimated total numer of slaves since 49% of the data is missing.                                                            |
+| African-American History | [48:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=2900s) | Create a faceted stacked percent barplot (spinogram) showing the percentage of `black_free`, `black_slaves`, `white`, and `other` for each region.                                                                   |
 | African-American History | [51:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3060s) | Use the `wordcloud` package to create a `wordcloud` with the `african_names` dataset. David hsa issues with the `wordcloud` package and opts to use `ggwordcloud` instead. Also, mentions the `worldcloud2` package. |
-| African-American History | [55:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3320s) | Use `fct_recode` from the `forcats` package to change the factor levels for the `gender` variable while renaming `Man = "Boy"` and `Woman = "Girl"` |
-| African-American History | [57:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3440s) | Use `reorder_within` from the `tidytext` package to reorder the `geom_col` by `n` within `gender` variable for each facet panel. |
-| African-American History | [59:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3540s) | Summary of screencast |
+| African-American History | [55:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3320s) | Use `fct_recode` from the `forcats` package to change the factor levels for the `gender` variable while renaming `Man = "Boy"` and `Woman = "Girl"`                                                                  |
+| African-American History | [57:20](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3440s) | Use `reorder_within` from the `tidytext` package to reorder the `geom_col` by `n` within `gender` variable for each facet panel.                                                                                     |
+| African-American History | [59:00](https://www.youtube.com/watch?v=2L-jA-Me3zg&t=3540s) | Summary of screencast                                                                                                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Caribou Locations
+#### Caribou Locations {#caribou-locations}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Caribou Locations | [4:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=240s) | Use `summarize` and `across` to calculate the proportion of `NA` values in the `individuals` dataset. Note, you do not need to use `list()`. |
-| Caribou Locations | [9:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=540s) | Use `ggplot` and `borders` from the `ggplot2` package to create a map of `Canada` with `deploy_on_longitude` and `deploy_on_latitude` from the `individuals` dataset. |
-| Caribou Locations | [13:50](https://www.youtube.com/watch?v=7G7SVODhVo4&t=830s) | Import Canada province `shapefile` using the `sf` package. [Unsuccessful] |
-| Caribou Locations | [25:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1500s) | Use `min` and `max` from `base r ` within `summarize` to find out the `start` and `end` dates for each caribou in the `locations` dataset. |
-| Caribou Locations | [27:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1635s) | Use `sample` from `base r` to pick one single caribou at a time then use the subset with `geom_path` from `ggplot2` to track the path a that caribou takes over time. `color = factor(floor_date(timestamp, "quarter")` is used to color the path according to what quarter the observation occured in. |
-| Caribou Locations | [35:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2115s) | Use `as.Date` from `base r` and `floor_date` from the `lubridate` package to convert `timestamp` variable into quarters then `facet_wrap` the previous plot by `quarter`. |
-| Caribou Locations | [37:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2235s) | Within `mutate`, use `as.numeric(difftime(timestamp, lag(timestamp), unit = "hours"))` from `base r` to figure out the gap in time between observations. |
-| Caribou Locations | [43:05](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2585s) | Use `distHaversine` from the `geosphere` package to calculate distance in `km` then convert it to speed in `kph`. |
-| Caribou Locations | [1:00:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=3600s) | Summary of dataset. |
+| Screencast        |                                                           Time | Description                                                                                                                                                                                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Caribou Locations |     [4:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=240s) | Use `summarize` and `across` to calculate the proportion of `NA` values in the `individuals` dataset. Note, you do not need to use `list()`.                                                                                                                                                            |
+| Caribou Locations |     [9:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=540s) | Use `ggplot` and `borders` from the `ggplot2` package to create a map of `Canada` with `deploy_on_longitude` and `deploy_on_latitude` from the `individuals` dataset.                                                                                                                                   |
+| Caribou Locations |    [13:50](https://www.youtube.com/watch?v=7G7SVODhVo4&t=830s) | Import Canada province `shapefile` using the `sf` package. [Unsuccessful]                                                                                                                                                                                                                               |
+| Caribou Locations |   [25:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1500s) | Use `min` and `max` from `base r` within `summarize` to find out the `start` and `end` dates for each caribou in the `locations` dataset.                                                                                                                                                               |
+| Caribou Locations |   [27:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=1635s) | Use `sample` from `base r` to pick one single caribou at a time then use the subset with `geom_path` from `ggplot2` to track the path a that caribou takes over time. `color = factor(floor_date(timestamp, "quarter")` is used to color the path according to what quarter the observation occured in. |
+| Caribou Locations |   [35:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2115s) | Use `as.Date` from `base r` and `floor_date` from the `lubridate` package to convert `timestamp` variable into quarters then `facet_wrap` the previous plot by `quarter`.                                                                                                                               |
+| Caribou Locations |   [37:15](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2235s) | Within `mutate`, use `as.numeric(difftime(timestamp, lag(timestamp), unit = "hours"))` from `base r` to figure out the gap in time between observations.                                                                                                                                                |
+| Caribou Locations |   [43:05](https://www.youtube.com/watch?v=7G7SVODhVo4&t=2585s) | Use `distHaversine` from the `geosphere` package to calculate distance in `km` then convert it to speed in `kph`.                                                                                                                                                                                       |
+| Caribou Locations | [1:00:00](https://www.youtube.com/watch?v=7G7SVODhVo4&t=3600s) | Summary of dataset.                                                                                                                                                                                                                                                                                     |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### X-Men Comics
+#### X-Men Comics {#x-men-comics}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| X-Men Comics | [07:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=445s) | Using `separate` to separate the name from secrete identity in the `character` column |
-| X-Men Comics | [09:55](https://www.youtube.com/watch?v=NY0-IFet5AM&t=595s) | Using `summarize` and `across` to find the frequency of the action variables and find out how many issues each action was used for each character |
-| X-Men Comics | [13:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=805s) | Create a `geom_col` chart to visualize which character speaks in the most issues |
-| X-Men Comics | [18:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1115s) | Create a `geom_point` chart to visualize each character’s average lines per issue in which the character is depicted |
-| X-Men Comics | [22:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1325s) | Create a `geom_point` chart to visualize each character’s average thoughts per issue in which the character is depicted |
-| X-Men Comics | [23:10](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1390s) | Create a `geom_point` chart to visualize character’s speech versus thought ratio per issue in which the character is depicted |
-| X-Men Comics | [30:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1805s) | Create a `geom_point` to visualize character’s number of lines while in costume versus not in costume |
-| X-Men Comics | [34:30](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2070s) | Create a `geom_point` chart to visualize the lines in costume versus lines out of costume ratio |
-| X-Men Comics | [39:20](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2360s) | Create a `lollipop graph` using `geom_point` and `geom_errorbarh` to visualize the lines in costume versus lines out of costume ratio and their distance from 1.0 (1 to 1) |
-| X-Men Comics | [45:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2700s) | Use `summarize` to find the frequency of each location and the total number of unique issues where the location is used |
-| X-Men Comics | [46:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2760s) | Use `summarize` and `fct_lump` to count how many issues each author has written while lumping together all authors except the most frequent |
-| X-Men Comics | [47:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2845s) | Use `summarize` and `fct_lump` to see if the authors rates of passing the Bechdel test differ from one another |
-| X-Men Comics | [52:45](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3165s) | Create a `geom_line` chart to visualize if the rates of passing the Bechdel test changed over time and `floor division` `%/%` to generate 20 observations per group |
-| X-Men Comics | [54:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3275s) | Create a `geom_col` to visualize the amount of lines each character has per issue over time giving context to Bechdel test passing rates |
-| X-Men Comics | [1:00:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3600s) | Summary of screencast |
+| Screencast   |                                                           Time | Description                                                                                                                                                                |
+|:-----------------------|-----------------------:|:-----------------------|
+| X-Men Comics |    [07:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=445s) | Using `separate` to separate the name from secrete identity in the `character` column                                                                                      |
+| X-Men Comics |    [09:55](https://www.youtube.com/watch?v=NY0-IFet5AM&t=595s) | Using `summarize` and `across` to find the frequency of the action variables and find out how many issues each action was used for each character                          |
+| X-Men Comics |    [13:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=805s) | Create a `geom_col` chart to visualize which character speaks in the most issues                                                                                           |
+| X-Men Comics |   [18:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1115s) | Create a `geom_point` chart to visualize each character's average lines per issue in which the character is depicted                                                       |
+| X-Men Comics |   [22:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1325s) | Create a `geom_point` chart to visualize each character's average thoughts per issue in which the character is depicted                                                    |
+| X-Men Comics |   [23:10](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1390s) | Create a `geom_point` chart to visualize character's speech versus thought ratio per issue in which the character is depicted                                              |
+| X-Men Comics |   [30:05](https://www.youtube.com/watch?v=NY0-IFet5AM&t=1805s) | Create a `geom_point` to visualize character's number of lines while in costume versus not in costume                                                                      |
+| X-Men Comics |   [34:30](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2070s) | Create a `geom_point` chart to visualize the lines in costume versus lines out of costume ratio                                                                            |
+| X-Men Comics |   [39:20](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2360s) | Create a `lollipop graph` using `geom_point` and `geom_errorbarh` to visualize the lines in costume versus lines out of costume ratio and their distance from 1.0 (1 to 1) |
+| X-Men Comics |   [45:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2700s) | Use `summarize` to find the frequency of each location and the total number of unique issues where the location is used                                                    |
+| X-Men Comics |   [46:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2760s) | Use `summarize` and `fct_lump` to count how many issues each author has written while lumping together all authors except the most frequent                                |
+| X-Men Comics |   [47:25](https://www.youtube.com/watch?v=NY0-IFet5AM&t=2845s) | Use `summarize` and `fct_lump` to see if the authors rates of passing the Bechdel test differ from one another                                                             |
+| X-Men Comics |   [52:45](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3165s) | Create a `geom_line` chart to visualize if the rates of passing the Bechdel test changed over time and `floor division` `%/%` to generate 20 observations per group        |
+| X-Men Comics |   [54:35](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3275s) | Create a `geom_col` to visualize the amount of lines each character has per issue over time giving context to Bechdel test passing rates                                   |
+| X-Men Comics | [1:00:00](https://www.youtube.com/watch?v=NY0-IFet5AM&t=3600s) | Summary of screencast                                                                                                                                                      |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Coffee Ratings
+#### Coffee Ratings {#coffee-ratings}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Coffee Ratings | [08:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=495s) | Using `fct_lump` within `count` and then `mutate` to lump the variety of coffee together except for the most frequent |
-| Coffee Ratings | [08:50](https://www.youtube.com/watch?v=-1x8Kpyndss&t=530s) | Create a `geom_boxplot` to visualize the variety and the distribution of `total_cup_points` |
-| Coffee Ratings | [09:55](https://www.youtube.com/watch?v=-1x8Kpyndss&t=595s) | Create a `geom_histogram` to visualize the variety and the distribution of `total_cup_points` |
-| Coffee Ratings | [11:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=700s) | Using `fct_reorder` to reorder `variety` by sorting it along `total_cup_points` in ascending order |
-| Coffee Ratings | [12:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=755s) | Using `summarize` with `across` to calculate the percent of missing data (NA) for each rating variable |
-| Coffee Ratings | [15:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=920s) | Create a bar chart using `geom_col` with `fct_lump` to visualize the frequency of top countries |
-| Coffee Ratings | [20:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1235s) | Using `pivot_longer` to pivot the rating metrics for wide format to long format |
-| Coffee Ratings | [21:30](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1290s) | Create a `geom_line` chart to see if the `sum` of the rating categories equal to the `total_cup_points` column |
-| Coffee Ratings | [23:10](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1390s) | Create a `geom_density_ridges` chart to show the distribution of ratings across each rating metric |
-| Coffee Ratings | [24:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1475s) | Using `summarize` with `mean` and `sd` to show the average rating per metric with its standard deviation |
-| Coffee Ratings | [26:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1575s) | Using `pairwise_cor` to find correlations amongst the rating metrics |
-| Coffee Ratings | [27:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1640s) | Create a `network plot` to show the clustering of the rating metrics |
-| Coffee Ratings | [29:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1775s) | Using `widely_svd` to visualize the biggest source of variation with the rating metrics (Singular value decomposition) |
-| Coffee Ratings | [37:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2260s) | Create a `geom_histogram` to visualize the distribution of altitude |
-| Coffee Ratings | [40:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2420s) | Using `pmin` to set a maximum numeric altitude value of 3000 |
-| Coffee Ratings | [41:05](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2465s) | Create a `geom-point` chart to visualize the correlation between altitude and quality (`total_cup_points`) |
-| Coffee Ratings | [42:00](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2520s) | Using `summarize` with `cor` to show the correlation between altitude and each rating metric |
+| Screencast     |                                                         Time | Description                                                                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| Coffee Ratings |  [08:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=495s) | Using `fct_lump` within `count` and then `mutate` to lump the variety of coffee together except for the most frequent                                                  |
+| Coffee Ratings |  [08:50](https://www.youtube.com/watch?v=-1x8Kpyndss&t=530s) | Create a `geom_boxplot` to visualize the variety and the distribution of `total_cup_points`                                                                            |
+| Coffee Ratings |  [09:55](https://www.youtube.com/watch?v=-1x8Kpyndss&t=595s) | Create a `geom_histogram` to visualize the variety and the distribution of `total_cup_points`                                                                          |
+| Coffee Ratings |  [11:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=700s) | Using `fct_reorder` to reorder `variety` by sorting it along `total_cup_points` in ascending order                                                                     |
+| Coffee Ratings |  [12:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=755s) | Using `summarize` with `across` to calculate the percent of missing data (NA) for each rating variable                                                                 |
+| Coffee Ratings |  [15:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=920s) | Create a bar chart using `geom_col` with `fct_lump` to visualize the frequency of top countries                                                                        |
+| Coffee Ratings | [20:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1235s) | Using `pivot_longer` to pivot the rating metrics for wide format to long format                                                                                        |
+| Coffee Ratings | [21:30](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1290s) | Create a `geom_line` chart to see if the `sum` of the rating categories equal to the `total_cup_points` column                                                         |
+| Coffee Ratings | [23:10](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1390s) | Create a `geom_density_ridges` chart to show the distribution of ratings across each rating metric                                                                     |
+| Coffee Ratings | [24:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1475s) | Using `summarize` with `mean` and `sd` to show the average rating per metric with its standard deviation                                                               |
+| Coffee Ratings | [26:15](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1575s) | Using `pairwise_cor` to find correlations amongst the rating metrics                                                                                                   |
+| Coffee Ratings | [27:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1640s) | Create a `network plot` to show the clustering of the rating metrics                                                                                                   |
+| Coffee Ratings | [29:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=1775s) | Using `widely_svd` to visualize the biggest source of variation with the rating metrics (Singular value decomposition)                                                 |
+| Coffee Ratings | [37:40](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2260s) | Create a `geom_histogram` to visualize the distribution of altitude                                                                                                    |
+| Coffee Ratings | [40:20](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2420s) | Using `pmin` to set a maximum numeric altitude value of 3000                                                                                                           |
+| Coffee Ratings | [41:05](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2465s) | Create a `geom-point` chart to visualize the correlation between altitude and quality (`total_cup_points`)                                                             |
+| Coffee Ratings | [42:00](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2520s) | Using `summarize` with `cor` to show the correlation between altitude and each rating metric                                                                           |
 | Coffee Ratings | [44:25](https://www.youtube.com/watch?v=-1x8Kpyndss&t=2665s) | Create a linear model `lm` for each rating metric then visualize the results using a `geom_line` chart to show how each kilometer of altitude contributes to the score |
-| Coffee Ratings | [50:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=3035s) | Summary of screencast |
+| Coffee Ratings | [50:35](https://www.youtube.com/watch?v=-1x8Kpyndss&t=3035s) | Summary of screencast                                                                                                                                                  |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Australian Animal Outcomes
+#### Australian Animal Outcomes {#australian-animal-outcomes}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Australian Animal Outcomes | [1:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=80s) | Using `use_tidytemplate` to open the project dataset with the package's tidytemplate Rmd |
-| Australian Animal Outcomes | [4:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=270s) | Using `rename` to rename `Total` column to `total` |
-| Australian Animal Outcomes | [6:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=380s) | Using `fct_reorder` to reorder stacked barplot with `weight = sum` |
-| Australian Animal Outcomes | [7:00](https://www.youtube.com/watch?v=E2amEz_upzU&t=420s) | Using `fct_lump` with `w = n` to lump together `outcome` factor levels displaying the most frequenct with rest lumped into `other` |
-| Australian Animal Outcomes | [9:15](https://www.youtube.com/watch?v=E2amEz_upzU&t=555s) | Using `fct_recode` to combine the factor level `In Stock` with `Currently In Care` |
-| Australian Animal Outcomes | [12:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=730s) | Using `fct_reorder` to reorder `facet_wrap` panels |
-| Australian Animal Outcomes | [13:03](https://www.youtube.com/watch?v=E2amEz_upzU&t=783s) | Using `scale_y_continuous` with `labels = comma` to separate digits with comma |
-| Australian Animal Outcomes | [14:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=850s) | Using `complete` to complete account for missing combinations of data where the value is 0 in the `released` column |
-| Australian Animal Outcomes | [16:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=970s) | Using `max (year)` within `filter` to subset the data displaying only the most recent year |
-| Australian Animal Outcomes | [19:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=1170s) | Using `pivot_longer` to pivot location variables from wide to long |
-| Australian Animal Outcomes | [21:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1305s) | Web Scaraping table from Wikipedia with `SelectorGadget` and `Rvest` |
-| Australian Animal Outcomes | [25:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1545s) | Using `str_to_upper` to upper case the values in the `shorthand` column |
-| Australian Animal Outcomes | [27:13](https://www.youtube.com/watch?v=E2amEz_upzU&t=1633s) | Using `parse_number` to remove commas from `population` and `area` columns |
-| Australian Animal Outcomes | [28:55](https://www.youtube.com/watch?v=E2amEz_upzU&t=1735s) | Using `bind_rows` to bind the two web scraped tables from Wikipedia together by row and column |
-| Australian Animal Outcomes | [29:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=1775s) | Using `inner_join` to combine the Wikipedia table with the original data set |
-| Australian Animal Outcomes | [29:47](https://www.youtube.com/watch?v=E2amEz_upzU&t=1787s) | Using `mutate` to create new `per_capita_million` column to show `outcome` on a per million people basis |
-| Australian Animal Outcomes | [37:25](https://www.youtube.com/watch?v=E2amEz_upzU&t=2245s) | Using `summarize` to create new column `pct_euthanized` showing percent of cats and dogs euthanized over time. Formula accounts for 0 values thus avoiding a resulting empty vector. |
-| Australian Animal Outcomes | [39:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=2350s) | Using `scale_y_continuous` with `labels = percent` to add percentage sign to y-axis values |
-| Australian Animal Outcomes | [42:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=2565s) | Create a choropleth map of Australia using an Australian States `Shapefile` using the `sf` and `ggplot2` packages | Troubleshooting begins at 44:25 (downsizing / downsampling with `sf_simplify`) |
-| Australian Animal Outcomes | [55:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=3345s) | Add animation to the map of Australia showing the percent of cats euthanized by region using `gganimate` |
-| Australian Animal Outcomes | [1:01:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=3695s) | Summary of screencast |
+| Screencast                 |                                                           Time | Description                                                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Australian Animal Outcomes |      [1:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=80s) | Using `use_tidytemplate` to open the project dataset with the package's tidytemplate Rmd                                                                                             |
+| Australian Animal Outcomes |     [4:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=270s) | Using `rename` to rename `Total` column to `total`                                                                                                                                   |
+| Australian Animal Outcomes |     [6:20](https://www.youtube.com/watch?v=E2amEz_upzU&t=380s) | Using `fct_reorder` to reorder stacked barplot with `weight = sum`                                                                                                                   |
+| Australian Animal Outcomes |     [7:00](https://www.youtube.com/watch?v=E2amEz_upzU&t=420s) | Using `fct_lump` with `w = n` to lump together `outcome` factor levels displaying the most frequenct with rest lumped into `other`                                                   |
+| Australian Animal Outcomes |     [9:15](https://www.youtube.com/watch?v=E2amEz_upzU&t=555s) | Using `fct_recode` to combine the factor level `In Stock` with `Currently In Care`                                                                                                   |
+| Australian Animal Outcomes |    [12:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=730s) | Using `fct_reorder` to reorder `facet_wrap` panels                                                                                                                                   |
+| Australian Animal Outcomes |    [13:03](https://www.youtube.com/watch?v=E2amEz_upzU&t=783s) | Using `scale_y_continuous` with `labels = comma` to separate digits with comma                                                                                                       |
+| Australian Animal Outcomes |    [14:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=850s) | Using `complete` to complete account for missing combinations of data where the value is 0 in the `released` column                                                                  |
+| Australian Animal Outcomes |    [16:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=970s) | Using `max (year)` within `filter` to subset the data displaying only the most recent year                                                                                           |
+| Australian Animal Outcomes |   [19:30](https://www.youtube.com/watch?v=E2amEz_upzU&t=1170s) | Using `pivot_longer` to pivot location variables from wide to long                                                                                                                   |
+| Australian Animal Outcomes |   [21:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1305s) | Web Scaraping table from Wikipedia with `SelectorGadget` and `Rvest`                                                                                                                 |
+| Australian Animal Outcomes |   [25:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=1545s) | Using `str_to_upper` to upper case the values in the `shorthand` column                                                                                                              |
+| Australian Animal Outcomes |   [27:13](https://www.youtube.com/watch?v=E2amEz_upzU&t=1633s) | Using `parse_number` to remove commas from `population` and `area` columns                                                                                                           |
+| Australian Animal Outcomes |   [28:55](https://www.youtube.com/watch?v=E2amEz_upzU&t=1735s) | Using `bind_rows` to bind the two web scraped tables from Wikipedia together by row and column                                                                                       |
+| Australian Animal Outcomes |   [29:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=1775s) | Using `inner_join` to combine the Wikipedia table with the original data set                                                                                                         |
+| Australian Animal Outcomes |   [29:47](https://www.youtube.com/watch?v=E2amEz_upzU&t=1787s) | Using `mutate` to create new `per_capita_million` column to show `outcome` on a per million people basis                                                                             |
+| Australian Animal Outcomes |   [37:25](https://www.youtube.com/watch?v=E2amEz_upzU&t=2245s) | Using `summarize` to create new column `pct_euthanized` showing percent of cats and dogs euthanized over time. Formula accounts for 0 values thus avoiding a resulting empty vector. |
+| Australian Animal Outcomes |   [39:10](https://www.youtube.com/watch?v=E2amEz_upzU&t=2350s) | Using `scale_y_continuous` with `labels = percent` to add percentage sign to y-axis values                                                                                           |
+| Australian Animal Outcomes |   [42:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=2565s) | Create a choropleth map of Australia using an Australian States `Shapefile` using the `sf` and `ggplot2` packages                                                                    |
+| Australian Animal Outcomes |   [55:45](https://www.youtube.com/watch?v=E2amEz_upzU&t=3345s) | Add animation to the map of Australia showing the percent of cats euthanized by region using `gganimate`                                                                             |
+| Australian Animal Outcomes | [1:01:35](https://www.youtube.com/watch?v=E2amEz_upzU&t=3695s) | Summary of screencast                                                                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Palmer Penguins
+#### Palmer Penguins {#palmer-penguins}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Palmer Penguins | [11:17](https://www.youtube.com/watch?v=ImpXawPNCfM&t=677s) | Create a pivoted histogram plot to visualize the distribution of penguin metrics using `pivot_longer`, `geom_histogram`, and `facet_wrap` |
-| Palmer Penguins | [14:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=880s) | Create a pivoted density plot to visualize the distribution of penguin metrics using `geom_density` and `facet_wrap` |
-| Palmer Penguins | [15:21](https://www.youtube.com/watch?v=ImpXawPNCfM&t=921s) | Create a pivoted boxplot plot to visualize the distribution of penguin metrics using `geom_boxplot` and `facet_wrap` |
-| Palmer Penguins | [17:50](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1070s) | Create a bar plot to show penguin species changed over time |
-| Palmer Penguins | [18:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1105s) | Create a bar plot to show specie counts per island |
-| Palmer Penguins | [20:00](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1200s) | Create a logistic regression model to predict if a penguin is Adelie or not using bill length with cross validaiton of metrics |
-| Palmer Penguins | [39:35](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2375s) | Create second logistic regression model using 4 predictive metrics (bill length, bill depth, flipper length, body mass) and then compare the accuracy of both models |
-| Palmer Penguins | [43:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2605s) | Create a k-nearest neighbor model and then compare accuracy against logistic regression models to see which has the highest cross validated accuracy |
-| Palmer Penguins | [53:05](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3185s) | What is the accuracy of the testing holdout data on the k-nearest neighbor model? |
-| Palmer Penguins | [1:05:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3940s) | Create a decision tree and then compare accuracy against the previous models to see which has the highest cross validated accuracy + how to extract a decision tree |
-| Palmer Penguins | [1:10:45](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4245s) | Perform multi class regression using `multinom_reg` |
-| Palmer Penguins | [1:19:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4780s) | Summary of screencast |
+| Screencast      |                                                           Time | Description                                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Palmer Penguins |    [11:17](https://www.youtube.com/watch?v=ImpXawPNCfM&t=677s) | Create a pivoted histogram plot to visualize the distribution of penguin metrics using `pivot_longer`, `geom_histogram`, and `facet_wrap`                            |
+| Palmer Penguins |    [14:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=880s) | Create a pivoted density plot to visualize the distribution of penguin metrics using `geom_density` and `facet_wrap`                                                 |
+| Palmer Penguins |    [15:21](https://www.youtube.com/watch?v=ImpXawPNCfM&t=921s) | Create a pivoted boxplot plot to visualize the distribution of penguin metrics using `geom_boxplot` and `facet_wrap`                                                 |
+| Palmer Penguins |   [17:50](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1070s) | Create a bar plot to show penguin species changed over time                                                                                                          |
+| Palmer Penguins |   [18:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1105s) | Create a bar plot to show specie counts per island                                                                                                                   |
+| Palmer Penguins |   [20:00](https://www.youtube.com/watch?v=ImpXawPNCfM&t=1200s) | Create a logistic regression model to predict if a penguin is Adelie or not using bill length with cross validaiton of metrics                                       |
+| Palmer Penguins |   [39:35](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2375s) | Create second logistic regression model using 4 predictive metrics (bill length, bill depth, flipper length, body mass) and then compare the accuracy of both models |
+| Palmer Penguins |   [43:25](https://www.youtube.com/watch?v=ImpXawPNCfM&t=2605s) | Create a k-nearest neighbor model and then compare accuracy against logistic regression models to see which has the highest cross validated accuracy                 |
+| Palmer Penguins |   [53:05](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3185s) | What is the accuracy of the testing holdout data on the k-nearest neighbor model?                                                                                    |
+| Palmer Penguins | [1:05:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=3940s) | Create a decision tree and then compare accuracy against the previous models to see which has the highest cross validated accuracy + how to extract a decision tree  |
+| Palmer Penguins | [1:10:45](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4245s) | Perform multi class regression using `multinom_reg`                                                                                                                  |
+| Palmer Penguins | [1:19:40](https://www.youtube.com/watch?v=ImpXawPNCfM&t=4780s) | Summary of screencast                                                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### European Energy
+#### European Energy {#european-energy}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| European Energy | [01:50](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=110s) | Using `count` to get an overview of scategorical data |
-| European Energy | [07:25](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=445s) | Using `pivot_longer` and `gather` to pivot date variables from wide to long |
-| European Energy | [09:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=540s) | Using `as.integer` to change `year` variable from `character` to `integer` class |
-| European Energy | [10:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=610s) | Using `fct_reorder` to reorder stacked barplot |
-| European Energy | [10:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=630s) | Using `scale_y_continuous` with `labels = comma` from `scales` package to insert a comma every three digits on the y-axis |
-| European Energy | [16:35](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=995s) | Using `replace_na` and `list` to replace `NA` values in `country_name` column with United Kingdom |
-| European Energy | [18:05](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1085s) | Using `fct_lump` to lump factor levels together except for the 10 most frequent for each facet panel |
-| European Energy | [20:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1210s) | Using `reorder_within` with `fun = sum` and `scale_y_reordered` to reorder the categories within each facet panel |
-| European Energy | [24:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1470s) | Using `ggflags` package to add country flags | Debugging strategies include 1) minimal reproducible example and 2) binary search |
-| European Energy | [29:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1760s) | (Unsuccessfully) Using `fct_recode` to rename the ISO two-digit identifier for the United Kingdom from the UK to GB |
-| European Energy | [33:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2000s) | Using `ifelse` to replace the ISO two-digit identifier for the United Kingdom from UK to GB & from EL to GR fro Greece | Debugging included |
-| European Energy | [40:45](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2445s) | Using `str_to_lower` to convert observations in `country` column to lower case |
-| European Energy | [45:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2700s) | Creating a `slope graph` to show differences in Nuclear production (2106 versus 2018) | Using `scale_y_log10` to increase distance between points | Using `ggflags` for country flags |
-| European Energy | [47:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2820s) | Using `scale_x_continuous` with `breaks = c(2016, 2018)` to show only 2016 and 2018 on x-axis |
-| European Energy | [48:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2900s) | Extend x-axis limits using `scale_x_continuous` with `limits = c(2015, 2019)` and `geom_text` with an `ifelse` within `hjust` to alternate labels for the right and left side of `slope graph` |
-| European Energy | [52:40](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3160s) | Creating a slopegraph function |
-| European Energy | [1:00:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3600s) | Summary of screencast |
+| Screencast      |                                                           Time | Description                                                                                                                                                                                    |
+|:-----------------------|-----------------------:|:-----------------------|
+| European Energy |    [01:50](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=110s) | Using `count` to get an overview of scategorical data                                                                                                                                          |
+| European Energy |    [07:25](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=445s) | Using `pivot_longer` and `gather` to pivot date variables from wide to long                                                                                                                    |
+| European Energy |    [09:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=540s) | Using `as.integer` to change `year` variable from `character` to `integer` class                                                                                                               |
+| European Energy |    [10:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=610s) | Using `fct_reorder` to reorder stacked barplot                                                                                                                                                 |
+| European Energy |    [10:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=630s) | Using `scale_y_continuous` with `labels = comma` from `scales` package to insert a comma every three digits on the y-axis                                                                      |
+| European Energy |    [16:35](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=995s) | Using `replace_na` and `list` to replace `NA` values in `country_name` column with United Kingdom                                                                                              |
+| European Energy |   [18:05](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1085s) | Using `fct_lump` to lump factor levels together except for the 10 most frequent for each facet panel                                                                                           |
+| European Energy |   [20:10](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1210s) | Using `reorder_within` with `fun = sum` and `scale_y_reordered` to reorder the categories within each facet panel                                                                              |
+| European Energy |   [24:30](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1470s) | Using `ggflags` package to add country flags                                                                                                                                                   |
+| European Energy |   [29:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=1760s) | (Unsuccessfully) Using `fct_recode` to rename the ISO two-digit identifier for the United Kingdom from the UK to GB                                                                            |
+| European Energy |   [33:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2000s) | Using `ifelse` to replace the ISO two-digit identifier for the United Kingdom from UK to GB & from EL to GR fro Greece                                                                         |
+| European Energy |   [40:45](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2445s) | Using `str_to_lower` to convert observations in `country` column to lower case                                                                                                                 |
+| European Energy |   [45:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2700s) | Creating a `slope graph` to show differences in Nuclear production (2106 versus 2018)                                                                                                          |
+| European Energy |   [47:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2820s) | Using `scale_x_continuous` with `breaks = c(2016, 2018)` to show only 2016 and 2018 on x-axis                                                                                                  |
+| European Energy |   [48:20](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=2900s) | Extend x-axis limits using `scale_x_continuous` with `limits = c(2015, 2019)` and `geom_text` with an `ifelse` within `hjust` to alternate labels for the right and left side of `slope graph` |
+| European Energy |   [52:40](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3160s) | Creating a slopegraph function                                                                                                                                                                 |
+| European Energy | [1:00:00](https://www.youtube.com/watch?v=Rcmu5e-9FSc&t=3600s) | Summary of screencast                                                                                                                                                                          |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Plants in Danger
+#### Plants in Danger {#plants-in-danger}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Plants in Danger | [2:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=120s) | Getting an overview of categorical data |
-| Plants in Danger | [5:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=300s) | Using `fct_relevel` to reorder the "Before 1900" level to the first location leaving the other levels in their existing order |
-| Plants in Danger | [8:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=485s) | Using `n` and `sum` in `fct_reorder` to reorder factor levels when there are multiple categories in `count` |
-| Plants in Danger | [12:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=720s) | Using `reorder_within` and `scale_y_reordered` such that the values are ordered within each facet |
-| Plants in Danger | [14:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=895s) | Using `axis.text.x` to rotate overlapping labels |
-| Plants in Danger | [19:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1145s) | Using `filter` and `fct_lump` to lump all levels except for the 8 most frequest facet panels |
-| Plants in Danger | [26:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1615s) | Using `separate` to separate the character column `binomial_name` into multiple columns (genus and species) |
-| Plants in Danger | [28:20](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1700s) | Using `fct_lump` within `count` to lump all levels except for the 8 most frequent genus |
-| Plants in Danger | [45:30](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2730s) | Using `rvest` and `SelectorGadget` to web scrape list of species |
-| Plants in Danger | [49:35](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2975s) | Using `str_trim` to remove whitespace from character string |
+| Screencast       |                                                         Time | Description                                                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| Plants in Danger |   [2:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=120s) | Getting an overview of categorical data                                                                                                                                      |
+| Plants in Danger |   [5:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=300s) | Using `fct_relevel` to reorder the "Before 1900" level to the first location leaving the other levels in their existing order                                                |
+| Plants in Danger |   [8:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=485s) | Using `n` and `sum` in `fct_reorder` to reorder factor levels when there are multiple categories in `count`                                                                  |
+| Plants in Danger |  [12:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=720s) | Using `reorder_within` and `scale_y_reordered` such that the values are ordered within each facet                                                                            |
+| Plants in Danger |  [14:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=895s) | Using `axis.text.x` to rotate overlapping labels                                                                                                                             |
+| Plants in Danger | [19:05](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1145s) | Using `filter` and `fct_lump` to lump all levels except for the 8 most frequest facet panels                                                                                 |
+| Plants in Danger | [26:55](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1615s) | Using `separate` to separate the character column `binomial_name` into multiple columns (genus and species)                                                                  |
+| Plants in Danger | [28:20](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=1700s) | Using `fct_lump` within `count` to lump all levels except for the 8 most frequent genus                                                                                      |
+| Plants in Danger | [45:30](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2730s) | Using `rvest` and `SelectorGadget` to web scrape list of species                                                                                                             |
+| Plants in Danger | [49:35](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=2975s) | Using `str_trim` to remove whitespace from character string                                                                                                                  |
 | Plants in Danger | [50:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3000s) | Using `separate` to separate character string into genus, species, and rest/citation columns and using `extra = "merge"` to merge extra pieces into the rest/citation column |
-| Plants in Danger | [51:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3060s) | Using `rvest` and `SelectorGadget` to web scrape image links |
-| Plants in Danger | [57:50](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3470s) | Summary of screencast |
+| Plants in Danger | [51:00](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3060s) | Using `rvest` and `SelectorGadget` to web scrape image links                                                                                                                 |
+| Plants in Danger | [57:50](https://www.youtube.com/watch?v=f7Rc1bvMgZY&t=3470s) | Summary of screencast                                                                                                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Chopped
+#### Chopped {#chopped}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Chopped | [5:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=320s) | Use `geom_histogram` to visualize the distribution of episode ratings. |
-| Chopped | [6:30](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=390s) | Use `geom_point` and `geom_line` with `color = factor(season)` to visualize the episode rating for every episode. |
-| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `group_by` and `summarize` to show the average rating for each season and the number of episodes in each season. |
-| Chopped | [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `geom_line` and `geom_point` with `size = n_episodes` to visualize the average rating for each season with point size indicating the total number of episodes (larger = more episodes, smaller = fewer episodes). |
-| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable. |
-| Chopped | [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `geom_point` to visualize the top episodes by rating. Use the 'glue' package to place `season number` and `episode number` before episode name on the `y axis`. |
-| Chopped | [15:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=920s) | Use `pivot_longer` to combine ingredients into one single column. Use `separate_rows` with `sep = ", "` to separate out the ingredients with each ingredient getting its own row. |
-| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `fct_lump` to lump ingredients together except for the 10 most frequent. Use `fct_reorder` to reorder `ingredient` factor levels by sorting against `n`. |
-| Chopped | [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `geom_col` to create a stacked bar plot to visualize the most common ingredients by course. |
-| Chopped | [19:45](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1185s) | Use `fct_relevel` to reorder `course` factor levels to appetizer, entree, dessert. |
-| Chopped | [21:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1260s) | Use `fct_rev` and `scale_fill_discrete` with `guide = guide_legend(reverse = TRUE)` to reorder the segments within the stacked bar plot. |
-| Chopped | [23:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1400s) | Use the `widyr` package and `pairwise_cor` to find out what ingredients appear together.  Mentioned: [David Robinson - The `widyr` Package YouTube Talk at 2020 R Conference](https://www.youtube.com/watch?v=mApnx5NJwQA) |
-| Chopped | [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact. |
-| Chopped | [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature. |
-| Chopped | [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes. |
-| Chopped | [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables. |
-| Chopped | [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons. |
-| Chopped | [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons. |
-| Chopped | [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
-| Chopped | [1:17:25](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=4645s) | Summary of screencast |
+| Screencast |                                                           Time | Description                                                                                                                                                                                                                                                                                  |
+|:-----------------------|-----------------------:|:-----------------------|
+| Chopped    |     [5:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=320s) | Use `geom_histogram` to visualize the distribution of episode ratings.                                                                                                                                                                                                                       |
+| Chopped    |     [6:30](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=390s) | Use `geom_point` and `geom_line` with `color = factor(season)` to visualize the episode rating for every episode.                                                                                                                                                                            |
+| Chopped    |     [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `group_by` and `summarize` to show the average rating for each season and the number of episodes in each season.                                                                                                                                                                         |
+| Chopped    |     [7:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=435s) | Use `geom_line` and `geom_point` with `size = n_episodes` to visualize the average rating for each season with point size indicating the total number of episodes (larger = more episodes, smaller = fewer episodes).                                                                        |
+| Chopped    |    [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `fct_reorder` to reorder the `episode_name` factor levels by sorting along the `episode_rating` variable.                                                                                                                                                                                |
+| Chopped    |    [10:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=655s) | Use `geom_point` to visualize the top episodes by rating. Use the 'glue' package to place `season number` and `episode number` before episode name on the `y axis`.                                                                                                                          |
+| Chopped    |    [15:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=920s) | Use `pivot_longer` to combine ingredients into one single column. Use `separate_rows` with `sep = ", "` to separate out the ingredients with each ingredient getting its own row.                                                                                                            |
+| Chopped    |   [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `fct_lump` to lump ingredients together except for the 10 most frequent. Use `fct_reorder` to reorder `ingredient` factor levels by sorting against `n`.                                                                                                                                 |
+| Chopped    |   [18:10](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1090s) | Use `geom_col` to create a stacked bar plot to visualize the most common ingredients by course.                                                                                                                                                                                              |
+| Chopped    |   [19:45](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1185s) | Use `fct_relevel` to reorder `course` factor levels to appetizer, entree, dessert.                                                                                                                                                                                                           |
+| Chopped    |   [21:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1260s) | Use `fct_rev` and `scale_fill_discrete` with `guide = guide_legend(reverse = TRUE)` to reorder the segments within the stacked bar plot.                                                                                                                                                     |
+| Chopped    |   [23:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1400s) | Use the `widyr` package and `pairwise_cor` to find out what ingredients appear together. Mentioned: [David Robinson - The `widyr` Package YouTube Talk at 2020 R Conference](https://www.youtube.com/watch?v=mApnx5NJwQA)                                                                    |
+| Chopped    |   [26:20](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1580s) | Use `ggraph` , `geom_edge_link`, `geom_node_point`, `geom_node_text` to create an ingredient network diagram to show their makeup and how they interact.                                                                                                                                     |
+| Chopped    |   [28:00](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1680s) | Use `pairwise_count` from `widyr` to count the number of times each pair of items appear together within a group defined by feature.                                                                                                                                                         |
+| Chopped    |   [30:15](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1815s) | Use `unite` from the `tidyr` package in order to paste together the `episode_course` and `series_episode` columns into one column to figure out if any pairs of ingredients appear together in the same course across episodes.                                                              |
+| Chopped    |   [31:55](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=1915s) | Use `summarize` with `min`, `mean`, `max`, and `n()` to create the `first_season`, `avg_season`, `last_season` and `n_appearances` variables.                                                                                                                                                |
+| Chopped    |   [34:35](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2075s) | Use `slice` with `tail` to get the `n` ingredients that appear in early and late seasons.                                                                                                                                                                                                    |
+| Chopped    |   [35:40](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2140s) | Use `geom_boxplot` to visualize the distribution of each ingredient across all seasons.                                                                                                                                                                                                      |
+| Chopped    |   [36:50](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=2210s) | Fit predictive models (`linear regression` , `random forest`, and `natural spline`) to determine if episode rating is explained by the ingredients or season. Use `pivot_wider` with `values_fill = list(value = 0))` with 1 indicating ingredient was used and 0 indicating it wasn't used. |
+| Chopped    | [1:17:25](https://www.youtube.com/watch?v=6V0vAx2Km7U&t=4645s) | Summary of screencast                                                                                                                                                                                                                                                                        |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Global Crop Yields
+#### Global Crop Yields {#global-crop-yields}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Global Crop Yields | [03:35](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=215s) | Using `rename` to shorten column name |
-| Global Crop Yields | [06:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=400s) | Using `rename_all` with `str_remove` and regex to remove characters in column name |
-| Global Crop Yields | [07:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=460s) | Using `pivot_longer` to change data from wide to long |
-| Global Crop Yields | [08:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=505s) | Create a faceted `geom_line` chart |
-| Global Crop Yields | [09:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=580s) | Using `fct_reorder` to reorder facet panels in ascending order |
-| Global Crop Yields | [11:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=710s) | Create an interactive `Shiny` dashboard |
-| Global Crop Yields | [33:20](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2000s) | Create a faceted `geom_line` chart with `add_count` and `filter(n = max(x))` to subset the data for crops that have observations in every year |
-| Global Crop Yields | [36:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2210s) | Create a faceted `geom_point` chart showing the crop yields at start and end over a 50 year period (1968 start date and 2018 end date) |
+| Screencast         |                                                         Time | Description                                                                                                                                        |
+|:-----------------------|-----------------------:|:-----------------------|
+| Global Crop Yields |  [03:35](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=215s) | Using `rename` to shorten column name                                                                                                              |
+| Global Crop Yields |  [06:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=400s) | Using `rename_all` with `str_remove` and regex to remove characters in column name                                                                 |
+| Global Crop Yields |  [07:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=460s) | Using `pivot_longer` to change data from wide to long                                                                                              |
+| Global Crop Yields |  [08:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=505s) | Create a faceted `geom_line` chart                                                                                                                 |
+| Global Crop Yields |  [09:40](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=580s) | Using `fct_reorder` to reorder facet panels in ascending order                                                                                     |
+| Global Crop Yields |  [11:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=710s) | Create an interactive `Shiny` dashboard                                                                                                            |
+| Global Crop Yields | [33:20](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2000s) | Create a faceted `geom_line` chart with `add_count` and `filter(n = max(x))` to subset the data for crops that have observations in every year     |
+| Global Crop Yields | [36:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2210s) | Create a faceted `geom_point` chart showing the crop yields at start and end over a 50 year period (1968 start date and 2018 end date)             |
 | Global Crop Yields | [45:00](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2700s) | Create a `geom_boxplot` to visualize the distribution of yield ratios for the different crops to see how efficiency has increased across countries |
-| Global Crop Yields | [46:00](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2760s) | Create a `geom_col` chart to visualize the median yield ratio for each crop |
-| Global Crop Yields | [47:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2870s) | Create a `geom_point` chart to visualize efficiency imporvement for each country for a specific crop (yield start / yield ratio) |
-| Global Crop Yields | [50:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3025s) | Using the `countrycode` package to color `geom_point` chart by continent names |
-| Global Crop Yields | [56:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3410s) | Summary of screencast |
+| Global Crop Yields | [46:00](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2760s) | Create a `geom_col` chart to visualize the median yield ratio for each crop                                                                        |
+| Global Crop Yields | [47:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=2870s) | Create a `geom_point` chart to visualize efficiency imporvement for each country for a specific crop (yield start / yield ratio)                   |
+| Global Crop Yields | [50:25](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3025s) | Using the `countrycode` package to color `geom_point` chart by continent names                                                                     |
+| Global Crop Yields | [56:50](https://www.youtube.com/watch?v=0uqAhIiK9Rc&t=3410s) | Summary of screencast                                                                                                                              |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Friends
+#### Friends {#friends}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Friends | [7:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=450s) | Use `dplyr` package's `count` function to count the unique values of multiple variables. |
-| Friends | [9:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=575s) | Use `geom_col` to show how many lines of dialogue there is for each character. Use `fct_reorder` to reorder the `speaker` factor levels by sorting along `n`. |
-| Friends | [12:07](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=727s) | Use `semi_join` to join `friends` dataset with `main_cast` with `by = ""speaker` returning all rows from `friends` with a match in `main_cast`. |
-| Friends | [12:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=750s) | Use `unite` to create the `episode_number` variable which pastes together `season` and `episode` with `sep = "."`. Then, use `inner_join` to combine above dataset with `friends_info` with `by = c("season", "episode")`. Then, use `mutate` and the `glue` package instead to combine `{ season }.{ episode } { title }`. Then use `fct_reorder(episode_title, season + .001 * episode)` to order it by `season` first then `episode`. |
-| Friends | [15:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=945s) | Use `geom_point` to visualize `episode_title` and `us_views_millions`. Use `as.integer` to change `episode_title` to integer class. Add labels to `geom_point` using `geom_text` with `check_overlap = TRUE` so text that overlaps previous text in the same layer will not be plotted. |
-| Friends | [19:95](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1235s) | Run the above plot again using `imdb_rating` instead of `us_views_millions` |
-| Friends | [21:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1295s) | Ahead of modeling: Use `geom_boxplot` to visualize the distribution of speaking for main characters. Use the `complete` function with `fill = list(n = 0)` to replace existing explicit missing values in the data set. Demonstration of how to account for missing `imdb_rating` values using the `fill` function with `.direction = "downup"` to keep the imdb rating across the same title. |
-| Friends | [26:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1605s) | Ahead of modeling: Use `summarize` with `cor(log2(n), imdb_rating)` to find the correlation between speaker and imdb rating -- the fact that the correlation is positive for all speakers gives David a suspicion that some episodes are longer than others because they're in 2 parts with higher ratings due to important moments. David addresses this `confounding factor` by including `percentage of lines` instead of `number of lines`. Visualize results with `geom_boxplot`, `geom_point` with `geom_smooth`. |
-| Friends | [34:05](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2045s) | Use a `linear model` to predict imdb rating based on various variables. |
-| Friends | [42:00](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2520s) | Use the `tidytext` and `tidylo` packages to see what words are most common amongst characters, and whether they are said more times than would be expected by chance. Use `geom_col` to visualize the most overrepresented words per character according to `log_odds_weighted`. |
-| Friends | [54:15](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3255s) | Use the `widyr` package and `pairwise correlation` to determine which characters tend to appear in the same scences together? Use `geom_col` to visualize the correlation between characters. |
-| Friends | [1:00:25](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3625s) | Summary of screencast |
+| Screencast |                                                           Time | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Friends    |     [7:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=450s) | Use `dplyr` package's `count` function to count the unique values of multiple variables.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Friends    |     [9:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=575s) | Use `geom_col` to show how many lines of dialogue there is for each character. Use `fct_reorder` to reorder the `speaker` factor levels by sorting along `n`.                                                                                                                                                                                                                                                                                                                                                           |
+| Friends    |    [12:07](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=727s) | Use `semi_join` to join `friends` dataset with `main_cast` with `by = ""speaker` returning all rows from `friends` with a match in `main_cast`.                                                                                                                                                                                                                                                                                                                                                                         |
+| Friends    |    [12:30](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=750s) | Use `unite` to create the `episode_number` variable which pastes together `season` and `episode` with `sep = "."`. Then, use `inner_join` to combine above dataset with `friends_info` with `by = c("season", "episode")`. Then, use `mutate` and the `glue` package instead to combine `{ season }.{ episode } { title }`. Then use `fct_reorder(episode_title, season + .001 * episode)` to order it by `season` first then `episode`.                                                                                |
+| Friends    |    [15:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=945s) | Use `geom_point` to visualize `episode_title` and `us_views_millions`. Use `as.integer` to change `episode_title` to integer class. Add labels to `geom_point` using `geom_text` with `check_overlap = TRUE` so text that overlaps previous text in the same layer will not be plotted.                                                                                                                                                                                                                                 |
+| Friends    |   [19:95](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1235s) | Run the above plot again using `imdb_rating` instead of `us_views_millions`                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Friends    |   [21:35](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1295s) | Ahead of modeling: Use `geom_boxplot` to visualize the distribution of speaking for main characters. Use the `complete` function with `fill = list(n = 0)` to replace existing explicit missing values in the data set. Demonstration of how to account for missing `imdb_rating` values using the `fill` function with `.direction = "downup"` to keep the imdb rating across the same title.                                                                                                                          |
+| Friends    |   [26:45](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=1605s) | Ahead of modeling: Use `summarize` with `cor(log2(n), imdb_rating)` to find the correlation between speaker and imdb rating -- the fact that the correlation is positive for all speakers gives David a suspicion that some episodes are longer than others because they're in 2 parts with higher ratings due to important moments. David addresses this `confounding factor` by including `percentage of lines` instead of `number of lines`. Visualize results with `geom_boxplot`, `geom_point` with `geom_smooth`. |
+| Friends    |   [34:05](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2045s) | Use a `linear model` to predict imdb rating based on various variables.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Friends    |   [42:00](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=2520s) | Use the `tidytext` and `tidylo` packages to see what words are most common amongst characters, and whether they are said more times than would be expected by chance. Use `geom_col` to visualize the most overrepresented words per character according to `log_odds_weighted`.                                                                                                                                                                                                                                        |
+| Friends    |   [54:15](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3255s) | Use the `widyr` package and `pairwise correlation` to determine which characters tend to appear in the same scences together? Use `geom_col` to visualize the correlation between characters.                                                                                                                                                                                                                                                                                                                           |
+| Friends    | [1:00:25](https://www.youtube.com/watch?v=bgcBEBqVnx8&t=3625s) | Summary of screencast                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Government Spending on Kids
+#### Government Spending on Kids {#government-spending-on-kids}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Government Spending on Kids | [6:15](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=375s) | Using `geom_line` and `summarize` to visualize education spending over time. First for all states. Then individual states. Then small groups of states using `%in%`. Then in random groups of size n using `%in%` and `sample` with `unique`. `fct_reorder` is used to reorder `state` factor levels by sorting along the `inf_adj` variable. `geom_vline` used to add reference to the 2009 financial crisis. |
-"| Government Spending on Kids | [16:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=960s) | Take the previous chart setting the `inf_adj_perchild` for the first year `1997` to `100%` in order to show a measure of increase from `100%` as opposed to absolute value for change over time for each state relative to `1997`. `geom_hline` used to add reference for the `100%` starting point. David ends up changing the starting point from `100%` to `0%`. `fct_reorder` with `max` used to reorder the plots in descending order based on highest peak values. David briefly mentions the [small multiples](https://www.sharpsightlabs.com/blog/small-multiples-ggplot/#:~:text=The%20small%20multiples%20technique%20is,groups%20or%20comparing%20over%20time.&text=In%20contrast%2C%20R's%20GGPlot2%20package,multiples%20extraordinarily%20easy%20to%20create.) approach to analyzing data. |
-| Government Spending on Kids | [23:35](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1415s) | Create a `function` named `plot_changed_faceted` to make it easier to visualize the many other variables included in the dataset. |
-| Government Spending on Kids | [27:25](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1645s) | Create a `function` named `plot_faceted` with a `{{ y_axis }}` [embracing](https://dplyr.tidyverse.org/articles/programming.html) argument. Adding this function creates two stages: one for data transformation and another for plotting. |
-| Government Spending on Kids | [37:05](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=2225s) | Use the `dir` function with `pattern` and `purrr` package's `map_df` function to read in many different `.csv` files with GDP values for each state. Troubleshooting `Can't combine <character> and <double> columns` error using `function` and `mutate` with `across` and `as.numeric`. Extract state name from filename using `extract` from `tidyr` and `regular expression`. |
-| Government Spending on Kids | [50:50](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3050s) | Unsuccessful attempt at importing state population data via a not user friendly dataset from `census.gov` by skipping the first 3 rows of the Excel file. |
-| Government Spending on Kids | [54:22](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3262s) | Use `geom_col` to see which states spend the most for each child for a single variable and multiple variables using `%in%`. Use `scale_fill_discrete` with `guide_legend(reverse = TRUE)` to change the ordering of the legend. |
-| Government Spending on Kids | [57:40](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3460s) | Use `geom_col` and `pairwise_corr` to visualize the correlation between variables across states in 2016 using `pairwise correlation`. |
-| Government Spending on Kids | [1:02:02](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3722s) | Use `geom_point` to plot `inf_adjust_perchild_PK12ed` versus `inf_adj_perchild_highered`. `geom_text` used to apply state names to each point. |
-| Government Spending on Kids | [1:05:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3900s) | Summary of screencast |
+| Screencast                  |                                                           Time | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
+|:-----------------------|-----------------------:|:-----------------------|
+| Government Spending on Kids |     [6:15](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=375s) | Using `geom_line` and `summarize` to visualize education spending over time. First for all states. Then individual states. Then small groups of states using `%in%`. Then in random groups of size n using `%in%` and `sample` with `unique`. `fct_reorder` is used to reorder `state` factor levels by sorting along the `inf_adj` variable. `geom_vline` used to add reference to the 2009 financial crisis. |
+| "                           |                                    Government Spending on Kids | [16:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=960s)                                                                                                                                                                                                                                                                                                                                                    |
+| Government Spending on Kids |   [23:35](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1415s) | Create a `function` named `plot_changed_faceted` to make it easier to visualize the many other variables included in the dataset.                                                                                                                                                                                                                                                                              |
+| Government Spending on Kids |   [27:25](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=1645s) | Create a `function` named `plot_faceted` with a `{{ y_axis }}` [embracing](https://dplyr.tidyverse.org/articles/programming.html) argument. Adding this function creates two stages: one for data transformation and another for plotting.                                                                                                                                                                     |
+| Government Spending on Kids |   [37:05](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=2225s) | Use the `dir` function with `pattern` and `purrr` package's `map_df` function to read in many different `.csv` files with GDP values for each state. Troubleshooting `Can't combine <character> and <double> columns` error using `function` and `mutate` with `across` and `as.numeric`. Extract state name from filename using `extract` from `tidyr` and `regular expression`.                              |
+| Government Spending on Kids |   [50:50](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3050s) | Unsuccessful attempt at importing state population data via a not user friendly dataset from `census.gov` by skipping the first 3 rows of the Excel file.                                                                                                                                                                                                                                                      |
+| Government Spending on Kids |   [54:22](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3262s) | Use `geom_col` to see which states spend the most for each child for a single variable and multiple variables using `%in%`. Use `scale_fill_discrete` with `guide_legend(reverse = TRUE)` to change the ordering of the legend.                                                                                                                                                                                |
+| Government Spending on Kids |   [57:40](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3460s) | Use `geom_col` and `pairwise_corr` to visualize the correlation between variables across states in 2016 using `pairwise correlation`.                                                                                                                                                                                                                                                                          |
+| Government Spending on Kids | [1:02:02](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3722s) | Use `geom_point` to plot `inf_adjust_perchild_PK12ed` versus `inf_adj_perchild_highered`. `geom_text` used to apply state names to each point.                                                                                                                                                                                                                                                                 |
+| Government Spending on Kids | [1:05:00](https://www.youtube.com/watch?v=dHRPrVsnNwo&t=3900s) | Summary of screencast                                                                                                                                                                                                                                                                                                                                                                                          |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Himalayan Climbers
+#### Himalayan Climbers {#himalayan-climbers}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Himalayan Climbers | [3:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=180s) | Create a `geom_col` chart to visualize the top 50 tallest mountains. Use `fct_reorder` to reorder the `peak_name` factor levels by sorting along the `height_metres` variable. |
-| Himalayan Climbers | [8:50](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=530s) | Use `summarize` with `across` to get the total number of climbs, climbers, deaths, and first year climbed. Use `mutate` to calculate the percent death rate for members and hired staff. Use `inner_join` and `select` to join with `peaks` dataset by `peak_id`. |
-| Himalayan Climbers | [11:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=680s) | Touching on statistical `noise` and how it impacts the death rate for mountains with fewer number of climbs, and how to account for it using various statistical methods including `Beta Binomial Regression` & `Empirical Bayes`. |
-| Himalayan Climbers | [14:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=870s) | Further description of `Empirical Bayes` and how to account for not overestimating death rate for mountains with fewer climbers. Recommended reading: [Introduction to Empirical Bayes: Examples from Baseball Statistics](http://varianceexplained.org/r/empirical-bayes-book/) by David Robinson. |
-| Himalayan Climbers | [17:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1020s) | Use the `ebbr` package (Empirical Bayes for Binomial in R) to create an Empirical Bayes Estimate for each mountain by fitting prior distribution across data and adjusting the death rates down or up based on the prior distributions. Use a `geom_point` chart to visualize the difference between the raw death rate and new `ebbr` fitted death rate. |
-| Himalayan Climbers | [21:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1280s) | Use `geom_point` to visualize how deadly each mountain is with `geom_errorbarh` representing the 95% credible interval between minimum and maximum values. |
-| Himalayan Climbers | [26:35](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1595s) | Use `geom_point` to visualize the relationship between `death rate` and `height` of mountain. There is not a clear relationship, but David does briefly mention how one could use `Beta Binomial Regression` to further inspect for possible relationships / trends. |
-| Himalayan Climbers | [28:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1680s) | Use `geom_histogram` and `geom_boxplot` to visualize the distribution of time it took climbers to go from basecamp to the mountain’s high point for successful climbs only. Use `mutate` to calculate the number of days it took climbers to get from basecamp to the highpoint. Add column to data using `case_when` and `str_detect` to identify strings in `termination_reason` that contain the word `Success` and rename them to `Success` & how to use a `vector` and `%in%` to change multiple values in `termination_reason` to `NA` and rest to `Failed`. Use `fct_lump` to show the top 10 mountains while lumping the other factor levels (mountains) into `other`. |
-| Himalayan Climbers | [35:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2130s) | For just Mount Everest, use `geom_histogram` and `geom_density` with `fill = success` to visualize the days from basecamp to highpoint for climbs that ended in `success`, `failure` or `other`. |
-| Himalayan Climbers | [38:40](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2320s) | For just Mount Everest, use `geom_histogram` to see the distribution of climbs per year. |
-| Himalayan Climbers | [39:55](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2395s) | For just Mount Everest, use ‘geom_line` and `geom_point` to visualize `pct_death` over time by decade. Use `mutate` with `pmax` and `integer division` to create a decade variable that lumps together the data for 1970 and before. |
-| Himalayan Climbers | [41:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2490s) | Write a function for summary statistics such as `n_climbs`, `pct_success`, `first_climb`, `pct_death`, ‘pct_hired_staff_death`. |
-| Himalayan Climbers | [46:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2780s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_success` over time by decade. |
-| Himalayan Climbers | [47:10](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2830s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_hired_staff_deaths ` over time by decade. David decides to visualize the `pct_hired_staff_deaths` and `pct_death` charts together on the same plot. |
-| Himalayan Climbers | [50:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3045s) | For just Mount Everest, fit a logistic regression model to predict the probability of death with `format.pval` to calculate the `p.value`. Use `fct_lump` to lump together all `expedition_role` factors except for the n most frequent. |
-| Himalayan Climbers | [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades. |
-| Himalayan Climbers | [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals. |
-| Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast |
+| Screencast         |                                                           Time | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|:-----------------------|-----------------------:|:-----------------------|
+| Himalayan Climbers |     [3:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=180s) | Create a `geom_col` chart to visualize the top 50 tallest mountains. Use `fct_reorder` to reorder the `peak_name` factor levels by sorting along the `height_metres` variable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Himalayan Climbers |     [8:50](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=530s) | Use `summarize` with `across` to get the total number of climbs, climbers, deaths, and first year climbed. Use `mutate` to calculate the percent death rate for members and hired staff. Use `inner_join` and `select` to join with `peaks` dataset by `peak_id`.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Himalayan Climbers |    [11:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=680s) | Touching on statistical `noise` and how it impacts the death rate for mountains with fewer number of climbs, and how to account for it using various statistical methods including `Beta Binomial Regression` & `Empirical Bayes`.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Himalayan Climbers |    [14:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=870s) | Further description of `Empirical Bayes` and how to account for not overestimating death rate for mountains with fewer climbers. Recommended reading: [Introduction to Empirical Bayes: Examples from Baseball Statistics](http://varianceexplained.org/r/empirical-bayes-book/) by David Robinson.                                                                                                                                                                                                                                                                                                                                                                            |
+| Himalayan Climbers |   [17:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1020s) | Use the `ebbr` package (Empirical Bayes for Binomial in R) to create an Empirical Bayes Estimate for each mountain by fitting prior distribution across data and adjusting the death rates down or up based on the prior distributions. Use a `geom_point` chart to visualize the difference between the raw death rate and new `ebbr` fitted death rate.                                                                                                                                                                                                                                                                                                                      |
+| Himalayan Climbers |   [21:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1280s) | Use `geom_point` to visualize how deadly each mountain is with `geom_errorbarh` representing the 95% credible interval between minimum and maximum values.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Himalayan Climbers |   [26:35](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1595s) | Use `geom_point` to visualize the relationship between `death rate` and `height` of mountain. There is not a clear relationship, but David does briefly mention how one could use `Beta Binomial Regression` to further inspect for possible relationships / trends.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Himalayan Climbers |   [28:00](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=1680s) | Use `geom_histogram` and `geom_boxplot` to visualize the distribution of time it took climbers to go from basecamp to the mountain's high point for successful climbs only. Use `mutate` to calculate the number of days it took climbers to get from basecamp to the highpoint. Add column to data using `case_when` and `str_detect` to identify strings in `termination_reason` that contain the word `Success` and rename them to `Success` & how to use a `vector` and `%in%` to change multiple values in `termination_reason` to `NA` and rest to `Failed`. Use `fct_lump` to show the top 10 mountains while lumping the other factor levels (mountains) into `other`. |
+| Himalayan Climbers |   [35:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2130s) | For just Mount Everest, use `geom_histogram` and `geom_density` with `fill = success` to visualize the days from basecamp to highpoint for climbs that ended in `success`, `failure` or `other`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Himalayan Climbers |   [38:40](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2320s) | For just Mount Everest, use `geom_histogram` to see the distribution of climbs per year.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Himalayan Climbers |   [39:55](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2395s) | For just Mount Everest, use 'geom_line`and`geom_point`to visualize`pct_death`over time by decade. Use`mutate`with`pmax`and`integer division`to create a decade variable that lumps together the data for 1970 and before. | | Himalayan Climbers | [41:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2490s) | Write a function for summary statistics such as`n_climbs`,`pct_success`,`first_climb`,`pct_death`, ‘pct_hired_staff_death`.                                                                                                                                                                                                                                  |
+| Himalayan Climbers |   [46:20](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2780s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_success` over time by decade.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Himalayan Climbers |   [47:10](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=2830s) | For just Mount Everest, use `geom_line` and `geom_point` to visualize `pct_hired_staff_deaths` over time by decade. David decides to visualize the `pct_hired_staff_deaths` and `pct_death` charts together on the same plot.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Himalayan Climbers |   [50:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3045s) | For just Mount Everest, fit a logistic regression model to predict the probability of death with `format.pval` to calculate the `p.value`. Use `fct_lump` to lump together all `expedition_role` factors except for the n most frequent.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Himalayan Climbers |   [56:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3390s) | Use `group_by` with `integer division` and `summarize` to calculate `n_climbers` and `pct_death` for age bucketed into decades.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Himalayan Climbers |   [59:45](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3585s) | Use `geom_point` and `geom_errorbarh` to visualize the logistic regression model with confident intervals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Himalayan Climbers | [1:03:30](https://www.youtube.com/watch?v=WT7FMn-_jPY&t=3810s) | Summary of screencast                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Beyoncé and Taylor Swift Lyrics
+#### Beyoncé and Taylor Swift Lyrics {#beyoncé-and-taylor-swift-lyrics}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Beyonce and Taylor Swift Lyrics | [7:50](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=470s) | Use `fct_reorder` from the `forcats` package to reorder `title` factor levels by sorting along the `sales` variable in `geom_col` plot. |
-| Beyonce and Taylor Swift Lyrics | [8:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=490s) | Use `labels = dollar` from the `scales` package to format the `geom_col` x-axis values as currency. |
-| Beyonce and Taylor Swift Lyrics | [11:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=675s) | Use `rename_all(str_to_lower)` to convert variable names to lowercase. |
-| Beyonce and Taylor Swift Lyrics | [12:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=765s) | Use `unnest_tokens` from the `tidytext` package to split the lyrics into one-lyric-per-row. |
-| Beyonce and Taylor Swift Lyrics | [13:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=780s) | Use `anti_join` from the `tidytext` package to find the most common words int he lyrics without `stop_words`. |
-| Beyonce and Taylor Swift Lyrics | [15:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=915s) | Use `bind_tf_idf` from the `tidytext` package to determine `tf` - the proportion each word has in each album and `idf` - how specific each word is to each particular album. |
-| Beyonce and Taylor Swift Lyrics | [17:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1065s) | Use `reorder_within` with `scale_y_reordered` in order to reorder the bars within each `facet panel`. David replaces `top_n` with `slice_max` from the `dplyr` package in order to show the top 10 words with `ties = FALSE`. |
-| Beyonce and Taylor Swift Lyrics | [20:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1245s) | Use `bind_log_odds` from the `tidylo` package to calculate the `log odds ratio` of album and words, that is how much more common is the word in a specific album than across all the other albums. |
-| Beyonce and Taylor Swift Lyrics | [23:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1390s) | Use `filter(str_length(word) <= 3)` to come up with a list in order to remove common filler words like `ah`, `uh`, `ha`, `ey`, `eeh`, and `huh`. |
-| Beyonce and Taylor Swift Lyrics | [27:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1620s) | Use `mdy` from the `lubridate` package and `str_remove(released, " \\(.*)"))` from the `stringr` package to parse the dates in the `released` variable. |
-| Beyonce and Taylor Swift Lyrics | [28:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1695s) | Use `inner_join` from the `dplyr` package to join `taylor_swift_words` with `release_dates`. David ends up having to use `fct_recode` since the albums `reputation` and `folklore` were nor `lowercase` in a previous table thus excluding them from the `inner_join`. |
-| Beyonce and Taylor Swift Lyrics | [28:30](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1710s) | Use `fct_reorder` from the `forcats` package to reorder `album` factor levels by sorting along the `released` variable to be used in the `faceted` `geom_col`. |
-| Beyonce and Taylor Swift Lyrics | [34:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2080s) | Use `bind_rows` from hte `dplyr` package to bind `ts` with `beyonce` with `unnest_tokens` from the `tidytext` package to get one lyric per row per artist. |
-| Beyonce and Taylor Swift Lyrics | [38:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2320s) | Use `bind_log_odds` to figure out which words are more likely to come from a Taylor Swift or Beyonce song? |
-| Beyonce and Taylor Swift Lyrics | [41:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2470s) | Use `slice_max` from the `dplyr` package to select the top 100 words by `num_words_total` and then the top 25 by `log_odds_weighted`. Results are used to create a diverging bar chart showing which words are most common between Beyonce and Taylor Swift songs. |
-| Beyonce and Taylor Swift Lyrics | [44:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2680s) | Use `scale_x_continuous` to make the `log_odds_weighted` scale more interpretable. |
-| Beyonce and Taylor Swift Lyrics | [50:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3045s) | Take the previous plot and turn it into a `lollipop graph` with `geom_point(aes(size = num_words_total, color = direction))` |
-| Beyonce and Taylor Swift Lyrics | [53:05](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3185s) | Use `ifelse` to change the `1x` value on the x-axis to `same`. |
-| Beyonce and Taylor Swift Lyrics | [54:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3255s) | Create a `geom_point` with `geom_abline` to show the most popular words they use in common. |
-| Beyonce and Taylor Swift Lyrics | [1:01:55](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3715s) | Summary of screencast |
+| Screencast                      |                                                           Time | Description                                                                                                                                                                                                                                                            |
+|:-----------------------|-----------------------:|:-----------------------|
+| Beyonce and Taylor Swift Lyrics |     [7:50](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=470s) | Use `fct_reorder` from the `forcats` package to reorder `title` factor levels by sorting along the `sales` variable in `geom_col` plot.                                                                                                                                |
+| Beyonce and Taylor Swift Lyrics |     [8:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=490s) | Use `labels = dollar` from the `scales` package to format the `geom_col` x-axis values as currency.                                                                                                                                                                    |
+| Beyonce and Taylor Swift Lyrics |    [11:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=675s) | Use `rename_all(str_to_lower)` to convert variable names to lowercase.                                                                                                                                                                                                 |
+| Beyonce and Taylor Swift Lyrics |    [12:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=765s) | Use `unnest_tokens` from the `tidytext` package to split the lyrics into one-lyric-per-row.                                                                                                                                                                            |
+| Beyonce and Taylor Swift Lyrics |    [13:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=780s) | Use `anti_join` from the `tidytext` package to find the most common words int he lyrics without `stop_words`.                                                                                                                                                          |
+| Beyonce and Taylor Swift Lyrics |    [15:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=915s) | Use `bind_tf_idf` from the `tidytext` package to determine `tf` - the proportion each word has in each album and `idf` - how specific each word is to each particular album.                                                                                           |
+| Beyonce and Taylor Swift Lyrics |   [17:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1065s) | Use `reorder_within` with `scale_y_reordered` in order to reorder the bars within each `facet panel`. David replaces `top_n` with `slice_max` from the `dplyr` package in order to show the top 10 words with `ties = FALSE`.                                          |
+| Beyonce and Taylor Swift Lyrics |   [20:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1245s) | Use `bind_log_odds` from the `tidylo` package to calculate the `log odds ratio` of album and words, that is how much more common is the word in a specific album than across all the other albums.                                                                     |
+| Beyonce and Taylor Swift Lyrics |   [23:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1390s) | Use `filter(str_length(word) <= 3)` to come up with a list in order to remove common filler words like `ah`, `uh`, `ha`, `ey`, `eeh`, and `huh`.                                                                                                                       |
+| Beyonce and Taylor Swift Lyrics |   [27:00](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1620s) | Use `mdy` from the `lubridate` package and `str_remove(released, " \\(.*)"))` from the `stringr` package to parse the dates in the `released` variable.                                                                                                                |
+| Beyonce and Taylor Swift Lyrics |   [28:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1695s) | Use `inner_join` from the `dplyr` package to join `taylor_swift_words` with `release_dates`. David ends up having to use `fct_recode` since the albums `reputation` and `folklore` were nor `lowercase` in a previous table thus excluding them from the `inner_join`. |
+| Beyonce and Taylor Swift Lyrics |   [28:30](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=1710s) | Use `fct_reorder` from the `forcats` package to reorder `album` factor levels by sorting along the `released` variable to be used in the `faceted` `geom_col`.                                                                                                         |
+| Beyonce and Taylor Swift Lyrics |   [34:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2080s) | Use `bind_rows` from hte `dplyr` package to bind `ts` with `beyonce` with `unnest_tokens` from the `tidytext` package to get one lyric per row per artist.                                                                                                             |
+| Beyonce and Taylor Swift Lyrics |   [38:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2320s) | Use `bind_log_odds` to figure out which words are more likely to come from a Taylor Swift or Beyonce song?                                                                                                                                                             |
+| Beyonce and Taylor Swift Lyrics |   [41:10](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2470s) | Use `slice_max` from the `dplyr` package to select the top 100 words by `num_words_total` and then the top 25 by `log_odds_weighted`. Results are used to create a diverging bar chart showing which words are most common between Beyonce and Taylor Swift songs.     |
+| Beyonce and Taylor Swift Lyrics |   [44:40](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=2680s) | Use `scale_x_continuous` to make the `log_odds_weighted` scale more interpretable.                                                                                                                                                                                     |
+| Beyonce and Taylor Swift Lyrics |   [50:45](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3045s) | Take the previous plot and turn it into a `lollipop graph` with `geom_point(aes(size = num_words_total, color = direction))`                                                                                                                                           |
+| Beyonce and Taylor Swift Lyrics |   [53:05](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3185s) | Use `ifelse` to change the `1x` value on the x-axis to `same`.                                                                                                                                                                                                         |
+| Beyonce and Taylor Swift Lyrics |   [54:15](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3255s) | Create a `geom_point` with `geom_abline` to show the most popular words they use in common.                                                                                                                                                                            |
+| Beyonce and Taylor Swift Lyrics | [1:01:55](https://www.youtube.com/watch?v=vYbDyfv_v4Q&t=3715s) | Summary of screencast                                                                                                                                                                                                                                                  |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### NCAA Women's Basketball
+#### NCAA Women's Basketball {#ncaa-womens-basketball}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| NCAA Women's Basketball | [15:00](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=900s) | Use `fct_relevel` from the `forcats` package to order the factor levels for the `tourney_finish` variable. |
-| NCAA Women's Basketball | [16:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=995s) | Use `geom_tile` from the `ggplot2` package to create a `heatmap` to show how far a particular seed ends up going in the tournament. |
-| NCAA Women's Basketball | [20:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1235s) | Use `scale_y_continuous` from the `ggplot2` package with `breaks = seq(1, 16)` in order to include all 16 seeds. |
-| NCAA Women's Basketball | [20:55](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1255s) | Use `geom_text` from the `ggplot2` package with `label = percent(pct)` to apply the percentage to each tile in the heatmap. |
-| NCAA Women's Basketball | [21:40](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1300s) | Use `scale_x_discrete` and `scale_y_continuous` both with `expand = c(0, 0)` to remove the space between the x and y axis and the heatmap tiles. David calls this flattening. |
-| NCAA Women's Basketball | [32:15](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1935s) | Use `scale_y_reverse` to flip the order of the y-axis from 1-16 to 16-1. |
-| NCAA Women's Basketball | [34:45](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2085s) | Use `cor` from the `stats` package to calculate the `correlation` between `seed` and `tourney_finish`. Then plotted to determine if there is a correlation over time. |
-| NCAA Women's Basketball | [39:50](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2390s) | Use `geom_smooth` with `method = "loess"` to add a smoothing line with confidence bound to aid in seeing the trend between `seed` and `reg_percent`. |
-| NCAA Women's Basketball | [42:10](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2530s) | Use `fct_lump` from the `forcats` package to lump together all the conference except for the `n` most frequent. |
+| Screencast              |                                                         Time | Description                                                                                                                                                                                      |
+|:-----------------------|-----------------------:|:-----------------------|
+| NCAA Women's Basketball |  [15:00](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=900s) | Use `fct_relevel` from the `forcats` package to order the factor levels for the `tourney_finish` variable.                                                                                       |
+| NCAA Women's Basketball |  [16:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=995s) | Use `geom_tile` from the `ggplot2` package to create a `heatmap` to show how far a particular seed ends up going in the tournament.                                                              |
+| NCAA Women's Basketball | [20:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1235s) | Use `scale_y_continuous` from the `ggplot2` package with `breaks = seq(1, 16)` in order to include all 16 seeds.                                                                                 |
+| NCAA Women's Basketball | [20:55](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1255s) | Use `geom_text` from the `ggplot2` package with `label = percent(pct)` to apply the percentage to each tile in the heatmap.                                                                      |
+| NCAA Women's Basketball | [21:40](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1300s) | Use `scale_x_discrete` and `scale_y_continuous` both with `expand = c(0, 0)` to remove the space between the x and y axis and the heatmap tiles. David calls this flattening.                    |
+| NCAA Women's Basketball | [32:15](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=1935s) | Use `scale_y_reverse` to flip the order of the y-axis from 1-16 to 16-1.                                                                                                                         |
+| NCAA Women's Basketball | [34:45](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2085s) | Use `cor` from the `stats` package to calculate the `correlation` between `seed` and `tourney_finish`. Then plotted to determine if there is a correlation over time.                            |
+| NCAA Women's Basketball | [39:50](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2390s) | Use `geom_smooth` with `method = "loess"` to add a smoothing line with confidence bound to aid in seeing the trend between `seed` and `reg_percent`.                                             |
+| NCAA Women's Basketball | [42:10](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2530s) | Use `fct_lump` from the `forcats` package to lump together all the conference except for the `n` most frequent.                                                                                  |
 | NCAA Women's Basketball | [42:55](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2575s) | Use `geom_jitter` from the `ggplot2` package instead of `geom_boxplot` to avoid overplotting which makes it easier to visualize the points that make up the distribution of the `seed` variable. |
-| NCAA Women's Basketball | [47:05](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2825s) | Use `geom_smooth` with `method = "lm"` to aid in seeing the trend between `reg_percent` and `tourney_w`. |
-| NCAA Women's Basketball | [54:20](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3260s) | Create a `dot pipe function` using `.` and `%>%` to avoid duplicating summary statistics with `summarize`. |
-| NCAA Women's Basketball | [56:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3395s) | Use `glue` from the `glue` package to concatenate together `school` and `n_entries` on the `geo_col` y-axis. |
-| NCAA Women's Basketball | [59:50](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3590s) | Summary of screencast |
+| NCAA Women's Basketball | [47:05](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=2825s) | Use `geom_smooth` with `method = "lm"` to aid in seeing the trend between `reg_percent` and `tourney_w`.                                                                                         |
+| NCAA Women's Basketball | [54:20](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3260s) | Create a `dot pipe function` using `.` and `%>%` to avoid duplicating summary statistics with `summarize`.                                                                                       |
+| NCAA Women's Basketball | [56:35](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3395s) | Use `glue` from the `glue` package to concatenate together `school` and `n_entries` on the `geo_col` y-axis.                                                                                     |
+| NCAA Women's Basketball | [59:50](https://www.youtube.com/watch?v=-RD8GNCNsCk&t=3590s) | Summary of screencast                                                                                                                                                                            |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Great American Beer Festival
+#### Great American Beer Festival {#great-american-beer-festival}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Great American Beer Festival | [8:20](https://www.youtube.com/watch?v=BV_afpCDQ70&t=500s) | Use `pivot_wider` with `values_fill = list(value =0))` from the `tidyr` package along with `mutate(value = 1)` to pivot the `medal` variable from `long` to `wide` adding a 1 for the medal type awarded and 0 for the remaining medal types in the row. |
-| Great American Beer Festival | [11:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=685s) | Use `fct_lump` from the `forcats` package to lump together all the beers except for the N most frequent. |
-| Great American Beer Festival | [12:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=745s) | Use `str_to_upper` from the `stringr` package to convert the case of the `state` variable to uppercase. |
-| Great American Beer Festival | [12:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=745s) | Use `fct_relevel` from the the `forcats` package in order to reorder the `medal` factor levels. |
-| Great American Beer Festival | [13:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=805s) | Use `fct_reorder` from the `forcats` package to sort `beer_name` factor levels by sorting along `n`. |
-| Great American Beer Festival | [14:30](https://www.youtube.com/watch?v=BV_afpCDQ70&t=870s) | Use `glue` from the `glue` package to concatenate `beer_name` and `brewery` on the y-axis. |
-| Great American Beer Festival | [15:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=900s) | Use `ties.mthod = "first" ` within `fct_lump` to show only the first `brewery` when a tie exists between them. |
-| Great American Beer Festival | [19:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1165s) | Use `setdiff` from the `dplyr` package and the `state.abb` built in vector from the `datasets` package to check which states are missing from the dataset. |
+| Screencast                   |                                                         Time | Description                                                                                                                                                                                                                                                                                                                             |
+|:-----------------------|-----------------------:|:-----------------------|
+| Great American Beer Festival |   [8:20](https://www.youtube.com/watch?v=BV_afpCDQ70&t=500s) | Use `pivot_wider` with `values_fill = list(value =0))` from the `tidyr` package along with `mutate(value = 1)` to pivot the `medal` variable from `long` to `wide` adding a 1 for the medal type awarded and 0 for the remaining medal types in the row.                                                                                |
+| Great American Beer Festival |  [11:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=685s) | Use `fct_lump` from the `forcats` package to lump together all the beers except for the N most frequent.                                                                                                                                                                                                                                |
+| Great American Beer Festival |  [12:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=745s) | Use `str_to_upper` from the `stringr` package to convert the case of the `state` variable to uppercase.                                                                                                                                                                                                                                 |
+| Great American Beer Festival |  [12:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=745s) | Use `fct_relevel` from the the `forcats` package in order to reorder the `medal` factor levels.                                                                                                                                                                                                                                         |
+| Great American Beer Festival |  [13:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=805s) | Use `fct_reorder` from the `forcats` package to sort `beer_name` factor levels by sorting along `n`.                                                                                                                                                                                                                                    |
+| Great American Beer Festival |  [14:30](https://www.youtube.com/watch?v=BV_afpCDQ70&t=870s) | Use `glue` from the `glue` package to concatenate `beer_name` and `brewery` on the y-axis.                                                                                                                                                                                                                                              |
+| Great American Beer Festival |  [15:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=900s) | Use `ties.mthod = "first"` within `fct_lump` to show only the first `brewery` when a tie exists between them.                                                                                                                                                                                                                           |
+| Great American Beer Festival | [19:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1165s) | Use `setdiff` from the `dplyr` package and the `state.abb` built in vector from the `datasets` package to check which states are missing from the dataset.                                                                                                                                                                              |
 | Great American Beer Festival | [21:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1285s) | Use `summarize` from the `dplyr` package to calculate the `number of medals` with `n_medals = n()`, `number of beers` with `n_distinct`, `number of gold medals` with `sum()`, and `weighted medal totals` using `sum(as.integer()` because `medal` is an ordered factor, so 1 for each bronze, 2 for each silver, and 3 for each gold. |
-| Great American Beer Festival | [26:05](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1565s) | Import `Craft Beers Dataset` from `Kaggle` using `read_csv` from the `readr` package. |
-| Great American Beer Festival | [28:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1680s) | Use `inner_join` from the `dplyr` package to join together the 2 datasets from `kaggle`. |
-| Great American Beer Festival | [29:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1780s) | Use `semi_join` from the `dplyr` package to join together to see if the beer names match with the `kaggle` dataset. Ends up at a dead end with not enough matches between the datasets. |
-| Great American Beer Festival | [33:05](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1985s) | Use `bind_log_odds` from the `tidylo` package to show the representation of each beer category for each state compared to the categories across the other states. |
-| Great American Beer Festival | [33:35](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2015s) | Use `complete` from the `tidyr` package in order to turn missing values into explicit missing values. |
-| Great American Beer Festival | [35:30](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2130s) | Use `reorder_within` from the `tidytext` package and `scale_y_reordered` from the `tidytext` package in order to reorder the bars within each facet panel. |
-| Great American Beer Festival | [36:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2200s) | Use `fct_reorder` from the `forcats` package to reorder the `facet panels` in descending order. |
-| Great American Beer Festival | [39:35](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2375s) | For the previous plot, use `fill = log_odds_weighted > 0` in the `ggplot` `aes` argument to highlight the positive and negative values. |
-| Great American Beer Festival | [41:45](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2505s) | Use `add_count` from the `dplyr` package to add a `year_total` variable which shows the total awards for each year. Then use this to calculate the percent change in totals medals per state using `mutate(pct_year = n / year)` |
-| Great American Beer Festival | [44:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2680s) | Use `glm` from the `stats` package to create a `logistic regression` model to find out if their is a statistical trend in the probability of award success over time. |
-| Great American Beer Festival | [47:15](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2835s) | Exapnd on the previous model by using the `broom` package to fit multiple `logistic regressions` across multiple states instead of doing it for an individual state at a time. |
-| Great American Beer Festival | [50:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3025s) | Use `conf.int = TRUE` to add `confidence bounds` to the `logistic regression` output then use it to create a `TIE Fighter` plot to show which states become more or less frequent medal winners over time. |
-| Great American Beer Festival | [53:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3180s) | Use the `state.name` dataset with `match` from `base r` to change state abbreviation to the state name. |
-| Great American Beer Festival | [55:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3300s) | Summary of screencast |
+| Great American Beer Festival | [26:05](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1565s) | Import `Craft Beers Dataset` from `Kaggle` using `read_csv` from the `readr` package.                                                                                                                                                                                                                                                   |
+| Great American Beer Festival | [28:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1680s) | Use `inner_join` from the `dplyr` package to join together the 2 datasets from `kaggle`.                                                                                                                                                                                                                                                |
+| Great American Beer Festival | [29:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1780s) | Use `semi_join` from the `dplyr` package to join together to see if the beer names match with the `kaggle` dataset. Ends up at a dead end with not enough matches between the datasets.                                                                                                                                                 |
+| Great American Beer Festival | [33:05](https://www.youtube.com/watch?v=BV_afpCDQ70&t=1985s) | Use `bind_log_odds` from the `tidylo` package to show the representation of each beer category for each state compared to the categories across the other states.                                                                                                                                                                       |
+| Great American Beer Festival | [33:35](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2015s) | Use `complete` from the `tidyr` package in order to turn missing values into explicit missing values.                                                                                                                                                                                                                                   |
+| Great American Beer Festival | [35:30](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2130s) | Use `reorder_within` from the `tidytext` package and `scale_y_reordered` from the `tidytext` package in order to reorder the bars within each facet panel.                                                                                                                                                                              |
+| Great American Beer Festival | [36:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2200s) | Use `fct_reorder` from the `forcats` package to reorder the `facet panels` in descending order.                                                                                                                                                                                                                                         |
+| Great American Beer Festival | [39:35](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2375s) | For the previous plot, use `fill = log_odds_weighted > 0` in the `ggplot` `aes` argument to highlight the positive and negative values.                                                                                                                                                                                                 |
+| Great American Beer Festival | [41:45](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2505s) | Use `add_count` from the `dplyr` package to add a `year_total` variable which shows the total awards for each year. Then use this to calculate the percent change in totals medals per state using `mutate(pct_year = n / year)`                                                                                                        |
+| Great American Beer Festival | [44:40](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2680s) | Use `glm` from the `stats` package to create a `logistic regression` model to find out if their is a statistical trend in the probability of award success over time.                                                                                                                                                                   |
+| Great American Beer Festival | [47:15](https://www.youtube.com/watch?v=BV_afpCDQ70&t=2835s) | Exapnd on the previous model by using the `broom` package to fit multiple `logistic regressions` across multiple states instead of doing it for an individual state at a time.                                                                                                                                                          |
+| Great American Beer Festival | [50:25](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3025s) | Use `conf.int = TRUE` to add `confidence bounds` to the `logistic regression` output then use it to create a `TIE Fighter` plot to show which states become more or less frequent medal winners over time.                                                                                                                              |
+| Great American Beer Festival | [53:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3180s) | Use the `state.name` dataset with `match` from `base r` to change state abbreviation to the state name.                                                                                                                                                                                                                                 |
+| Great American Beer Festival | [55:00](https://www.youtube.com/watch?v=BV_afpCDQ70&t=3300s) | Summary of screencast                                                                                                                                                                                                                                                                                                                   |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### IKEA Furniture
+#### IKEA Furniture {#ikea-furniture}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| IKEA Furniture | [4:30](https://www.youtube.com/watch?v=lY0YLDZhT88&t=270s) | Use `fct_reorder` from the `forcats` package to reorder the factor levels for `category` sorted along `n`. |
-| IKEA Furniture | [6:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=360s) | Brief explanation of why `scale_x_log10` is needed given the distribution of `category` and `price` with `geom_boxplot`. |
-| IKEA Furniture | [7:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=420s) | Using `geom_jitter` with `geom_boxplot` to show how many items are within each `category`. |
-| IKEA Furniture | [8:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=480s) | Use `add_count` from the `dplyr` package and `glue` from the `glue` package to concatenate the `category` name with `category_total` on the `geom_boxplot` y-axis. |
-| IKEA Furniture | [9:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=540s) | Convert from `Saudi Riyals` to `United States Dollars`. |
-| IKEA Furniture | [11:05](https://www.youtube.com/watch?v=lY0YLDZhT88&t=665s) | Create a `ridgeplot` - AKA `joyplot` - using `ggridges` package showing the distribution of `price` across `category`. |
-| IKEA Furniture | [12:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=770s) | Discussion on `distributions` and when to use a `log scale`. |
-| IKEA Furniture | [19:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1160s) | Use `fct_lump` from the `forcats` package to lump together all the levels in `category` except for the `n` most frequent. |
-| IKEA Furniture | [21:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1260s) | Use `scale_fill_discrete` from the `ggplot2` package with `guide = guide_legend(reverse = TRUE)` to reverse the `fill legend`. |
-| IKEA Furniture | [24:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1460s) | Use `str_trim` from the `stringr` package to remove whitespace from the `short_description` variable. David then decides to use `str_replace_all` instead with the following regular expression `"\\s+", " "` to replace all whitespace with a single space instead. |
-| IKEA Furniture | [25:30](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1530s) | Use `separate` from the `tidyr` package with `extra = "merge"` and `fill = "right"` to separate item description from item dimension. |
-| IKEA Furniture | [26:45](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1605s) | Use `extract` from the `tidyr` package with the regular expression `"[\\d\\-xX]+) cm"` to extract the numbers before `cm`. |
-| IKEA Furniture | [29:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1790s) | Use `unite` from the `tidyr` package to paste together the `category` and `main_description` columns into a new column named `category_and_description`. |
-| IKEA Furniture | [32:45](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1965s) | Calculate the volume given the `depth`, `height`, and `width` of each item in dataset in liters using `depth * height * width / 1000`. At 36:15, David decides to change to `cubic meters` instead using `depth * height * width / 1000000`. |
-| IKEA Furniture | [44:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=2660s) | Use `str_squish` from the `stringr` package to remove whitespace from the start to the end of the `short_description` variable. |
+| Screencast     |                                                         Time | Description                                                                                                                                                                                                                                                                                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| IKEA Furniture |   [4:30](https://www.youtube.com/watch?v=lY0YLDZhT88&t=270s) | Use `fct_reorder` from the `forcats` package to reorder the factor levels for `category` sorted along `n`.                                                                                                                                                                                                                                                                           |
+| IKEA Furniture |   [6:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=360s) | Brief explanation of why `scale_x_log10` is needed given the distribution of `category` and `price` with `geom_boxplot`.                                                                                                                                                                                                                                                             |
+| IKEA Furniture |   [7:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=420s) | Using `geom_jitter` with `geom_boxplot` to show how many items are within each `category`.                                                                                                                                                                                                                                                                                           |
+| IKEA Furniture |   [8:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=480s) | Use `add_count` from the `dplyr` package and `glue` from the `glue` package to concatenate the `category` name with `category_total` on the `geom_boxplot` y-axis.                                                                                                                                                                                                                   |
+| IKEA Furniture |   [9:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=540s) | Convert from `Saudi Riyals` to `United States Dollars`.                                                                                                                                                                                                                                                                                                                              |
+| IKEA Furniture |  [11:05](https://www.youtube.com/watch?v=lY0YLDZhT88&t=665s) | Create a `ridgeplot` - AKA `joyplot` - using `ggridges` package showing the distribution of `price` across `category`.                                                                                                                                                                                                                                                               |
+| IKEA Furniture |  [12:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=770s) | Discussion on `distributions` and when to use a `log scale`.                                                                                                                                                                                                                                                                                                                         |
+| IKEA Furniture | [19:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1160s) | Use `fct_lump` from the `forcats` package to lump together all the levels in `category` except for the `n` most frequent.                                                                                                                                                                                                                                                            |
+| IKEA Furniture | [21:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1260s) | Use `scale_fill_discrete` from the `ggplot2` package with `guide = guide_legend(reverse = TRUE)` to reverse the `fill legend`.                                                                                                                                                                                                                                                       |
+| IKEA Furniture | [24:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1460s) | Use `str_trim` from the `stringr` package to remove whitespace from the `short_description` variable. David then decides to use `str_replace_all` instead with the following regular expression `"\\s+", " "` to replace all whitespace with a single space instead.                                                                                                                 |
+| IKEA Furniture | [25:30](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1530s) | Use `separate` from the `tidyr` package with `extra = "merge"` and `fill = "right"` to separate item description from item dimension.                                                                                                                                                                                                                                                |
+| IKEA Furniture | [26:45](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1605s) | Use `extract` from the `tidyr` package with the regular expression `"[\\d\\-xX]+) cm"` to extract the numbers before `cm`.                                                                                                                                                                                                                                                           |
+| IKEA Furniture | [29:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1790s) | Use `unite` from the `tidyr` package to paste together the `category` and `main_description` columns into a new column named `category_and_description`.                                                                                                                                                                                                                             |
+| IKEA Furniture | [32:45](https://www.youtube.com/watch?v=lY0YLDZhT88&t=1965s) | Calculate the volume given the `depth`, `height`, and `width` of each item in dataset in liters using `depth * height * width / 1000`. At 36:15, David decides to change to `cubic meters` instead using `depth * height * width / 1000000`.                                                                                                                                         |
+| IKEA Furniture | [44:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=2660s) | Use `str_squish` from the `stringr` package to remove whitespace from the start to the end of the `short_description` variable.                                                                                                                                                                                                                                                      |
 | IKEA Furniture | [48:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=2880s) | Use `lm` from the `stats` package to create a linear model on a `log, log scale` to predict the price of an item based on volume + category. David then uses `fct_relevel` to reorder the factor levels for `category` such that `tables & desks` is first (starting point) since it's the most frequent item in the category variable and it's price distribution is in the middle. |
-| IKEA Furniture | [53:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3180s) | Use the `broom` package to turn the model output into a coefficient / TIE fighter plot. |
-| IKEA Furniture | [56:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3380s) | Use `str_remove` from the `stringr` package to remove `category` from the start of the strings on the y-axis using the regular expression `"^category"` |
-| IKEA Furniture | [57:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3470s) | Summary of screencast |
+| IKEA Furniture | [53:00](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3180s) | Use the `broom` package to turn the model output into a coefficient / TIE fighter plot.                                                                                                                                                                                                                                                                                              |
+| IKEA Furniture | [56:20](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3380s) | Use `str_remove` from the `stringr` package to remove `category` from the start of the strings on the y-axis using the regular expression `"^category"`                                                                                                                                                                                                                              |
+| IKEA Furniture | [57:50](https://www.youtube.com/watch?v=lY0YLDZhT88&t=3470s) | Summary of screencast                                                                                                                                                                                                                                                                                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Historical Phones
+#### Historical Phones {#historical-phones}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Historical Phones | [2:15](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=135s) | Use `bind_rows` from the `dplyr` package to combine the two data sets. |
-| Historical Phones | [7:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=450s) | Use `group = interaction(type, country)` within `ggplot` `aes()` to set the interaction `type` with every single `country` on one plot. |
-| Historical Phones | [9:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=570s) | Use `semi_join` from the `dplyr` package to join rows from `phones` with a match in `country_sizes`. |
-| Historical Phones | [14:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=840s) | Use `quantile` from the `stats` package within `summarize` to show the 25th, and 75th quantiles (interquartile range) on the plot. |
-| Historical Phones | [17:50](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1070s) | Import the `wdi` package (World Development Indicators from the World Bank) with `extra = TRUE` in order to get the `iso3c` code and `income` level for each country. |
-| Historical Phones | [19:45](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1185s) | Use `inner_join` from the `dplyr` package to join the `WDI` data with the `phones` data. |
-| Historical Phones | [20:35](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1235s) | Use `fct_relevel` from the `forcats` package to reorder `income` factor levels in ascending order. |
-| Historical Phones | [21:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1265s) | Create an `anonymous function` using `.` (dot). |
-| Historical Phones | [29:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1770s) | Use `inner_join` from the `dplyr` package to join the `mobile` data and `landline` data together with a `geom_abline` to see how different the total populations are between the two datasets. |
-| Historical Phones | [31:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1860s) | Use `geom_hline` to add a refrence line to the plot shwoing when each country crossed the 50 per 100 subscription mark. |
-| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `min(year([Mobile >= 50]))` to find the year in which each country crossed the 50 per 100 subscription mark. |
-| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `max(Mobile)` to find the peak number of mobile subscriptions per country. |
-| Historical Phones | [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `na_if` from the `dplyr` package within `summarize` to change `Inf` to `NA`. |
-| Historical Phones | [38:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2300s) | Using the `WDIsearch` function to search the `WDI` package for proper GDP per capita indicator. Ended up using the `NY.GDP.PCAP.PP.KD` indicator. |
-| Historical Phones | [39:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2345s) | Adding the `GDP` data from the `WDI` package to the `country_incomes` table. |
-| Historical Phones | [39:52](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2392s) | Using the `inner_join` function from the `dplyr` package to join the `phones` table with the `country_incomes` table pulling in the `gdp_per_capita` variable. |
-| Historical Phones | [42:25](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2545s) | Using the `WDIsearch` function to search the `WDI` package for proper population indicator. Ended up using the `SP.POP.TOTL` indicator. |
-| Historical Phones | [50:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3000s) | Create an animated choropleth world map with `fill = subscriptions`. |
-| Historical Phones | [1:00:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3600s) | Summary of screencast |
+| Screencast        |                                                           Time | Description                                                                                                                                                                                    |
+|:-----------------------|-----------------------:|:-----------------------|
+| Historical Phones |     [2:15](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=135s) | Use `bind_rows` from the `dplyr` package to combine the two data sets.                                                                                                                         |
+| Historical Phones |     [7:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=450s) | Use `group = interaction(type, country)` within `ggplot` `aes()` to set the interaction `type` with every single `country` on one plot.                                                        |
+| Historical Phones |     [9:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=570s) | Use `semi_join` from the `dplyr` package to join rows from `phones` with a match in `country_sizes`.                                                                                           |
+| Historical Phones |    [14:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=840s) | Use `quantile` from the `stats` package within `summarize` to show the 25th, and 75th quantiles (interquartile range) on the plot.                                                             |
+| Historical Phones |   [17:50](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1070s) | Import the `wdi` package (World Development Indicators from the World Bank) with `extra = TRUE` in order to get the `iso3c` code and `income` level for each country.                          |
+| Historical Phones |   [19:45](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1185s) | Use `inner_join` from the `dplyr` package to join the `WDI` data with the `phones` data.                                                                                                       |
+| Historical Phones |   [20:35](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1235s) | Use `fct_relevel` from the `forcats` package to reorder `income` factor levels in ascending order.                                                                                             |
+| Historical Phones |   [21:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1265s) | Create an `anonymous function` using `.` (dot).                                                                                                                                                |
+| Historical Phones |   [29:30](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1770s) | Use `inner_join` from the `dplyr` package to join the `mobile` data and `landline` data together with a `geom_abline` to see how different the total populations are between the two datasets. |
+| Historical Phones |   [31:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=1860s) | Use `geom_hline` to add a refrence line to the plot shwoing when each country crossed the 50 per 100 subscription mark.                                                                        |
+| Historical Phones |   [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `min(year([Mobile >= 50]))` to find the year in which each country crossed the 50 per 100 subscription mark.                                     |
+| Historical Phones |   [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `summarize` from the `dplyr` package with `max(Mobile)` to find the peak number of mobile subscriptions per country.                                                                       |
+| Historical Phones |   [35:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2120s) | Use `na_if` from the `dplyr` package within `summarize` to change `Inf` to `NA`.                                                                                                               |
+| Historical Phones |   [38:20](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2300s) | Using the `WDIsearch` function to search the `WDI` package for proper GDP per capita indicator. Ended up using the `NY.GDP.PCAP.PP.KD` indicator.                                              |
+| Historical Phones |   [39:05](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2345s) | Adding the `GDP` data from the `WDI` package to the `country_incomes` table.                                                                                                                   |
+| Historical Phones |   [39:52](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2392s) | Using the `inner_join` function from the `dplyr` package to join the `phones` table with the `country_incomes` table pulling in the `gdp_per_capita` variable.                                 |
+| Historical Phones |   [42:25](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=2545s) | Using the `WDIsearch` function to search the `WDI` package for proper population indicator. Ended up using the `SP.POP.TOTL` indicator.                                                        |
+| Historical Phones |   [50:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3000s) | Create an animated choropleth world map with `fill = subscriptions`.                                                                                                                           |
+| Historical Phones | [1:00:00](https://www.youtube.com/watch?v=pJPqAIb8MKA&t=3600s) | Summary of screencast                                                                                                                                                                          |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Riddler: Simulating a Circular Random Walk
+#### Riddler: Simulating a Circular Random Walk {#riddler-simulating-a-circular-random-walk}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Riddler: Simulating a Circular Random Walk | [1:25](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=85s) | Using `sample()` and `cumsum()` to simulate a random walk |
-| Riddler: Simulating a Circular Random Walk | [2:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=150s) | Using `%%` (modulo operator) to "close" the circle (set the number of people in the circle) |
-| Riddler: Simulating a Circular Random Walk | [3:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=220s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
-| Riddler: Simulating a Circular Random Walk | [5:10](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=310s) | Using `distinct` function and its `.keep_all` argument to get only the first unique set of the variables you give it |
-| Riddler: Simulating a Circular Random Walk | [8:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=495s) | Visualizing the number of steps it takes for the sauce to reach people at differents seats |
-| Riddler: Simulating a Circular Random Walk | [13:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=820s) | Visualizing the distribution of number of steps it takes to reach each seat |
-| Riddler: Simulating a Circular Random Walk | [26:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1590s) | Investigating the parabolic shape of average number of steps to reach a given seat |
-| Riddler: Simulating a Circular Random Walk | [28:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1720s) | Using `lm` and `I` functions to calculate formula of the parabola describing average number of steps |
-| Riddler: Simulating a Circular Random Walk | [30:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1815s) | Starting to vary the size of the table |
-| Riddler: Simulating a Circular Random Walk | [38:45](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=2325s) | Summary of screencast |
+| Screencast                                 |                                                         Time | Description                                                                                                          |
+|:-----------------------|-----------------------:|:-----------------------|
+| Riddler: Simulating a Circular Random Walk |    [1:25](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=85s) | Using `sample()` and `cumsum()` to simulate a random walk                                                            |
+| Riddler: Simulating a Circular Random Walk |   [2:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=150s) | Using `%%` (modulo operator) to "close" the circle (set the number of people in the circle)                          |
+| Riddler: Simulating a Circular Random Walk |   [3:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=220s) | Using `crossing` function to set up "tidy" simulation (gives you all possible combinations of values you provide it) |
+| Riddler: Simulating a Circular Random Walk |   [5:10](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=310s) | Using `distinct` function and its `.keep_all` argument to get only the first unique set of the variables you give it |
+| Riddler: Simulating a Circular Random Walk |   [8:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=495s) | Visualizing the number of steps it takes for the sauce to reach people at differents seats                           |
+| Riddler: Simulating a Circular Random Walk |  [13:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=820s) | Visualizing the distribution of number of steps it takes to reach each seat                                          |
+| Riddler: Simulating a Circular Random Walk | [26:30](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1590s) | Investigating the parabolic shape of average number of steps to reach a given seat                                   |
+| Riddler: Simulating a Circular Random Walk | [28:40](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1720s) | Using `lm` and `I` functions to calculate formula of the parabola describing average number of steps                 |
+| Riddler: Simulating a Circular Random Walk | [30:15](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=1815s) | Starting to vary the size of the table                                                                               |
+| Riddler: Simulating a Circular Random Walk | [38:45](https://www.youtube.com/watch?v=b1oKh9eeqkY&t=2325s) | Summary of screencast                                                                                                |
 
+------------------------------------------------------------------------
 
-
-***
-
-
-
-#### Ninja Warrior
+#### Ninja Warrior {#ninja-warrior}
 
 [Back to summary](#screencast-summary)
 
-| Screencast | Time | Description |
-| :--- | ---: | :--- |
-| Ninja Warrior | [2:35](https://www.youtube.com/watch?v=4AhXvMsCooM&t=155s) | Inspecting the dataset |
-| Ninja Warrior | [6:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=400s) | Using `geom_histogram` to look at distribution of obstacles in a stage |
-| Ninja Warrior | [9:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=545s) | Using `str_remove` function to clean stage names (remove "(Regional/City)") |
-| Ninja Warrior | [10:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=640s) | Asking, "Are there obstacles that are more common in the Finals than Qualifying rounds?" |
-| Ninja Warrior | [10:50](https://www.youtube.com/watch?v=4AhXvMsCooM&t=650s) | Using `bind_log_odds` function from `tidylo` package to calculate log-odds of obstacles within a stage type |
-| Ninja Warrior | [16:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=965s) | Using `unite` function to combine two columns |
-| Ninja Warrior | [18:20](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1100s) | Graphing the average position of different obstacles with many, many tweaks to make it look nice |
-| Ninja Warrior | [23:10](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1390s) | Creating a stacked bar plot of which obstacles appear in which order |
-| Ninja Warrior | [30:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1830s) | Turning stacked bar plot visualization into a custom function |
-| Ninja Warrior | [37:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2260s) | Asking, "Is there data on how difficult an obstacle is?" |
-| Ninja Warrior | [45:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2730s) | Visualizing which obstacles appear in different seasons with `geom_tile` and a lot of tweaking |
-| Ninja Warrior | [50:22](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3022s) | Reviewing the result of the previous step (obstacles in different seasons) |
-| Ninja Warrior | [59:25](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3565s) | Summary of screencast |
+| Screencast    |                                                         Time | Description                                                                                                 |
+|:-----------------------|-----------------------:|:-----------------------|
+| Ninja Warrior |   [2:35](https://www.youtube.com/watch?v=4AhXvMsCooM&t=155s) | Inspecting the dataset                                                                                      |
+| Ninja Warrior |   [6:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=400s) | Using `geom_histogram` to look at distribution of obstacles in a stage                                      |
+| Ninja Warrior |   [9:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=545s) | Using `str_remove` function to clean stage names (remove "(Regional/City)")                                 |
+| Ninja Warrior |  [10:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=640s) | Asking, "Are there obstacles that are more common in the Finals than Qualifying rounds?"                    |
+| Ninja Warrior |  [10:50](https://www.youtube.com/watch?v=4AhXvMsCooM&t=650s) | Using `bind_log_odds` function from `tidylo` package to calculate log-odds of obstacles within a stage type |
+| Ninja Warrior |  [16:05](https://www.youtube.com/watch?v=4AhXvMsCooM&t=965s) | Using `unite` function to combine two columns                                                               |
+| Ninja Warrior | [18:20](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1100s) | Graphing the average position of different obstacles with many, many tweaks to make it look nice            |
+| Ninja Warrior | [23:10](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1390s) | Creating a stacked bar plot of which obstacles appear in which order                                        |
+| Ninja Warrior | [30:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=1830s) | Turning stacked bar plot visualization into a custom function                                               |
+| Ninja Warrior | [37:40](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2260s) | Asking, "Is there data on how difficult an obstacle is?"                                                    |
+| Ninja Warrior | [45:30](https://www.youtube.com/watch?v=4AhXvMsCooM&t=2730s) | Visualizing which obstacles appear in different seasons with `geom_tile` and a lot of tweaking              |
+| Ninja Warrior | [50:22](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3022s) | Reviewing the result of the previous step (obstacles in different seasons)                                  |
+| Ninja Warrior | [59:25](https://www.youtube.com/watch?v=4AhXvMsCooM&t=3565s) | Summary of screencast                                                                                       |
 
-
-
-***
-
-
-
+------------------------------------------------------------------------
