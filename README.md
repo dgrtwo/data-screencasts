@@ -1,5 +1,5 @@
 
-<img height='200' align='right' src="logo.png">
+<img height='200' align='right' src="./logo.png">
 
 # Code from screencasts of #tidytuesday
 
