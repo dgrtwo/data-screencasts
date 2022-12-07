@@ -1,0 +1,203 @@
+---
+title: "TidyTemplate"
+date: 2022-12-06
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+
+# Needed for my Mac
+options(rgl.useNULL=TRUE) 
+library(rgl)
+library(rayshader)
+```
+
+# Load the weekly Data
+
+Download the weekly data and make available in the `tt` object.
+
+```{r Load}
+
+tt <- tt_load("2022-12-06")
+
+elevators <- tt$elevators %>%
+  janitor::clean_names() %>%
+  filter(longitude > -76) %>%
+  rename_all(str_remove, "^dv_") %>%
+  mutate(floor_to_raw = floor_to,
+         floor_to = as.numeric(floor_to),
+         zip_code = str_sub(as.character(na_if(zip_code, 0)), 1, 5),
+         floor_to = ifelse(floor_to > 90 | floor_to < 1, NA, floor_to)) %>%
+  mutate(across(ends_with("_date"), ymd))
+```
+
+```{r}
+elevators %>%
+  count(device_status_description, sort = TRUE)
+
+elevators %>%
+  count(borough)
+
+elevators %>%
+  ggplot(aes(longitude, latitude, color = borough)) +
+  geom_point()
+
+elevators %>%
+  filter(!is.na(floor_to)) %>%
+  mutate(floor_to = as.numeric(floor_to)) %>%
+  ggplot(aes(floor_to)) +
+  geom_histogram() +
+  scale_x_log10(labels = comma_format(1))
+
+by_building <- elevators %>%
+  arrange(desc(floor_to)) %>%
+  group_by(bin, house_number, street_name, zip_code, borough) %>%
+  summarize(max_floor = na_if(max(floor_to, na.rm = TRUE), -Inf),
+            n_elevators = n(),
+            latitude = mean(latitude, na.rm = TRUE),
+            longitude = mean(longitude, na.rm = TRUE),
+            .groups = "drop") %>%
+  arrange(desc(max_floor))
+```
+
+
+```{r}
+elevators %>%
+  mutate(floor_from = as.numeric(floor_from)) %>%
+  ggplot(aes(floor_to - floor_from, parse_number(speed_fpm))) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10()
+```
+
+
+```{r}
+by_zip_code <- by_building %>%
+  filter(!is.na(zip_code)) %>%
+  group_by(zip_code, borough) %>%
+  summarize(n_buildings = n(),
+            n_buildings_height = sum(!is.na(max_floor)),
+            geom_mean_height = exp(mean(log(max_floor), na.rm = TRUE)),
+            tallest_building = max(max_floor, na.rm = TRUE),
+            .groups = "drop") %>%
+  filter(n_buildings_height >= 20) %>%
+  arrange(desc(geom_mean_height))
+```
+
+
+```{r}
+library(sf)
+
+zip_codes <- read_sf("~/Downloads/ZIP_CODE_040114/")
+
+class(zip_codes)
+
+joined_zip_codes <- zip_codes %>%
+  left_join(by_zip_code, by = c("ZIPCODE" = "zip_code")) %>%
+  mutate(population_density = POPULATION / AREA,
+         elevator_building_density = n_buildings / AREA)
+```
+
+```{r}
+by_building %>%
+  summarize(median(max_floor, na.rm = TRUE))
+
+g <- joined_zip_codes %>%
+  ggplot(aes(fill = geom_mean_height)) +
+  geom_sf() +
+  scale_fill_gradient2(low = "blue",
+                       high = "red",
+                       midpoint = log10(6),
+                       trans = "log10") +
+  ggthemes::theme_map() +
+  coord_sf(datum = NA) +
+  labs(fill = "Average floors") +
+  theme(legend.position = "top")
+
+g
+
+rgl.clear()
+plot_gg(g)
+rglwidget()
+
+by_building %>%
+  filter(!is.na(borough)) %>%
+  ggplot(aes(max_floor, borough)) +
+  geom_boxplot() +
+  scale_x_log10()
+
+by_building %>%
+  filter(borough == "Manhattan") %>%
+  ggplot(aes(latitude, max_floor)) +
+  geom_segment(aes(x = latitude, xend = latitude, y = 0, yend = max_floor),
+               size = 2,
+               alpha = .2) +
+  labs(title = "Manhattan skyline, viewed from the side",
+       y = "") +
+  theme_minimal()
+
+elevators %>%
+  ggplot(aes(approval_date)) +
+  geom_histogram()
+
+elevators %>%
+  mutate(year_approved_5 = 5 * (year(approval_date) %/% 5)) %>%
+  filter(year_approved_5 >= 1970, year_approved_5 < 2015) %>%
+  count(year_approved_5, borough) %>%
+  ggplot(aes(year_approved_5, n, color = borough)) +
+  geom_line()
+
+elevators %>%
+  filter(device_status_description == "ACTIVE") %>%
+  ggplot(aes(lastper_insp_date)) +
+  geom_histogram()
+
+elevators %>%
+  select(status_date, lastper_insp_date, approval_date, lastper_insp_disp)
+```
+
+
+```{r}
+g <- by_building %>%
+  filter(!is.na(max_floor)) %>%
+  arrange(max_floor) %>%
+  ggplot(aes(longitude, latitude, color = max_floor)) +
+  geom_point() +
+  scale_color_gradient2(low = "blue",
+                        high = "red",
+                        midpoint = 12) +
+  ggthemes::theme_map() +
+  labs(color = "Height in floors\n(highest elevator)")
+
+g
+
+rgl.clear()
+plot_gg(g)
+rglwidget()
+```
+
+```{r}
+# Below is an attempt at https://wcmbishop.github.io/rayshader-demo/#plotting-my-own-map
+bbox <- list(
+  p1 = list(long = min(by_building$longitude), lat = min(by_building$latitude)),
+  p2 = list(long = max(by_building$longitude), lat = max(by_building$latitude))
+)
+
+diff(range(by_building$longitude)) / diff(range(by_building$latitude))
+
+# fetch overlay image
+overlay_file <- "images/nyc-map.png"
+get_arcgis_map_image(bbox, map_type = "World_Topo_Map", file = overlay_file,
+                     width = 1.3 * 600, height = 600, 
+                     sr_bbox = 4326)
+overlay_img <- png::readPNG(overlay_file)
+
+```

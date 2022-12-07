@@ -1,0 +1,103 @@
+---
+title: "TidyTemplate"
+date: 2022-11-15
+output: html_document
+---
+
+# TidyTuesday
+
+Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!
+As such we encourage everyone of all skills to participate!
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(scales)
+library(lubridate)
+theme_set(theme_light())
+
+```
+
+# Load the weekly Data
+
+Download the weekly data and make available in the `tt` object.
+
+```{r Load}
+clean_data <- . %>%
+  select(-timestamp) %>%
+  mutate(date = ymd(date))
+
+image_alt <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-15/image_alt.csv') %>%
+  clean_data()
+color_contrast <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-15/color_contrast.csv') %>%
+  clean_data()
+ally_scores <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-15/ally_scores.csv') %>%
+  clean_data()
+bytes_total <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-15/bytes_total.csv') %>%
+  clean_data()
+speed_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-15/speed_index.csv') %>%
+  clean_data()
+
+```
+
+```{r}
+image_alt %>%
+  ggplot(aes(date, percent, color = client)) +
+  geom_line() +
+  labs(y = "% of images with alt text")
+```
+
+```{r}
+combined_percentages <- bind_rows(image_alt,
+                                  color_contrast)
+
+combined_percentages %>%
+  ggplot(aes(date, percent / 100, color = client)) +
+  geom_line() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(y = "Percentage") +
+  facet_wrap(~ measure)
+
+combined_percentiles <- bind_rows(speed_index,
+                                  bytes_total,
+                                  ally_scores)
+
+combined_percentiles %>%
+  ggplot(aes(date, p50, color = client)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = p25, ymax = p75), alpha = .25) +
+  facet_wrap(~ measure, scales = "free") +
+  labs(y = "Median (with 25th-75th percentile)",
+       color = "Client")
+```
+
+```{r}
+library(bigrquery)
+
+bq_project_query("bigquery-drob-screencast",
+                 "SELECT * FROM `bigquery-public-data.baseball.games_wide` LIMIT 10")
+
+# devtools::install_github("chriscardillo/dbcooper")
+
+# Connection object
+con <- DBI::dbConnect(bigrquery::bigquery(),
+                      project = "bigquery-public-data",
+                      dataset = "stackoverflow",
+                      billing = "bigquery-drob-screencast")
+
+library(dbcooper)
+dbc_init(con, "stack")
+
+stack_badges()
+
+stack_query("select * from badges limit 10")
+```
+
+
+
